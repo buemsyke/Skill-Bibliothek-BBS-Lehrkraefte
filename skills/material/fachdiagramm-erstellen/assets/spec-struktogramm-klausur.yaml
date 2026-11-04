@@ -1,0 +1,28 @@
+# Muster Klausurabbildung – Struktogramm als Lückenbild. Kopieren nach diagramme/42_nsd_klausur_<kurztitel>.yaml.
+# Drei Rollen, eine Notation (die des Unterrichts):
+#   1. Aufgabenbild (diese Spec): Lücken nummeriert ①–⑤, die Lösung steht nicht im Bild; die Einträge
+#      schreiben die Lernenden in eine Tabelle neben dem Bild (Feld · Eintrag).
+#   2. Fremdlösung mit gewolltem Fehler: gleiche Bauart ohne Lücken; der Fehler ist fachlich begründet
+#      und steht im Erwartungshorizont (Aufgabe „testen – beurteilen – Testfall ohne Befund entwerfen“).
+#   3. Lösungsbild: Lücken gefüllt, eigener Name (…_loesung), nur im Erwartungshorizont, nicht im Aufgabenblatt.
+# Preisregeln des Beispiels: 72,00 € je Stunde · Wochenende 50 % Zuschlag nur auf die Arbeitskosten ·
+# Anfahrtspauschale 45,00 € entfällt bei Wartungsvertrag (erfundene Werte).
+# Lösung: ① stunden * 72.00 · ② istWochenende · ③ arbeitskosten * 1.5 · ④ !hatVertrag (Zweige stehen vor,
+# die Bedingung muss dazu passen – die Denkfalle der Aufgabe) · ⑤ arbeitskosten + anfahrt
+title: "Lückenstruktogramm: Servicepreis Gurtförderer (Klausur)"
+type: struktogramm
+out: abbildungen/42_nsd_klausur_servicepreis_luecken
+breite: 360              # schmal: Bild links, Teilaufgaben und Eintragstabelle rechts auf derselben Seite
+blocks:
+  - "Eingabe: stunden, istWochenende, hatVertrag"
+  - "arbeitskosten = ①"
+  - typ: verzweigung
+    bedingung: "②"
+    ja: ["arbeitskosten = ③"]
+    nein: []                                   # [] = einseitige Verzweigung
+  - typ: verzweigung
+    bedingung: "④"
+    ja: ["anfahrt = 45.00"]
+    nein: ["anfahrt = 0.00"]
+  - "summe = ⑤"
+  - "Ausgabe: summe"

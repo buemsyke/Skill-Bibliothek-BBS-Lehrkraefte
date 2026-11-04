@@ -1,0 +1,77 @@
+# ============================================================================
+# phase_config.yaml – Schülerausgabe eines Kursprojekts (edu-seiten split)
+# Ablage: <projekt>/scripts/phase_config.yaml   ·   Vorlage: schuelerseiten-veroeffentlichen v1.0
+#
+# Jede lessons/NN_slug/lesson.md wird an ihren H1-Überschriften zerlegt. Die Einträge
+# unter sections müssen EXAKT den H1-Überschriften entsprechen – sonst fällt der Abschnitt
+# still aus der Ausgabe (ausgabe_pruefen.py --projekt meldet das).
+# ============================================================================
+
+# Beschriftung und Umfang der Schülerausgabe – ohne diesen Block heißt die Ausgabe
+# „BINFQ2 Datenbanken“ und solutions/ wird mitveröffentlicht.
+site:
+  name: "[LF 4 – Warten technischer Systeme]"
+  description: "Unterrichtsmaterialien für Lernende – [Bildungsgang]"
+  index_title: "Startseite"
+  index_heading: "[LF 4 – Schülerausgabe]"
+  copy_dirs: ["h5p", "examples"]      # bewusst ohne "solutions"
+  link_solutions: false
+
+# KI-Transparenzhinweis (Skill ki-kennzeichnung) – eine Quelle für Repository und Ausgabe.
+# Fehlt der Block, ist die Kennzeichnung abgeschaltet.
+ki_kennzeichnung:
+  verantwortlich: "[Name oder Kürzel der Lehrkraft, Schule]"
+  ki_system: "Claude (Anthropic)"
+  stand: "[TT.MM.JJJJ]"
+  seite: "docs/ki-transparenz.md"
+  nav_titel: "KI-Transparenz"
+  quellen: ["lessons/*/lesson.md", "docs/*.md", "README.md"]
+  ausgenommen: ["docs/ki-transparenz.md"]
+  blockzitat: ["README.md"]
+
+phases:
+  - phase_id: 1
+    slug: "einstieg"
+    title: "Einstieg und Fachwissen"
+    icon: "material-book-open-variant"
+    description: "Voraussetzungen, Kompetenzen und fachliche Grundlagen"
+    sections:
+      - "Voraussetzungen und Kompetenzen"
+      - "Fachwissen"
+
+  - phase_id: 2
+    slug: "handlungssituation"
+    title: "Handlungssituation und Arbeitsaufträge"
+    icon: "material-clipboard-text"
+    description: "Berufliche Situation mit Arbeitsaufträgen und Material"
+    sections:
+      - "Handlungssituation"
+      - "Material"
+
+  - phase_id: 3
+    slug: "hilfestellungen"
+    title: "Hilfen, Vertiefung und Kompetenzcheck"
+    icon: "material-lifebuoy"
+    description: "Gestufte Hilfen, weiterführende Aufgaben, Selbsteinschätzung"
+    sections:
+      - "Hilfestellungen"
+      - "Vertiefungen"
+      - "Kompetenzcheck"
+
+  - phase_id: 4
+    slug: "uebungen"
+    title: "Übungen"
+    icon: "material-pencil"
+    description: "Interaktive Übungen zur Wiederholung und Festigung"
+    sections:
+      - "Aufgaben zur Wiederholung und Übung"
+
+# Abschnitte, die NIE in die Schülerausgabe gehören
+excluded_sections:
+  - "Didaktische Hinweise"
+  - "Lösungen / Handlungsergebnisse"
+  - "Bewertungskriterien (Vorschlag)"
+
+# Lektionen, die nicht ausgegeben werden (Ordnerpräfix)
+excluded_lessons:
+  - "00"

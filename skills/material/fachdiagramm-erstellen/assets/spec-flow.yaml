@@ -1,0 +1,18 @@
+# Muster flow – Blockschaltbild mit Rückführung (Regelkreis). Kopieren nach
+# diagramme/42_flow_<kurztitel>.yaml, out: anpassen, Inhalte ersetzen.
+title: "Regelkreis Vorlauftemperatur (vereinfacht)"
+type: flow
+out: abbildungen/42_flow_regelkreis
+nodes:
+  sollwert:   { x: 0, y: 0, label: "Sollwert w", lines: ["Heizkurve"], shape: note, color: weiss }
+  regler:     { x: 0, y: 1, label: "Regler", lines: ["vergleicht Soll und Ist"], color: blau }
+  stellglied: { x: 1, y: 1, label: "Stellglied", lines: ["Mischventil"], color: gelb }
+  strecke:    { x: 2, y: 1, label: "Regelstrecke", lines: ["Heizkreis"], color: orange }
+  messglied:  { x: 2, y: 2, label: "Messglied", lines: ["Vorlauffühler"], color: grau }
+edges:
+  - { from: sollwert, to: regler, label: "Führungsgröße w" }
+  - { from: regler, to: stellglied, label: "Stellgröße y" }
+  - { from: stellglied, to: strecke, label: "Wärmestrom" }
+  - { from: strecke, to: messglied, label: "Regelgröße x" }
+  # Rückführung: Knoten liegen in verschiedenen Zeilen, Umleitung links außen herum
+  - { from: messglied, to: regler, label: "Istwert", route: links, style: dashed }

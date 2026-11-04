@@ -1,0 +1,6 @@
+Mitgelieferte Kopie aus eduwerkzeuge – NICHT von Hand bearbeiten.
+Version: 0.8.0
+Module: kennzeichnung
+Hauptkopie: eduwerkzeuge (Quellordner über EDUWERKZEUGE_SRC)
+Erneuern: python3 werkzeuge/bibliothek.py sync
+Aufruf: python3 scripts/edu.py <befehl> … (wie edu-<befehl>)

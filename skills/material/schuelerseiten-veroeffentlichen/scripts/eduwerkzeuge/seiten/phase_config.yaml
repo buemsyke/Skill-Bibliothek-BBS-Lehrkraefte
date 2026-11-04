@@ -1,0 +1,97 @@
+# ============================================================================
+# Standard-Phasen-Konfiguration (mitgeliefert von eduwerkzeuge.seiten)
+# ============================================================================
+#
+# Diese Datei definiert, wie die Abschnitte einer lesson.md auf die
+# 5 LMS-Phasen aufgeteilt werden. Lehrkräfte schalten im LMS
+# (Moodle, itslearning, …) gezielt einzelne Phasen frei.
+#
+# Sie dient als Vorgabe, wenn ein Projekt keine eigene scripts/phase_config.yaml
+# mitbringt. Projekte können diese Datei kopieren und anpassen.
+#
+# Aufbau:
+#   phase_id       – fortlaufende Nummer (bestimmt die Dateinamen)
+#   title          – Anzeigename der Phase (erscheint als Seitentitel)
+#   icon           – Material-for-MkDocs-Icon (optional, für Navigation)
+#   sections       – Liste der H1-Überschriften aus lesson.md,
+#                    die in diese Phase gehören (exakte Strings!)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# site: – Beschriftung und Umfang der Schülerausgabe (optional)
+# ----------------------------------------------------------------------------
+# OHNE diesen Block gelten die Alt-Defaults aus BINFQ2, d. h. die Site heißt
+# "BINFQ2 Datenbanken — Schülerausgabe" und solutions/ wird mitveröffentlicht.
+# Jedes Projekt sollte den Block deshalb setzen:
+#
+# site:
+#   name: "Mein Kurs — Schülerausgabe"        # site_name der mkdocs.yml
+#   description: "Unterrichtsmaterialien für Lernende"
+#   index_title: "Mein Kurs — Schülerausgabe" # optional, Default: name
+#   index_heading: "Mein Kurs"                # H1 der Startseite, Default: name
+#   copy_dirs: ["h5p", "examples"]            # Default: h5p, solutions, examples
+#   link_solutions: false                     # Default: true
+#   solution_link_max_lesson: 9               # Link nur bis zu dieser Lektion
+#
+# ACHTUNG Musterlösungen: Solange "solutions" in copy_dirs steht, landen die
+# Dateien aus solutions/ in der Schülerausgabe UND werden verlinkt. Wer
+# Musterlösungen nicht veröffentlichen will, nimmt "solutions" aus copy_dirs
+# heraus und setzt link_solutions: false.
+# ----------------------------------------------------------------------------
+
+phases:
+  - phase_id: 1
+    slug: "fachwissen"
+    title: "Fachwissen"
+    icon: "material-book-open-variant"
+    description: "Fachliche Grundlagen und Voraussetzungen"
+    sections:
+      - "Voraussetzungen und Kompetenzen"
+      - "Fachwissen"
+
+  - phase_id: 2
+    slug: "handlungssituation"
+    title: "Handlungssituation & Arbeitsaufträge"
+    icon: "material-clipboard-text"
+    description: "Berufliche Handlungssituation mit konkreten Arbeitsaufträgen"
+    sections:
+      - "Handlungssituation"
+      - "Material"
+
+  - phase_id: 3
+    slug: "hilfestellungen"
+    title: "Hilfestellungen, Vertiefungen & Kompetenzcheck"
+    icon: "material-lifebuoy"
+    description: "Unterstützung, weiterführende Aufgaben und Selbsteinschätzung"
+    sections:
+      - "Hilfestellungen"
+      - "Vertiefungen"
+      - "Kompetenzcheck"
+
+  - phase_id: 4
+    slug: "uebungen"
+    title: "Übungen"
+    icon: "material-pencil"
+    description: "Interaktive H5P-Übungen zur Wiederholung und Festigung"
+    sections:
+      - "Aufgaben zur Wiederholung und Übung"
+
+  - phase_id: 5
+    slug: "loesungen"
+    title: "Lösungen"
+    icon: "material-check-circle"
+    description: "Erwartungshorizont und Handlungsergebnisse"
+    sections:
+      - "Lösungen / Handlungsergebnisse"
+
+# Abschnitte, die NICHT in die Schülerausgabe übernommen werden
+excluded_sections:
+  - "Didaktische Hinweise"
+  - "Bewertungskriterien (Vorschlag)"
+  - "Aufgaben zur Wiederholung und Übung"
+  - "Lösungen / Handlungsergebnisse"
+
+# Lektionen, die NICHT in die Schülerausgabe übernommen werden
+# (Ordnernamen-Präfixe, lesson_id oder exakte Ordnernamen)
+excluded_lessons:
+  - "00"                               # Beispiellektion – nur für Lehrkräfte

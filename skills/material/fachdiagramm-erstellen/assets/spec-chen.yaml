@@ -1,0 +1,15 @@
+# Muster chen – ER-Modell. Kopieren nach diagramme/42_chen_<kurztitel>.yaml.
+# Schlüsselattribut mit * markieren; ohne Attribute: Namen auf _uebersicht enden lassen.
+# Entitäten mit Attributen nebeneinander (gleiche Zeile, jede zweite Spalte); die Rauten
+# liegen dazwischen. Bei vielen Attributen Entitäten weiter auseinander (x: 0, 3, 6)
+# oder layout: { col_w: 340 } – sonst überlappen die Attributfächer.
+title: "ER-Modell Wartungsaufträge"
+type: chen
+out: abbildungen/42_chen_wartung
+entities:
+  Anlage:    { x: 0, y: 0, attrs: [anlagen_nr*, bezeichnung, standort] }
+  Auftrag:   { x: 2, y: 0, attrs: [auftrags_nr*, datum, art] }
+  Techniker: { x: 4, y: 0, attrs: [personal_nr*, qualifikation] }
+relations:
+  - { name: betrifft, from: Auftrag, to: Anlage, cardinality: ["(1,1)", "(0,n)"] }
+  - { name: bearbeitet, from: Techniker, to: Auftrag, cardinality: ["(0,n)", "(1,n)"] }

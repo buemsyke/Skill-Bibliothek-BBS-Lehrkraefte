@@ -1,0 +1,78 @@
+# Muster-Spec (erfunden): Mischbehälter mit Chargenzähler – zeigt Zähler, Flanke, Alternativverzweigung,
+# speichernde Aktionen, Verknüpfung über einen Merker und Zwangssteuerung.
+# Aufruf: python3 scripts/wokwi.py alles assets/spec-muster.yaml   (schreibt neben die Spec)
+
+titel: "Mischbehälter mit Chargenzähler"
+kurztitel: mischbehaelter
+quelle: "Muster der Bibliothek (erfunden)"
+plattform: arduino-uno
+zeitraffer: {faktor: 1}
+
+eingaenge:
+  - {bmk: -S1, name: "Taster Start", pin: D2, kontakt: "NO", bauteil: taster, signal_1: "Start betätigt"}
+  - {bmk: -S2, name: "Taster Stopp", pin: D3, kontakt: "NC", bauteil: taster, signal_1: "Stopp nicht betätigt"}
+  - {bmk: -BG1, name: "Näherungsschalter Deckel", pin: D4, kontakt: "NO", bauteil: schalter,
+     signal_1: "Deckel geschlossen", start: 1, kurz: "Deckel"}
+analogeingaenge:
+  - {bmk: -BL1, name: "Füllstandsmesser", pin: A0, signal: "4 … 20 mA", bereich: [0, 100], einheit: "%", start: 0,
+     kurz: "Füllstand"}
+ausgaenge:
+  - {bmk: -Q1, name: "Zulaufventil", pin: D8, signal_1: "Zulauf offen", kurz: "Zulauf"}
+  - {bmk: -Q2, name: "Ablaufventil", pin: D9, signal_1: "Ablauf offen", kurz: "Ablauf"}
+  - {bmk: -M1, name: "Rührwerk", pin: D10, signal_1: "Rührwerk ein"}
+  - {bmk: -P1, name: "Leuchtmelder Fertig", pin: D11, signal_1: "drei Chargen fertig", kurz: "Fertig"}
+
+merker:
+  - {name: C_Chargen, typ: int, text: "Anzahl der Chargen"}
+  - {name: M_Ruehren, text: "Schrittkette fordert das Rührwerk an"}
+
+grafcet:
+  - {schritt: 0, name: "Grundstellung", aktionen: ["↑ C_Chargen := 0"], transition: "↑-S1 · -BG1 → 1"}
+  - {schritt: 1, name: "Füllen", aktionen: [-Q1], transition: "[-BL1 ≥ 80 %] + 30s/X1 → 2"}
+  - {schritt: 2, name: "Rühren", aktionen: [M_Ruehren], transition: "10s/X2 → 3"}
+  - {schritt: 3, name: "Entleeren", aktionen: [-Q2, "↑ C_Chargen := C_Chargen + 1"],
+     transition: "[-BL1 ≤ 5 %] · [C_Chargen < 3] → 1; [-BL1 ≤ 5 %] · [C_Chargen = 3] → 4"}
+  - {schritt: 4, name: "Fertig", aktionen: [-P1], transition: "↑-S1 → 0"}
+
+erzwingen:
+  - {bedingung: "¬-S2", nach: 0, grund: "Stopp"}
+
+zuweisungen:
+  - {ziel: -M1, bedingung: "M_Ruehren · -BG1", grund: "Rührwerk nur bei geschlossenem Deckel"}
+
+annahmen:
+  - "Nach drei Chargen quittiert -S1 die Meldung -P1 und führt in die Grundstellung."
+pruefauftraege: []
+
+testfaelle:
+  - nr: T1
+    name: "Drei Chargen"
+    zweck: "Zähler, Alternativverzweigung, Quittieren mit Flanke"
+    ablauf:
+      - {tippe: -S1, erwarte: {X: 1, -Q1: 1, C_Chargen: 0}}
+      - {setze: {-BL1: 85}, erwarte: {X: 2, -M1: 1, -Q1: 0}}
+      - {schrittzeit: 10s, vorher: {X: 2}, erwarte: {X: 3, -Q2: 1, -M1: 0, C_Chargen: 1}}
+      - {setze: {-BL1: 3}, erwarte: {X: 1, -Q1: 1}}
+      - {setze: {-BL1: 85}, erwarte: {X: 2}}
+      - {schrittzeit: 10s, erwarte: {X: 3, C_Chargen: 2}}
+      - {setze: {-BL1: 3}, erwarte: {X: 1}}
+      - {setze: {-BL1: 85}, erwarte: {X: 2}}
+      - {schrittzeit: 10s, erwarte: {X: 3, C_Chargen: 3}}
+      - {setze: {-BL1: 3}, erwarte: {X: 4, -P1: 1}}
+      - {tippe: -S1, erwarte: {X: 0, -P1: 0, C_Chargen: 0}}
+  - nr: T2
+    name: "Füllen über Zeit und Deckel offen"
+    zweck: "30 s Füllzeit, Rührwerk nur mit Deckel"
+    ablauf:
+      - {setze: {-BL1: 50}}
+      - {tippe: -S1, erwarte: {X: 1}}
+      - {schrittzeit: 30s, vorher: {X: 1, -Q1: 1}, erwarte: {X: 2, -M1: 1}}
+      - {setze: {-BG1: 0}, erwarte: {X: 2, -M1: 0, M_Ruehren: 1}}
+      - {setze: {-BG1: 1}, erwarte: {-M1: 1}}
+  - nr: T3
+    name: "Stopp beim Füllen"
+    ablauf:
+      - {tippe: -S1, erwarte: {X: 1}}
+      - {druecke: -S2, erwarte: {X: 0, -Q1: 0}}
+      - {tippe: -S1, erwarte: {X: 0}}
+      - {loese: -S2, erwarte: {X: 0}}

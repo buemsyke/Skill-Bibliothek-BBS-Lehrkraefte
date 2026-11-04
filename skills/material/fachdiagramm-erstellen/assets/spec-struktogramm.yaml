@@ -1,0 +1,16 @@
+# Muster struktogramm – Nassi-Shneiderman. Kopieren nach diagramme/42_nsd_<kurztitel>.yaml.
+title: "Struktogramm: Lager nachschmieren"
+type: struktogramm
+out: abbildungen/42_nsd_schmierung
+breite: 460
+blocks:
+  - "Förderer stillsetzen und gegen Wiedereinschalten sichern"
+  - typ: kopfschleife
+    bedingung: "solange noch Schmierstellen offen"
+    rumpf:
+      - "Schmiernippel reinigen"
+      - typ: verzweigung
+        bedingung: "Altfett tritt aus?"
+        ja: ["Altfett abwischen und auffangen"]
+        nein: ["Fettpresse ansetzen, Fett nachdrücken"]
+  - { typ: aufruf, text: "Probelauf durchführen" }

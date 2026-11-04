@@ -1,0 +1,84 @@
+# Symboltafel GRAFCET nach DIN EN 60848 – alle Symbole aus Einzelteilen mit festen Koordinaten.
+# Einzelteile: grafcet_schritt, grafcet_transition, grafcet_balken, grafcet_rahmen (x = Mitte, y = Oberkante,
+# bei der Transition y = Mitte des Querstrichs). Für ganze Ketten immer typ: grafcet nehmen.
+titel: "GRAFCET-Symbole nach DIN EN 60848"
+alt: "Symboltafel: Schritte, Transitionen, kontinuierlich und speichernd wirkende Aktionen, Zwangssteuerung und Verzweigungen, jeweils mit Bezeichnung."
+out: abbildungen/46_grafcet_symboltafel
+breite: 1120
+hoehe: 800
+fusszeile:
+  - "Betriebsmittel als Beispiel: -S Taster, -B Sensor, -M Motor oder Ventilspule; C_Teile interne Variable. Schreibweise nach dem Notationsblatt."
+elemente:
+  - {typ: text, x: 30, y: 30, text: "Schritte", groesse: 12, fett: true}
+  - {typ: text, x: 30, y: 65, text: "Schritt", groesse: 11}
+  - {typ: grafcet_schritt, ref: s1, x: 250, y: 45, schritt: "2", legende: false}
+  - {typ: text, x: 30, y: 121, text: "Initialschritt", groesse: 11}
+  - {typ: grafcet_schritt, ref: s2, x: 250, y: 101, schritt: "0", schrittart: initial, legende: false}
+  - {typ: text, x: 30, y: 177, text: "Makroschritt", groesse: 11}
+  - {typ: grafcet_schritt, ref: s3, x: 250, y: 157, schritt: "M4", schrittart: makro, legende: false}
+  - {typ: text, x: 30, y: 233, text: "einschließender Schritt", groesse: 11}
+  - {typ: grafcet_schritt, ref: s4, x: 250, y: 213, schritt: "5", schrittart: einschliessend, legende: false}
+  - {typ: text, x: 30, y: 289, text: "aktiviert mit dem\neinschließenden Schritt", groesse: 11}
+  - {typ: grafcet_schritt, ref: s5, x: 250, y: 269, schritt: "6", aktivierung: true, legende: false}
+  - {typ: text, x: 30, y: 345, text: "Transitionen", groesse: 12, fett: true}
+  - {typ: text, x: 30, y: 389, text: "UND", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 385, transition: "-B1 · -B2", mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 430, text: "ODER", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 426, transition: "-B1 + -B2", mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 471, text: "NICHT (getippt ¬-B1)", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 467, transition: "¬-B1", mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 512, text: "Flanke", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 508, transition: "↑-B1", mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 553, text: "Zeit seit Aktivierung", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 549, transition: "5s/X3", mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 594, text: "Vergleich", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 590, transition: "[C_Teile > 9]", mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 635, text: "immer erfüllt", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 631, transition: "1", mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 676, text: "Quelltransition", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 672, transition: "-B1", transitionsart: quelle, mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 717, text: "Schlusstransition", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 713, transition: "-B2", transitionsart: schluss, mit_linie: true, legende: false}
+  - {typ: text, x: 30, y: 758, text: "Transitionsname", groesse: 11}
+  - {typ: grafcet_transition, x: 250, y: 754, transition: "", name: "T2", mit_linie: true, legende: false}
+  - {typ: text, x: 430, y: 30, text: "Kontinuierlich wirkende Aktionen", groesse: 12, fett: true}
+  - {typ: text, x: 430, y: 74, text: "Aktion", groesse: 11}
+  - {typ: grafcet_schritt, ref: s6, x: 630, y: 56, schritt: "3", aktionen: ["-M1"], legende: false}
+  - {typ: text, x: 430, y: 140, text: "mit Zuweisungsbedingung", groesse: 11}
+  - {typ: grafcet_schritt, ref: s7, x: 630, y: 122, schritt: "3", aktionen: [{text: "-M1", bedingung: "-B1 · -B2"}], legende: false}
+  - {typ: text, x: 430, y: 206, text: "verzögert", groesse: 11}
+  - {typ: grafcet_schritt, ref: s8, x: 630, y: 188, schritt: "3", aktionen: [{text: "-M1", art: verzoegert, bedingung: "5s/X3"}], legende: false}
+  - {typ: text, x: 430, y: 272, text: "zeitbegrenzt", groesse: 11}
+  - {typ: grafcet_schritt, ref: s9, x: 630, y: 254, schritt: "3", aktionen: [{text: "-M1", art: zeitbegrenzt, bedingung: "5s/X3"}], legende: false}
+  - {typ: text, x: 430, y: 325, text: "Speichernd wirkende Aktionen", groesse: 12, fett: true}
+  - {typ: text, x: 430, y: 371, text: "bei Aktivierung", groesse: 11}
+  - {typ: grafcet_schritt, ref: s10, x: 630, y: 353, schritt: "3", aktionen: ["↑ -M1 := 1"], legende: false}
+  - {typ: text, x: 430, y: 441, text: "bei Deaktivierung", groesse: 11}
+  - {typ: grafcet_schritt, ref: s11, x: 630, y: 423, schritt: "3", aktionen: ["↓ -M1 := 0"], legende: false}
+  - {typ: text, x: 430, y: 511, text: "bei Ereignis", groesse: 11}
+  - {typ: grafcet_schritt, ref: s12, x: 630, y: 493, schritt: "3", aktionen: [{text: "C_Teile := 1", art: ereignis, bedingung: "↑-B1"}], legende: false}
+  - {typ: text, x: 430, y: 565, text: "Zwangssteuerung eines Teil-GRAFCET", groesse: 12, fett: true}
+  - {typ: text, x: 430, y: 602, text: "in die Anfangssituation", groesse: 11}
+  - {typ: grafcet_schritt, ref: s13, x: 630, y: 578, schritt: "3", aktionen: ["G5 {INIT}"], legende: false}
+  - {typ: text, x: 430, y: 652, text: "in die leere Situation", groesse: 11}
+  - {typ: grafcet_schritt, ref: s14, x: 630, y: 628, schritt: "3", aktionen: ["G5 { }"], legende: false}
+  - {typ: text, x: 430, y: 702, text: "in eine bestimmte Situation", groesse: 11}
+  - {typ: grafcet_schritt, ref: s15, x: 630, y: 678, schritt: "3", aktionen: ["G5 {3,4,8}"], legende: false}
+  - {typ: text, x: 430, y: 752, text: "in die aktuelle Situation", groesse: 11}
+  - {typ: grafcet_schritt, ref: s16, x: 630, y: 728, schritt: "3", aktionen: ["G5 {*}"], legende: false}
+  - {typ: text, x: 860, y: 30, text: "Alternativverzweigung", groesse: 12, fett: true}
+  - {typ: linie, punkte: [[900, 45], [900, 70]]}
+  - {typ: grafcet_balken, ref: va, x: 900, y: 70, b: 120, abzweige: [900, 1020], legende: false}
+  - {typ: linie, punkte: [[900, 70], [900, 135]]}
+  - {typ: grafcet_transition, x: 900, y: 100, transition: "-B1", legende: false}
+  - {typ: linie, punkte: [[1020, 70], [1020, 135]]}
+  - {typ: grafcet_transition, x: 1020, y: 100, transition: "¬-B1", legende: false}
+  - {typ: text, x: 860, y: 175, text: "Parallelverzweigung", groesse: 12, fett: true}
+  - {typ: linie, punkte: [[900, 190], [900, 245]]}
+  - {typ: grafcet_transition, x: 900, y: 215, transition: "-B1", legende: false}
+  - {typ: grafcet_balken, ref: vp, x: 888, y: 245, b: 144, abzweige: [900, 1020], balkenart: parallel, legende: false}
+  - {typ: linie, punkte: [[900, 249], [900, 285]]}
+  - {typ: linie, punkte: [[1020, 249], [1020, 285]]}
+  - {typ: text, x: 860, y: 325, text: "Rahmen des einschl. Schritts", groesse: 12, fett: true}
+  - {typ: grafcet_rahmen, x: 860, y: 345, b: 200, h: 120, oben: "5", unten: "Bezeichnung", legende: false}
+  - {typ: grafcet_schritt, ref: s17, x: 960, y: 385, schritt: "6", aktivierung: true, legende: false}

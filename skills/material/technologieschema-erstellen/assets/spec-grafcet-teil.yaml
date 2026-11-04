@@ -1,0 +1,37 @@
+# Muster Strukturierung: einschließender Schritt mit Rahmen, Aktivierung *, Zwangssteuerung (erfundene Förderstation).
+# Der Rahmen eines einschließenden Schritts trägt oben dessen Namen; der erste eingeschlossene Schritt hat das *.
+# Nur einsetzen, wenn der Unterricht diese Elemente eingeführt hat (Betriebsarten, Not-Halt).
+titel: "Teil-GRAFCET der Förderstation"
+alt: "Drei Teil-GRAFCET: Betriebsart mit einschließendem Schritt 1, darin der Automatikablauf mit den Schritten 10 und 11; Überwachung mit Zwangssteuerung von G1 in die Anfangssituation."
+out: abbildungen/46_foerderstation_teil_grafcet
+fusszeile:
+  - "GRAFCET nach DIN EN 60848, Schreibweise nach dem Notationsblatt. Erfundene Anlage."
+elemente:
+  - typ: grafcet
+    rahmen: {unten: "G1 Betriebsart"}
+    kette:
+      - {schritt: 0, art: initial}
+      - {transition: "-S1", kommentar: "Automatik"}
+      - {schritt: 1, art: einschliessend}
+      - {transition: "¬-S2", kommentar: "Stopp"}
+      - sprung: 0
+  - typ: grafcet
+    rahmen: {oben: "1", unten: "Automatikablauf"}
+    kette:
+      - schritt: 10
+        aktivierung: true
+        aktionen: [{text: "-M1", kommentar: "Band läuft"}]
+      - {transition: "-B1", kommentar: "Teil am Anschlag"}
+      - schritt: 11
+        aktionen: [{text: "-Q1", kommentar: "Teil ausschieben"}]
+      - {transition: "3s/X11"}
+      - sprung: 10
+  - typ: grafcet
+    rahmen: {unten: "G3 Überwachung"}
+    kette:
+      - {schritt: 20, art: initial}
+      - {transition: "¬-S3", kommentar: "Not-Halt"}
+      - schritt: 21
+        aktionen: [{text: "G1 {INIT}", kommentar: "G1 in die Anfangssituation"}]
+      - {transition: "-S3 · -S4", kommentar: "entriegelt und quittiert"}
+      - sprung: 20

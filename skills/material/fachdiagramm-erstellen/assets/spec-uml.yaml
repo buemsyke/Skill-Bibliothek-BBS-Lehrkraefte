@@ -1,0 +1,22 @@
+# Muster uml – Klassendiagramm (type: relational für ein Relationenschema mit
+# "spalte: TYP", Primärschlüssel *, Fremdschlüssel ^). Kopieren nach diagramme/42_uml_<kurztitel>.yaml.
+title: "Klassen Messwerterfassung"
+type: uml
+out: abbildungen/42_uml_messung
+classes:
+  Sensor:
+    x: 0
+    y: 0
+    stereotype: interface
+    attrs: ["+ messen(): float"]
+  Temperatursensor:
+    x: 0
+    y: 1
+    attrs: ["- pin: int", "---", "+ messen(): float"]
+  Messreihe:
+    x: 1
+    y: 1
+    attrs: ["- werte: float[]", "---", "+ mittelwert(): float"]
+relations:
+  - { name: "", from: Temperatursensor, to: Sensor, kind: implements }
+  - { name: "liefert", from: Temperatursensor, to: Messreihe, cardinality: ["1", "0..*"], kind: association }

@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Arbeitsdateien – Schülerdaten gehören nie in dieses Repository
+*mapping*.csv
+*__klarnamen*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
