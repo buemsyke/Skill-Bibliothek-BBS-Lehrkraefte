@@ -2,13 +2,13 @@
 name: quizfragen-erstellen
 description: Erstellt kompetenzorientierte Quizfragen für Moodle und H5P aus Lernsituation, Material, Text oder Themenliste – Single und Multiple Choice, Wahr/Falsch, Lückentext, Zuordnung, Reihenfolge, Freitext – als eine Markdown-Quelle, die das mitgelieferte Werkzeug edu-quiz deterministisch nach GIFT (Moodle-Fragensammlung) und H5P exportiert. Prüft Aufbau, Antworten, Lücken, Titel und AFB-Verteilung per Skript (quiz_pruefen.py, Bloom-Check) und liefert ein Begleitblatt mit Übersicht und Import-Anleitung. Verwenden bei „Quiz erstellen", „Moodle-Fragen", „GIFT-Datei", „H5P-Übung", „Lückentext", „Wiederholungsfragen zur Lernsituation", „Selbsttest" oder „Fragen für die Sicherungsphase". Nicht für benotete Klassenarbeiten und nicht für die Probeprüfung in einer Lernakte (agiles-lernen-mit-ki, kann diesen Fragenpool nutzen).
 metadata:
-  version: "2.5"
+  version: "2.6"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
   eduwerkzeuge: "quiz, check"
   ersetzt: "quizfragen-erstellen 1.x (eduwerkzeuge)"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Quizfragen erstellen (GIFT und H5P)

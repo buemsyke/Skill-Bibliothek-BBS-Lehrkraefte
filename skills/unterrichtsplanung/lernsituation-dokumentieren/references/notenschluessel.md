@@ -1,6 +1,6 @@
 # Notenschlüssel
 
-Gemeinsame Referenz für Leistungsüberprüfungen – für das Erstellen (`klausur-erstellen`).
+Gemeinsame Referenz für Leistungsüberprüfungen.
 Quelle: `_gemeinsam/notenschluessel.md`.
 Die Tabellen sind identisch mit `eduwerkzeuge.bewertung` (`edu-bewertung schluessel --max N`).
 
@@ -33,7 +33,7 @@ Fachkonferenzbeschluss. 🔎 Beschluss der Fachkonferenz bzw. Schulregelung ist 
 
 ## Beim Erstellen einer Klassenarbeit
 - Punktegrenzen **aus der Gesamtpunktzahl rechnen**, nie aus einer anderen Arbeit abschreiben:
-  `edu-bewertung schluessel --max N [--system ihk]` oder `scripts/klausur_check.py` (Skill `klausur-erstellen`).
+  `edu-bewertung schluessel --max N [--system ihk]`.
   Grenzen werden auf **halbe Punkte aufgerundet**, damit jede Grenze
   erreichbar ist (bei Single Choice auf ganze Punkte).
 - Nach jeder Änderung der Gesamtpunktzahl neu rechnen.

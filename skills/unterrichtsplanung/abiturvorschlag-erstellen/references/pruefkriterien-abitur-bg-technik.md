@@ -7,7 +7,8 @@ Gutachtenpraxis der Fachberatung (Stand 2025/26). 🔎 Vor jeder Begutachtungsru
 Gutachtenvorlage und der gültigen RRL abgleichen. Die Lerngebiete aller Schwerpunkte (BT, ET, IT,
 MT, METRO, GMT, ING) stehen in `berufliches-gymnasium.md`.
 
-**R** = regelbasiert prüfbar – beim Erstellen eines Vorschlags mit `abitur_check.py` (im Ordner `scripts/` des Skills) · **I** = inhaltliche Prüfung.
+**R** = regelbasiert prüfbar – beim Erstellen eines
+Vorschlags mit `abitur_check.py` (je im Ordner `scripts/` des Skills) · **I** = inhaltliche Prüfung.
 
 Gemeinsamer Maßstab für das Erstellen (Skill `abiturvorschlag-erstellen`) und das Begutachten
 . **Fach Berufliche Informatik:** Der Katalog gilt sinngemäß

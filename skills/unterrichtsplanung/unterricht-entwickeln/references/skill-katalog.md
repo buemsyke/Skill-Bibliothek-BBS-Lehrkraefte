@@ -15,22 +15,17 @@
 | `material-pruefen` | Material | Referenzunterlagen, Websuche | Prüfbericht F/P/C/S/L/M (Fakten, Plausibilität, Code, Schülermaterial, Links, Metadaten) mit Ampel und Prüfaufträgen | 90 |
 | `unterrichtsentwurf-analysieren` | Entwurf (ohne Schülerdaten) | Material, Seminarvorgaben | Selbstcheck: Stärken, Entwicklungsfelder, Reflexionsfragen – keine Stufen; prüfungsrelevant gekennzeichnet (Hinweise statt Formulierungen, Kennzeichnungstext) | 35 |
 | `unterricht-reflektieren` | Plan (Entwurf oder Beschreibung) + Notizen zum Verlauf | Entwurfscheck, Stundenergebnis, Rückmeldung der Lerngruppe (zusammengefasst), Beobachtungen Hospitierender | Reflexion: Plan und Verlauf (gerechnet), Zielerreichung mit Belegen, ≤ 3 Schwerpunkte, Alternativen, Konsequenzen, Fragen zur Vertiefung; Modus B Gesprächsvorlage | 36 |
-| `klausur-erstellen` | Grundlage + Unterrichtsstand | LS, Material, Abdeckungsmatrix, Notenschlüssel der Schule | Aufgabenteil (kurze Aufträge, Antwortraum je Operator) + Erwartungshorizont (Korrekturschablone, Punkteübersicht mit Bezug und Antwortformat, AFB-Nachweis, Notenschlüssel), Aufsichtsblatt bei fremder Aufsicht, Varianten | 70 |
 | `agiles-lernen-mit-ki` | Lernthema + wer lernt (Lehrkraft selbst oder Lerngruppe) | Quellen, Musterprüfungen, Quiz als Fragenpool, Planungsakte | Lernakte (Kickoff, Lernpfad in Sprints, Reviews, Retro), Probeprüfung mit Auswertung, Rollenspiel, AIS-Paket (Lernszenarien, Dialogpartner) | 93 |
 | `ki-chatbot-einrichten` | Zweck des Chatbots **oder** vorhandener Systemprompt | LS, geprüftes Material, Erwartungshorizont, Bewertungsraster, Plattform | Paket (Steckbrief, Systemanweisung aus Bausteinen, Begrüßung, Probelauf mit Pflichttests, Freigabezeile) bzw. Promptgutachten; Prüfung per `anweisung_pruefen.py` | 95 |
-| `abiturvorschlag-erstellen` | Fach, Schwerpunkt, Kursfolge und Unterrichtsstand der Qualifikationsphase | Hilfsmittel, Software, Kennzeichnung des Unterrichts, Planungsakte | Vorschläge A und B: Schülermaterial (Funktionsbeschreibung mit BMK), Lehrermaterial (Unterrichtliche Voraussetzungen, Erwartungshorizont, Musterlösung mit Bewertungsmerkmal je BE), Bewertungsbogen, Begleitblatt mit Einreichungscheckliste; `abitur_check.py`, `bmk_pruefen.py` | 75 |
 | `experiment-planen` | Fragestellung oder Versuch + Bezug | LS, Sammlungsausstattung, Herstellerangaben | Versuchsanleitung (Hypothese, Variablen, Messtabelle, Auswertung, Messunsicherheit), Lehrerfassung mit Erwartungswerten, Entwurf der Gefährdungsbeurteilung mit Freigabezeile – gibt nie frei | 41 |
 | `programmieraufgabe-erstellen` | Ziel + Sprache/Plattform (C++/Arduino/ESP32, Python, G-Code) | LS, Hardware, Startcode | Aufgabe mit Startcode, Testfällen, gestuften Hilfen, Musterlösung, Erwartungshorizont; Fehlersuchaufgabe; Codeprüfung | 43 |
 | `technikfolgen-abschaetzen` | Technik bzw. Vorhaben + Bezug | Material, Quellenliste, Fächerverbindung | TFA-Dossier (Hypothesen, Quellenmappe mit Typ, Perspektiven, Wertbereiche, Zielkonflikt, Urteil) mit Erwartungshorizont, Rollenkarten für eine Anhörung | 44 |
-| `circuitjs-schaltung-erstellen` | Schaltungsart oder Übung (Gleichstrom, Wechselstrom, Elektronik) | LS, Werte, vorhandene Versuchsseiten | Schaltungstext für circuit.js aus geprüften Vorlagen mit Messgeräten und Bezeichnern, Erwartungswerte aus Rechnung, Messung in der Engine, Schaltungsblatt; ersetzt keinen Realversuch | 47 |
-| `wokwi-simulation-erstellen` | Steuerungsaufgabe (Funktionsbeschreibung, Zuordnungsliste, GRAFCET bzw. Logikplan) | Lehrermaterial mit Lösung, Plattform, Planungsakte | Wokwi-Projekt aus einer Spec (Sketch nach Notationsblatt, Schaltung, Szenarien), Testfälle aus der Funktionsbeschreibung im Logikmodell und im Sketch geprüft, Zeitablauf, Begleitblatt | 48 |
 
 ### Ausspielen und Werkzeuge (eduwerkzeuge mitgeliefert, `scripts/edu.py`)
 
 | Skill | braucht (mind.) | nutzt, wenn vorhanden | liefert | Nr. |
 |---|---|---|---|---|
 | `fachdiagramm-erstellen` | Beschreibung, Skizze oder Material | Projektkonvention `lessons/*/diagrams` | YAML-Spec, `.drawio.svg`/`.drawio`/PNG, Diagrammblatt mit Alternativtext | 42 |
-| `technologieschema-erstellen` | Aufgabentext, Skizze oder Beschreibung der Anlage | Notation der Kennzeichen (81346 oder Vorlage), Funktionsbeschreibung, Planungsakte | YAML-Spec, SVG und PNG, Legende (Kennzeichen, Betriebsmittel, Lage/Aufgabe), Schemablatt mit Grundstellung | 46 |
 | `quizfragen-erstellen` | Inhalt (LS, Material, Themenliste) | Erwartungshorizonte, Moodle-Kategorie | Quizquelle, GIFT, H5P, Begleitblatt mit Bezug und AFB | 65 |
 | `lernlandkarte-erstellen` | LS, Entwurf oder Material | Quiz, Diagramme, Datei-Adressen in edumaps | Edumap-Quelle, Import-JSON, Begleitblatt | 92 |
 | `schuelerseiten-veroeffentlichen` | Kursprojekt (`lessons/`) oder Material mit Lehrerteil | Prüfbericht, `phase_config.yaml` | Schülerseiten bzw. Schülerfassung, Ausgabeprüfung, Protokoll mit Freigabe | 94 |
@@ -83,17 +78,10 @@
   begründen → folgern;
   Alternative und konkrete Konsequenz für die Folgestunde; Lernende nur als Lerngruppe oder in
   Anzahlen; keine Note; Prüfungsunterricht nur zur eigenen Vorbereitung, gekennzeichnet.
-- **klausur-erstellen:** nur Unterrichtetes prüfen (Bezug je Teilaufgabe); ein durchgehender
-  Fall; Operator + genau ein AFB je Teilaufgabe, Einstieg AFB I; AFB 30/40/30 (±10) gerechnet;
-  ≥ 1,5 min je Punkt, ≤ 10 Hauptaufgaben (BG: BE, EPA-Operatoren, Notenpunkte); Erwartungshorizont mit Aspekten, Punkten,
-  Alternativen, Toleranz, Folgefehlerregel, Korrekturschablone; Notenschlüssel aus der
-  Gesamtpunktzahl; Auftrag kurz (Operator zuerst), Freitext höchstens rund 30 % der Punkte,
-  Antwortraum je Operator, Abbildung auf derselben Seite wie die Teilaufgaben.
 - **fachdiagramm-erstellen:** Bauart nach Inhalt (flow, struktogramm, chen, uml/relational);
   YAML-Spec statt Zeichengrafik; Rückführungen über eine eigene Zeile; Alternativtext und
   Bildunterschrift; keine Normschaltpläne vortäuschen; Lösungsdiagramme getrennt ablegen;
   Klausurabbildungen als Lückenbild, Fremdlösung mit Fehler und Lösungsbild.
-- **technologieschema-erstellen:** Bild der Anlage mit Betriebsmitteln, kein Schalt- oder Pneumatikplan; Bauteile und Anker in YAML, Legende per Werkzeug; Kennzeichen nach 81346 oder Notation der Vorlage (nie mischen); Grundstellung im Bild und im Text gleich; Bild verrät die Lösung nicht; Vorlagen Dritter nur mit geklärten Rechten.
 - **quizfragen-erstellen:** eine Kompetenz je Frage; Quelle `## Übung N – … (H5P.Typ) | AFB X`
   mit `**Titel:**`; Typ nach Lernziel; höchstens etwa die Hälfte AFB I; Ablenker aus typischen
   Fehlern mit Rückmeldung; Export nur mit `edu-quiz`, GIFT nie von Hand.
@@ -115,11 +103,6 @@
   still weg; veröffentlichen erst nach Freigabezeile und Auftrag.
 - **ki-kennzeichnung:** erst nach Prüfung kennzeichnen; KI-System, verantwortliche Person,
   Stand, Link zur Erklärung; Form passend zum Medium; keine Rechtspflicht behaupten.
-- **abiturvorschlag-erstellen:** Maßstab = Katalog der Begutachtung; nur Unterrichtetes, Bezug je
-  Aufgabe konkret; 300 min, 120 BE, AFB 30/40/30 und je Aufgabe I–III; ein Operator je Satz,
-  Umfang als Zahlwort, keine vagen Wörter; Steuerungstechnik mit denselben BMK in
-  Funktionsbeschreibung, Legende, Liste, Aufgaben und Lösung; jede BE an einem beobachtbaren
-  Merkmal; Korrekturprobe; Vorschläge A und B gleichwertig.
 - **experiment-planen:** Fragestellung und Hypothese, unabhängige/abhängige/konstante Variablen,
   Aufbau, Messtabelle mit Einheiten im Kopf, Auswertung mit Messunsicherheit; Erwartungswerte
   nachrechnen (z. B. Faraday-Grenze); Gefährdungsbeurteilung nur als Entwurf (STOP,
@@ -132,14 +115,6 @@
   nie eine Interessenquelle als einziger Beleg; mindestens drei Perspektiven mit Pro und
   Contra; Wertbereiche, Zielkonflikt, Maßnahmen; ergebnisoffen (keine „Einwandbehandlung“),
   Urteil über Kriterien bewerten.
-- **circuitjs-schaltung-erstellen:** nur aus den geprüften Vorlagen bauen (`schaltung.py vorlagen`);
-  Voltmeter parallel, Amperemeter in Reihe, Bezeichner wie im Aufgabentext; Erwartungswerte
-  rechnen, nicht schätzen; ohne Skript nur Aufbau und Werte beschreiben, keinen Schaltungstext
-  erfinden. Simulation ergänzt den Realversuch (`experiment-planen`), ersetzt ihn nicht.
-- **wokwi-simulation-erstellen:** alles aus der Spec erzeugen (`wokwi.py alles`), nie Sketch oder
-  Schaltung von Hand schreiben; Testfälle aus der Funktionsbeschreibung, nicht aus dem Programm;
-  Unklarheiten der Aufgabe als Annahme; Lösung bleibt Lehrermaterial. Ohne Skript nur die Spec
-  liefern und den Testlauf als Prüfauftrag nennen.
 
 ## B. Optionale Skills (nur nutzen, wenn installiert)
 

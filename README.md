@@ -40,8 +40,8 @@ Skills für Ihr Vorhaben. Beispiel:
 | `lernsituation-dokumentieren` | Lernsituation nach SchuCu-BBS 2024 entwickeln, ältere LS überführen, mit dem Analysebogen begutachten; didaktische Leitidee, Lernhürden, Muster für Diagnose-, Projekt- und Experiment-LS | „LS zu Wartung Gurtförderer, IM 1. Jahr" |
 | `unterrichtsentwurf-erstellen` | Stundenverlaufsplan, Sequenz mehrerer Stunden oder ausführlicher Entwurf für Unterrichtsbesuch und Prüfungsunterricht | „UB 90 min, Phase Planen" |
 | `bloom-taxonomie` | Ziele und Aufgaben nach Bloom einordnen, Aufgabentreppen, Anspruch heben oder senken | „Sind meine Aufgaben zu leicht?" |
-| `abiturvorschlag-erstellen` | Vorschläge A und B für die dezentrale Abiturprüfung am Beruflichen Gymnasium (Technik, Berufliche Informatik): Schüler- und Lehrermaterial, Erwartungshorizont mit AFB, Bewertungsbogen, Begleitblatt; Selbstprüfung nach dem Prüfkatalog per Skript | „Abiturvorschlag Informationstechnik 2028" |
-| `klausur-erstellen` | Klassenarbeit, Klausur (auch Qualifikationsphase BG), Lernzielkontrolle, Nachschreib- und B-Variante mit Erwartungshorizont, Notenschlüssel und Selbstprüfung per Skript | „Klausur mit Erwartungshorizont zu LF 7" |
+| `klausur-erstellen` | Klassenarbeit, Klausur, Lernzielkontrolle mit Operator-Aufträgen, Antwortraum, Erwartungshorizont, Korrekturschablone und Notenschlüssel; Selbstprüfung per Skript | „Klassenarbeit 90 min mit Erwartungshorizont“ |
+| `abiturvorschlag-erstellen` | Vorschläge A und B für das dezentrale Abitur am Beruflichen Gymnasium (Technik, Berufliche Informatik): Schüler- und Lehrermaterial, Bewertungsbogen, Bewertungsmappe, Begleitblatt; Prüfung per Skript nach dem Katalog der Begutachtung | „Abiturvorschlag Informationstechnik 2028“ |
 
 ### Material
 
@@ -50,7 +50,6 @@ Skills für Ihr Vorhaben. Beispiel:
 | `unterrichtsmaterial-erstellen` | Arbeitsblatt, Infotext, Vorlagen, Raster, Befund- und Rollenkarten, Entscheidungsmatrix, Peer-Feedback, Reflexionsauftrag, Lehrerhandreichung – mit Schüler- und Lehrerfassung | „Arbeitsblatt mit Erwartungshorizont" |
 | `differenzierung-erstellen` | Hilfekarten, Fundamentum/Additum, Sprinter- und Wahlaufgaben, Organisation | „Hilfekarten für Schwächere" |
 | `quizfragen-erstellen` | Quizfragen aus einer Markdown-Quelle nach GIFT (Moodle) und H5P, mit Prüfung von Aufbau und Anforderungsbereichen | „Zehn Übungsfragen zur LS für Moodle" |
-| `technologieschema-erstellen` | Anlagenbilder, Schaltplanauszüge, GRAFCET, FUP und Netzpläne normgerecht als SVG aus einer Spec, mit Prüfung der Notation | „GRAFCET für die Füllstandssteuerung zeichnen" |
 | `fachdiagramm-erstellen` | Blockschaltbild, Ablauf, Regelkreis, Struktogramm, ER- und UML-Diagramm als draw.io/SVG mit Alternativtext | „Regelkreis für das Arbeitsblatt zeichnen" |
 | `lernlandkarte-erstellen` | Lernlandkarte für edumaps (nds.edumaps.de) mit Selbstdiagnose, Lernposten, Hilfen und Quiz; Stundenablauf als Zeitstrahl | „Mach aus der LS eine Edumap mit Selbstdiagnose" |
 | `schuelerseiten-veroeffentlichen` | Schülerfassung ohne Lösungen und Lehrerhinweise, MkDocs-Seiten je LMS-Phase; Ausgabeprüfung, Freigabe vor dem Veröffentlichen | „Schülerfassung ohne Lösungen für Moodle" |
@@ -88,8 +87,6 @@ Skills für Ihr Vorhaben. Beispiel:
 | Skill | macht | typischer Auftrag |
 |---|---|---|
 | `experiment-planen` | Versuchsanleitung, Lehrerfassung mit Erwartungswerten, Gefährdungsbeurteilung **als Entwurf** – gibt nie einen Versuch frei | „Schülerversuch Elektrolyse mit Wirkungsgrad" |
-| `wokwi-simulation-erstellen` | setzt eine Steuerungsaufgabe als Wokwi-Simulation für Arduino Uno oder ESP32 um: Sketch, Schaltung, Testszenarien, Zeitablauf, Begleitblatt | „Ampelsteuerung als Wokwi-Projekt mit Lösung" |
-| `circuitjs-schaltung-erstellen` | Schaltungen als CircuitJS-Simulation (Falstad) mit Messpunkten, Erwartungswerten und Prüfung in der Engine | „Spannungsteiler mit Poti zum Ausprobieren" |
 | `programmieraufgabe-erstellen` | Programmieraufgaben für Mikrocontroller (C/C++, Arduino, ESP32), Python und G-Code mit Startcode, Testfällen, Hilfen und Musterlösung; Codeprüfung per Skript | „ESP32 soll den Volumenstrom eines Sensors anzeigen" |
 
 ### Projekte
@@ -153,6 +150,5 @@ automatisch erzeugt; Vorschläge per Pull Request werden von Hand übernommen.
 
 ## Lizenz
 
-Texte, Anleitungen und Vorlagen: **CC0 1.0** (gemeinfrei); Skripte: **MIT-0**. Eine Namensnennung ist
-nicht erforderlich. Material, das Sie mit den Skills erstellen, gehört Ihnen – Einzelheiten in
-[`LICENSE.md`](LICENSE.md).
+Texte, Anleitungen und Vorlagen: **CC BY-SA 4.0**; Skripte: **MIT** – Einzelheiten und
+Namensnennung in [`LICENSE.md`](LICENSE.md).

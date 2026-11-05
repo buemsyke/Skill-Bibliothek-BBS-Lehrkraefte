@@ -2,8 +2,7 @@
 
 Für Abiturvorschläge gilt diese Zuordnung – sie weicht in einigen Punkten von der allgemeinen
 Bibliotheksliste (`operatoren-afb.md`, falls vorhanden) ab (z. B. *begründen* hier AFB II, *dokumentieren* AFB III).
-Maschinenlesbar: `abitur_check.py` (Skill `abiturvorschlag-erstellen`) liest die Tabellen dieser Datei – Kopfzeilen und Komma-Listen beibehalten.
-Gilt auch für Klausuren der Qualifikationsphase im BG (`klausur-erstellen`, Typ `klausur-bg`).
+Gilt auch für Klausuren der Qualifikationsphase im BG.
 Abgeglichen mit der Operatorenliste des Kultusministeriums für Technik – Mechatronik (Abitur 2024,
 Fassung V02): deckungsgleich. *zeichnen* verlangt dort ausdrücklich genormte Symbole, *überprüfen*
 steht als „überprüfen und nachweisen“. 🔎 Vor jedem Prüfungsjahr mit der gültigen Fassung abgleichen.
@@ -69,4 +68,3 @@ Anforderungsbereichen (1, 1–2, 2, 2–3, 3). Die Liste unten ist die Zuordnung
 - Der AFB einer Teilaufgabe liegt im Bereich des Operators und hängt vom Unterricht davor ab
   (*Ermitteln* 1–2: Schleife durchspielen = II; *Bestimmen* 2–3: Wert aus dem Struktogramm
   = II, alle Startwerte rückwärts = III).
-- Operatoren für Lernende erklären: `klausur-erstellen`, `references/druckfassung-antwortformate.md`.

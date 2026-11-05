@@ -7,7 +7,7 @@ metadata:
   bereich: planung
   stand: "2026-11"
   ersetzt: "differenzierung-erstellen 1.x (eduwerkzeuge)"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Differenzierung erstellen

@@ -2,7 +2,7 @@
 artefakt: Quiz – Begleitblatt
 titel: "[Thema des Quiz]"
 skill: quizfragen-erstellen
-skill_version: "2.5"
+skill_version: "2.6"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -60,4 +60,4 @@ status: "KI-Entwurf – fachlich zu prüfen"
 - Empfohlene nächste Skills: `schuelerseiten-veroeffentlichen` (H5P einbinden),
   `lernlandkarte-erstellen` (Selbstcheck in der Lernlandkarte), `material-pruefen`
 
-> KI-gestützt erstellt (Skill quizfragen-erstellen v2.5). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill quizfragen-erstellen v2.6). Fachliche Prüfung und Verantwortung: Lehrkraft.

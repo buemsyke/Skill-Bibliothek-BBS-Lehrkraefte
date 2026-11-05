@@ -14,6 +14,8 @@ Pflichtabschnitte (Qualitätscheck, Annahmen und Prüfaufträge, Übergabe, Tran
 Details: `references/skill-vertrag.md`.
 **Zeichnungen** nur als SVG aus den Zeichen-Skills, nie als ASCII-Art oder Mermaid (Skill-Vertrag
 Abschn. 3, Prüfung `scripts/zeichnungen_pruefen.py`).
+**Betriebsmittelkennzeichen** (Steuerungstechnik) immer mit Klasse und Unterklasse – -SJ1, -MA1, -MM1,
+-EA1 – gleich in Funktionsbeschreibung, Technologieschema und Zuordnungsliste (DIN EN IEC 81346-2:2020).
 
 ## Zwei Modi
 
@@ -581,7 +583,7 @@ LF 5 und welche Nachbar-Lernfelder (z. B. Datenbereitstellung, Serviceanfragen) 
 - Handlungsergebnis: Python-Anwendung mit SQLite, Kurzdoku, Testprotokoll, Präsentation.
 - Kernkompetenzen: Anforderungen ableiten, Datenmodell entwerfen, SQL und `sqlite3` anwenden, systematisch testen, Entscheidungen begründen.
 - Phasen: Inf 4 · Plan 3 · Entsch 1 · Durchf 8 · Überpr 2 · Refl 2.
-- Empfohlene nächste Skills: `unterrichtsentwurf-erstellen` (Doppelstunde Planen: Datenmodell), `unterrichtsmaterial-erstellen` (Infoblätter, Vorlagen), `differenzierung-erstellen` (Hilfekarten Datenmodell), `klausur-erstellen` (Klassenarbeit am Ende des Lernfelds).
+- Empfohlene nächste Skills: `unterrichtsentwurf-erstellen` (Doppelstunde Planen: Datenmodell), `unterrichtsmaterial-erstellen` (Infoblätter, Vorlagen), `differenzierung-erstellen` (Hilfekarten Datenmodell).
 
 > KI-gestützt erstellt (Skill lernsituation-dokumentieren v1.1). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
@@ -905,7 +907,6 @@ je 80 h. Die Reihenfolge legt die Schule fest.
   und vollständiger Musterlösung 🔎 Verfahren und Fristen der Schulbehörde. Mechatronik wird
   seit 2021 zentral geprüft (allgemeiner Teil zu METRO 1 und 2, dazu ein schuleigener Teil)
   🔎 aktuellen Stand prüfen.
-  Vorschläge erstellen: `abiturvorschlag-erstellen`.
 - **Sonstige Leistungen / Mitarbeit:** Projekte, Dokumentationen, Präsentationen, Kolloquien,
   Versuchsprotokolle. Gewichtung gegenüber Klausuren legt die Fachkonferenz fest 🔎. Kriterien
   offenlegen, Einzelanteil bei Gruppenarbeit ausweisen.
@@ -2048,7 +2049,7 @@ Beispiele wirken dann besser; mit wachsender Erfahrung kehrt sich das um (Fading
 
 # Notenschlüssel
 
-Gemeinsame Referenz für Leistungsüberprüfungen – für das Erstellen (`klausur-erstellen`).
+Gemeinsame Referenz für Leistungsüberprüfungen.
 Quelle: `_gemeinsam/notenschluessel.md`.
 Die Tabellen sind identisch mit `eduwerkzeuge.bewertung` (`edu-bewertung schluessel --max N`).
 
@@ -2081,7 +2082,7 @@ Fachkonferenzbeschluss. 🔎 Beschluss der Fachkonferenz bzw. Schulregelung ist 
 
 ## Beim Erstellen einer Klassenarbeit
 - Punktegrenzen **aus der Gesamtpunktzahl rechnen**, nie aus einer anderen Arbeit abschreiben:
-  `edu-bewertung schluessel --max N [--system ihk]` oder `scripts/klausur_check.py` (Skill `klausur-erstellen`).
+  `edu-bewertung schluessel --max N [--system ihk]`.
   Grenzen werden auf **halbe Punkte aufgerundet**, damit jede Grenze
   erreichbar ist (bei Single Choice auf ganze Punkte).
 - Nach jeder Änderung der Gesamtpunktzahl neu rechnen.
@@ -2235,8 +2236,7 @@ Einblick gewinnen, die Bereitschaft entwickeln, die Fähigkeit verbessern*. Ersa
 
 Für Abiturvorschläge gilt diese Zuordnung – sie weicht in einigen Punkten von der allgemeinen
 Bibliotheksliste (`operatoren-afb.md`, falls vorhanden) ab (z. B. *begründen* hier AFB II, *dokumentieren* AFB III).
-Maschinenlesbar: `abitur_check.py` (Skill `abiturvorschlag-erstellen`) liest die Tabellen dieser Datei – Kopfzeilen und Komma-Listen beibehalten.
-Gilt auch für Klausuren der Qualifikationsphase im BG (`klausur-erstellen`, Typ `klausur-bg`).
+Gilt auch für Klausuren der Qualifikationsphase im BG.
 Abgeglichen mit der Operatorenliste des Kultusministeriums für Technik – Mechatronik (Abitur 2024,
 Fassung V02): deckungsgleich. *zeichnen* verlangt dort ausdrücklich genormte Symbole, *überprüfen*
 steht als „überprüfen und nachweisen“. 🔎 Vor jedem Prüfungsjahr mit der gültigen Fassung abgleichen.
@@ -2302,7 +2302,6 @@ Anforderungsbereichen (1, 1–2, 2, 2–3, 3). Die Liste unten ist die Zuordnung
 - Der AFB einer Teilaufgabe liegt im Bereich des Operators und hängt vom Unterricht davor ab
   (*Ermitteln* 1–2: Schleife durchspielen = II; *Bestimmen* 2–3: Wert aus dem Struktogramm
   = II, alle Startwerte rückwärts = III).
-- Operatoren für Lernende erklären: `klausur-erstellen`, `references/druckfassung-antwortformate.md`.
 
 ## Anhang: references/quellenbewertung.md
 
@@ -2784,8 +2783,6 @@ Situationsmaterial, Vorlagen, Hilfekarten, Versuchsanleitung, Programmieraufgabe
 Lektion, Lernlandkarte, Quiz und Schülerseiten. Ausgenommen ist der Lehrerteil
 (`# Lösungen und Erwartungshorizont`, `# Didaktische Hinweise`). Vorgabe der Fachberatung
 (31.10.2026). Prüfung: `scripts/schuelermaterial_pruefen.py`, falls vorhanden.
-Klausur- und Abiturformat haben eigene Richtwerte (`klausur-erstellen`, `abiturvorschlag-erstellen`);
-die vier Regeln gelten dort sinngemäß.
 
 ## Inhalt
 1. Vier Regeln
@@ -2814,8 +2811,8 @@ Erfolgskriterien bleiben vollständig.
 
 | Inhalt | Darstellung | so entsteht sie |
 |---|---|---|
-| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen`; Technologieschema mit `technologieschema-erstellen` |
-| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen`; GRAFCET und Funktionsplan mit `technologieschema-erstellen` |
+| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen` |
+| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen` |
 | System, Energie- und Datenfluss, Regelkreis | Blockschaltbild | `fachdiagramm-erstellen` |
 | Zusammenhang zweier Größen | Diagramm, Kennlinie mit beschrifteten Achsen | aus gerechneten Werten oder dem Datenblatt als SVG erzeugen (Code), nie geschätzt |
 | Vergleich, Kriterien, Kenndaten | Tabelle, Matrix | Markdown-Tabelle |
@@ -3029,9 +3026,6 @@ Emojis ohne Funktion, Floskeln oder Inhalte, die kein Auftrag braucht. Richtwert
 `schuelermaterial.md`, falls vorhanden. Die Pflichtabschnitte (unten) stehen im Teil für die
 Lehrkraft (nach `# Lösungen und Erwartungshorizont` bzw. `# Didaktische Hinweise`), nie im Teil für
 Lernende.
-Ausgenommen von den Richtwerten sind Klausur- und Abiturformat mit eigenen Regeln
-(`klausur-erstellen`, `abiturvorschlag-erstellen`: Operator-Aufträge bis rund 40 bzw. 45 Wörter,
-Antwortraum je Operator); kurz, eindeutig und ohne Dekoration bleiben auch sie.
 
 **Zeichnungen** (Vorgabe der Fachberatung, 01.11.2026): Jede Zeichnung in einem Artefakt – Material
 für Lernende, Lösung, Erwartungshorizont, Tafelbild, Entwurf, Begleitblatt – entsteht als **SVG aus
@@ -3045,8 +3039,7 @@ im Codeblock), nie als Mermaid in der Ausgabe, nie als von Hand geschriebenes SV
 | Blockschaltbild, Anlagen- und Systemübersicht, Ablauf, Regelkreis, Struktogramm, ER-Modell, UML, Relationenschema | `fachdiagramm-erstellen` |
 | Kennlinie, Messwertdiagramm | aus den Werten per Code als SVG (z. B. matplotlib), Wertetabelle daneben |
 | Foto, Werkstückzeichnung, fremde Abbildung | Datei mit Quelle und Lizenz, sonst Platzhalter `[ABBILDUNG: Inhalt, Zweck, Quelle]` |
-| Anlagenbild (Technologieschema), Schaltplanauszug mit Schaltzeichen, GRAFCET, Funktionsplan (FUP), Netzplan | `technologieschema-erstellen` |
-| Simulationsschaltung | `circuitjs-schaltung-erstellen` |
+| GRAFCET, Funktionsplan, Schaltplan | Fachsoftware; im Text zusätzlich als Tabelle (Schritt, Aktion, Transition) |
 
 Erlaubt bleiben Text-Tabellen derselben Inhalte (GRAFCET in Textform, Zuordnungsliste) für die
 Zweitkorrektur und die Barrierefreiheit; Verzeichnisbäume und Programmcode sind keine Zeichnungen.
@@ -3077,14 +3070,9 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 43 | Programmieraufgabe (Aufgabe, Codeordner `43_code/`, Erwartungshorizont) | programmieraufgabe-erstellen |
 | 44 | Technikfolgenabschätzung (Dossier, Quellenmappe, Rollenkarten) | technikfolgen-abschaetzen |
 | 45 | Taxonomie-Analyse | bloom-taxonomie |
-| 46 | Technologieschema (Schemablatt mit Legende, Specs unter `schema/`, SVG unter `abbildungen/`) | technologieschema-erstellen |
-| 47 | Simulationsschaltung (circuit.js: Schaltungstext, Messgeräte mit Erwartungswerten, Begleitblatt) | circuitjs-schaltung-erstellen |
-| 48 | Mikrocontroller-Simulation (Wokwi: Spec, Projektordner mit Sketch, Schaltung und Szenarien, Zeitablauf, Begleitblatt) | wokwi-simulation-erstellen |
 | 50 | Sprachsensible Fassung | sprachsensibel-ueberarbeiten |
 | 60 | Differenzierung | differenzierung-erstellen |
 | 65 | Quiz (Quelle, GIFT, H5P, Begleitblatt) | quizfragen-erstellen |
-| 70 | Klassenarbeit / Lernzielkontrolle mit Erwartungshorizont | klausur-erstellen |
-| 75 | Abiturvorschlag (dezentral): Schüler- und Lehrermaterial je Vorschlag, Bewertungsbogen, Begleitblatt | abiturvorschlag-erstellen |
 | 90 | Prüfbericht | material-pruefen |
 | 92 | Lernlandkarte (edumaps: Quelle, Import-JSON, Begleitblatt) | lernlandkarte-erstellen |
 | 93 | Lernakte, Probeprüfung, AIS-Paket (agiles Lernen mit KI) | agiles-lernen-mit-ki |
@@ -3093,12 +3081,8 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 96 | KI-Kennzeichnung (Protokoll) | ki-kennzeichnung |
 | 99 | Abschlussbericht (Paketübersicht, Qualitätscheck, konsolidierte Prüfaufträge) | unterricht-entwickeln |
 
-`abiturvorschlag-erstellen` (Nr. 75) hält Schüler- und Lehrermaterial einreichungsfertig: Kopf und
-Pflichtabschnitte stehen im **Begleitblatt** (`75_abitur_<kurztitel>_begleitblatt.md`), nicht in den
-Einreichungsunterlagen.
-
-**Werkzeug-Skills** (Nr. 42, 46, 47, 48, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
-(`edu-diagramm`, `edu-technologieschema`, `schaltung.py`, `wokwi.py`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
+**Werkzeug-Skills** (Nr. 42, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
+(`edu-diagramm`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
 Artefakt mit Pflichtabschnitten – diese hätten in der Quelle Folgen für die Ausgabe –, sondern
 Kopf und Pflichtabschnitte stehen in einem **Begleitblatt** (`…_begleitblatt.md`,
 Diagrammblatt). Nummern 92–96 (Ausspielen) folgen auf den Prüfbericht: veröffentlicht wird

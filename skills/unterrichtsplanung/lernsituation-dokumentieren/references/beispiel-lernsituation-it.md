@@ -188,6 +188,6 @@ LF 5 und welche Nachbar-Lernfelder (z. B. Datenbereitstellung, Serviceanfragen) 
 - Handlungsergebnis: Python-Anwendung mit SQLite, Kurzdoku, Testprotokoll, Präsentation.
 - Kernkompetenzen: Anforderungen ableiten, Datenmodell entwerfen, SQL und `sqlite3` anwenden, systematisch testen, Entscheidungen begründen.
 - Phasen: Inf 4 · Plan 3 · Entsch 1 · Durchf 8 · Überpr 2 · Refl 2.
-- Empfohlene nächste Skills: `unterrichtsentwurf-erstellen` (Doppelstunde Planen: Datenmodell), `unterrichtsmaterial-erstellen` (Infoblätter, Vorlagen), `differenzierung-erstellen` (Hilfekarten Datenmodell), `klausur-erstellen` (Klassenarbeit am Ende des Lernfelds).
+- Empfohlene nächste Skills: `unterrichtsentwurf-erstellen` (Doppelstunde Planen: Datenmodell), `unterrichtsmaterial-erstellen` (Infoblätter, Vorlagen), `differenzierung-erstellen` (Hilfekarten Datenmodell).
 
 > KI-gestützt erstellt (Skill lernsituation-dokumentieren v1.1). Fachliche Prüfung und Verantwortung: Lehrkraft.

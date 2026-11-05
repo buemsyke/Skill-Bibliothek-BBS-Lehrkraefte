@@ -2,7 +2,7 @@
 artefakt: Abiturvorschlag – Begleitblatt
 titel: "[Thema A] / [Thema B]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.17"
+skill_version: "1.18"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"
@@ -98,7 +98,7 @@ mit der Merkmaltabelle.
 - [ ] Dokumentvorlage, Kopf- und Fußzeilen, Seitenzahlen (`abitur_docx.py --vorlage …`), Word-Fassung gesichtet; Abbildungen an der richtigen Stelle und in Schwarzweiß lesbar
 - [ ] Endfassung (DOCX/PDF) erneut geprüft (`bmk_pruefen.py`)
 - [ ] Rechte an Abbildungen und Datenblattauszügen geklärt, Quellen angegeben
-- [ ] Dateien für PC-Aufgaben bei den Prüfungsunterlagen, Ausfallregel bekannt
+- [ ] Dateien für PC-Aufgaben in den Prüfungsunterlagen, Ausfallregel bekannt
 - [ ] Vertraulichkeit: Ablage, Weitergabe und KI-Umgebung nach Vorgabe der Schule bzw. Behörde
 - [ ] Angabe zur KI-Nutzung bei der Erstellung nach Vorgabe der Dienststelle 🔎
 
@@ -129,4 +129,4 @@ mit der Merkmaltabelle.
 - Nach der Genehmigung: Bewertungsmappe aus dem endgültigen Bewertungsbogen neu erzeugen
   (`bewertungsmappe.py`), Kurztexte mit der Fachgruppe abstimmen, dann korrigieren.
 
-> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.17). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.18). Fachliche Prüfung und Verantwortung: Lehrkraft.

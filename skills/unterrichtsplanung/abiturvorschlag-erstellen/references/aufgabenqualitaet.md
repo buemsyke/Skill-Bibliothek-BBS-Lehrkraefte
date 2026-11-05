@@ -65,26 +65,26 @@ Abschnitt 9 fasst sie zusammen. Die Beispiele sind erfunden.
 ## 4. Steuerungstechnik – Betriebsmittelkennzeichen und Notation (T.1–T.9)
 
 **Kennzeichnung** nach **DIN EN IEC 81346-2:2020** (IEC 81346-2:2019): Bindestrich, Kennbuchstaben,
-Zählnummer – **so kurz wie möglich** (didaktische Reduktion):
-- **Standard ist die Klasse allein:** -S Taster/Schalter, -B Sensor/Geber, -K SPS/Relais, -Q Schütz/
-  Wegeventil, -M Motor/Ventilspule/Zylinder, -P Leuchtmelder/Hupe, -R Drossel/Rückschlagventil.
-- **Unterklasse nur**, wenn eine Klasse in der Aufgabe verschiedenartige Betriebsmittel enthält –
-  dann für alle Kennzeichen dieser Klasse: -BG Lage, -BL Füllstand, -BP Druck, -BM Feuchte, -BT
-  Temperatur; -MA Motor, -MB Ventilspule, -MM Zylinder; -QA Schütz, -QM Wegeventil; -KE SPS, -KF
-  Relais; -RN Drossel(rückschlag)ventil, -RM Rückschlagventil.
-- Beispiel: -S1, -S2, -Q1, -K1, -P1, -P2 neben -BL1, -BM1, -BT1 und -MA1, -MB1, -MB2.
+Zählnummer – **immer Klasse und Unterklasse** (Standard der Fachberatung, 04.11.2026), in
+Funktionsbeschreibung, Technologieschema, Zuordnungsliste, Aufgaben und Musterlösung gleich:
+- -SJ Taster/Schalter; -BG Lage, -BL Füllstand, -BP Druck, -BM Feuchte, -BT Temperatur; -KE SPS,
+  -KF Relais; -QA Schütz, -QM Wegeventil; -MA Motor, -MB Ventilspule, -MM Zylinder; -PF Leuchtmelder,
+  -PJ Hupe; -EA Leuchte; -RN Drossel(rückschlag)ventil, -RM Rückschlagventil.
+- Die Klasse allein (-S1, -M1) wird nicht verwendet – auch nicht, wenn eine Klasse nur eine Art
+  Betriebsmittel enthält.
+- Beispiel: -SJ1, -SJ2, -QA1, -KE1, -PF1, -PF2, -BL1, -BM1, -BT1, -MA1, -MB1, -MB2.
 Tabellen mit Gegenüberstellung zur Ausgabe 2009: `references/normen-technik.md`, Abschn. 2.
 
 Die zentralen Mechatronik-Prüfungen 2020–2026 nutzen noch die **Ausgabe 2009** (-SF Taster, -RZ
-Drosselrückschlagventil, -KF für die SPS, -AZ). Die Kurzform (-S1, -R1, -K1) ist in beiden Ausgaben
-gleich. Nutzt der Unterricht Unterklassen der Ausgabe 2009, im Schülermaterial nennen („nach
+Drosselrückschlagventil, -KF für die SPS, -AZ). Die Unterklassen unterscheiden sich teilweise
+(-SF/-SJ, -KF/-KE, -RZ/-RN). Nutzt der Unterricht Unterklassen der Ausgabe 2009, im Schülermaterial nennen („nach
 DIN EN 81346-2:2009“) und im Begleitblatt begründen – nie mischen.
 Andere Hauskonventionen nur, wenn im Unterricht so verwendet (dann `bmk_pruefen.py --bmk-muster`).
 
 **Regeln**
 1. **Technologieschema mit Text-Legende** (BMK | Betriebsmittel | Lage/Aufgabe). Das Bild allein
    reicht nicht: Kennzeichen im Bild sind für Prüfskripte und Zweitkorrektur unsichtbar (T.3).
-2. Die **Funktionsbeschreibung** nennt jedes Betriebsmittel mit Kennzeichen („Taster Start -S1“),
+2. Die **Funktionsbeschreibung** nennt jedes Betriebsmittel mit Kennzeichen („Taster Start -SJ1“),
    - jeden **Geber** mit Kontaktart und Bedeutung des Signals („-BG2 (NC) meldet 0, wenn die Mulde
      oben ist“), Analoggeber mit Messbereich und Signal („-BT1, 0 … 10 V für 0 … 50 °C“),
    - jeden **Aktor** mit Wirkung („-MB1 = 1: Zylinder -MM1 fährt aus“),
@@ -109,9 +109,9 @@ Andere Hauskonventionen nur, wenn im Unterricht so verwendet (dann `bmk_pruefen.
    Schülermaterial); in Textform als Tabelle Schritt | Aktion | Transition zum Folgeschritt mit
    „·“, „+“, „¬“, „5s/X3“, „[-BT1 > −16 °C]“, „→ n“ (T.9). Analogbedingungen mit physikalischem
    Wert, damit der GRAFCET für jede Plattform gilt.
-7. **Kennbuchstaben und Ausgabe** (T.8): nur Klassen und Unterklassen der Ausgabe 2020; Unterklasse
-   nur zur Unterscheidung verschiedener Arten einer Klasse (nicht -SJ1, -SJ2, wenn -S1, -S2
-   genügt); je Klasse eine Tiefe (nicht -B1 neben -BT2); Ausgabe in den Hinweisen genannt („Die
+7. **Kennbuchstaben und Ausgabe** (T.8): nur Klassen und Unterklassen der Ausgabe 2020; jedes
+   Kennzeichen mit Klasse **und** Unterklasse (-SJ1, nicht -S1); je Klasse eine Tiefe (nicht -BG1
+   neben -BGB2); Ausgabe in den Hinweisen genannt („Die
    Betriebsmittel sind nach DIN EN IEC 81346-2:2020 gekennzeichnet.“).
 8. **Folgefehler:** Eine abweichende Lösung ist richtig, wenn sie zur eigenen Zuordnungsliste passt
    – als Regel bei der Teilaufgabe, nicht als Ermessen.
@@ -126,7 +126,7 @@ Jeder **Lösungsvorschlag zur Teilaufgabe** endet mit einer Tabelle:
 | Nr. | Bewertungsmerkmal | Art | AFB | BE |
 |---|---|---|---|---:|
 | 1 | Initialschritt entspricht der Grundstellung (alle Aktoren aus, -BG1 meldet Mulde unten) | Kriterium | II | 1 |
-| 2 | Start nur mit -S1 **und** -BG1 = 1 als Transition | Kriterium | II | 1 |
+| 2 | Start nur mit -SJ1 **und** -BG1 = 1 als Transition | Kriterium | II | 1 |
 | 3 | Dosieren: -MB1 für 4 s, danach -MB2 für 6 s (zwei Schritte oder Zeitglieder) | Kriterium | II | 2 |
 | 4 | Rücklauf erst nach Wartezeit 3 s; Ende der Kette bei -BG1 = 1 | Kriterium | III | 2 |
 
@@ -222,5 +222,5 @@ keine Arbeiten von Lernenden.
 | T.5 | Operanden eindeutig, Vorgabe = Musterlösung | ❌ / ⚠ | `bmk_pruefen.py` |
 | T.6 | Schreibweise einheitlich | ⚠ | `bmk_pruefen.py` |
 | T.7 | Grundstellung, Start, Stopp/Not-Halt beschrieben | ⚠ | `bmk_pruefen.py` |
-| T.8 | Kennbuchstaben nach DIN EN IEC 81346-2:2020 (oder genannte Ausgabe 2009), so kurz wie möglich, je Klasse eine Tiefe | ⚠ | `bmk_pruefen.py` |
+| T.8 | Kennbuchstaben nach DIN EN IEC 81346-2:2020 (oder genannte Ausgabe 2009), immer Klasse und Unterklasse, je Klasse eine Tiefe | ⚠ | `bmk_pruefen.py` |
 | T.9 | GRAFCET in Textform nach Notationsblatt (Verknüpfungen, Zeit, Vergleich, Folgeschritt, Aktionsarten) | ⚠ | `bmk_pruefen.py` |

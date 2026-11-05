@@ -2,12 +2,12 @@
 name: fachdiagramm-erstellen
 description: Erstellt Fachdiagramme für Unterrichtsmaterial und Klausuren aus einer kurzen YAML-Beschreibung – Blockschaltbild, Anlagen- und Systemübersicht, Energie- und Datenfluss, Regelkreis, Arbeits- und Prozessablauf, Struktogramm nach Nassi-Shneiderman, ER-Modell nach Chen, UML-Klassendiagramm und Relationenschema, auch als Klausurabbildung (Lückenbild, Fremdlösung mit Fehler, Lösungsbild). Das mitgelieferte Werkzeug edu-diagramm erzeugt daraus SVG und in diagrams.net bearbeitbare drawio-Dateien; ein Prüfskript findet vorher stille Fehler, dazu PNG-Vorschau und ein Diagrammblatt mit Alternativtext. Verwenden bei „Diagramm erstellen", „Blockschaltbild", „Ablaufdiagramm", „Struktogramm", „ER-Diagramm", „UML", „Regelkreis zeichnen", „Tafelbild als Grafik", „ASCII-Skizze ersetzen". Nicht für Technologieschema (Anlagenbild), GRAFCET, Funktionsplan, Netzwerkplan, genormte Stromlauf-, Pneumatik- oder Hydraulikpläne und technische Zeichnungen.
 metadata:
-  version: "1.7"
+  version: "1.6"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
   eduwerkzeuge: "diagramme"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Fachdiagramm erstellen
@@ -31,7 +31,6 @@ Abschn. 3, Prüfung `scripts/zeichnungen_pruefen.py`).
 |---|---|---|
 | Blockschaltbild, Anlagenübersicht, Energie-/Datenfluss, Regelkreis, Arbeitsablauf | `flow` | `assets/spec-flow.yaml` |
 | Algorithmus, Programm- oder SPS-Ablauf (strukturiert) | `struktogramm` | `assets/spec-struktogramm.yaml` |
-| Ablaufsteuerung mit Schritten und Transitionen (GRAFCET), Funktionsplan, Anlagenbild | `technologieschema-erstellen` | – |
 | Datenmodell | `chen` | `assets/spec-chen.yaml` |
 | Klassen, Schnittstellen / Tabellen mit Schlüsseln | `uml` / `relational` | `assets/spec-uml.yaml` |
 
@@ -39,10 +38,6 @@ Abschn. 3, Prüfung `scripts/zeichnungen_pruefen.py`).
 (DIN ISO 1219), GRAFCET (DIN EN 60848) oder technischen Zeichnungen – dafür Fachsoftware.
 Eine vereinfachte Übersicht mit `flow` ist möglich und wird als „vereinfacht, nicht
 normgerecht" betitelt.
-Technologieschemata (Anlagenbilder zu Steuerungsaufgaben mit Zylindern, Sensoren, Tastern,
-Bändern, Behältern), Schaltplanauszüge, **GRAFCET, Funktionspläne (FUP) und Netzpläne** zeichnet
-`technologieschema-erstellen` aus Grundformen, nicht dieser Skill.
-
 **Keine Zeichnung aus Zeichen:** Struktogramme, Abläufe, Blockschaltbilder und Datenmodelle stehen
 in keinem Artefakt als ASCII-Art oder Mermaid – auch nicht in Lösung und Erwartungshorizont
 (Skill-Vertrag Abschn. 3). Findet sich eine, ersetzt dieser Skill sie durch ein SVG.
@@ -73,7 +68,7 @@ in keinem Artefakt als ASCII-Art oder Mermaid – auch nicht in Lösung und Erwa
    unter `solutions/diagrams/`) – sie dürfen nicht mit dem Aufgabenmaterial ausgeliefert
    werden.
 7. **Die Spec ist die Quelle:** Änderungen in der YAML, dann neu erzeugen.
-8. **Klausurabbildungen** (für `klausur-erstellen`) in drei Rollen, immer in der **Notation des
+8. **Klausurabbildungen** in drei Rollen, immer in der **Notation des
    Unterrichts**: *Aufgabenbild* mit nummerierten Lücken ①–⑤ statt Lösung (Einträge in einer
    Tabelle neben dem Bild), *Fremdlösung mit gewolltem Fehler* (Fehler im Diagrammblatt und im
    Erwartungshorizont vermerken, keine realen Namen), *Lösungsbild* getrennt (`…_loesung`, nur im

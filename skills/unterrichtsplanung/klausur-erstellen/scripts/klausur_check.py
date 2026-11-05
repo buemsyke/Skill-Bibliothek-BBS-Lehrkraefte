@@ -15,8 +15,8 @@ Spalten „Aufgabe", „AFB" und „Punkte", optional „Min.", „Bezug" und �
   Single Choice  Verteilung der Lösungsbuchstaben (--sc "CADBE…")
 
 Gibt außerdem den Notenschlüssel in Punkten aus (Grenzen aus der Gesamtpunktzahl gerechnet und auf
-halbe Punkte aufgerundet, wie edu-bewertung) und die Zeile „Gesamtsummen …" für die Formalprüfung
-des Erwartungshorizonts.
+halbe Punkte aufgerundet, wie edu-bewertung) und die Zeile „Gesamtsummen …" für die
+regelbasierte Begutachtung.
 
 Aufruf:
     python3 klausur_check.py ERWARTUNGSHORIZONT.md [--typ klassenarbeit|klausur-bg|lzk] [--gesamt N] [--zeit MIN]
@@ -341,7 +341,7 @@ def ausgabe(befunde, info, a) -> str:
         z += [f"| {lab} | {_fmt(p)} | {_fmt(ab)} |" for lab, p, ab in notenschluessel(gesamt, stufen, schritt)]
     if "afb_punkte" in info and all(float(v).is_integer() for v in info["afb_punkte"].values()):
         p = info["afb_punkte"]
-        z += ["", "Zeile für die Formalprüfung (in den Erwartungshorizont übernehmen):", "",
+        z += ["", "Zeile für die Begutachtung (in den Erwartungshorizont übernehmen):", "",
               f"    Gesamtsummen (AFB I, AFB II, AFB III, gesamt) {p['I']:.0f} {p['II']:.0f} {p['III']:.0f} {sum(p.values()):.0f}"]
     return "\n".join(z) + "\n"
 

@@ -40,7 +40,7 @@ steht als Annahme im Kopf oder wird aus dem gelieferten Datenblatt bzw. Handbuch
 1. **Aufgabe aus der Situation:** Was soll das Programm im Auftrag leisten? Messbare
    Anforderungen (Eingaben, Ausgaben, Einheiten, Grenzwerte) als Tabelle; Situation in
    höchstens drei Sätzen (`references/schuelermaterial.md`). Dazu die **Darstellung, mit der
-   programmiert wird:** Anschlussbild bzw. Schaltplan (Pins, Sensor, Aktor; Schaltplanauszug mit `technologieschema-erstellen`), Sensorkennlinie als Diagramm aus den Datenblattwerten (SVG per Code), Ablauf-, Zustands- oder
+   programmiert wird:** Anschlussbild bzw. Schaltplan (Pins, Sensor, Aktor), Sensorkennlinie als Diagramm aus den Datenblattwerten (SVG per Code), Ablauf-, Zustands- oder
    Struktogramm (`fachdiagramm-erstellen`), beim G-Code die Werkstückzeichnung mit Maßen und
    Nullpunkt (Platzhalter, wenn sie nicht vorliegt). Sie ersetzt Erklärtext. Alle Zeichnungen –
    auch Struktogramm und Ablauf der Musterlösung – als SVG, nie als Zeichnung aus Zeichen im Codeblock.
@@ -120,7 +120,7 @@ Einheitenfehler in der Messkette); jeden Fehler mit Zeile, Wirkung und Korrektur
 artefakt: Programmieraufgabe
 titel: "[Was das Programm im Auftrag leistet]"
 skill: programmieraufgabe-erstellen
-skill_version: "1.5"
+skill_version: "1.4"
 stand: JJJJ-MM-TT
 bildungsgang: "[Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld/Lerngebiet]"
@@ -205,7 +205,7 @@ Regel für KI-Codeassistenten]
 - Codeordner `43_code/`, Testfälle, Prüfergebnis
 - Empfohlen: `material-pruefen` (C)
 
-> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.5). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.4). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: references/aufgabenmuster-informationstechnik.md
 
@@ -218,7 +218,6 @@ Gymnasium eines anderen Landes 2018/19–2023/24 (Aufgabenhefte und Musterlösun
 in eigenen Worten, keine Aufgabentexte übernommen, alle Beispiele erfunden. Verbindlich bleiben die
 Vorgaben Niedersachsens: Format, Operatorenliste des Fachs, Erwartungshorizont mit
 Bewertungsmerkmalen. Die Muster sind Baupläne für Fragestellungen, keine Texte zum Abschreiben.
-Einordnung der Hefte und Fundstellen je Muster: `abitur-aufgabenformat-vergleich.md` im Skill `abiturvorschlag-erstellen`.
 
 ## Inhalt
 1. Gebrauch
@@ -669,7 +668,6 @@ Werten (kleine ganze Zahlen); Clusterbild mit markierten Zentren.
 
 ## 9. Daten: ER-Modell und SQL
 
-> **Abiturvorschläge im Schwerpunkt Informationstechnik:** Datenbankaufgaben nicht aus den Vergleichsheften übernehmen (Entscheidung der Fachberatung, 31.10.2026; `abitur-konstruktion.md` Abschn. 3 im Skill `abiturvorschlag-erstellen`). Die Festlegungen unten gelten für jede Datenbankaufgabe.
 
 **D1 ER-Modell aus einer Anforderungsliste** · AFB II/III · 7–9 BE
 - Schablone: „Entwerfen Sie das ER-Modell in dritter Normalform; kennzeichnen Sie die
@@ -868,7 +866,6 @@ je 80 h. Die Reihenfolge legt die Schule fest.
   und vollständiger Musterlösung 🔎 Verfahren und Fristen der Schulbehörde. Mechatronik wird
   seit 2021 zentral geprüft (allgemeiner Teil zu METRO 1 und 2, dazu ein schuleigener Teil)
   🔎 aktuellen Stand prüfen.
-  Vorschläge erstellen: `abiturvorschlag-erstellen`.
 - **Sonstige Leistungen / Mitarbeit:** Projekte, Dokumentationen, Präsentationen, Kolloquien,
   Versuchsprotokolle. Gewichtung gegenüber Klausuren legt die Fachkonferenz fest 🔎. Kriterien
   offenlegen, Einzelanteil bei Gruppenarbeit ausweisen.
@@ -1167,8 +1164,7 @@ Einblick gewinnen, die Bereitschaft entwickeln, die Fähigkeit verbessern*. Ersa
 
 Für Abiturvorschläge gilt diese Zuordnung – sie weicht in einigen Punkten von der allgemeinen
 Bibliotheksliste (`operatoren-afb.md`, falls vorhanden) ab (z. B. *begründen* hier AFB II, *dokumentieren* AFB III).
-Maschinenlesbar: `abitur_check.py` (Skill `abiturvorschlag-erstellen`) liest die Tabellen dieser Datei – Kopfzeilen und Komma-Listen beibehalten.
-Gilt auch für Klausuren der Qualifikationsphase im BG (`klausur-erstellen`, Typ `klausur-bg`).
+Gilt auch für Klausuren der Qualifikationsphase im BG.
 Abgeglichen mit der Operatorenliste des Kultusministeriums für Technik – Mechatronik (Abitur 2024,
 Fassung V02): deckungsgleich. *zeichnen* verlangt dort ausdrücklich genormte Symbole, *überprüfen*
 steht als „überprüfen und nachweisen“. 🔎 Vor jedem Prüfungsjahr mit der gültigen Fassung abgleichen.
@@ -1234,7 +1230,6 @@ Anforderungsbereichen (1, 1–2, 2, 2–3, 3). Die Liste unten ist die Zuordnung
 - Der AFB einer Teilaufgabe liegt im Bereich des Operators und hängt vom Unterricht davor ab
   (*Ermitteln* 1–2: Schleife durchspielen = II; *Bestimmen* 2–3: Wert aus dem Struktogramm
   = II, alle Startwerte rückwärts = III).
-- Operatoren für Lernende erklären: `klausur-erstellen`, `references/druckfassung-antwortformate.md`.
 
 ## Anhang: references/programmierdidaktik.md
 
@@ -1303,8 +1298,6 @@ Situationsmaterial, Vorlagen, Hilfekarten, Versuchsanleitung, Programmieraufgabe
 Lektion, Lernlandkarte, Quiz und Schülerseiten. Ausgenommen ist der Lehrerteil
 (`# Lösungen und Erwartungshorizont`, `# Didaktische Hinweise`). Vorgabe der Fachberatung
 (31.10.2026). Prüfung: `scripts/schuelermaterial_pruefen.py`, falls vorhanden.
-Klausur- und Abiturformat haben eigene Richtwerte (`klausur-erstellen`, `abiturvorschlag-erstellen`);
-die vier Regeln gelten dort sinngemäß.
 
 ## Inhalt
 1. Vier Regeln
@@ -1333,8 +1326,8 @@ Erfolgskriterien bleiben vollständig.
 
 | Inhalt | Darstellung | so entsteht sie |
 |---|---|---|
-| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen`; Technologieschema mit `technologieschema-erstellen` |
-| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen`; GRAFCET und Funktionsplan mit `technologieschema-erstellen` |
+| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen` |
+| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen` |
 | System, Energie- und Datenfluss, Regelkreis | Blockschaltbild | `fachdiagramm-erstellen` |
 | Zusammenhang zweier Größen | Diagramm, Kennlinie mit beschrifteten Achsen | aus gerechneten Werten oder dem Datenblatt als SVG erzeugen (Code), nie geschätzt |
 | Vergleich, Kriterien, Kenndaten | Tabelle, Matrix | Markdown-Tabelle |
@@ -1548,9 +1541,6 @@ Emojis ohne Funktion, Floskeln oder Inhalte, die kein Auftrag braucht. Richtwert
 `schuelermaterial.md`, falls vorhanden. Die Pflichtabschnitte (unten) stehen im Teil für die
 Lehrkraft (nach `# Lösungen und Erwartungshorizont` bzw. `# Didaktische Hinweise`), nie im Teil für
 Lernende.
-Ausgenommen von den Richtwerten sind Klausur- und Abiturformat mit eigenen Regeln
-(`klausur-erstellen`, `abiturvorschlag-erstellen`: Operator-Aufträge bis rund 40 bzw. 45 Wörter,
-Antwortraum je Operator); kurz, eindeutig und ohne Dekoration bleiben auch sie.
 
 **Zeichnungen** (Vorgabe der Fachberatung, 01.11.2026): Jede Zeichnung in einem Artefakt – Material
 für Lernende, Lösung, Erwartungshorizont, Tafelbild, Entwurf, Begleitblatt – entsteht als **SVG aus
@@ -1564,8 +1554,7 @@ im Codeblock), nie als Mermaid in der Ausgabe, nie als von Hand geschriebenes SV
 | Blockschaltbild, Anlagen- und Systemübersicht, Ablauf, Regelkreis, Struktogramm, ER-Modell, UML, Relationenschema | `fachdiagramm-erstellen` |
 | Kennlinie, Messwertdiagramm | aus den Werten per Code als SVG (z. B. matplotlib), Wertetabelle daneben |
 | Foto, Werkstückzeichnung, fremde Abbildung | Datei mit Quelle und Lizenz, sonst Platzhalter `[ABBILDUNG: Inhalt, Zweck, Quelle]` |
-| Anlagenbild (Technologieschema), Schaltplanauszug mit Schaltzeichen, GRAFCET, Funktionsplan (FUP), Netzplan | `technologieschema-erstellen` |
-| Simulationsschaltung | `circuitjs-schaltung-erstellen` |
+| GRAFCET, Funktionsplan, Schaltplan | Fachsoftware; im Text zusätzlich als Tabelle (Schritt, Aktion, Transition) |
 
 Erlaubt bleiben Text-Tabellen derselben Inhalte (GRAFCET in Textform, Zuordnungsliste) für die
 Zweitkorrektur und die Barrierefreiheit; Verzeichnisbäume und Programmcode sind keine Zeichnungen.
@@ -1596,14 +1585,9 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 43 | Programmieraufgabe (Aufgabe, Codeordner `43_code/`, Erwartungshorizont) | programmieraufgabe-erstellen |
 | 44 | Technikfolgenabschätzung (Dossier, Quellenmappe, Rollenkarten) | technikfolgen-abschaetzen |
 | 45 | Taxonomie-Analyse | bloom-taxonomie |
-| 46 | Technologieschema (Schemablatt mit Legende, Specs unter `schema/`, SVG unter `abbildungen/`) | technologieschema-erstellen |
-| 47 | Simulationsschaltung (circuit.js: Schaltungstext, Messgeräte mit Erwartungswerten, Begleitblatt) | circuitjs-schaltung-erstellen |
-| 48 | Mikrocontroller-Simulation (Wokwi: Spec, Projektordner mit Sketch, Schaltung und Szenarien, Zeitablauf, Begleitblatt) | wokwi-simulation-erstellen |
 | 50 | Sprachsensible Fassung | sprachsensibel-ueberarbeiten |
 | 60 | Differenzierung | differenzierung-erstellen |
 | 65 | Quiz (Quelle, GIFT, H5P, Begleitblatt) | quizfragen-erstellen |
-| 70 | Klassenarbeit / Lernzielkontrolle mit Erwartungshorizont | klausur-erstellen |
-| 75 | Abiturvorschlag (dezentral): Schüler- und Lehrermaterial je Vorschlag, Bewertungsbogen, Begleitblatt | abiturvorschlag-erstellen |
 | 90 | Prüfbericht | material-pruefen |
 | 92 | Lernlandkarte (edumaps: Quelle, Import-JSON, Begleitblatt) | lernlandkarte-erstellen |
 | 93 | Lernakte, Probeprüfung, AIS-Paket (agiles Lernen mit KI) | agiles-lernen-mit-ki |
@@ -1612,12 +1596,8 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 96 | KI-Kennzeichnung (Protokoll) | ki-kennzeichnung |
 | 99 | Abschlussbericht (Paketübersicht, Qualitätscheck, konsolidierte Prüfaufträge) | unterricht-entwickeln |
 
-`abiturvorschlag-erstellen` (Nr. 75) hält Schüler- und Lehrermaterial einreichungsfertig: Kopf und
-Pflichtabschnitte stehen im **Begleitblatt** (`75_abitur_<kurztitel>_begleitblatt.md`), nicht in den
-Einreichungsunterlagen.
-
-**Werkzeug-Skills** (Nr. 42, 46, 47, 48, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
-(`edu-diagramm`, `edu-technologieschema`, `schaltung.py`, `wokwi.py`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
+**Werkzeug-Skills** (Nr. 42, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
+(`edu-diagramm`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
 Artefakt mit Pflichtabschnitten – diese hätten in der Quelle Folgen für die Ausgabe –, sondern
 Kopf und Pflichtabschnitte stehen in einem **Begleitblatt** (`…_begleitblatt.md`,
 Diagrammblatt). Nummern 92–96 (Ausspielen) folgen auf den Prüfbericht: veröffentlicht wird

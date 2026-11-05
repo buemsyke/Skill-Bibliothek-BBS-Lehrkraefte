@@ -6,7 +6,7 @@ metadata:
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Unterrichtsmaterial erstellen
@@ -75,7 +75,6 @@ schreiben. Vorher und nachher
 `python3 scripts/lektion_pruefen.py lessons/*/lesson.md [--loesungen solutions]` – meldet fehlende
 Elemente, Punktsummen, Zeitplanung und Wortzahl. Veröffentlichen mit `schuelerseiten-veroeffentlichen`.
 
-Klassenarbeiten und Lernzielkontrollen erstellt `klausur-erstellen`.
 Quiz für Moodle/H5P gehört
 zu `quizfragen-erstellen`, falls installiert; sonst einfache Fassung hier erstellen. Eigene Skills
 gibt es für Versuchsanleitungen mit Gefährdungsbeurteilung (`experiment-planen`),
@@ -114,9 +113,11 @@ Lehrerhandreichung. In der Materialübersicht ausweisen, was vorliegt und was fe
    mindestens eine Darstellung, mit der Aufträge arbeiten (ablesen, ergänzen, Fehler finden,
    selbst zeichnen – `references/schuelermaterial.md` Abschn. 2). Selbst erstellen, was sich
    erstellen lässt: Tabelle, Matrix, Kennlinie aus gerechneten Werten (Code, als SVG);
-   Blockschaltbilder, Abläufe, Strukturbilder, Struktogramme und Datenmodelle mit `fachdiagramm-erstellen`, Anlagenbilder zu Steuerungsaufgaben (Technologieschemata), GRAFCET und Funktionspläne mit `technologieschema-erstellen`.
+   Blockschaltbilder, Abläufe, Strukturbilder, Struktogramme und Datenmodelle mit `fachdiagramm-erstellen`.
    Jede Zeichnung als SVG aus einer Spec – nie als Zeichnung aus Zeichen oder Mermaid, auch nicht
-   in Lösungen und Tafelbild.
+   in Lösungen und Tafelbild. Steuerungsaufgaben: Betriebsmittelkennzeichen immer mit Klasse und
+   Unterklasse (-SJ1, -MA1, -MM1, -EA1), gleich in Funktionsbeschreibung, Technologieschema und
+   Zuordnungsliste (DIN EN IEC 81346-2:2020).
    Fotos, Herstellerzeichnungen und Normauszüge nie erfinden: Platzhalter
    `[ABBILDUNG: Inhalt, Zweck, Quelle/Lizenz – z. B. eigenes Foto Fachraum]` direkt am Auftrag
    (bleibt als Prüfauftrag stehen). Keine Schmuckbilder.

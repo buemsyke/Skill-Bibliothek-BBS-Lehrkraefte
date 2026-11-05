@@ -1,8 +1,8 @@
 # Gute Praxis für Klassenarbeiten und Lernzielkontrollen
 
 Zusammengeführt aus der Skill-Fassung `klausur-erstellen` 1.x (eduwerkzeuge), der Referenz
-*Leistungsüberprüfungen* der `lernfeld-werkstatt`, den Prüfkriterien
-der Begutachtung und einer gelungenen Papierklausur aus der Praxis (Details in
+*Leistungsüberprüfungen* der `lernfeld-werkstatt`, den Prüfkriterien der Begutachtung
+und einer gelungenen Papierklausur aus der Praxis (Details in
 `druckfassung-antwortformate.md`). Erfahrungswerte aus realen Reihen sind als solche gekennzeichnet.
 
 ## Inhalt
@@ -114,7 +114,6 @@ Operator; Mehrfachoperatoren nur, wenn beide Leistungen bewertet werden.
   der Punkte; ein Regelfehler im sonst richtigen Weg = Teilpunkt; Soll und Ist vertauscht
   (Testen) höchstens die Hälfte; Folgefehler **einmal** werten.
 - **Bewusst nicht geprüft** festhalten (unterrichtet, aber nicht Gegenstand dieser Arbeit).
-- Aufgaben-IDs (A1.1 …) und Aspekte eindeutig schreiben, damit Korrekturhilfen sie übernehmen können.
 
 ## 6. Single Choice – die Fallen
 

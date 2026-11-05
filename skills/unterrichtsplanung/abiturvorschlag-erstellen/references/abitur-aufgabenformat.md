@@ -164,7 +164,7 @@ Geräte nur mit Namen; die Kennzeichen stehen allein in der Zuordnungsliste oder
 Fall heißt ein Taster in der Funktionsbeschreibung anders als in der Zuordnungsliste. Der
 Mustervorschlag IT nutzt noch die alte Kennzeichnung (S1, B1, P2).
 
-**Mustervorschlag IT, Formalprüfung nach dem Katalog:** ❌ X.10 (Teilaufgaben 32 ≠ 33 BE angegeben),
+**Mustervorschlag IT, regelbasierte Prüfung:** ❌ X.10 (Teilaufgaben 32 ≠ 33 BE angegeben),
 X.13 (Schülermaterial 101 ≠ Lehrermaterial 100), X.3 (14× „Punkte“), S.1 (Platzhalter wie
 „XXX“, „Version X.Y“, „20 _ _“, „BBS …“). Selbst ein amtliches Muster braucht also die
 rechnende Selbstprüfung.

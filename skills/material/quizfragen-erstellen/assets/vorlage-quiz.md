@@ -1,4 +1,4 @@
-<!-- Quelle für edu-quiz – Skill quizfragen-erstellen v2.5.
+<!-- Quelle für edu-quiz – Skill quizfragen-erstellen v2.6.
      Beispielinhalt zur LS 4.2 (Gurtförderer warten): Aufbau übernehmen, Inhalte ersetzen.
      Begleitblatt mit Qualitätscheck: 65_quiz_<kurztitel>_begleitblatt.md
      Hier keine weiteren ##-Abschnitte – alles nach der letzten Übung gehört zu ihr. -->

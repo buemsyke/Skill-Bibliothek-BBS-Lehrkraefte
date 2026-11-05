@@ -2,12 +2,12 @@
 name: klausur-erstellen
 description: Erstellt schriftliche Leistungsüberprüfungen für berufsbildende Schulen – Klassenarbeit, Klausur (auch Qualifikationsphase des Beruflichen Gymnasiums mit EPA-Operatoren, BE und Notenpunkten), Kurzklausur, Lernzielkontrolle (auch Single Choice), Nachschreib- und A/B-Variante – aus Lernsituation, Material oder Lernfeld-Auszug. Kurze Operator-Aufträge, wenig Schreiblast, Abbildungen als Material, Antwortraum je Operator; Erwartungshorizont mit Korrekturschablone, Punkten je Aspekt, Alternativen, Folgefehlern, AFB-Nachweis und Notenschlüssel; Selbstprüfung per Skript, geprüft wird nur Unterrichtetes. Verwenden bei „Klassenarbeit erstellen", „Klausur mit Erwartungshorizont", „Lernzielkontrolle", „Nachschreibarbeit", „B-Gruppe". Nicht für Moodle-Quizze (quizfragen-erstellen) und Abiturvorschläge (abiturvorschlag-erstellen).
 metadata:
-  version: "1.11"
+  version: "1.12"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
   ersetzt: "klausur-erstellen 1.x (eduwerkzeuge)"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Klassenarbeit und Lernzielkontrolle erstellen
@@ -96,17 +96,17 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
     derselben Seite wie die Teilaufgaben, in Schwarzweiß lesbar; Lösungsbild nur im
     Erwartungshorizont. Jede Abbildung und jedes Lösungsbild als SVG aus einer Spec, nie als
     Zeichnung aus Zeichen: Abläufe, Struktogramme, Datenmodelle mit `fachdiagramm-erstellen`,
-    Anlagenbilder, Schaltplanauszüge, GRAFCET, Funktionspläne und Netzpläne mit
-    `technologieschema-erstellen`; einen GRAFCET zusätzlich als Text-Tabelle.
+    Anlagenbilder, Schaltplanauszüge, GRAFCET, Funktionspläne und Netzpläne ebenso als SVG aus einer Spec
+    ; einen GRAFCET zusätzlich als Text-Tabelle.
 13. **Ein Material, drei Zugriffe, ein Prüfstein.** Jede Aufgabe arbeitet an einem Material
     (lesen/ausführen → bewerten → verändern) und enthält eine benannte Denkfalle; der
     Erwartungshorizont nennt sie und die Antworten, die 0 P. ergeben.
 14. **Steuerungstechnik: dieselben Betriebsmittelkennzeichen überall.** Die Funktionsbeschreibung
-    nennt jedes Betriebsmittel mit Kennzeichen (-S1, -B2), Geber mit Kontaktart (NO/NC), dazu
+    nennt jedes Betriebsmittel mit Kennzeichen (-SJ1, -BG2), Geber mit Kontaktart (NO/NC), dazu
     Grundstellung und Stopp; Legende des Technologieschemas, Zuordnungsliste, Aufgaben und
     Erwartungshorizont verwenden dieselben Kennzeichen – keine Kennung erst in der Lösung.
-    Kennbuchstaben nach DIN EN IEC 81346-2:2020, so kurz wie möglich: nur die Klasse (-S1, -K1,
-    -Q1), Unterklasse nur bei verschiedenen Arten einer Klasse (-BL1 neben -BT1); Ausgabe 2009 nur,
+    Kennbuchstaben nach DIN EN IEC 81346-2:2020 immer mit Klasse und Unterklasse (-SJ1, -KE1,
+    -QA1, -MA1, -MM1, -EA1; nie die Klasse allein); Ausgabe 2009 nur,
     wenn so unterrichtet und genannt; GRAFCET nach DIN EN 60848 (`references/normen-technik.md`).
     Einheitliche Notation nach `references/notation-steuerungstechnik.md` (als Anlage beifügen);
     Steuerungsaufgaben mit SPS, Kleinsteuerung oder Mikrocontroller lösbar (Zuordnungsliste mit
@@ -129,7 +129,7 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
    Hilfsmitteln und Gesamtpunkten, Hinweise auf dem Blatt, Fallschilderung, Aufgaben im Format
    `Aufgabe N – Titel (insgesamt P Punkte)` und Teilaufgaben `N.n **Operator** … (p P)` mit
    kursiver Zeile `*Antwortraum: …*`, Anlagen mit eigener Überschrift. Abbildungen mit
-   `fachdiagramm-erstellen` bzw. `technologieschema-erstellen` als SVG erzeugen (Aufgaben- und
+   `fachdiagramm-erstellen` als SVG erzeugen (Aufgaben- und
    Lösungsbild getrennt, Lösungsbilder `…_loesung_…`).
 4. **Erwartungshorizont schreiben** nach `assets/vorlage-erwartungshorizont.md`: je
    Teilaufgabe erwartete Leistung als bepunktbare Aspekte, zulässige Alternativen,
@@ -149,14 +149,11 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 6. **Aufsichtsblatt** bei fremder Aufsicht nach `assets/vorlage-aufsichtsblatt.md`.
 7. **Varianten** (falls gewünscht): gleiche Bauplantabelle, anderer Kontext bzw. andere Zahlen;
    eigener Erwartungshorizont; Selbstprüfung für jede Variante.
-8. Qualitätscheck, dann ausgeben.
-   Kollegiale Gegenprüfung empfehlen (Lösbarkeit Schritt für Schritt).
+8. Qualitätscheck, dann ausgeben. Gegenlesen durch eine zweite Lehrkraft
+   empfehlen (Lösbarkeit Schritt für Schritt).
 
 ## Ausgabe
-- **Mit Arbeitsordner** (vorhanden oder gewünscht):
-  `01_vorgabe/<kurztitel>_aufgaben.md` und `02_musterloesung/<kurztitel>_erwartungshorizont.md`
-  (Ordnerkonvention in `references/skill-vertrag.md`).
-- **Sonst:** `70_klausur_<kurztitel>.md` und `70_klausur_<kurztitel>_erwartungshorizont.md`;
+- **Dateien:** `70_klausur_<kurztitel>.md` und `70_klausur_<kurztitel>_erwartungshorizont.md`;
   Varianten mit Suffix `_B`, `_nachschreiben`.
 - Bei fremder Aufsicht zusätzlich `70_klausur_<kurztitel>_aufsicht.md` (bzw.
   `01_vorgabe/<kurztitel>_aufsicht.md`); die Prüflinge erhalten nur das Aufgabenblatt.

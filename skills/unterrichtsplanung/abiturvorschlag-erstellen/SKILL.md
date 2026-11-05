@@ -1,12 +1,12 @@
 ---
 name: abiturvorschlag-erstellen
-description: Erstellt genehmigungsfähige Vorschläge für die dezentrale Abiturprüfung am Beruflichen Gymnasium in Niedersachsen (Technik mit Schwerpunkt, Berufliche Informatik) – Vorschlag A und B mit Schülermaterial (Handlungssituation, Funktionsbeschreibung mit Betriebsmittelkennzeichen, Aufgaben mit BE und EPA-Operatoren, Anlagen) und Lehrermaterial (unterrichtliche Voraussetzungen, Erwartungshorizont mit AFB je Zeile, Musterlösung mit Bewertungsmerkmal je BE), dazu Bewertungsbogen, Bewertungsmappe und Begleitblatt. Formuliert eindeutig und korrekturfreundlich und prüft per Skript nach dem Katalog der Begutachtung. Verwenden bei „Abiturvorschlag erstellen“, „dezentrale Abiturklausur“, „Abiturklausur Technik“, „Vorschlag A und B“, „Erwartungshorizont fürs Abitur“. Nicht für Klausuren im Halbjahr (klausur-erstellen) und nicht zum Begutachten fertiger Vorschläge.
+description: Erstellt genehmigungsfähige Vorschläge für die dezentrale Abiturprüfung am Beruflichen Gymnasium in Niedersachsen (Technik mit Schwerpunkt, Berufliche Informatik) – Vorschlag A und B mit Schülermaterial (Handlungssituation, Funktionsbeschreibung mit Betriebsmittelkennzeichen, Aufgaben mit BE und EPA-Operatoren, Anlagen) und Lehrermaterial (unterrichtliche Voraussetzungen, Erwartungshorizont mit AFB je Zeile, Musterlösung mit Bewertungsmerkmal je BE), dazu Bewertungsbogen, Bewertungsmappe und Begleitblatt. Formuliert eindeutig und korrekturfreundlich und prüft per Skript nach dem Katalog der Begutachtung. Verwenden bei „Abiturvorschlag erstellen“, „dezentrale Abiturklausur“, „Abiturklausur Technik“, „Vorschlag A und B“, „Erwartungshorizont fürs Abitur“. Nicht für Klausuren im Halbjahr (klausur-erstellen).
 metadata:
-  version: "1.17"
+  version: "1.18"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Abiturvorschlag erstellen (dezentral, Berufliches Gymnasium)
@@ -54,8 +54,8 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
 - **Wichtig, sonst Annahme:** Hilfsmittel (Tabellenbuch mit Ausgabe, Taschenrechner,
   Formelsammlung), PC-Arbeitsplatz und Software, **Steuerungsplattformen** des Unterrichts (SPS,
   Kleinsteuerung, Mikrocontroller mit Board), Kennzeichnung und Notation (Standard: Notationsblatt,
-  `references/notation-steuerungstechnik.md`; Kennbuchstaben DIN EN IEC 81346-2:2020, so kurz wie
-  möglich: „-S1“; Ausgabe 2009 nur, wenn so unterrichtet), Themenwünsche, Unterrichtshinweise der
+  `references/notation-steuerungstechnik.md`; Kennbuchstaben DIN EN IEC 81346-2:2020 mit Klasse und
+  Unterklasse: „-SJ1“; Ausgabe 2009 nur, wenn so unterrichtet), Themenwünsche, Unterrichtshinweise der
   Fachgruppe.
 - **Optional:** Planungsakte, Lernsituationen der Kurse, Rückmeldungen früherer Begutachtungen.
 
@@ -90,10 +90,10 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
    Stopp/Not-Halt (oder ausdrücklich ausgeklammert), Zeiten als Zahlen. Dieselben Kennzeichen und
    Bezeichnungen in Legende, Zuordnungsliste, Aufgaben, Anlagen und Musterlösung; ein neues
    Betriebsmittel wird in der Teilaufgabe eingeführt, nie erst in der Lösung. **Kennbuchstaben nach
-   DIN EN IEC 81346-2:2020, so kurz wie möglich** (didaktische Reduktion): nur die Klasse (-S1, -B1,
-   -K1, -Q1, -M1, -P1); eine Unterklasse nur, wenn eine Klasse verschiedenartige Betriebsmittel
-   enthält – dann für die ganze Klasse (-BL1 Füllstand neben -BT1 Temperatur, -MA1 Motor neben -MB1
-   Ventilspule; Tabelle in `references/normen-technik.md`). Ausgabe in den Hinweisen genannt, eine
+   DIN EN IEC 81346-2:2020 immer mit Klasse und Unterklasse** (Standard der Fachberatung): -SJ1
+   Taster, -BG1 Näherungsschalter, -KE1 SPS, -QA1 Schütz, -MA1 Motor, -MM1 Zylinder, -PF1
+   Leuchtmelder, -EA1 Leuchte – nie die Klasse allein (-S1, -M1); Tabelle in
+   `references/normen-technik.md`. Ausgabe in den Hinweisen genannt, eine
    Ausgabe je Vorschlag. Sinngemäß für Bezeichner in Netzplänen, Klassendiagrammen und Code (K.9).
    **Einheitliche Notation:** Kennzeichen, Signale, Zuordnungsliste und GRAFCET (gezeichnet und in
    Textform) nach dem **Notationsblatt**, das als Anlage beiliegt (`references/notation-steuerungstechnik.md`;
@@ -141,7 +141,7 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
    Teilaufgabe ein Muster aus `references/aufgabenmuster-informationstechnik.md` wählen (Kennung in
    den Bauplan), dessen Festlegungen ins Schülermaterial und den Prüfstein in die Merkmale übernehmen.
 4. **Schülermaterial** nach `assets/vorlage-schuelermaterial.md`; Abbildungen:
-   Technologieschemata mit `technologieschema-erstellen` (Legende per `edu-technologieschema legende`,
+   Technologieschemata als SVG aus einer Spec (Legende als Text-Tabelle,
    Kennzeichen nach 81346 geprüft), Blockschaltbilder, Struktogramme und Datenmodelle mit
    `fachdiagramm-erstellen` (Aufgaben- und Lösungsbild getrennt, Text-Legende, `<title>` „Abbildung N –
    Titel“) als `abbildungen/75_abitur_<kurztitel>_A_abbN_<thema>.svg`, Lösungsbilder
@@ -152,13 +152,13 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
 5. **Lehrermaterial** nach `assets/vorlage-lehrermaterial.md`: Unterrichtliche Voraussetzungen,
    ggf. abweichende AFB und erweiterte Operatoren, Erwartungshorizont, Bewertungsmaßstab, Hinweise
    zur Bewertung, Lösungsvorschläge mit Merkmaltabelle und Regeln; Rechnungen mit Code prüfen.
-   **Lösungsbilder** als SVG, nie als Zeichnung aus Zeichen: GRAFCET mit `technologieschema-erstellen`
-   (`typ: grafcet`, Muster `spec-grafcet.yaml`; speichernde Aktionen mit `:=` und Pfeil), Funktionsplan und
-   Netzplan dort aus Grundformen (`spec-fup.yaml`),
+   **Lösungsbilder** als SVG, nie als Zeichnung aus Zeichen: GRAFCET als SVG aus einer Spec
+   (speichernde Aktionen mit `:=` und Pfeil), Funktionsplan und
+   Netzplan ebenso als SVG,
    Struktogramm, Ablauf, Klassen- und Datenmodell mit `fachdiagramm-erstellen`; Namen
    `abbildungen/75_abitur_<kurztitel>_A_loesung_X-Y_<thema>.svg`, eingebunden vor der Merkmaltabelle
    der Teilaufgabe und unter „Digitales Material“ gelistet. Der GRAFCET steht zusätzlich als
-   Text-Tabelle (Zweitkorrektur, T.9), erzeugt mit dem Befehl `textform` aus `technologieschema-erstellen`.
+   Text-Tabelle (Zweitkorrektur, T.9).
 6. **Selbstprüfung (lokal):**
    `python3 scripts/abitur_check.py A_schuelermaterial.md A_lehrermaterial.md [--fach informatik] --vergleich B_schuelermaterial.md B_lehrermaterial.md`
    – prüft Katalog, Korrigierbarkeit (K), Kennzeichen (T, über `scripts/bmk_pruefen.py`) und Zeichnungen
@@ -181,7 +181,7 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
    Kurztexte vor Korrekturbeginn mit der Fachgruppe abstimmen; nach Änderungen am Erwartungshorizont
    Bogen und Mappe neu erzeugen (das Skript überschreibt nie).
 10. **Begleitblatt** abschließen: Einreichungscheckliste, Qualitätscheck, Annahmen und
-    Prüfaufträge, Übergabe. Kollegiale Vorbegutachtung empfehlen.
+    Prüfaufträge, Übergabe. Vorbegutachtung durch eine zweite Lehrkraft empfehlen.
 
 ## Ausgabe
 - `75_abitur_<kurztitel>_A_schuelermaterial.md`, `…_A_lehrermaterial.md`, `…_A_bewertungsbogen.md`,
@@ -209,7 +209,7 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
 - [ ] Aufträge eindeutig (ein Operator je Satz, Zahlwort, Kriterien, keine vagen Wörter)?
 - [ ] Alles, was die Lösung bestimmt, im Schülermaterial (Werte, Kennwerte, Regeln)?
 - [ ] Steuerungstechnik: Kennzeichen in Funktionsbeschreibung, Legende, Liste, Aufgaben und Lösung gleich?
-- [ ] Kennbuchstaben nach DIN EN IEC 81346-2:2020, so kurz wie möglich (Ausgabe genannt); GRAFCET, Schaltzeichen, Adressen normgerecht?
+- [ ] Kennbuchstaben nach DIN EN IEC 81346-2:2020 mit Klasse und Unterklasse (-SJ1, -MA1; Ausgabe genannt); GRAFCET, Schaltzeichen, Adressen normgerecht?
 - [ ] Notationsblatt als Anlage; Steuerungsaufgaben mit SPS, Kleinsteuerung und Mikrocontroller lösbar?
 - [ ] Alle Abbildungen und Lösungsbilder als SVG aus Specs (mit `.drawio.svg`), keine Zeichnung aus Zeichen (Z.1/Z.2 ✅)?
 - [ ] AFB 30/40/30 (Ziel ±5, Grenze ±10 Prozentpunkte) und in jeder Aufgabe I–III; erste Teilaufgabe nicht AFB III?

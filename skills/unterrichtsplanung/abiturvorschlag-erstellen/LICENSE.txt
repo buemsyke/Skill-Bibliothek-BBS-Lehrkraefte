@@ -1,6 +1,6 @@
 # Lizenz
 
-Skill-Bibliothek BBS – frei nutzbar, ohne Namensnennung.
+Skill-Bibliothek BBS – © 2026 buemsyke
 
 ## Erstellung mit KI
 
@@ -10,32 +10,30 @@ Inhalte, fachliche Prüfung, Überarbeitung und Freigabe: buemsyke. Was mit den 
 wird, trägt einen eigenen Transparenzhinweis („KI-gestützt erstellt …“) und bleibt bis zur
 Prüfung durch die Lehrkraft ein Entwurf.
 
-## Texte, Anleitungen und Vorlagen – CC0 1.0
+## Texte, Anleitungen und Vorlagen – CC BY-SA 4.0
 
 Alle Inhalte außer Programmcode (`SKILL.md`, `references/`, `assets/`, `ais-chat/`, README)
-sind unter **CC0 1.0 Universell** gemeinfrei gestellt:
-https://creativecommons.org/publicdomain/zero/1.0/deed.de
+stehen unter der Lizenz **Creative Commons Namensnennung – Weitergabe unter gleichen
+Bedingungen 4.0 International (CC BY-SA 4.0)**:
+https://creativecommons.org/licenses/by-sa/4.0/deed.de
 
-Sie dürfen die Skills ohne Bedingungen nutzen, verändern, mit anderem Material kombinieren und
-weitergeben – auch unter einer anderen Lizenz. Eine Namensnennung ist nicht erforderlich.
+Namensnennung bei Weitergabe: „Skill-Bibliothek BBS“, buemsyke, CC BY-SA 4.0.
 
-## Mit den Skills erstelltes Material
+## Programmcode – MIT
 
-Was Sie mit den Skills erstellen – Arbeitsblätter, Lernsituationen, Klausuren, Abiturvorschläge,
-Simulationen, Quizze und andere Ergebnisse, auch wenn darin Vorlagen aus `assets/` ausgefüllt
-oder Textbausteine übernommen sind –, gehört Ihnen; die Lizenz Ihres Materials legen Sie selbst
-fest. Der KI-Transparenzhinweis im Material ist davon unabhängig (siehe `ki-kennzeichnung`).
+Die Python-Skripte (`scripts/`) stehen unter der MIT-Lizenz; die mitgelieferten Module der
+*eduwerkzeuge* (`scripts/eduwerkzeuge/`) ebenfalls.
 
-## Programmcode – MIT-0
-
-Die Python-Skripte (`scripts/`), auch die mitgelieferten Module der *eduwerkzeuge*
-(`scripts/eduwerkzeuge/`), stehen unter der **MIT No Attribution License (MIT-0)**:
+Copyright (c) 2026 buemsyke
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 and associated documentation files (the "Software"), to deal in the Software without
 restriction, including without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-Software is furnished to do so.
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or
+substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
 BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND

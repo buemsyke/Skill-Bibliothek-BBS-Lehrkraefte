@@ -2,11 +2,11 @@
 name: experiment-planen
 description: Plant Experimente und Schülerversuche für berufsbildende Schulen und das Berufliche Gymnasium – Fragestellung und Hypothese, Variablen, Material und Aufbau, Durchführung, Messwerttabelle mit Einheiten, Auswertung und Fehlerbetrachtung mit Messunsicherheit – als Versuchsanleitung für Lernende, Lehrerfassung mit erwarteten Messwerten und Entwurf der Gefährdungsbeurteilung (Ersatzstoffprüfung, Maßnahmen nach STOP, Entsorgung, Notfall). Prüft per Skript Vollständigkeit, Gefahrenhinweise, Freigabezeile und Messwerte gegen physikalische Grenzen (Faraday, Wirkungsgrad, Einheiten). Ersetzt weder Gefährdungsbeurteilung noch Vorversuch der Lehrkraft und gibt keinen Versuch frei. Verwenden bei „Versuch planen", „Experiment zur Lernsituation", „Versuchsanleitung", „Messprotokoll", „Schülerversuch Elektrolyse", „Wirkungsgrad messen", „Gefährdungsbeurteilung für den Versuch". Nicht für reine Simulationen am Rechner.
 metadata:
-  version: "1.4"
+  version: "1.3"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Experiment planen
@@ -56,7 +56,7 @@ Rechnung*.
    geringste Gefährdung, kleinste Mengen, Schutzkleinspannung.
 4. **Anleitung schreiben** nach `assets/vorlage-versuchsanleitung.md` und
    `references/schuelermaterial.md` – kurz, mit Skizze und Diagramm: Material, **Aufbau als
-   beschriftete Skizze** (SVG mit `fachdiagramm-erstellen`, Schaltung mit `technologieschema-erstellen` bzw. `circuitjs-schaltung-erstellen`
+   beschriftete Skizze** (SVG mit `fachdiagramm-erstellen`
    oder als `ABBILDUNG:`-Platzhalter; nie als Zeichnung aus Zeichen),
    **Durchführung nach Öffnungsgrad** – im Regelfall *angeleitet*: Vorgegeben sind nur die
    Sicherheitsschritte (Spannung, Stoffe, Mengen, Prüfung des Aufbaus durch die Lehrkraft), die

@@ -1,5 +1,5 @@
 Mitgelieferte Kopie aus eduwerkzeuge – NICHT von Hand bearbeiten.
-Version: 0.8.0
+Version: 0.9.0
 Module: check, h5p, quiz
 Hauptkopie: eduwerkzeuge (Quellordner über EDUWERKZEUGE_SRC)
 Erneuern: python3 werkzeuge/bibliothek.py sync

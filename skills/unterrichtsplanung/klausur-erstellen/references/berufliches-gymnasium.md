@@ -125,7 +125,6 @@ je 80 h. Die Reihenfolge legt die Schule fest.
   und vollständiger Musterlösung 🔎 Verfahren und Fristen der Schulbehörde. Mechatronik wird
   seit 2021 zentral geprüft (allgemeiner Teil zu METRO 1 und 2, dazu ein schuleigener Teil)
   🔎 aktuellen Stand prüfen.
-  Vorschläge erstellen: `abiturvorschlag-erstellen`.
 - **Sonstige Leistungen / Mitarbeit:** Projekte, Dokumentationen, Präsentationen, Kolloquien,
   Versuchsprotokolle. Gewichtung gegenüber Klausuren legt die Fachkonferenz fest 🔎. Kriterien
   offenlegen, Einzelanteil bei Gruppenarbeit ausweisen.

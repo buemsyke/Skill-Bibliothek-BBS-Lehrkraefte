@@ -2,7 +2,7 @@
 artefakt: Experiment
 titel: "[Frage des Versuchs]"
 skill: experiment-planen
-skill_version: "1.4"
+skill_version: "1.3"
 stand: JJJJ-MM-TT
 bildungsgang: "[Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld/Lerngebiet]"
@@ -110,4 +110,4 @@ Freigabe: ausstehend
 - Frage, Erwartungswerte, Gefährdungsbeurteilung (Entwurf) – Freigabe durch die Lehrkraft
 - Empfohlen: `material-pruefen` (P, Sicherheit)
 
-> KI-gestützt erstellt (Skill experiment-planen v1.4). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill experiment-planen v1.3). Fachliche Prüfung und Verantwortung: Lehrkraft.

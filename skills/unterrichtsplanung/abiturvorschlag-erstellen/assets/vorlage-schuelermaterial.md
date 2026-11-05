@@ -2,7 +2,7 @@
 artefakt: Abiturvorschlag – Schülermaterial
 titel: "[Thema]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.17"
+skill_version: "1.18"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"                 # Technik | Berufliche Informatik
@@ -18,7 +18,7 @@ vertraulich: true
 status: "KI-Entwurf – fachlich zu prüfen"
 ---
 
-<!-- Formathinweise (nicht Teil des Drucks). abitur_check.py und weitere Prüfskripte
+<!-- Formathinweise (nicht Teil des Drucks). abitur_check.py und die regelbasierte Begutachtung
      lesen dieses Format:
      - Aufgaben „## N. Aufgabe – Titel (insgesamt n BE)“, Teilaufgaben „### N.n Titel (n BE)“.
      - Auftragssatz: Operator zuerst, Imperativ „Sie“, ein Operator je Satz, Umfang als Zahlwort,
@@ -27,8 +27,8 @@ status: "KI-Entwurf – fachlich zu prüfen"
        abhängigen Teilaufgaben (plausibel, aber nicht das richtige Ergebnis).
      - Steuerungstechnik: Technologieschema mit Text-Legende und Funktionsbeschreibung mit allen
        Betriebsmittelkennzeichen, Kontaktart, Grundstellung, Start und Stopp. Kennbuchstaben nach
-       DIN EN IEC 81346-2:2020, so kurz wie möglich: nur die Klasse (-S1, -B1), Unterklasse nur bei
-       verschiedenen Arten einer Klasse (references/normen-technik.md). Ohne Steuerung beide Abschnitte und
+       DIN EN IEC 81346-2:2020 immer mit Klasse und Unterklasse (-SJ1, -BG1, -MA1, -MM1, -EA1;
+       references/normen-technik.md). Ohne Steuerung beide Abschnitte und
        den Hinweis zur Kennzeichnung löschen und die Ausgangslage unter „Handlungssituation“
        beschreiben.
      - Anlagen „## Anlage N – Titel (zu Aufgabe n)“; jede angekündigte Anlage ist vorhanden.
@@ -77,15 +77,15 @@ Aufgaben sind Arbeitsschritte dieses Projekts.]
 
 | BMK | Betriebsmittel | Lage bzw. Aufgabe |
 |---|---|---|
-| -S1 | [Taster Start] | [Bedienpult] |
-| -B1 | [Näherungsschalter …] | [Position …] |
+| -SJ1 | [Taster Start] | [Bedienpult] |
+| -BG1 | [Näherungsschalter …] | [Position …] |
 
 ## Funktionsbeschreibung
 
-**Grundstellung:** [alle Aktoren aus; -B1 (NC) meldet 0, wenn …]
+**Grundstellung:** [alle Aktoren aus; -BG1 (NC) meldet 0, wenn …]
 
 [Ablauf in Sätzen. Jedes Betriebsmittel mit Kennzeichen; Geber mit Kontaktart (NO/NC) und Bedeutung
-des Signals, Aktoren mit Wirkung („-M1 = 1: …“), Zeiten und Zählwerte als Zahlen.]
+des Signals, Aktoren mit Wirkung („-MA1 = 1: …“), Zeiten und Zählwerte als Zahlen.]
 
 **Stopp und Not-Halt:** [Verhalten – oder „Der Not-Halt ist hardwaremäßig gelöst und nicht Teil der
 Aufgabe.“]
@@ -156,7 +156,7 @@ konnten.
 
 | BMK | Betriebsmittel | Operand SPS | Operand Kleinsteuerung | Pin Mikrocontroller | Signal 1 bedeutet | Kontaktart |
 |---|---|---|---|---|---|---|
-| -S1 | [Taster Start] | [%I0.0] | [I1] | [D2] | [Start betätigt] | NO |
+| -SJ1 | [Taster Start] | [%I0.0] | [I1] | [D2] | [Start betätigt] | NO |
 
 ## Anlage [N] – Notation Steuerungstechnik (zu Aufgabe [2])
 

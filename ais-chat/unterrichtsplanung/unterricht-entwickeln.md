@@ -111,7 +111,7 @@ Ordner.
 7. `unterrichtsentwurf-analysieren` nach `unterrichtsentwurf-erstellen`;
    `unterricht-reflektieren` nach der gehaltenen Stunde – seine Konsequenzen gehen in die
    Planung der Folgestunde (`unterrichtsentwurf-erstellen`).
-8. Werkzeug-Skills: `fachdiagramm-erstellen`, `technologieschema-erstellen` und `quizfragen-erstellen` nach dem Material
+8. Werkzeug-Skills: `fachdiagramm-erstellen` und `quizfragen-erstellen` nach dem Material
    (jede Zeichnung eines Artefakts entsteht dort als SVG, nie als Zeichnung aus Zeichen)
    und vor `material-pruefen`; Ausspielen (`lernlandkarte-erstellen`,
    `schuelerseiten-veroeffentlichen`) nach G3; `ki-kennzeichnung` erst nach der Prüfung durch
@@ -119,7 +119,7 @@ Ordner.
 9. `agiles-lernen-mit-ki`: Lernpfad für Lernende nach Lernsituation und Material (Quellen =
    geprüftes Material, Fragenpool aus `quizfragen-erstellen`); AIS-Paket wie Ausspielen erst
    nach G3 und Weitergabe nur nach GV. Lernt die Lehrkraft selbst, steht der Skill allein.
-10. `experiment-planen`, `programmieraufgabe-erstellen`, `technikfolgen-abschaetzen`, `circuitjs-schaltung-erstellen`, `wokwi-simulation-erstellen` wie
+10. `experiment-planen`, `programmieraufgabe-erstellen`, `technikfolgen-abschaetzen` wie
     `unterrichtsmaterial-erstellen`: nach Lernsituation bzw. Entwurf, vor `bloom-taxonomie` und
     `material-pruefen`; Experimente zusätzlich durch **GE** vor dem Einsatz.
 11. Berufliches Gymnasium: Lerngebiet statt Lernfeld, Schuljahrgang und Phase statt
@@ -130,10 +130,6 @@ Ordner.
     Systemprompt begutachten) steht allein. Nie auf Seiten mit Schülerdaten, nie zum Bewerten.
 13. Vorhandene Lernsituation: `lernsituation-analysieren` zuerst (Ausgangsbefund 21), überarbeitet
     wird danach mit `lernsituation-dokumentieren` B – nicht im Prüfbericht.
-14. `klausur-erstellen` **nach** Lernsituation und Material (prüft, was unterrichtet wurde).
-17. `abiturvorschlag-erstellen` (R21) nach Kursfolge und Unterrichtsstand der Qualifikationsphase,
-    Abbildungen (Technologieschemata mit `technologieschema-erstellen`, sonst `fachdiagramm-erstellen`)
-    vor der Einreichung durch die Schule.
 
 ## Grenzen und Verantwortung
 - Ergebnisse sind **Entwürfe**. Fachliche Richtigkeit, Rechtskonformität und Einsatz
@@ -368,7 +364,6 @@ je 80 h. Die Reihenfolge legt die Schule fest.
   und vollständiger Musterlösung 🔎 Verfahren und Fristen der Schulbehörde. Mechatronik wird
   seit 2021 zentral geprüft (allgemeiner Teil zu METRO 1 und 2, dazu ein schuleigener Teil)
   🔎 aktuellen Stand prüfen.
-  Vorschläge erstellen: `abiturvorschlag-erstellen`.
 - **Sonstige Leistungen / Mitarbeit:** Projekte, Dokumentationen, Präsentationen, Kolloquien,
   Versuchsprotokolle. Gewichtung gegenüber Klausuren legt die Fachkonferenz fest 🔎. Kriterien
   offenlegen, Einzelanteil bei Gruppenarbeit ausweisen.
@@ -1435,8 +1430,7 @@ Reihenfolgeregeln aus der SKILL.md gelten immer.
 ## R7 – Aufgaben und Leistungsüberprüfung schärfen
 1. `bloom-taxonomie` A – Ist-Profil
 2. `bloom-taxonomie` C bzw. B – fehlende Stufen ergänzen
-3. [`klausur-erstellen` – wenn eine Klassenarbeit gewünscht ist; sonst
-   `unterrichtsmaterial-erstellen` mit Erwartungshorizont]
+3. `unterrichtsmaterial-erstellen` – Aufgaben mit Erwartungshorizont
 4. [`dqr-zuordnen` B – Niveauabgleich]
 5. `material-pruefen` P (Lösbarkeit, Punkte, Rechnungen) → **G3**
 **Ergebnis:** 45, 40, (10), 90, 99
@@ -1513,10 +1507,9 @@ Programmierung", „Unsere LS ING4.1 einsatzfertig machen".
 7. [`programmieraufgabe-erstellen` – Mikrocontroller, Python, G-Code mit Codeprüfung] → 43
 8. [`technikfolgen-abschaetzen` – Folgen der Lösung, Quellenmappe] → 44
 9. `bloom-taxonomie` A → 45 → **G2**
-10. [`klausur-erstellen` `--typ klausur-bg`] → 70
 11. `material-pruefen` F+P+C+L+M (Rechnungen, Code, Experiment, Links, Metadaten) → 90 → **G3**
 12. Abschlussbericht: Verbindlichkeit der Befunde trennen (RRL/Erlass · Leitlinie · Bibliothek)
-**Ergebnis:** 00, (10), (21), 20, 30, 40…, (41), (43), (44), 45, (70), 90, 99 · Notenpunkte,
+**Ergebnis:** 00, (10), (21), 20, 30, 40…, (41), (43), (44), 45, 90, 99 · Notenpunkte,
 fiktive Auftraggeber, keine Personendaten in Lastenheften.
 
 ## R17 – Technikfolgenabschätzung und Urteilsbildung
@@ -1592,21 +1585,6 @@ Fachberatung, 23.10.2026): Der Handlungskreis wird **je Lernsituation** geschlos
 7. `schuelerseiten-veroeffentlichen` P → 94, `ki-kennzeichnung` → 96, **GV**
 **Ergebnis:** 40, 20, (60), 94, 96, 99 · Wortzahl vorher/nachher und Zeitbilanz im
 Abschlussbericht; Analysebogen je LS mit eigenem Beleg, nicht aus einer Vorlage.
-
-## R21 – Abiturvorschlag (dezentral) erstellen
-**Anliegen:** „Wir brauchen die Abiturvorschläge A und B für Technik – Informationstechnik", „Unser
-Vorschlag soll ohne Auflagen genehmigt werden". Maßstab: Katalog der Begutachtung
-(`pruefkriterien-abitur-bg-technik.md` im Skill `abiturvorschlag-erstellen`).
-1. [Planungsakte bzw. Kursfolge, Unterrichtsstand je Kurshalbjahr, Hilfsmittel klären – Pflicht]
-2. `abiturvorschlag-erstellen` – Bauplan A und B, Schüler- und Lehrermaterial,
-   `abitur_check.py --vergleich` (mit BMK-Abgleich), Lösbarkeitsprobe, Korrekturprobe,
-   Bewertungsbogen, Begleitblatt → 75
-2a. [`technologieschema-erstellen` – Technologieschema mit Legende, Lösungsbilder] → 46
-3. [Kollegiale Vorbegutachtung nach dem Katalog, `bmk_pruefen.py` bei Steuerungstechnik]
-4. Lehrkraft und Fachgruppe: Probebearbeitung mit Zeitmessung, Fachgruppenbeschluss,
-   Dokumentvorlage der Behörde, Endfassung erneut prüfen, Einreichung durch die Schule
-**Ergebnis:** 75 (A, B, Bewertungsbögen, Begleitblatt) · Vertraulich: nur in der freigegebenen
-KI-Umgebung bearbeiten.
 
 ## Anhang: references/schucu-bbs-2024.md
 
@@ -1790,8 +1768,6 @@ Situationsmaterial, Vorlagen, Hilfekarten, Versuchsanleitung, Programmieraufgabe
 Lektion, Lernlandkarte, Quiz und Schülerseiten. Ausgenommen ist der Lehrerteil
 (`# Lösungen und Erwartungshorizont`, `# Didaktische Hinweise`). Vorgabe der Fachberatung
 (31.10.2026). Prüfung: `scripts/schuelermaterial_pruefen.py`, falls vorhanden.
-Klausur- und Abiturformat haben eigene Richtwerte (`klausur-erstellen`, `abiturvorschlag-erstellen`);
-die vier Regeln gelten dort sinngemäß.
 
 ## Inhalt
 1. Vier Regeln
@@ -1820,8 +1796,8 @@ Erfolgskriterien bleiben vollständig.
 
 | Inhalt | Darstellung | so entsteht sie |
 |---|---|---|
-| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen`; Technologieschema mit `technologieschema-erstellen` |
-| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen`; GRAFCET und Funktionsplan mit `technologieschema-erstellen` |
+| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen` |
+| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen` |
 | System, Energie- und Datenfluss, Regelkreis | Blockschaltbild | `fachdiagramm-erstellen` |
 | Zusammenhang zweier Größen | Diagramm, Kennlinie mit beschrifteten Achsen | aus gerechneten Werten oder dem Datenblatt als SVG erzeugen (Code), nie geschätzt |
 | Vergleich, Kriterien, Kenndaten | Tabelle, Matrix | Markdown-Tabelle |
@@ -1973,22 +1949,17 @@ abgeschrieben.
 | `material-pruefen` | Material | Referenzunterlagen, Websuche | Prüfbericht F/P/C/S/L/M (Fakten, Plausibilität, Code, Schülermaterial, Links, Metadaten) mit Ampel und Prüfaufträgen | 90 |
 | `unterrichtsentwurf-analysieren` | Entwurf (ohne Schülerdaten) | Material, Seminarvorgaben | Selbstcheck: Stärken, Entwicklungsfelder, Reflexionsfragen – keine Stufen; prüfungsrelevant gekennzeichnet (Hinweise statt Formulierungen, Kennzeichnungstext) | 35 |
 | `unterricht-reflektieren` | Plan (Entwurf oder Beschreibung) + Notizen zum Verlauf | Entwurfscheck, Stundenergebnis, Rückmeldung der Lerngruppe (zusammengefasst), Beobachtungen Hospitierender | Reflexion: Plan und Verlauf (gerechnet), Zielerreichung mit Belegen, ≤ 3 Schwerpunkte, Alternativen, Konsequenzen, Fragen zur Vertiefung; Modus B Gesprächsvorlage | 36 |
-| `klausur-erstellen` | Grundlage + Unterrichtsstand | LS, Material, Abdeckungsmatrix, Notenschlüssel der Schule | Aufgabenteil (kurze Aufträge, Antwortraum je Operator) + Erwartungshorizont (Korrekturschablone, Punkteübersicht mit Bezug und Antwortformat, AFB-Nachweis, Notenschlüssel), Aufsichtsblatt bei fremder Aufsicht, Varianten | 70 |
 | `agiles-lernen-mit-ki` | Lernthema + wer lernt (Lehrkraft selbst oder Lerngruppe) | Quellen, Musterprüfungen, Quiz als Fragenpool, Planungsakte | Lernakte (Kickoff, Lernpfad in Sprints, Reviews, Retro), Probeprüfung mit Auswertung, Rollenspiel, AIS-Paket (Lernszenarien, Dialogpartner) | 93 |
 | `ki-chatbot-einrichten` | Zweck des Chatbots **oder** vorhandener Systemprompt | LS, geprüftes Material, Erwartungshorizont, Bewertungsraster, Plattform | Paket (Steckbrief, Systemanweisung aus Bausteinen, Begrüßung, Probelauf mit Pflichttests, Freigabezeile) bzw. Promptgutachten; Prüfung per `anweisung_pruefen.py` | 95 |
-| `abiturvorschlag-erstellen` | Fach, Schwerpunkt, Kursfolge und Unterrichtsstand der Qualifikationsphase | Hilfsmittel, Software, Kennzeichnung des Unterrichts, Planungsakte | Vorschläge A und B: Schülermaterial (Funktionsbeschreibung mit BMK), Lehrermaterial (Unterrichtliche Voraussetzungen, Erwartungshorizont, Musterlösung mit Bewertungsmerkmal je BE), Bewertungsbogen, Begleitblatt mit Einreichungscheckliste; `abitur_check.py`, `bmk_pruefen.py` | 75 |
 | `experiment-planen` | Fragestellung oder Versuch + Bezug | LS, Sammlungsausstattung, Herstellerangaben | Versuchsanleitung (Hypothese, Variablen, Messtabelle, Auswertung, Messunsicherheit), Lehrerfassung mit Erwartungswerten, Entwurf der Gefährdungsbeurteilung mit Freigabezeile – gibt nie frei | 41 |
 | `programmieraufgabe-erstellen` | Ziel + Sprache/Plattform (C++/Arduino/ESP32, Python, G-Code) | LS, Hardware, Startcode | Aufgabe mit Startcode, Testfällen, gestuften Hilfen, Musterlösung, Erwartungshorizont; Fehlersuchaufgabe; Codeprüfung | 43 |
 | `technikfolgen-abschaetzen` | Technik bzw. Vorhaben + Bezug | Material, Quellenliste, Fächerverbindung | TFA-Dossier (Hypothesen, Quellenmappe mit Typ, Perspektiven, Wertbereiche, Zielkonflikt, Urteil) mit Erwartungshorizont, Rollenkarten für eine Anhörung | 44 |
-| `circuitjs-schaltung-erstellen` | Schaltungsart oder Übung (Gleichstrom, Wechselstrom, Elektronik) | LS, Werte, vorhandene Versuchsseiten | Schaltungstext für circuit.js aus geprüften Vorlagen mit Messgeräten und Bezeichnern, Erwartungswerte aus Rechnung, Messung in der Engine, Schaltungsblatt; ersetzt keinen Realversuch | 47 |
-| `wokwi-simulation-erstellen` | Steuerungsaufgabe (Funktionsbeschreibung, Zuordnungsliste, GRAFCET bzw. Logikplan) | Lehrermaterial mit Lösung, Plattform, Planungsakte | Wokwi-Projekt aus einer Spec (Sketch nach Notationsblatt, Schaltung, Szenarien), Testfälle aus der Funktionsbeschreibung im Logikmodell und im Sketch geprüft, Zeitablauf, Begleitblatt | 48 |
 
 ### Ausspielen und Werkzeuge (eduwerkzeuge mitgeliefert, `scripts/edu.py`)
 
 | Skill | braucht (mind.) | nutzt, wenn vorhanden | liefert | Nr. |
 |---|---|---|---|---|
 | `fachdiagramm-erstellen` | Beschreibung, Skizze oder Material | Projektkonvention `lessons/*/diagrams` | YAML-Spec, `.drawio.svg`/`.drawio`/PNG, Diagrammblatt mit Alternativtext | 42 |
-| `technologieschema-erstellen` | Aufgabentext, Skizze oder Beschreibung der Anlage | Notation der Kennzeichen (81346 oder Vorlage), Funktionsbeschreibung, Planungsakte | YAML-Spec, SVG und PNG, Legende (Kennzeichen, Betriebsmittel, Lage/Aufgabe), Schemablatt mit Grundstellung | 46 |
 | `quizfragen-erstellen` | Inhalt (LS, Material, Themenliste) | Erwartungshorizonte, Moodle-Kategorie | Quizquelle, GIFT, H5P, Begleitblatt mit Bezug und AFB | 65 |
 | `lernlandkarte-erstellen` | LS, Entwurf oder Material | Quiz, Diagramme, Datei-Adressen in edumaps | Edumap-Quelle, Import-JSON, Begleitblatt | 92 |
 | `schuelerseiten-veroeffentlichen` | Kursprojekt (`lessons/`) oder Material mit Lehrerteil | Prüfbericht, `phase_config.yaml` | Schülerseiten bzw. Schülerfassung, Ausgabeprüfung, Protokoll mit Freigabe | 94 |
@@ -2041,17 +2012,10 @@ abgeschrieben.
   begründen → folgern;
   Alternative und konkrete Konsequenz für die Folgestunde; Lernende nur als Lerngruppe oder in
   Anzahlen; keine Note; Prüfungsunterricht nur zur eigenen Vorbereitung, gekennzeichnet.
-- **klausur-erstellen:** nur Unterrichtetes prüfen (Bezug je Teilaufgabe); ein durchgehender
-  Fall; Operator + genau ein AFB je Teilaufgabe, Einstieg AFB I; AFB 30/40/30 (±10) gerechnet;
-  ≥ 1,5 min je Punkt, ≤ 10 Hauptaufgaben (BG: BE, EPA-Operatoren, Notenpunkte); Erwartungshorizont mit Aspekten, Punkten,
-  Alternativen, Toleranz, Folgefehlerregel, Korrekturschablone; Notenschlüssel aus der
-  Gesamtpunktzahl; Auftrag kurz (Operator zuerst), Freitext höchstens rund 30 % der Punkte,
-  Antwortraum je Operator, Abbildung auf derselben Seite wie die Teilaufgaben.
 - **fachdiagramm-erstellen:** Bauart nach Inhalt (flow, struktogramm, chen, uml/relational);
   YAML-Spec statt Zeichengrafik; Rückführungen über eine eigene Zeile; Alternativtext und
   Bildunterschrift; keine Normschaltpläne vortäuschen; Lösungsdiagramme getrennt ablegen;
   Klausurabbildungen als Lückenbild, Fremdlösung mit Fehler und Lösungsbild.
-- **technologieschema-erstellen:** Bild der Anlage mit Betriebsmitteln, kein Schalt- oder Pneumatikplan; Bauteile und Anker in YAML, Legende per Werkzeug; Kennzeichen nach 81346 oder Notation der Vorlage (nie mischen); Grundstellung im Bild und im Text gleich; Bild verrät die Lösung nicht; Vorlagen Dritter nur mit geklärten Rechten.
 - **quizfragen-erstellen:** eine Kompetenz je Frage; Quelle `## Übung N – … (H5P.Typ) | AFB X`
   mit `**Titel:**`; Typ nach Lernziel; höchstens etwa die Hälfte AFB I; Ablenker aus typischen
   Fehlern mit Rückmeldung; Export nur mit `edu-quiz`, GIFT nie von Hand.
@@ -2073,11 +2037,6 @@ abgeschrieben.
   still weg; veröffentlichen erst nach Freigabezeile und Auftrag.
 - **ki-kennzeichnung:** erst nach Prüfung kennzeichnen; KI-System, verantwortliche Person,
   Stand, Link zur Erklärung; Form passend zum Medium; keine Rechtspflicht behaupten.
-- **abiturvorschlag-erstellen:** Maßstab = Katalog der Begutachtung; nur Unterrichtetes, Bezug je
-  Aufgabe konkret; 300 min, 120 BE, AFB 30/40/30 und je Aufgabe I–III; ein Operator je Satz,
-  Umfang als Zahlwort, keine vagen Wörter; Steuerungstechnik mit denselben BMK in
-  Funktionsbeschreibung, Legende, Liste, Aufgaben und Lösung; jede BE an einem beobachtbaren
-  Merkmal; Korrekturprobe; Vorschläge A und B gleichwertig.
 - **experiment-planen:** Fragestellung und Hypothese, unabhängige/abhängige/konstante Variablen,
   Aufbau, Messtabelle mit Einheiten im Kopf, Auswertung mit Messunsicherheit; Erwartungswerte
   nachrechnen (z. B. Faraday-Grenze); Gefährdungsbeurteilung nur als Entwurf (STOP,
@@ -2090,14 +2049,6 @@ abgeschrieben.
   nie eine Interessenquelle als einziger Beleg; mindestens drei Perspektiven mit Pro und
   Contra; Wertbereiche, Zielkonflikt, Maßnahmen; ergebnisoffen (keine „Einwandbehandlung“),
   Urteil über Kriterien bewerten.
-- **circuitjs-schaltung-erstellen:** nur aus den geprüften Vorlagen bauen (`schaltung.py vorlagen`);
-  Voltmeter parallel, Amperemeter in Reihe, Bezeichner wie im Aufgabentext; Erwartungswerte
-  rechnen, nicht schätzen; ohne Skript nur Aufbau und Werte beschreiben, keinen Schaltungstext
-  erfinden. Simulation ergänzt den Realversuch (`experiment-planen`), ersetzt ihn nicht.
-- **wokwi-simulation-erstellen:** alles aus der Spec erzeugen (`wokwi.py alles`), nie Sketch oder
-  Schaltung von Hand schreiben; Testfälle aus der Funktionsbeschreibung, nicht aus dem Programm;
-  Unklarheiten der Aufgabe als Annahme; Lösung bleibt Lehrermaterial. Ohne Skript nur die Spec
-  liefern und den Testlauf als Prüfauftrag nennen.
 
 ## B. Optionale Skills (nur nutzen, wenn installiert)
 
@@ -2200,9 +2151,6 @@ Emojis ohne Funktion, Floskeln oder Inhalte, die kein Auftrag braucht. Richtwert
 `schuelermaterial.md`, falls vorhanden. Die Pflichtabschnitte (unten) stehen im Teil für die
 Lehrkraft (nach `# Lösungen und Erwartungshorizont` bzw. `# Didaktische Hinweise`), nie im Teil für
 Lernende.
-Ausgenommen von den Richtwerten sind Klausur- und Abiturformat mit eigenen Regeln
-(`klausur-erstellen`, `abiturvorschlag-erstellen`: Operator-Aufträge bis rund 40 bzw. 45 Wörter,
-Antwortraum je Operator); kurz, eindeutig und ohne Dekoration bleiben auch sie.
 
 **Zeichnungen** (Vorgabe der Fachberatung, 01.11.2026): Jede Zeichnung in einem Artefakt – Material
 für Lernende, Lösung, Erwartungshorizont, Tafelbild, Entwurf, Begleitblatt – entsteht als **SVG aus
@@ -2216,8 +2164,7 @@ im Codeblock), nie als Mermaid in der Ausgabe, nie als von Hand geschriebenes SV
 | Blockschaltbild, Anlagen- und Systemübersicht, Ablauf, Regelkreis, Struktogramm, ER-Modell, UML, Relationenschema | `fachdiagramm-erstellen` |
 | Kennlinie, Messwertdiagramm | aus den Werten per Code als SVG (z. B. matplotlib), Wertetabelle daneben |
 | Foto, Werkstückzeichnung, fremde Abbildung | Datei mit Quelle und Lizenz, sonst Platzhalter `[ABBILDUNG: Inhalt, Zweck, Quelle]` |
-| Anlagenbild (Technologieschema), Schaltplanauszug mit Schaltzeichen, GRAFCET, Funktionsplan (FUP), Netzplan | `technologieschema-erstellen` |
-| Simulationsschaltung | `circuitjs-schaltung-erstellen` |
+| GRAFCET, Funktionsplan, Schaltplan | Fachsoftware; im Text zusätzlich als Tabelle (Schritt, Aktion, Transition) |
 
 Erlaubt bleiben Text-Tabellen derselben Inhalte (GRAFCET in Textform, Zuordnungsliste) für die
 Zweitkorrektur und die Barrierefreiheit; Verzeichnisbäume und Programmcode sind keine Zeichnungen.
@@ -2248,14 +2195,9 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 43 | Programmieraufgabe (Aufgabe, Codeordner `43_code/`, Erwartungshorizont) | programmieraufgabe-erstellen |
 | 44 | Technikfolgenabschätzung (Dossier, Quellenmappe, Rollenkarten) | technikfolgen-abschaetzen |
 | 45 | Taxonomie-Analyse | bloom-taxonomie |
-| 46 | Technologieschema (Schemablatt mit Legende, Specs unter `schema/`, SVG unter `abbildungen/`) | technologieschema-erstellen |
-| 47 | Simulationsschaltung (circuit.js: Schaltungstext, Messgeräte mit Erwartungswerten, Begleitblatt) | circuitjs-schaltung-erstellen |
-| 48 | Mikrocontroller-Simulation (Wokwi: Spec, Projektordner mit Sketch, Schaltung und Szenarien, Zeitablauf, Begleitblatt) | wokwi-simulation-erstellen |
 | 50 | Sprachsensible Fassung | sprachsensibel-ueberarbeiten |
 | 60 | Differenzierung | differenzierung-erstellen |
 | 65 | Quiz (Quelle, GIFT, H5P, Begleitblatt) | quizfragen-erstellen |
-| 70 | Klassenarbeit / Lernzielkontrolle mit Erwartungshorizont | klausur-erstellen |
-| 75 | Abiturvorschlag (dezentral): Schüler- und Lehrermaterial je Vorschlag, Bewertungsbogen, Begleitblatt | abiturvorschlag-erstellen |
 | 90 | Prüfbericht | material-pruefen |
 | 92 | Lernlandkarte (edumaps: Quelle, Import-JSON, Begleitblatt) | lernlandkarte-erstellen |
 | 93 | Lernakte, Probeprüfung, AIS-Paket (agiles Lernen mit KI) | agiles-lernen-mit-ki |
@@ -2264,12 +2206,8 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 96 | KI-Kennzeichnung (Protokoll) | ki-kennzeichnung |
 | 99 | Abschlussbericht (Paketübersicht, Qualitätscheck, konsolidierte Prüfaufträge) | unterricht-entwickeln |
 
-`abiturvorschlag-erstellen` (Nr. 75) hält Schüler- und Lehrermaterial einreichungsfertig: Kopf und
-Pflichtabschnitte stehen im **Begleitblatt** (`75_abitur_<kurztitel>_begleitblatt.md`), nicht in den
-Einreichungsunterlagen.
-
-**Werkzeug-Skills** (Nr. 42, 46, 47, 48, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
-(`edu-diagramm`, `edu-technologieschema`, `schaltung.py`, `wokwi.py`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
+**Werkzeug-Skills** (Nr. 42, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
+(`edu-diagramm`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
 Artefakt mit Pflichtabschnitten – diese hätten in der Quelle Folgen für die Ausgabe –, sondern
 Kopf und Pflichtabschnitte stehen in einem **Begleitblatt** (`…_begleitblatt.md`,
 Diagrammblatt). Nummern 92–96 (Ausspielen) folgen auf den Prüfbericht: veröffentlicht wird

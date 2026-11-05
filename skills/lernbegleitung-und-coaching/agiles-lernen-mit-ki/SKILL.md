@@ -7,7 +7,7 @@ metadata:
   bereich: planung
   stand: "2026-11"
   grundlage: "Röttger, N.: Agil und strukturiert – eine Umgebung für KI-gestütztes Lernen, heise Developer, 10.10.2026"
-license: CC0 1.0 (Texte), MIT-0 (Skripte) – siehe LICENSE.txt
+license: CC BY-SA 4.0 (Texte), MIT (Skripte) – siehe LICENSE.txt
 ---
 
 # Agiles Lernen mit KI

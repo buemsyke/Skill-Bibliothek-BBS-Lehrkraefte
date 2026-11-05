@@ -2,7 +2,7 @@
 artefakt: Klassenarbeit – Aufsichtsblatt
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.11"
+skill_version: "1.12"
 stand: JJJJ-MM-TT
 vertraulich: true
 status: "KI-Entwurf – fachlich zu prüfen"
@@ -50,4 +50,4 @@ _____________________________________________________________________
 
 Aufgabenblätter bitte gesammelt im Fach der Fachlehrkraft ablegen: [Ort].
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.11). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.12). Fachliche Prüfung und Verantwortung: Lehrkraft.

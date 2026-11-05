@@ -96,8 +96,7 @@ Reihenfolgeregeln aus der SKILL.md gelten immer.
 ## R7 – Aufgaben und Leistungsüberprüfung schärfen
 1. `bloom-taxonomie` A – Ist-Profil
 2. `bloom-taxonomie` C bzw. B – fehlende Stufen ergänzen
-3. [`klausur-erstellen` – wenn eine Klassenarbeit gewünscht ist; sonst
-   `unterrichtsmaterial-erstellen` mit Erwartungshorizont]
+3. `unterrichtsmaterial-erstellen` – Aufgaben mit Erwartungshorizont
 4. [`dqr-zuordnen` B – Niveauabgleich]
 5. `material-pruefen` P (Lösbarkeit, Punkte, Rechnungen) → **G3**
 **Ergebnis:** 45, 40, (10), 90, 99
@@ -174,10 +173,9 @@ Programmierung", „Unsere LS ING4.1 einsatzfertig machen".
 7. [`programmieraufgabe-erstellen` – Mikrocontroller, Python, G-Code mit Codeprüfung] → 43
 8. [`technikfolgen-abschaetzen` – Folgen der Lösung, Quellenmappe] → 44
 9. `bloom-taxonomie` A → 45 → **G2**
-10. [`klausur-erstellen` `--typ klausur-bg`] → 70
 11. `material-pruefen` F+P+C+L+M (Rechnungen, Code, Experiment, Links, Metadaten) → 90 → **G3**
 12. Abschlussbericht: Verbindlichkeit der Befunde trennen (RRL/Erlass · Leitlinie · Bibliothek)
-**Ergebnis:** 00, (10), (21), 20, 30, 40…, (41), (43), (44), 45, (70), 90, 99 · Notenpunkte,
+**Ergebnis:** 00, (10), (21), 20, 30, 40…, (41), (43), (44), 45, 90, 99 · Notenpunkte,
 fiktive Auftraggeber, keine Personendaten in Lastenheften.
 
 ## R17 – Technikfolgenabschätzung und Urteilsbildung
@@ -254,17 +252,3 @@ Fachberatung, 23.10.2026): Der Handlungskreis wird **je Lernsituation** geschlos
 **Ergebnis:** 40, 20, (60), 94, 96, 99 · Wortzahl vorher/nachher und Zeitbilanz im
 Abschlussbericht; Analysebogen je LS mit eigenem Beleg, nicht aus einer Vorlage.
 
-## R21 – Abiturvorschlag (dezentral) erstellen
-**Anliegen:** „Wir brauchen die Abiturvorschläge A und B für Technik – Informationstechnik", „Unser
-Vorschlag soll ohne Auflagen genehmigt werden". Maßstab: Katalog der Begutachtung
-(`pruefkriterien-abitur-bg-technik.md` im Skill `abiturvorschlag-erstellen`).
-1. [Planungsakte bzw. Kursfolge, Unterrichtsstand je Kurshalbjahr, Hilfsmittel klären – Pflicht]
-2. `abiturvorschlag-erstellen` – Bauplan A und B, Schüler- und Lehrermaterial,
-   `abitur_check.py --vergleich` (mit BMK-Abgleich), Lösbarkeitsprobe, Korrekturprobe,
-   Bewertungsbogen, Begleitblatt → 75
-2a. [`technologieschema-erstellen` – Technologieschema mit Legende, Lösungsbilder] → 46
-3. [Kollegiale Vorbegutachtung nach dem Katalog, `bmk_pruefen.py` bei Steuerungstechnik]
-4. Lehrkraft und Fachgruppe: Probebearbeitung mit Zeitmessung, Fachgruppenbeschluss,
-   Dokumentvorlage der Behörde, Endfassung erneut prüfen, Einreichung durch die Schule
-**Ergebnis:** 75 (A, B, Bewertungsbögen, Begleitblatt) · Vertraulich: nur in der freigegebenen
-KI-Umgebung bearbeiten.

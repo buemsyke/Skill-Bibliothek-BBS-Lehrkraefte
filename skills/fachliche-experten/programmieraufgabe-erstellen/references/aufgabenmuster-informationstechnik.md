@@ -7,7 +7,6 @@ Gymnasium eines anderen Landes 2018/19–2023/24 (Aufgabenhefte und Musterlösun
 in eigenen Worten, keine Aufgabentexte übernommen, alle Beispiele erfunden. Verbindlich bleiben die
 Vorgaben Niedersachsens: Format, Operatorenliste des Fachs, Erwartungshorizont mit
 Bewertungsmerkmalen. Die Muster sind Baupläne für Fragestellungen, keine Texte zum Abschreiben.
-Einordnung der Hefte und Fundstellen je Muster: `abitur-aufgabenformat-vergleich.md` im Skill `abiturvorschlag-erstellen`.
 
 ## Inhalt
 1. Gebrauch
@@ -458,7 +457,6 @@ Werten (kleine ganze Zahlen); Clusterbild mit markierten Zentren.
 
 ## 9. Daten: ER-Modell und SQL
 
-> **Abiturvorschläge im Schwerpunkt Informationstechnik:** Datenbankaufgaben nicht aus den Vergleichsheften übernehmen (Entscheidung der Fachberatung, 31.10.2026; `abitur-konstruktion.md` Abschn. 3 im Skill `abiturvorschlag-erstellen`). Die Festlegungen unten gelten für jede Datenbankaufgabe.
 
 **D1 ER-Modell aus einer Anforderungsliste** · AFB II/III · 7–9 BE
 - Schablone: „Entwerfen Sie das ER-Modell in dritter Normalform; kennzeichnen Sie die

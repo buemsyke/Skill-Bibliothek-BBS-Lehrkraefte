@@ -348,7 +348,7 @@ und E (Ende).
 Regeln:
 - Zeilen aus den Kompetenzen der Lernsituation ableiten; die Spalte *Nachweis* verbindet sie mit
   den Aufgaben. Aufgaben einer Leistungsüberprüfung können sich auf dieselben Zeilen
-  beziehen (`klausur-erstellen`, Spalte Bezug).
+  beziehen.
 - Am Ende vergleichen (Abschn. 15).
 - Die Bögen bleiben bei den Lernenden; keine Sammlung oder Auswertung je Person.
 
