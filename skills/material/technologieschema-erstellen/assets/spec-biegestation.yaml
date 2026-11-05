@@ -1,0 +1,76 @@
+# Muster: Biegestation – drei Zylinder mit Endlagenschaltern, Bedienpult, Matrize.
+# Kennzeichen: Klasse und Unterklasse (-MM1 Zylinder, -BG1 Zylinderschalter, -SJ1 Taster, -PF1 Leuchtmelder).
+# Ausgangspunkt für Anlagen mit Zylindern. Zylinder: x, y = obere linke Ecke des Gehäuses;
+# Sensoren sitzen an der Gehäusewand (pos 0 = Boden, 1 = Stangenseite); Pfeile laufen über Anker
+# ("-MM1@spitze:64,-32" = 64 rechts und 32 über der Stangenspitze von -MM1).
+titel: "Abbildung 1 – Technologieschema der Biegestation"
+alt: "Biegestation mit Spannzylinder -MM1 und Biegezylinder -MM2 senkrecht über der Matrize, Rollzylinder -MM3 waagerecht links davon, Zylinderschalter -BG1 bis -BG6 an den Endlagen, Bedienpult mit -SJ1, -SJ2 und -PF1."
+out: abbildungen/46_biegestation
+breite: 720
+hoehe: 530
+fusszeile:
+  - "Grundstellung: alle Zylinder eingefahren, Zuschnitt am Anschlag eingelegt; Pfeile: Bewegung beim Ausfahren."
+  - "Zylinderschalter -BG1 … -BG6 (■) an den Endlagen; Kennzeichnung nach DIN EN IEC 81346-2:2020."
+elemente:
+  - typ: bedienfeld
+    x: 40
+    y: 40
+    b: 230
+    h: 112
+    titel: Bedienpult
+    eintraege:
+      - {typ: taster, id: "-SJ1", name: Start, funktion: "Startet den Zyklus", r: 17}
+      - {typ: taster, id: "-SJ2", name: Stopp, farbe: dunkelgrau, funktion: "Beendet den Zyklus", r: 17}
+      - {typ: leuchte, id: "-PF1", name: "Zyklus läuft", funktion: "leuchtet, solange der Zyklus läuft", r: 17}
+  - typ: polygon
+    ref: matrize
+    punkte: [[400, 392], [660, 392], [660, 512], [426, 512], [426, 418], [400, 418]]
+    fuellung: grau
+  - {typ: etikett, x: 545, y: 470, text: "Matrize mit Biegedorn", ausrichtung: mitte, kursiv: true}
+  - {typ: rechteck, x: 650, y: 372, b: 10, h: 20, fuellung: mittelgrau}
+  - {typ: etikett, x: 655, y: 351, text: Anschlag, ausrichtung: mitte, kursiv: true, ziel: [655, 372]}
+  - {typ: rechteck, x: 336, y: 386, b: 314, h: 6, fuellung: dunkelgrau}
+  - {typ: etikett, x: 470, y: 357, text: Zuschnitt, ausrichtung: mitte, kursiv: true, ziel: [470, 386]}
+  - typ: zylinder
+    id: "-MM1"
+    name: Spannen
+    funktion: "Spannzylinder, spannt den Zuschnitt auf der Matrize"
+    x: 556
+    y: 150
+    laenge: 110
+    breite: 36
+    stange: 60
+    werkzeug: platte
+    werkzeug_b: 56
+    sensoren:
+      - {id: "-BG1", pos: 0.08, seite: rechts, funktion: "meldet eingefahren"}
+      - {id: "-BG2", pos: 0.41, seite: rechts, funktion: "meldet ausgefahren"}
+  - typ: zylinder
+    id: "-MM2"
+    name: Biegen
+    funktion: "Biegezylinder"
+    x: 352
+    y: 150
+    stange: 60
+    werkzeug: platte
+    werkzeug_b: 58
+    sensoren:
+      - {id: "-BG3", pos: 0.08, seite: links, funktion: "meldet eingefahren"}
+      - {id: "-BG4", pos: 0.64, seite: links, funktion: "meldet ausgefahren"}
+  - typ: zylinder
+    id: "-MM3"
+    name: Einrollen
+    x: 96
+    y: 387
+    ausfahrt: rechts
+    laenge: 110
+    breite: 36
+    stange: 88
+    werkzeug: platte
+    werkzeug_b: 50
+    sensoren:
+      - {id: "-BG5", pos: 0.08, seite: oben, funktion: "meldet eingefahren"}
+      - {id: "-BG6", pos: 0.8, seite: oben, funktion: "meldet ausgefahren"}
+  - {typ: linie, punkte: ["-MM1@spitze:64,-32", "-MM1@spitze:64,0"], pfeil: ende}
+  - {typ: linie, punkte: ["-MM2@spitze:-34,-32", "-MM2@spitze:-34,0"], pfeil: ende}
+  - {typ: linie, punkte: ["-MM3@spitze:-48,20", "-MM3@spitze:-14,20"], pfeil: ende}

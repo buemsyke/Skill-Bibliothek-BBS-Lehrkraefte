@@ -2,7 +2,7 @@
 name: programmieraufgabe-erstellen
 description: Erstellt Programmieraufgaben für berufsbildende Schulen und das Berufliche Gymnasium – Mikrocontroller (Arduino, ESP32) in C/C++, Python und CNC-Programme in G-Code (DIN 66025, PAL) – mit Ausgangssituation aus der Lernsituation, Anforderungen, Startcode, Testfällen mit Prüfwerten, gestuften Hilfen, Musterlösung und Erwartungshorizont, auch als Fehlersuchaufgabe mit dokumentierten Fehlern oder als Parsons-Aufgabe. Prüft lokal per Skript (Python-Syntax, C/C++ mit g++ und Arduino-Stub, Dezimalkomma, G-Code mit Vorschub, Kreisbögen, Spindel, Radiuskorrektur, Programmende, Verfahrbereich und PAL-Zyklen), erfindet keine Bibliotheksfunktionen, Pinbelegungen oder Steuerungsdialekte. Für Blockprogrammierung (App Inventor, Scratch) Aufgabe und Prüfliste ohne Skriptprüfung. Verwenden bei „Programmieraufgabe", „Arduino-Aufgabe", „ESP32 Messwert", „CNC-Programm schreiben lassen", „G-Code-Übung", „Fehlersuche im Code", „Code im Erwartungshorizont prüfen".
 metadata:
-  version: "1.4"
+  version: "1.5"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -49,7 +49,7 @@ steht als Annahme im Kopf oder wird aus dem gelieferten Datenblatt bzw. Handbuch
 1. **Aufgabe aus der Situation:** Was soll das Programm im Auftrag leisten? Messbare
    Anforderungen (Eingaben, Ausgaben, Einheiten, Grenzwerte) als Tabelle; Situation in
    höchstens drei Sätzen (`references/schuelermaterial.md`). Dazu die **Darstellung, mit der
-   programmiert wird:** Anschlussbild bzw. Schaltplan (Pins, Sensor, Aktor), Sensorkennlinie als Diagramm aus den Datenblattwerten (SVG per Code), Ablauf-, Zustands- oder
+   programmiert wird:** Anschlussbild bzw. Schaltplan (Pins, Sensor, Aktor; Schaltplanauszug mit `technologieschema-erstellen`), Sensorkennlinie als Diagramm aus den Datenblattwerten (SVG per Code), Ablauf-, Zustands- oder
    Struktogramm (`fachdiagramm-erstellen`), beim G-Code die Werkstückzeichnung mit Maßen und
    Nullpunkt (Platzhalter, wenn sie nicht vorliegt). Sie ersetzt Erklärtext. Alle Zeichnungen –
    auch Struktogramm und Ablauf der Musterlösung – als SVG, nie als Zeichnung aus Zeichen im Codeblock.

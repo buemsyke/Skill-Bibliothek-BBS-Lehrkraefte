@@ -2,7 +2,7 @@
 artefakt: Abiturvorschlag – Begleitblatt
 titel: "[Thema A] / [Thema B]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.18"
+skill_version: "1.19"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"
@@ -129,4 +129,4 @@ mit der Merkmaltabelle.
 - Nach der Genehmigung: Bewertungsmappe aus dem endgültigen Bewertungsbogen neu erzeugen
   (`bewertungsmappe.py`), Kurztexte mit der Fachgruppe abstimmen, dann korrigieren.
 
-> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.18). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.19). Fachliche Prüfung und Verantwortung: Lehrkraft.

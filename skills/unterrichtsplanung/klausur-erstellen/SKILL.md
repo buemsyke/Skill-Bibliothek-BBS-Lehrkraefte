@@ -2,7 +2,7 @@
 name: klausur-erstellen
 description: Erstellt schriftliche Leistungsüberprüfungen für berufsbildende Schulen – Klassenarbeit, Klausur (auch Qualifikationsphase des Beruflichen Gymnasiums mit EPA-Operatoren, BE und Notenpunkten), Kurzklausur, Lernzielkontrolle (auch Single Choice), Nachschreib- und A/B-Variante – aus Lernsituation, Material oder Lernfeld-Auszug. Kurze Operator-Aufträge, wenig Schreiblast, Abbildungen als Material, Antwortraum je Operator; Erwartungshorizont mit Korrekturschablone, Punkten je Aspekt, Alternativen, Folgefehlern, AFB-Nachweis und Notenschlüssel; Selbstprüfung per Skript, geprüft wird nur Unterrichtetes. Verwenden bei „Klassenarbeit erstellen", „Klausur mit Erwartungshorizont", „Lernzielkontrolle", „Nachschreibarbeit", „B-Gruppe". Nicht für Moodle-Quizze (quizfragen-erstellen) und Abiturvorschläge (abiturvorschlag-erstellen).
 metadata:
-  version: "1.12"
+  version: "1.13"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -96,8 +96,8 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
     derselben Seite wie die Teilaufgaben, in Schwarzweiß lesbar; Lösungsbild nur im
     Erwartungshorizont. Jede Abbildung und jedes Lösungsbild als SVG aus einer Spec, nie als
     Zeichnung aus Zeichen: Abläufe, Struktogramme, Datenmodelle mit `fachdiagramm-erstellen`,
-    Anlagenbilder, Schaltplanauszüge, GRAFCET, Funktionspläne und Netzpläne ebenso als SVG aus einer Spec
-    ; einen GRAFCET zusätzlich als Text-Tabelle.
+    Anlagenbilder, Schaltplanauszüge, GRAFCET, Funktionspläne und Netzpläne mit
+    `technologieschema-erstellen`; einen GRAFCET zusätzlich als Text-Tabelle.
 13. **Ein Material, drei Zugriffe, ein Prüfstein.** Jede Aufgabe arbeitet an einem Material
     (lesen/ausführen → bewerten → verändern) und enthält eine benannte Denkfalle; der
     Erwartungshorizont nennt sie und die Antworten, die 0 P. ergeben.
@@ -129,7 +129,7 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
    Hilfsmitteln und Gesamtpunkten, Hinweise auf dem Blatt, Fallschilderung, Aufgaben im Format
    `Aufgabe N – Titel (insgesamt P Punkte)` und Teilaufgaben `N.n **Operator** … (p P)` mit
    kursiver Zeile `*Antwortraum: …*`, Anlagen mit eigener Überschrift. Abbildungen mit
-   `fachdiagramm-erstellen` als SVG erzeugen (Aufgaben- und
+   `fachdiagramm-erstellen` bzw. `technologieschema-erstellen` als SVG erzeugen (Aufgaben- und
    Lösungsbild getrennt, Lösungsbilder `…_loesung_…`).
 4. **Erwartungshorizont schreiben** nach `assets/vorlage-erwartungshorizont.md`: je
    Teilaufgabe erwartete Leistung als bepunktbare Aspekte, zulässige Alternativen,

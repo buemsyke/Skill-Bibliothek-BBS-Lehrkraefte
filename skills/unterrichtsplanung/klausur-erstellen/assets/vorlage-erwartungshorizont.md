@@ -2,7 +2,7 @@
 artefakt: Klassenarbeit – Erwartungshorizont
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.12"
+skill_version: "1.13"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -146,4 +146,4 @@ Freitextanteil.
 - Aufsichtsblatt (bei fremder Aufsicht): `vorlage-aufsichtsblatt.md`
 - Empfohlen: Gegenlesen durch eine zweite Lehrkraft (Lösbarkeit Schritt für Schritt)
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.12). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.13). Fachliche Prüfung und Verantwortung: Lehrkraft.

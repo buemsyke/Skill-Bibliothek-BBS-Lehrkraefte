@@ -51,6 +51,7 @@ Skills für Ihr Vorhaben. Beispiel:
 | `differenzierung-erstellen` | Hilfekarten, Fundamentum/Additum, Sprinter- und Wahlaufgaben, Organisation | „Hilfekarten für Schwächere" |
 | `quizfragen-erstellen` | Quizfragen aus einer Markdown-Quelle nach GIFT (Moodle) und H5P, mit Prüfung von Aufbau und Anforderungsbereichen | „Zehn Übungsfragen zur LS für Moodle" |
 | `fachdiagramm-erstellen` | Blockschaltbild, Ablauf, Regelkreis, Struktogramm, ER- und UML-Diagramm als draw.io/SVG mit Alternativtext | „Regelkreis für das Arbeitsblatt zeichnen" |
+| `technologieschema-erstellen` | Technologieschema (Anlagenbild), Schaltplanauszug mit Schaltzeichen, GRAFCET nach DIN EN 60848, Funktionsplan und Netzplan als SVG und draw.io aus einer YAML-Spec; Kennzeichen nach DIN EN IEC 81346-2 geprüft, Legende als Text | „Technologieschema der Biegestation mit GRAFCET“ |
 | `lernlandkarte-erstellen` | Lernlandkarte für edumaps (nds.edumaps.de) mit Selbstdiagnose, Lernposten, Hilfen und Quiz; Stundenablauf als Zeitstrahl | „Mach aus der LS eine Edumap mit Selbstdiagnose" |
 | `schuelerseiten-veroeffentlichen` | Schülerfassung ohne Lösungen und Lehrerhinweise, MkDocs-Seiten je LMS-Phase; Ausgabeprüfung, Freigabe vor dem Veröffentlichen | „Schülerfassung ohne Lösungen für Moodle" |
 | `material-pruefen` | Fakten-, Plausibilitäts-, Code-, Form- (Material für Lernende), Link- und Metadatencheck mit Prüfbericht und Ampel | „Prüf diesen KI-Entwurf" |

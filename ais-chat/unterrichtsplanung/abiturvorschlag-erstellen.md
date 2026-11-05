@@ -132,7 +132,7 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
    Teilaufgabe ein Muster aus `references/aufgabenmuster-informationstechnik.md` wählen (Kennung in
    den Bauplan), dessen Festlegungen ins Schülermaterial und den Prüfstein in die Merkmale übernehmen.
 4. **Schülermaterial** nach `assets/vorlage-schuelermaterial.md`; Abbildungen:
-   Technologieschemata als SVG aus einer Spec (Legende als Text-Tabelle,
+   Technologieschemata mit `technologieschema-erstellen` (Legende per `edu-technologieschema legende`,
    Kennzeichen nach 81346 geprüft), Blockschaltbilder, Struktogramme und Datenmodelle mit
    `fachdiagramm-erstellen` (Aufgaben- und Lösungsbild getrennt, Text-Legende, `<title>` „Abbildung N –
    Titel“) als `abbildungen/75_abitur_<kurztitel>_A_abbN_<thema>.svg`, Lösungsbilder
@@ -143,13 +143,13 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
 5. **Lehrermaterial** nach `assets/vorlage-lehrermaterial.md`: Unterrichtliche Voraussetzungen,
    ggf. abweichende AFB und erweiterte Operatoren, Erwartungshorizont, Bewertungsmaßstab, Hinweise
    zur Bewertung, Lösungsvorschläge mit Merkmaltabelle und Regeln; Rechnungen mit Code prüfen.
-   **Lösungsbilder** als SVG, nie als Zeichnung aus Zeichen: GRAFCET als SVG aus einer Spec
-   (speichernde Aktionen mit `:=` und Pfeil), Funktionsplan und
-   Netzplan ebenso als SVG,
+   **Lösungsbilder** als SVG, nie als Zeichnung aus Zeichen: GRAFCET mit `technologieschema-erstellen`
+   (`typ: grafcet`, Muster `spec-grafcet.yaml`; speichernde Aktionen mit `:=` und Pfeil), Funktionsplan und
+   Netzplan dort aus Grundformen (`spec-fup.yaml`),
    Struktogramm, Ablauf, Klassen- und Datenmodell mit `fachdiagramm-erstellen`; Namen
    `abbildungen/75_abitur_<kurztitel>_A_loesung_X-Y_<thema>.svg`, eingebunden vor der Merkmaltabelle
    der Teilaufgabe und unter „Digitales Material“ gelistet. Der GRAFCET steht zusätzlich als
-   Text-Tabelle (Zweitkorrektur, T.9).
+   Text-Tabelle (Zweitkorrektur, T.9), erzeugt mit dem Befehl `textform` aus `technologieschema-erstellen`.
 6. **Selbstprüfung (lokal):**
    `python3 scripts/abitur_check.py A_schuelermaterial.md A_lehrermaterial.md [--fach informatik] --vergleich B_schuelermaterial.md B_lehrermaterial.md`
    – prüft Katalog, Korrigierbarkeit (K), Kennzeichen (T, über `scripts/bmk_pruefen.py`) und Zeichnungen
@@ -260,7 +260,7 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
 artefakt: Abiturvorschlag – Begleitblatt
 titel: "[Thema A] / [Thema B]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.18"
+skill_version: "1.19"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"
@@ -387,7 +387,7 @@ mit der Merkmaltabelle.
 - Nach der Genehmigung: Bewertungsmappe aus dem endgültigen Bewertungsbogen neu erzeugen
   (`bewertungsmappe.py`), Kurztexte mit der Fachgruppe abstimmen, dann korrigieren.
 
-> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.18). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.19). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-lehrermaterial.md
 
@@ -395,7 +395,7 @@ mit der Merkmaltabelle.
 artefakt: Abiturvorschlag – Lehrermaterial
 titel: "[Thema]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.18"
+skill_version: "1.19"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"
@@ -552,7 +552,7 @@ Die Umrechnung der erreichten BE in Notenpunkte ergibt sich aus folgendem Maßst
 artefakt: Abiturvorschlag – Schülermaterial
 titel: "[Thema]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.18"
+skill_version: "1.19"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"                 # Technik | Berufliche Informatik
@@ -2750,8 +2750,8 @@ im Schülermaterial nennen (Abschn. 1).
   wenn eine Klasse nur eine Art Betriebsmittel enthält. Das gilt in **allen Dokumentationsformen**:
   Funktionsbeschreibung, Technologieschema mit Legende, Zuordnungsliste, GRAFCET, Logikplan, Programm,
   Musterlösung. Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt – dann für alle
-  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8)
-  meldet fehlende Unterklassen und gemischte Tiefe.
+  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8) und
+  `edu-technologieschema pruefen` melden fehlende Unterklassen und gemischte Tiefe.
 - Beispiel Bewässerung: Taster -SJ1, -SJ2; Schütz -QA1; SPS -KE1; Leuchtmelder -PF1, -PF2; Sensoren für
   Füllstand, Bodenfeuchte und Temperatur -BL1, -BM1, -BM2, -BT1; Pumpenmotor -MA1; Magnetventile -MB1,
   -MB2.
@@ -3637,8 +3637,8 @@ Erfolgskriterien bleiben vollständig.
 
 | Inhalt | Darstellung | so entsteht sie |
 |---|---|---|
-| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen` |
-| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen` |
+| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen`; Technologieschema mit `technologieschema-erstellen` |
+| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen`; GRAFCET und Funktionsplan mit `technologieschema-erstellen` |
 | System, Energie- und Datenfluss, Regelkreis | Blockschaltbild | `fachdiagramm-erstellen` |
 | Zusammenhang zweier Größen | Diagramm, Kennlinie mit beschrifteten Achsen | aus gerechneten Werten oder dem Datenblatt als SVG erzeugen (Code), nie geschätzt |
 | Vergleich, Kriterien, Kenndaten | Tabelle, Matrix | Markdown-Tabelle |
@@ -3865,6 +3865,7 @@ im Codeblock), nie als Mermaid in der Ausgabe, nie als von Hand geschriebenes SV
 | Blockschaltbild, Anlagen- und Systemübersicht, Ablauf, Regelkreis, Struktogramm, ER-Modell, UML, Relationenschema | `fachdiagramm-erstellen` |
 | Kennlinie, Messwertdiagramm | aus den Werten per Code als SVG (z. B. matplotlib), Wertetabelle daneben |
 | Foto, Werkstückzeichnung, fremde Abbildung | Datei mit Quelle und Lizenz, sonst Platzhalter `[ABBILDUNG: Inhalt, Zweck, Quelle]` |
+| Anlagenbild (Technologieschema), Schaltplanauszug mit Schaltzeichen, GRAFCET, Funktionsplan (FUP), Netzplan | `technologieschema-erstellen` |
 | GRAFCET, Funktionsplan, Schaltplan | Fachsoftware; im Text zusätzlich als Tabelle (Schritt, Aktion, Transition) |
 
 Erlaubt bleiben Text-Tabellen derselben Inhalte (GRAFCET in Textform, Zuordnungsliste) für die
@@ -3896,6 +3897,7 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 43 | Programmieraufgabe (Aufgabe, Codeordner `43_code/`, Erwartungshorizont) | programmieraufgabe-erstellen |
 | 44 | Technikfolgenabschätzung (Dossier, Quellenmappe, Rollenkarten) | technikfolgen-abschaetzen |
 | 45 | Taxonomie-Analyse | bloom-taxonomie |
+| 46 | Technologieschema (Schemablatt mit Legende, Specs unter `schema/`, SVG unter `abbildungen/`) | technologieschema-erstellen |
 | 50 | Sprachsensible Fassung | sprachsensibel-ueberarbeiten |
 | 60 | Differenzierung | differenzierung-erstellen |
 | 65 | Quiz (Quelle, GIFT, H5P, Begleitblatt) | quizfragen-erstellen |
@@ -3907,8 +3909,8 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 96 | KI-Kennzeichnung (Protokoll) | ki-kennzeichnung |
 | 99 | Abschlussbericht (Paketübersicht, Qualitätscheck, konsolidierte Prüfaufträge) | unterricht-entwickeln |
 
-**Werkzeug-Skills** (Nr. 42, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
-(`edu-diagramm`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
+**Werkzeug-Skills** (Nr. 42, 46, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
+(`edu-diagramm`, `edu-technologieschema`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
 Artefakt mit Pflichtabschnitten – diese hätten in der Quelle Folgen für die Ausgabe –, sondern
 Kopf und Pflichtabschnitte stehen in einem **Begleitblatt** (`…_begleitblatt.md`,
 Diagrammblatt). Nummern 92–96 (Ausspielen) folgen auf den Prüfbericht: veröffentlicht wird

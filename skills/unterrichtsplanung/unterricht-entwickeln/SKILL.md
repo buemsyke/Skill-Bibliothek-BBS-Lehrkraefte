@@ -2,7 +2,7 @@
 name: unterricht-entwickeln
 description: Orchestriert agentische Unterrichtsentwicklung für berufsbildende Schulen und das Berufliche Gymnasium – analysiert das Anliegen, wählt Skills der Bibliothek (Planung – DQR, Lernsituation nach SchuCu-BBS 2024, Entwurf, Material, Experiment, Programmieraufgabe, Technikfolgenabschätzung, Bloom, Differenzierung, Sprache, Quiz, Diagramme; Ausspielen – Lernlandkarte, Schülerseiten, KI-Kennzeichnung, AIS.chat, KI-Chatbots; Prüfen – LS-Analyse, Faktencheck, Entwurfs-Selbstcheck, Reflexion) und verkettet sie über eine Planungsakte mit Qualitäts-, Experiment- und Freigabe-Gates zu einem Gesamtpaket mit Abschlussbericht. Verwenden für mehrschrittige Vorhaben wie „Lernsituation mit Material", „UB vorbereiten", „Projekt-LS im BG", „Technikfolgenabschätzung mit Rollenspiel", „Material verbessern", „Material digital ausspielen" – oder wenn unklar ist, welcher Skill passt.
 metadata:
-  version: "1.23"
+  version: "1.24"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -120,7 +120,7 @@ Ordner.
 7. `unterrichtsentwurf-analysieren` nach `unterrichtsentwurf-erstellen`;
    `unterricht-reflektieren` nach der gehaltenen Stunde – seine Konsequenzen gehen in die
    Planung der Folgestunde (`unterrichtsentwurf-erstellen`).
-8. Werkzeug-Skills: `fachdiagramm-erstellen` und `quizfragen-erstellen` nach dem Material
+8. Werkzeug-Skills: `fachdiagramm-erstellen`, `technologieschema-erstellen` und `quizfragen-erstellen` nach dem Material
    (jede Zeichnung eines Artefakts entsteht dort als SVG, nie als Zeichnung aus Zeichen)
    und vor `material-pruefen`; Ausspielen (`lernlandkarte-erstellen`,
    `schuelerseiten-veroeffentlichen`) nach G3; `ki-kennzeichnung` erst nach der Prüfung durch

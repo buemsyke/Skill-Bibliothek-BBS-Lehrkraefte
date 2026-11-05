@@ -2,7 +2,7 @@
 name: abiturvorschlag-erstellen
 description: Erstellt genehmigungsfähige Vorschläge für die dezentrale Abiturprüfung am Beruflichen Gymnasium in Niedersachsen (Technik mit Schwerpunkt, Berufliche Informatik) – Vorschlag A und B mit Schülermaterial (Handlungssituation, Funktionsbeschreibung mit Betriebsmittelkennzeichen, Aufgaben mit BE und EPA-Operatoren, Anlagen) und Lehrermaterial (unterrichtliche Voraussetzungen, Erwartungshorizont mit AFB je Zeile, Musterlösung mit Bewertungsmerkmal je BE), dazu Bewertungsbogen, Bewertungsmappe und Begleitblatt. Formuliert eindeutig und korrekturfreundlich und prüft per Skript nach dem Katalog der Begutachtung. Verwenden bei „Abiturvorschlag erstellen“, „dezentrale Abiturklausur“, „Abiturklausur Technik“, „Vorschlag A und B“, „Erwartungshorizont fürs Abitur“. Nicht für Klausuren im Halbjahr (klausur-erstellen).
 metadata:
-  version: "1.18"
+  version: "1.19"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -141,7 +141,7 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
    Teilaufgabe ein Muster aus `references/aufgabenmuster-informationstechnik.md` wählen (Kennung in
    den Bauplan), dessen Festlegungen ins Schülermaterial und den Prüfstein in die Merkmale übernehmen.
 4. **Schülermaterial** nach `assets/vorlage-schuelermaterial.md`; Abbildungen:
-   Technologieschemata als SVG aus einer Spec (Legende als Text-Tabelle,
+   Technologieschemata mit `technologieschema-erstellen` (Legende per `edu-technologieschema legende`,
    Kennzeichen nach 81346 geprüft), Blockschaltbilder, Struktogramme und Datenmodelle mit
    `fachdiagramm-erstellen` (Aufgaben- und Lösungsbild getrennt, Text-Legende, `<title>` „Abbildung N –
    Titel“) als `abbildungen/75_abitur_<kurztitel>_A_abbN_<thema>.svg`, Lösungsbilder
@@ -152,13 +152,13 @@ Muster stehen in eigenen Worten in `references/abitur-aufgabenformat.md`.
 5. **Lehrermaterial** nach `assets/vorlage-lehrermaterial.md`: Unterrichtliche Voraussetzungen,
    ggf. abweichende AFB und erweiterte Operatoren, Erwartungshorizont, Bewertungsmaßstab, Hinweise
    zur Bewertung, Lösungsvorschläge mit Merkmaltabelle und Regeln; Rechnungen mit Code prüfen.
-   **Lösungsbilder** als SVG, nie als Zeichnung aus Zeichen: GRAFCET als SVG aus einer Spec
-   (speichernde Aktionen mit `:=` und Pfeil), Funktionsplan und
-   Netzplan ebenso als SVG,
+   **Lösungsbilder** als SVG, nie als Zeichnung aus Zeichen: GRAFCET mit `technologieschema-erstellen`
+   (`typ: grafcet`, Muster `spec-grafcet.yaml`; speichernde Aktionen mit `:=` und Pfeil), Funktionsplan und
+   Netzplan dort aus Grundformen (`spec-fup.yaml`),
    Struktogramm, Ablauf, Klassen- und Datenmodell mit `fachdiagramm-erstellen`; Namen
    `abbildungen/75_abitur_<kurztitel>_A_loesung_X-Y_<thema>.svg`, eingebunden vor der Merkmaltabelle
    der Teilaufgabe und unter „Digitales Material“ gelistet. Der GRAFCET steht zusätzlich als
-   Text-Tabelle (Zweitkorrektur, T.9).
+   Text-Tabelle (Zweitkorrektur, T.9), erzeugt mit dem Befehl `textform` aus `technologieschema-erstellen`.
 6. **Selbstprüfung (lokal):**
    `python3 scripts/abitur_check.py A_schuelermaterial.md A_lehrermaterial.md [--fach informatik] --vergleich B_schuelermaterial.md B_lehrermaterial.md`
    – prüft Katalog, Korrigierbarkeit (K), Kennzeichen (T, über `scripts/bmk_pruefen.py`) und Zeichnungen

@@ -73,8 +73,8 @@ im Schülermaterial nennen (Abschn. 1).
   wenn eine Klasse nur eine Art Betriebsmittel enthält. Das gilt in **allen Dokumentationsformen**:
   Funktionsbeschreibung, Technologieschema mit Legende, Zuordnungsliste, GRAFCET, Logikplan, Programm,
   Musterlösung. Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt – dann für alle
-  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8)
-  meldet fehlende Unterklassen und gemischte Tiefe.
+  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8) und
+  `edu-technologieschema pruefen` melden fehlende Unterklassen und gemischte Tiefe.
 - Beispiel Bewässerung: Taster -SJ1, -SJ2; Schütz -QA1; SPS -KE1; Leuchtmelder -PF1, -PF2; Sensoren für
   Füllstand, Bodenfeuchte und Temperatur -BL1, -BM1, -BM2, -BT1; Pumpenmotor -MA1; Magnetventile -MB1,
   -MB2.

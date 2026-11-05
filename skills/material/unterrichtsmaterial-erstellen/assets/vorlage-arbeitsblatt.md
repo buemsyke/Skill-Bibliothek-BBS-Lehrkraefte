@@ -3,7 +3,7 @@ artefakt: Unterrichtsmaterial
 materialart: Arbeitsblatt
 titel: "[Kurztitel]"
 skill: unterrichtsmaterial-erstellen
-skill_version: "1.14"
+skill_version: "1.15"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[Lernfeld]"
@@ -109,4 +109,4 @@ _Erstellt mit KI-Unterstützung; fachlich geprüft von: [Lehrkraft]_
 - Hilfebedarf: … → `differenzierung-erstellen`
 - Prüfbedarf: … → `material-pruefen`
 
-> KI-gestützt erstellt (Skill unterrichtsmaterial-erstellen v1.14). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill unterrichtsmaterial-erstellen v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.

@@ -86,8 +86,8 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
     derselben Seite wie die Teilaufgaben, in Schwarzweiß lesbar; Lösungsbild nur im
     Erwartungshorizont. Jede Abbildung und jedes Lösungsbild als SVG aus einer Spec, nie als
     Zeichnung aus Zeichen: Abläufe, Struktogramme, Datenmodelle mit `fachdiagramm-erstellen`,
-    Anlagenbilder, Schaltplanauszüge, GRAFCET, Funktionspläne und Netzpläne ebenso als SVG aus einer Spec
-    ; einen GRAFCET zusätzlich als Text-Tabelle.
+    Anlagenbilder, Schaltplanauszüge, GRAFCET, Funktionspläne und Netzpläne mit
+    `technologieschema-erstellen`; einen GRAFCET zusätzlich als Text-Tabelle.
 13. **Ein Material, drei Zugriffe, ein Prüfstein.** Jede Aufgabe arbeitet an einem Material
     (lesen/ausführen → bewerten → verändern) und enthält eine benannte Denkfalle; der
     Erwartungshorizont nennt sie und die Antworten, die 0 P. ergeben.
@@ -119,7 +119,7 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
    Hilfsmitteln und Gesamtpunkten, Hinweise auf dem Blatt, Fallschilderung, Aufgaben im Format
    `Aufgabe N – Titel (insgesamt P Punkte)` und Teilaufgaben `N.n **Operator** … (p P)` mit
    kursiver Zeile `*Antwortraum: …*`, Anlagen mit eigener Überschrift. Abbildungen mit
-   `fachdiagramm-erstellen` als SVG erzeugen (Aufgaben- und
+   `fachdiagramm-erstellen` bzw. `technologieschema-erstellen` als SVG erzeugen (Aufgaben- und
    Lösungsbild getrennt, Lösungsbilder `…_loesung_…`).
 4. **Erwartungshorizont schreiben** nach `assets/vorlage-erwartungshorizont.md`: je
    Teilaufgabe erwartete Leistung als bepunktbare Aspekte, zulässige Alternativen,
@@ -207,7 +207,7 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 artefakt: Klassenarbeit – Aufsichtsblatt
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.12"
+skill_version: "1.13"
 stand: JJJJ-MM-TT
 vertraulich: true
 status: "KI-Entwurf – fachlich zu prüfen"
@@ -255,7 +255,7 @@ _____________________________________________________________________
 
 Aufgabenblätter bitte gesammelt im Fach der Fachlehrkraft ablegen: [Ort].
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.12). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.13). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-erwartungshorizont.md
 
@@ -263,7 +263,7 @@ Aufgabenblätter bitte gesammelt im Fach der Fachlehrkraft ablegen: [Ort].
 artefakt: Klassenarbeit – Erwartungshorizont
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.12"
+skill_version: "1.13"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -407,7 +407,7 @@ Freitextanteil.
 - Aufsichtsblatt (bei fremder Aufsicht): `vorlage-aufsichtsblatt.md`
 - Empfohlen: Gegenlesen durch eine zweite Lehrkraft (Lösbarkeit Schritt für Schritt)
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.12). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.13). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-klausur.md
 
@@ -415,7 +415,7 @@ Freitextanteil.
 artefakt: Klassenarbeit – Aufgabenteil
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.12"
+skill_version: "1.13"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -1804,8 +1804,8 @@ im Schülermaterial nennen (Abschn. 1).
   wenn eine Klasse nur eine Art Betriebsmittel enthält. Das gilt in **allen Dokumentationsformen**:
   Funktionsbeschreibung, Technologieschema mit Legende, Zuordnungsliste, GRAFCET, Logikplan, Programm,
   Musterlösung. Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt – dann für alle
-  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8)
-  meldet fehlende Unterklassen und gemischte Tiefe.
+  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8) und
+  `edu-technologieschema pruefen` melden fehlende Unterklassen und gemischte Tiefe.
 - Beispiel Bewässerung: Taster -SJ1, -SJ2; Schütz -QA1; SPS -KE1; Leuchtmelder -PF1, -PF2; Sensoren für
   Füllstand, Bodenfeuchte und Temperatur -BL1, -BM1, -BM2, -BT1; Pumpenmotor -MA1; Magnetventile -MB1,
   -MB2.
@@ -2717,8 +2717,8 @@ Erfolgskriterien bleiben vollständig.
 
 | Inhalt | Darstellung | so entsteht sie |
 |---|---|---|
-| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen` |
-| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen` |
+| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen`; Technologieschema mit `technologieschema-erstellen` |
+| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen`; GRAFCET und Funktionsplan mit `technologieschema-erstellen` |
 | System, Energie- und Datenfluss, Regelkreis | Blockschaltbild | `fachdiagramm-erstellen` |
 | Zusammenhang zweier Größen | Diagramm, Kennlinie mit beschrifteten Achsen | aus gerechneten Werten oder dem Datenblatt als SVG erzeugen (Code), nie geschätzt |
 | Vergleich, Kriterien, Kenndaten | Tabelle, Matrix | Markdown-Tabelle |
@@ -2945,6 +2945,7 @@ im Codeblock), nie als Mermaid in der Ausgabe, nie als von Hand geschriebenes SV
 | Blockschaltbild, Anlagen- und Systemübersicht, Ablauf, Regelkreis, Struktogramm, ER-Modell, UML, Relationenschema | `fachdiagramm-erstellen` |
 | Kennlinie, Messwertdiagramm | aus den Werten per Code als SVG (z. B. matplotlib), Wertetabelle daneben |
 | Foto, Werkstückzeichnung, fremde Abbildung | Datei mit Quelle und Lizenz, sonst Platzhalter `[ABBILDUNG: Inhalt, Zweck, Quelle]` |
+| Anlagenbild (Technologieschema), Schaltplanauszug mit Schaltzeichen, GRAFCET, Funktionsplan (FUP), Netzplan | `technologieschema-erstellen` |
 | GRAFCET, Funktionsplan, Schaltplan | Fachsoftware; im Text zusätzlich als Tabelle (Schritt, Aktion, Transition) |
 
 Erlaubt bleiben Text-Tabellen derselben Inhalte (GRAFCET in Textform, Zuordnungsliste) für die
@@ -2976,6 +2977,7 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 43 | Programmieraufgabe (Aufgabe, Codeordner `43_code/`, Erwartungshorizont) | programmieraufgabe-erstellen |
 | 44 | Technikfolgenabschätzung (Dossier, Quellenmappe, Rollenkarten) | technikfolgen-abschaetzen |
 | 45 | Taxonomie-Analyse | bloom-taxonomie |
+| 46 | Technologieschema (Schemablatt mit Legende, Specs unter `schema/`, SVG unter `abbildungen/`) | technologieschema-erstellen |
 | 50 | Sprachsensible Fassung | sprachsensibel-ueberarbeiten |
 | 60 | Differenzierung | differenzierung-erstellen |
 | 65 | Quiz (Quelle, GIFT, H5P, Begleitblatt) | quizfragen-erstellen |
@@ -2987,8 +2989,8 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 96 | KI-Kennzeichnung (Protokoll) | ki-kennzeichnung |
 | 99 | Abschlussbericht (Paketübersicht, Qualitätscheck, konsolidierte Prüfaufträge) | unterricht-entwickeln |
 
-**Werkzeug-Skills** (Nr. 42, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
-(`edu-diagramm`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
+**Werkzeug-Skills** (Nr. 42, 46, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
+(`edu-diagramm`, `edu-technologieschema`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
 Artefakt mit Pflichtabschnitten – diese hätten in der Quelle Folgen für die Ausgabe –, sondern
 Kopf und Pflichtabschnitte stehen in einem **Begleitblatt** (`…_begleitblatt.md`,
 Diagrammblatt). Nummern 92–96 (Ausspielen) folgen auf den Prüfbericht: veröffentlicht wird

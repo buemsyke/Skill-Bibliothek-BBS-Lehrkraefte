@@ -1,0 +1,31 @@
+# Muster: Steuerstromkreis mit Schaltzeichen nach DIN EN 60617 – Motorschütz mit Selbsthaltung (Auszug).
+# Zeigt typ: symbol mit Anschlusspunkten ("-SJ1@an1"), rechtwinklige Linien und gehoert_zu: Spule und
+# Hilfskontakt desselben Schützes tragen beide -QA1 (eine Legendenzeile); ref gibt dem Kontakt einen
+# Namen für Anker, knoten setzt die Verbindungspunkte. Taster: Kontakt mit Rückgang plus
+# Betätigung durch Drücken (zusammengesetzt aus belegten Teilen). Nur Zeichen mit der Herkunft liste oder
+# zusammengesetzt. Kein vollständiger Stromlaufplan.
+titel: "Abbildung 4 – Steuerstromkreis der Motorsteuerung (Auszug)"
+alt: "Steuerstromkreis zwischen +24 V und 0 V: Stopptaster -SJ2 als Öffner in Reihe mit Starttaster -SJ1 und Schützspule -QA1; parallel zu -SJ1 der Hilfskontakt von -QA1 als Selbsthaltung."
+out: abbildungen/46_steuerstromkreis
+breite: 480
+hoehe: 400
+fusszeile:
+  - "Grundstellung: Taster unbetätigt, Schütz abgefallen."
+  - "Schaltzeichen: DIN EN 60617; Kennzeichen: DIN EN IEC 81346-2:2020."
+elemente:
+  - {typ: linie, punkte: [[60, 50], [300, 50]], stil: dick}
+  - {typ: text, x: 60, y: 40, text: "+24 V", groesse: 12, fett: true}
+  - {typ: linie, punkte: [[60, 370], [300, 370]], stil: dick}
+  - {typ: text, x: 60, y: 390, text: "0 V", groesse: 12, fett: true}
+  - {typ: symbol, symbol: drucktaster_oeffner, id: "-SJ2", name: Stopp, funktion: "Stopptaster (Öffner); unterbricht den Stromkreis, solange betätigt", x: 120, y: 110, lage: links}
+  - {typ: symbol, symbol: drucktaster_schliesser, id: "-SJ1", name: Start, funktion: "Starttaster (Schließer); schaltet den Schütz ein, solange betätigt", x: 120, y: 200, lage: links}
+  - {typ: symbol, symbol: schliesser, ref: q1k, gehoert_zu: "-QA1", name: Selbsthaltung, x: 220, y: 200, lage: rechts}
+  - {typ: symbol, symbol: spule, id: "-QA1", name: Schütz, funktion: "zieht an, wenn -SJ1 betätigt und -SJ2 nicht betätigt; hält sich über den eigenen Kontakt", x: 120, y: 290, lage: links}
+  - {typ: linie, punkte: [[120, 50], "-SJ2@an1"]}
+  - {typ: linie, punkte: ["-SJ2@an2", "-SJ1@an1"]}
+  - {typ: linie, punkte: ["-SJ1@an1", "q1k@an1"]}
+  - {typ: linie, punkte: ["-SJ1@an2", "q1k@an2"]}
+  - {typ: linie, punkte: ["-SJ1@an2", "-QA1@an1"]}
+  - {typ: linie, punkte: ["-QA1@an2", [120, 370]]}
+  - {typ: knoten, punkt: "-SJ1@an1"}
+  - {typ: knoten, punkt: "-SJ1@an2"}

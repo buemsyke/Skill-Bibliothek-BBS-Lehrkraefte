@@ -1,0 +1,26 @@
+# Muster: Näherungsschalter an Relais – Schließer mit Magnetbetätigung (Zylinderschalter) und Öffner.
+# Zeigt Näherungsschalter nach DIN EN 60617 (Teil 7), Anschlusspunkte und rechtwinklige Linien.
+# Kennzeichen: Näherungsschalter -BG1, -BG2 (Lage), Relais -KF1, -KF2 (Signale weiterleiten).
+titel: "Abbildung 5 – Anschluss zweier Näherungsschalter an Relais"
+alt: "Zwischen +24 V und 0 V zwei Zweige: Näherungsschalter -BG1 als Schließer mit Magnetbetätigung in Reihe mit Relais -KF1 und Näherungsschalter -BG2 als Öffner in Reihe mit Relais -KF2."
+out: abbildungen/46_naeherungsschalter
+breite: 480
+hoehe: 380
+fusszeile:
+  - "Grundstellung: Magnet nicht in der Nähe von -BG1, kein Metall vor -BG2."
+  - "Schaltzeichen: DIN EN 60617; Kennzeichen: DIN EN IEC 81346-2:2020."
+elemente:
+  - {typ: linie, punkte: [[60, 50], [400, 50]], stil: dick}
+  - {typ: text, x: 60, y: 40, text: "+24 V", groesse: 12, fett: true}
+  - {typ: linie, punkte: [[60, 350], [400, 350]], stil: dick}
+  - {typ: text, x: 60, y: 370, text: "0 V", groesse: 12, fett: true}
+  - {typ: symbol, symbol: naeherungsschalter_magnet_schliesser, id: "-BG1", name: Endlage, funktion: "meldet 1, wenn der Magnet des Zylinders vor dem Sensor steht", x: 200, y: 120, lage: links}
+  - {typ: symbol, symbol: spule, id: "-KF1", name: Relais, funktion: "zieht an, solange -BG1 schließt", x: 200, y: 250, lage: links}
+  - {typ: symbol, symbol: naeherungsschalter_oeffner, id: "-BG2", name: Wächter, funktion: "meldet 0, sobald Metall vor dem Sensor steht", x: 340, y: 120, lage: rechts}
+  - {typ: symbol, symbol: spule, id: "-KF2", name: Relais, funktion: "zieht an, solange -BG2 nicht betätigt ist", x: 340, y: 250, lage: rechts}
+  - {typ: linie, punkte: [[200, 50], "-BG1@an1"]}
+  - {typ: linie, punkte: ["-BG1@an2", "-KF1@an1"]}
+  - {typ: linie, punkte: ["-KF1@an2", [200, 350]]}
+  - {typ: linie, punkte: [[340, 50], "-BG2@an1"]}
+  - {typ: linie, punkte: ["-BG2@an2", "-KF2@an1"]}
+  - {typ: linie, punkte: ["-KF2@an2", [340, 350]]}

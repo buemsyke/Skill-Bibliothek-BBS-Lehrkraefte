@@ -2,7 +2,7 @@
 artefakt: Programmieraufgabe
 titel: "[Was das Programm im Auftrag leistet]"
 skill: programmieraufgabe-erstellen
-skill_version: "1.4"
+skill_version: "1.5"
 stand: JJJJ-MM-TT
 bildungsgang: "[Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld/Lerngebiet]"
@@ -87,4 +87,4 @@ Regel für KI-Codeassistenten]
 - Codeordner `43_code/`, Testfälle, Prüfergebnis
 - Empfohlen: `material-pruefen` (C)
 
-> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.4). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.5). Fachliche Prüfung und Verantwortung: Lehrkraft.

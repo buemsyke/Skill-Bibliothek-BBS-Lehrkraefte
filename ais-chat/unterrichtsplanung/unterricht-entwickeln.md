@@ -111,7 +111,7 @@ Ordner.
 7. `unterrichtsentwurf-analysieren` nach `unterrichtsentwurf-erstellen`;
    `unterricht-reflektieren` nach der gehaltenen Stunde – seine Konsequenzen gehen in die
    Planung der Folgestunde (`unterrichtsentwurf-erstellen`).
-8. Werkzeug-Skills: `fachdiagramm-erstellen` und `quizfragen-erstellen` nach dem Material
+8. Werkzeug-Skills: `fachdiagramm-erstellen`, `technologieschema-erstellen` und `quizfragen-erstellen` nach dem Material
    (jede Zeichnung eines Artefakts entsteht dort als SVG, nie als Zeichnung aus Zeichen)
    und vor `material-pruefen`; Ausspielen (`lernlandkarte-erstellen`,
    `schuelerseiten-veroeffentlichen`) nach G3; `ki-kennzeichnung` erst nach der Prüfung durch
@@ -188,7 +188,7 @@ artefakt: Abschlussbericht
 titel: "[Projekt]"
 projekt: "[Kurzname]"
 skill: unterricht-entwickeln
-skill_version: "1.23"
+skill_version: "1.24"
 stand: JJJJ-MM-TT
 status: "KI-Entwurf – Freigabe durch Lehrkraft/Bildungsgangteam ausstehend"
 ---
@@ -233,7 +233,7 @@ status: "KI-Entwurf – Freigabe durch Lehrkraft/Bildungsgangteam ausstehend"
 - Nächste Schritte: …
 - Empfohlene nächste Skills: [z. B. `unterricht-reflektieren` nach der ersten Stunde]
 
-> KI-gestützt erstellt (Skill unterricht-entwickeln v1.23 und beteiligte Skills). Fachliche Prüfung, Freigabe und Verantwortung: Lehrkraft bzw. Bildungsgangteam.
+> KI-gestützt erstellt (Skill unterricht-entwickeln v1.24 und beteiligte Skills). Fachliche Prüfung, Freigabe und Verantwortung: Lehrkraft bzw. Bildungsgangteam.
 
 ## Anhang: references/berufliches-gymnasium.md
 
@@ -1796,8 +1796,8 @@ Erfolgskriterien bleiben vollständig.
 
 | Inhalt | Darstellung | so entsteht sie |
 |---|---|---|
-| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen` |
-| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen` |
+| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen`; Technologieschema mit `technologieschema-erstellen` |
+| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen`; GRAFCET und Funktionsplan mit `technologieschema-erstellen` |
 | System, Energie- und Datenfluss, Regelkreis | Blockschaltbild | `fachdiagramm-erstellen` |
 | Zusammenhang zweier Größen | Diagramm, Kennlinie mit beschrifteten Achsen | aus gerechneten Werten oder dem Datenblatt als SVG erzeugen (Code), nie geschätzt |
 | Vergleich, Kriterien, Kenndaten | Tabelle, Matrix | Markdown-Tabelle |
@@ -2164,6 +2164,7 @@ im Codeblock), nie als Mermaid in der Ausgabe, nie als von Hand geschriebenes SV
 | Blockschaltbild, Anlagen- und Systemübersicht, Ablauf, Regelkreis, Struktogramm, ER-Modell, UML, Relationenschema | `fachdiagramm-erstellen` |
 | Kennlinie, Messwertdiagramm | aus den Werten per Code als SVG (z. B. matplotlib), Wertetabelle daneben |
 | Foto, Werkstückzeichnung, fremde Abbildung | Datei mit Quelle und Lizenz, sonst Platzhalter `[ABBILDUNG: Inhalt, Zweck, Quelle]` |
+| Anlagenbild (Technologieschema), Schaltplanauszug mit Schaltzeichen, GRAFCET, Funktionsplan (FUP), Netzplan | `technologieschema-erstellen` |
 | GRAFCET, Funktionsplan, Schaltplan | Fachsoftware; im Text zusätzlich als Tabelle (Schritt, Aktion, Transition) |
 
 Erlaubt bleiben Text-Tabellen derselben Inhalte (GRAFCET in Textform, Zuordnungsliste) für die
@@ -2195,6 +2196,7 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 43 | Programmieraufgabe (Aufgabe, Codeordner `43_code/`, Erwartungshorizont) | programmieraufgabe-erstellen |
 | 44 | Technikfolgenabschätzung (Dossier, Quellenmappe, Rollenkarten) | technikfolgen-abschaetzen |
 | 45 | Taxonomie-Analyse | bloom-taxonomie |
+| 46 | Technologieschema (Schemablatt mit Legende, Specs unter `schema/`, SVG unter `abbildungen/`) | technologieschema-erstellen |
 | 50 | Sprachsensible Fassung | sprachsensibel-ueberarbeiten |
 | 60 | Differenzierung | differenzierung-erstellen |
 | 65 | Quiz (Quelle, GIFT, H5P, Begleitblatt) | quizfragen-erstellen |
@@ -2206,8 +2208,8 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 96 | KI-Kennzeichnung (Protokoll) | ki-kennzeichnung |
 | 99 | Abschlussbericht (Paketübersicht, Qualitätscheck, konsolidierte Prüfaufträge) | unterricht-entwickeln |
 
-**Werkzeug-Skills** (Nr. 42, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
-(`edu-diagramm`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
+**Werkzeug-Skills** (Nr. 42, 46, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
+(`edu-diagramm`, `edu-technologieschema`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
 Artefakt mit Pflichtabschnitten – diese hätten in der Quelle Folgen für die Ausgabe –, sondern
 Kopf und Pflichtabschnitte stehen in einem **Begleitblatt** (`…_begleitblatt.md`,
 Diagrammblatt). Nummern 92–96 (Ausspielen) folgen auf den Prüfbericht: veröffentlicht wird

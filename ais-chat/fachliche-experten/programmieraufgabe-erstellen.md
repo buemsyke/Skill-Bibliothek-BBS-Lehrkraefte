@@ -40,7 +40,7 @@ steht als Annahme im Kopf oder wird aus dem gelieferten Datenblatt bzw. Handbuch
 1. **Aufgabe aus der Situation:** Was soll das Programm im Auftrag leisten? Messbare
    Anforderungen (Eingaben, Ausgaben, Einheiten, Grenzwerte) als Tabelle; Situation in
    höchstens drei Sätzen (`references/schuelermaterial.md`). Dazu die **Darstellung, mit der
-   programmiert wird:** Anschlussbild bzw. Schaltplan (Pins, Sensor, Aktor), Sensorkennlinie als Diagramm aus den Datenblattwerten (SVG per Code), Ablauf-, Zustands- oder
+   programmiert wird:** Anschlussbild bzw. Schaltplan (Pins, Sensor, Aktor; Schaltplanauszug mit `technologieschema-erstellen`), Sensorkennlinie als Diagramm aus den Datenblattwerten (SVG per Code), Ablauf-, Zustands- oder
    Struktogramm (`fachdiagramm-erstellen`), beim G-Code die Werkstückzeichnung mit Maßen und
    Nullpunkt (Platzhalter, wenn sie nicht vorliegt). Sie ersetzt Erklärtext. Alle Zeichnungen –
    auch Struktogramm und Ablauf der Musterlösung – als SVG, nie als Zeichnung aus Zeichen im Codeblock.
@@ -120,7 +120,7 @@ Einheitenfehler in der Messkette); jeden Fehler mit Zeile, Wirkung und Korrektur
 artefakt: Programmieraufgabe
 titel: "[Was das Programm im Auftrag leistet]"
 skill: programmieraufgabe-erstellen
-skill_version: "1.4"
+skill_version: "1.5"
 stand: JJJJ-MM-TT
 bildungsgang: "[Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld/Lerngebiet]"
@@ -205,7 +205,7 @@ Regel für KI-Codeassistenten]
 - Codeordner `43_code/`, Testfälle, Prüfergebnis
 - Empfohlen: `material-pruefen` (C)
 
-> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.4). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.5). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: references/aufgabenmuster-informationstechnik.md
 
@@ -1326,8 +1326,8 @@ Erfolgskriterien bleiben vollständig.
 
 | Inhalt | Darstellung | so entsteht sie |
 |---|---|---|
-| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen` |
-| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen` |
+| Aufbau einer Anlage, eines Bauteils, eines Versuchs | beschriftete Skizze, Foto mit Positionsnummern, Anlagenbild | eigenes Foto oder Herstellerunterlage (Platzhalter mit Quelle); Blockschaltbild mit `fachdiagramm-erstellen`; Technologieschema mit `technologieschema-erstellen` |
+| Ablauf, Vorgehen, Programm | Ablaufdiagramm, Struktogramm, Zustandsdiagramm | `fachdiagramm-erstellen`; GRAFCET und Funktionsplan mit `technologieschema-erstellen` |
 | System, Energie- und Datenfluss, Regelkreis | Blockschaltbild | `fachdiagramm-erstellen` |
 | Zusammenhang zweier Größen | Diagramm, Kennlinie mit beschrifteten Achsen | aus gerechneten Werten oder dem Datenblatt als SVG erzeugen (Code), nie geschätzt |
 | Vergleich, Kriterien, Kenndaten | Tabelle, Matrix | Markdown-Tabelle |
@@ -1554,6 +1554,7 @@ im Codeblock), nie als Mermaid in der Ausgabe, nie als von Hand geschriebenes SV
 | Blockschaltbild, Anlagen- und Systemübersicht, Ablauf, Regelkreis, Struktogramm, ER-Modell, UML, Relationenschema | `fachdiagramm-erstellen` |
 | Kennlinie, Messwertdiagramm | aus den Werten per Code als SVG (z. B. matplotlib), Wertetabelle daneben |
 | Foto, Werkstückzeichnung, fremde Abbildung | Datei mit Quelle und Lizenz, sonst Platzhalter `[ABBILDUNG: Inhalt, Zweck, Quelle]` |
+| Anlagenbild (Technologieschema), Schaltplanauszug mit Schaltzeichen, GRAFCET, Funktionsplan (FUP), Netzplan | `technologieschema-erstellen` |
 | GRAFCET, Funktionsplan, Schaltplan | Fachsoftware; im Text zusätzlich als Tabelle (Schritt, Aktion, Transition) |
 
 Erlaubt bleiben Text-Tabellen derselben Inhalte (GRAFCET in Textform, Zuordnungsliste) für die
@@ -1585,6 +1586,7 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 43 | Programmieraufgabe (Aufgabe, Codeordner `43_code/`, Erwartungshorizont) | programmieraufgabe-erstellen |
 | 44 | Technikfolgenabschätzung (Dossier, Quellenmappe, Rollenkarten) | technikfolgen-abschaetzen |
 | 45 | Taxonomie-Analyse | bloom-taxonomie |
+| 46 | Technologieschema (Schemablatt mit Legende, Specs unter `schema/`, SVG unter `abbildungen/`) | technologieschema-erstellen |
 | 50 | Sprachsensible Fassung | sprachsensibel-ueberarbeiten |
 | 60 | Differenzierung | differenzierung-erstellen |
 | 65 | Quiz (Quelle, GIFT, H5P, Begleitblatt) | quizfragen-erstellen |
@@ -1596,8 +1598,8 @@ der Zeichnungen braucht, ruft dafür das Zeichen-Skill auf oder bringt dessen We
 | 96 | KI-Kennzeichnung (Protokoll) | ki-kennzeichnung |
 | 99 | Abschlussbericht (Paketübersicht, Qualitätscheck, konsolidierte Prüfaufträge) | unterricht-entwickeln |
 
-**Werkzeug-Skills** (Nr. 42, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
-(`edu-diagramm`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
+**Werkzeug-Skills** (Nr. 42, 46, 65, 92) erzeugen außer dem Artefakt Dateien mit Werkzeugen
+(`edu-diagramm`, `edu-technologieschema`, `edu-quiz`, `edu-edumap`). Die Quelle (YAML bzw. Markdown) ist dann kein
 Artefakt mit Pflichtabschnitten – diese hätten in der Quelle Folgen für die Ausgabe –, sondern
 Kopf und Pflichtabschnitte stehen in einem **Begleitblatt** (`…_begleitblatt.md`,
 Diagrammblatt). Nummern 92–96 (Ausspielen) folgen auf den Prüfbericht: veröffentlicht wird

@@ -2,7 +2,7 @@
 artefakt: Abiturvorschlag – Schülermaterial
 titel: "[Thema]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.18"
+skill_version: "1.19"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"                 # Technik | Berufliche Informatik

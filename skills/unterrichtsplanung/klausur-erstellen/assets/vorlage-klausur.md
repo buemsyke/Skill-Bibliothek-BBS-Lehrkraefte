@@ -2,7 +2,7 @@
 artefakt: Klassenarbeit – Aufgabenteil
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.12"
+skill_version: "1.13"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"

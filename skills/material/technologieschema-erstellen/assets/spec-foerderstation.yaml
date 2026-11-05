@@ -1,0 +1,50 @@
+# Muster: Förderstation – Band mit Motor, Lichtschranke, Abschiebezylinder, Behälter und Bedienfeld.
+# Ausgangspunkt für Aufgaben mit Fördertechnik und Werkstückerkennung. Gestrichelte Linie = Lichtstrahl.
+# Der Empfänger der Lichtschranke trägt kein eigenes Kennzeichen (legende: false).
+# Kennzeichen: Klasse M und B enthalten je zwei Arten (Motor/Zylinder, Lichtschranke/Zylinderschalter) –
+# wie alle Kennzeichen mit Unterklasse (-MA1, -MM1, -BR1, -BG1, -SJ1, -PF1).
+titel: "Abbildung 3 – Technologieschema der Förderstation"
+alt: "Waagerechtes Förderband mit Motor -MA1. Über dem Band eine Lichtschranke -BR1 mit Sender oben und Empfänger unten, rechts davon ein senkrechter Abschiebezylinder -MM1 mit Endlagensensoren -BG1 und -BG2, der Werkstücke in den Behälter am Bandende drückt. Links das Bedienfeld mit Taster -SJ1, Not-Halt -SJ2 und Leuchtmelder -PF1."
+out: abbildungen/46_foerderstation
+breite: 780
+hoehe: 500
+fusszeile:
+  - "Grundstellung: Zylinder eingefahren, Band steht, kein Werkstück im Lichtstrahl."
+  - "Pfeile: Bewegung beim Ausfahren des Zylinders und Transportrichtung des Bandes."
+elemente:
+  - typ: bedienfeld
+    x: 40
+    y: 50
+    b: 220
+    h: 110
+    titel: Bedienfeld
+    eintraege:
+      - {typ: taster, id: "-SJ1", name: Start, funktion: "startet das Band"}
+      - {typ: taster, id: "-SJ2", name: Not-Halt, symbol: not_halt, funktion: "stoppt die Anlage"}
+      - {typ: leuchte, id: "-PF1", name: Betrieb, funktion: "leuchtet bei laufendem Band"}
+  - {typ: band, ref: band, x: 60, y: 300, b: 520, h: 40, name: Förderband, lage: unten, abstand: 36}
+  - {typ: motor, id: "-MA1", name: Bandantrieb, x: 210, y: 430, r: 22, funktion: "treibt das Förderband an"}
+  - {typ: linie, punkte: ["band@unten:-110,0", "-MA1@oben"]}
+  - {typ: rechteck, ref: werkstueck, x: 308, y: 270, b: 44, h: 30, fuellung: grau}
+  - {typ: linie, punkte: [[90, 285], [150, 285]], pfeil: ende}
+  - {typ: sensor, art: lichtschranke, id: "-BR1", name: Lichtschranke, x: 330, y: 190, lage: oben, funktion: "Sender; meldet 0, wenn ein Werkstück den Strahl unterbricht"}
+  - {typ: sensor, art: lichtschranke, x: 330, y: 255, legende: false}
+  - {typ: linie, punkte: [[330, 203], [330, 242]], stil: gestrichelt}
+  - typ: zylinder
+    id: "-MM1"
+    name: Abschieben
+    funktion: "Abschiebezylinder, drückt das Werkstück in den Behälter"
+    x: 420
+    y: 70
+    laenge: 100
+    breite: 34
+    stange: 70
+    werkzeug: platte
+    werkzeug_b: 50
+    lage: links
+    sensoren:
+      - {id: "-BG1", pos: 0.1, seite: rechts, funktion: "meldet: Zylinder eingefahren"}
+      - {id: "-BG2", pos: 0.8, seite: rechts, funktion: "meldet: Zylinder ausgefahren"}
+  - {typ: linie, punkte: ["-MM1@spitze:-62,-40", "-MM1@spitze:-62,0"], pfeil: ende}
+  - {typ: behaelter, ref: behaelter, x: 600, y: 330, b: 120, h: 100, offen: true, fuellung: weiss}
+  - {typ: etikett, x: 660, y: 460, text: "Behälter für Ausschuss", ausrichtung: mitte, kursiv: true, ziel: [660, 432]}

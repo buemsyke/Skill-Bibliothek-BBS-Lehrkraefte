@@ -2,7 +2,7 @@
 name: unterrichtsmaterial-erstellen
 description: Erstellt einsatzfertiges Unterrichtsmaterial für berufsbildende Schulen als Markdown – Arbeitsblätter mit handlungsorientierten Aufträgen, Infotexte, Situationsmaterial (Kundenauftrag, Störmeldung, Lastenheft), Vorlagen (Arbeitsplan, Prüfprotokoll, Projektplan), Übungsaufgaben, Tafelbild, Befundkarten, Entscheidungsmatrix, Rollenkarten, Peer-Feedback, Kannliste, Reflexionsauftrag, Bewertungsraster und Lehrerhandreichung – mit Schüler- und Lehrerfassung und vollständigem Erwartungshorizont, für Lernende kurz und anschaulich. Rechnet Zahlenwerte nach und erfindet keine Quellen. Verwenden, wenn zu einer Lernsituation, einem Projekt, einem Entwurf oder einem Thema ein Arbeitsblatt, ein Infoblatt, eine Lösung, ein Erwartungshorizont oder ein Materialpaket benötigt wird. Vorhandenes Material sprachsensibel überarbeiten (sprachsensibel-ueberarbeiten) oder differenzieren (differenzierung-erstellen) leisten eigene Skills.
 metadata:
-  version: "1.14"
+  version: "1.15"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -113,7 +113,7 @@ Lehrerhandreichung. In der Materialübersicht ausweisen, was vorliegt und was fe
    mindestens eine Darstellung, mit der Aufträge arbeiten (ablesen, ergänzen, Fehler finden,
    selbst zeichnen – `references/schuelermaterial.md` Abschn. 2). Selbst erstellen, was sich
    erstellen lässt: Tabelle, Matrix, Kennlinie aus gerechneten Werten (Code, als SVG);
-   Blockschaltbilder, Abläufe, Strukturbilder, Struktogramme und Datenmodelle mit `fachdiagramm-erstellen`.
+   Blockschaltbilder, Abläufe, Strukturbilder, Struktogramme und Datenmodelle mit `fachdiagramm-erstellen`, Anlagenbilder zu Steuerungsaufgaben (Technologieschemata), GRAFCET und Funktionspläne mit `technologieschema-erstellen`.
    Jede Zeichnung als SVG aus einer Spec – nie als Zeichnung aus Zeichen oder Mermaid, auch nicht
    in Lösungen und Tafelbild. Steuerungsaufgaben: Betriebsmittelkennzeichen immer mit Klasse und
    Unterklasse (-SJ1, -MA1, -MM1, -EA1), gleich in Funktionsbeschreibung, Technologieschema und

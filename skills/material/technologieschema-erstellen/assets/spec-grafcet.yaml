@@ -1,0 +1,27 @@
+# Muster GRAFCET (typ: grafcet, Abschn. 5a der Spec-Referenz) – Tankanlage aus spec-tankanlage.yaml.
+# Die Spec nennt nur die Struktur; Lage und Normsymbole kommen aus dem Werkzeug. Kopieren nach
+# schema/…_loesung_<nr>_grafcet.yaml. breite und hoehe dürfen fehlen (werden berechnet).
+# Speichernd: "↑ -PF1 := 1" (bei Aktivierung), "↓ -PF1 := 0" (bei Deaktivierung) – immer mit Zuweisung.
+titel: "Lösung – GRAFCET der Tankanlage"
+alt: "GRAFCET mit Initialschritt 0 und den Schritten 1 bis 3; Schritt 1 setzt -PF1 bei Aktivierung und steuert -QM1 und -GP1; Schritt 3 steuert -QM2 und setzt -PF1 bei Deaktivierung zurück; Transitionen -SJ1 · nicht -BL3, -BL3, 30s/X2 und nicht -BL1; Rücksprung zum Initialschritt."
+out: abbildungen/46_tankanlage_loesung_grafcet
+fusszeile:
+  - "GRAFCET nach DIN EN 60848, Schreibweise nach dem Notationsblatt."
+  - "Lösungsbild – nur Lehrerteil."
+elemente:
+  - typ: grafcet
+    zuordnung:             # optional: nur diese Kennzeichen, nichts vergessen
+      eingaenge: ["-SJ1", "-BL1", "-BL3"]
+      ausgaenge: ["-QM1", "-QM2", "-GP1", "-PF1"]
+    kette:
+      - {schritt: 0, art: initial}
+      - {transition: "-SJ1 · ¬-BL3", kommentar: "Start, Tank nicht voll"}
+      - schritt: 1
+        aktionen: ["↑ -PF1 := 1", "-QM1", {text: "-GP1", kommentar: "Befüllen"}]
+      - {transition: "-BL3", kommentar: "Tank voll"}
+      - {schritt: 2, kommentar: "Beruhigen"}
+      - {transition: "30s/X2"}
+      - schritt: 3
+        aktionen: [{text: "-QM2", kommentar: "Entleeren"}, "↓ -PF1 := 0"]
+      - {transition: "¬-BL1", kommentar: "Tank leer"}
+      - sprung: 0
