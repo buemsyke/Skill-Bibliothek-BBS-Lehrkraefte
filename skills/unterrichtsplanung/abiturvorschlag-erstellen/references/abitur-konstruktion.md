@@ -70,6 +70,13 @@ Formulierungen, Erwartungshorizont): `references/abitur-aufgabenformat.md`, Absc
 | Gestaltungs- und Medientechnik | Produktionsablauf planen, Druck- bzw. AV-Produkt analysieren und entwerfen, Qualität prüfen 🔎 |
 | Berufliche Informatik | Modellieren (Klassen-, Zustandsdiagramm), Algorithmus entwickeln und testen, Datenbankabfragen, Netz und Protokoll |
 
+**Anlagenaufgabe für Steuerungstechnik und Mechatronik** (auch Elektro- und Metalltechnik mit
+Automatisierungsanteil): eine Anlage mit Technologieschema, Funktionsbeschreibung und Material trägt
+alle Teilaufgaben; der Bauplan erhält die Spalte *Quelle* (Bildelement, Satz, Material je
+Teilaufgabe). Kette und Muster: `references/aufgabenmuster-steuerungstechnik.md` (TA1 Anlage
+erschließen → TA2 Zuordnungsliste → TA3 GRAFCET → TA4/TA5 dimensionieren und Bestand prüfen → TA6
+Nachweis; zweite Aufgabe TA7 Befund aus der Erprobung → TA8 Schaltung mit Datenblatt → TA9 Sensoren).
+
 **Aufgabenfluss-Muster für Informationstechnik** (bewährt in den Vergleichsheften,
 `references/abitur-aufgabenformat-vergleich.md`; deren veraltete Bausteine – Registerebene, Assembler,
 Betriebssysteme, SQL/Datenbanken – werden nicht übernommen). Je Teilaufgabe ein Muster mit
@@ -161,8 +168,12 @@ Prüfen: `abitur_check.py SM_A LM_A --vergleich SM_B LM_B`.
 
 ## 9. Material, Quellen, Abbildungen
 
-- Datenblatt- und Tabellenauszüge mit **Quelle**, nur die nötigen Werte; Kennwerte, die die Lösung
-  bestimmen, in die Anlage (statt „aus dem Tabellenbuch“).
+- Datenblatt- und Tabellenauszüge mit **Quelle**; Kennwerte, die die Lösung bestimmen, in die Anlage
+  (statt „aus dem Tabellenbuch“). **Original oder Abschrift:** Ist das Entnehmen der Kennwerte Teil der
+  Leistung, liegt das Datenblatt als Originalauszug bei (höchstens zwei Seiten, lesbar, Kennwert mit
+  eindeutiger Messbedingung); sonst nur die nötigen Werte als Tabelle. Auswahl aus Katalog- oder
+  Normreihentabellen immer mit Regel („kleinste ausreichende …“, „nächstgrößerer Normwert“)
+  (`references/aufgabenmuster-steuerungstechnik.md`, DM1–DM6).
 - Fiktive Betriebe und Personen erkennbar „(fiktiv)“; keine echten Kontaktdaten.
 - Abbildungen mit `fachdiagramm-erstellen` (Aufgaben- und Lösungsbild getrennt), Schwarzweiß
   lesbar, mit Text-Legende; jede angekündigte Anlage ist vorhanden (S.2).
@@ -184,8 +195,10 @@ Prüfen: `abitur_check.py SM_A LM_A --vergleich SM_B LM_B`.
 - **Hinweise zur Bewertung:** allgemeine Regeln (Folgefehler einmal, Rundung, Einheiten,
   gleichwertige Lösungen).
 - **Musterlösung:** je Teilaufgabe „Lösungsvorschlag zur Teilaufgabe N.n“ – vollständiger
-  Lösungsgang mit Zwischenergebnissen und Einheiten, **mit Code nachgerechnet**; darunter
-  Merkmaltabelle und die Zeilen *Gleichwertig*, *Folgefehler*, *Toleranz*, *0 BE*.
+  Lösungsgang mit Zwischenergebnissen und Einheiten, **mit Code nachgerechnet** – knapp, ohne
+  Merkmaltabelle.
+- **Bewertungsraster** (eigene Datei): je Teilaufgabe Merkmaltabelle mit Kurztext und die Zeilen
+  *Gleichwertig*, *Folgefehler*, *Toleranz*, *0 BE* (`assets/vorlage-bewertungsraster.md`).
 
 ## 11. Katalog → Bauregel
 

@@ -92,11 +92,11 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
     (lesen/ausführen → bewerten → verändern) und enthält eine benannte Denkfalle; der
     Erwartungshorizont nennt sie und die Antworten, die 0 P. ergeben.
 14. **Steuerungstechnik: dieselben Betriebsmittelkennzeichen überall.** Die Funktionsbeschreibung
-    nennt jedes Betriebsmittel mit Kennzeichen (-S1, -B2), Geber mit Kontaktart (NO/NC), dazu
+    nennt jedes Betriebsmittel mit Kennzeichen (-SJ1, -BG2), Geber mit Kontaktart (NO/NC), dazu
     Grundstellung und Stopp; Legende des Technologieschemas, Zuordnungsliste, Aufgaben und
     Erwartungshorizont verwenden dieselben Kennzeichen – keine Kennung erst in der Lösung.
-    Kennbuchstaben nach DIN EN IEC 81346-2:2020, so kurz wie möglich: nur die Klasse (-S1, -K1,
-    -Q1), Unterklasse nur bei verschiedenen Arten einer Klasse (-BL1 neben -BT1); Ausgabe 2009 nur,
+    Kennbuchstaben nach DIN EN IEC 81346-2:2020 immer mit Klasse und Unterklasse (-SJ1, -KE1,
+    -QA1, -MA1, -MM1, -EA1; nie die Klasse allein); Ausgabe 2009 nur,
     wenn so unterrichtet und genannt; GRAFCET nach DIN EN 60848 (`references/normen-technik.md`).
     Einheitliche Notation nach `references/notation-steuerungstechnik.md` (als Anlage beifügen);
     Steuerungsaufgaben mit SPS, Kleinsteuerung oder Mikrocontroller lösbar (Zuordnungsliste mit
@@ -114,7 +114,9 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
    zuerst den Bauplan, dann die Texte. AFB-Soll, Takt und Freitextanteil hier schon einhalten;
    je Aufgabe das Material und den Prüfstein festlegen. In Informationstechnik und Informatik je
    Teilaufgabe ein Muster aus `references/aufgabenmuster-informationstechnik.md` (Kennung in den
-   Bauplan; Festlegungen B1–B14 ins Aufgabenblatt).
+   Bauplan; Festlegungen B1–B14 ins Aufgabenblatt). In Steuerungstechnik und Mechatronik zuerst die
+   Anlage als Datenquelle aller Teilaufgaben planen, dann je Teilaufgabe ein Muster aus
+   `references/aufgabenmuster-steuerungstechnik.md` (TA1–TA10; Datenblätter nach DM1–DM6).
 3. **Aufgabenteil schreiben** nach `assets/vorlage-klausur.md`: Kopf mit Bearbeitungszeit,
    Hilfsmitteln und Gesamtpunkten, Hinweise auf dem Blatt, Fallschilderung, Aufgaben im Format
    `Aufgabe N – Titel (insgesamt P Punkte)` und Teilaufgaben `N.n **Operator** … (p P)` mit
@@ -139,14 +141,11 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 6. **Aufsichtsblatt** bei fremder Aufsicht nach `assets/vorlage-aufsichtsblatt.md`.
 7. **Varianten** (falls gewünscht): gleiche Bauplantabelle, anderer Kontext bzw. andere Zahlen;
    eigener Erwartungshorizont; Selbstprüfung für jede Variante.
-8. Qualitätscheck, dann ausgeben.
-   Kollegiale Gegenprüfung empfehlen (Lösbarkeit Schritt für Schritt).
+8. Qualitätscheck, dann ausgeben. Gegenlesen durch eine zweite Lehrkraft
+   empfehlen (Lösbarkeit Schritt für Schritt).
 
 ## Ausgabe
-- **Mit Arbeitsordner** (vorhanden oder gewünscht):
-  `01_vorgabe/<kurztitel>_aufgaben.md` und `02_musterloesung/<kurztitel>_erwartungshorizont.md`
-  (Ordnerkonvention in `references/skill-vertrag.md`).
-- **Sonst:** `70_klausur_<kurztitel>.md` und `70_klausur_<kurztitel>_erwartungshorizont.md`;
+- **Dateien:** `70_klausur_<kurztitel>.md` und `70_klausur_<kurztitel>_erwartungshorizont.md`;
   Varianten mit Suffix `_B`, `_nachschreiben`.
 - Bei fremder Aufsicht zusätzlich `70_klausur_<kurztitel>_aufsicht.md` (bzw.
   `01_vorgabe/<kurztitel>_aufsicht.md`); die Prüflinge erhalten nur das Aufgabenblatt.
@@ -190,6 +189,9 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 - `references/aufgabenmuster-informationstechnik.md` – **bei Informationstechnik und Informatik**:
   Aufgabentypen und Fragestellungen als Schablonen mit Festlegungen, Prüfstein und Merkmalen
   (Mikrocontroller, Modellierung, Algorithmen, Netzwerke/IoT, KI, SQL).
+- `references/aufgabenmuster-steuerungstechnik.md` – **bei Steuerungstechnik und Mechatronik**: Anlagenaufgabe
+  (eine Anlage trägt alle Teilaufgaben), Schema als Datenquelle, Datenblatt im Original, Auswahl aus Katalogen mit
+  Regel, Bestandsprüfung, Befund aus der Erprobung, Aufgabentypen TA1–TA10.
 - `assets/vorlage-aufsichtsblatt.md` – bei fremder Aufsicht.
 - `references/operatoren-afb.md` – Operatoren und AFB; `references/operatoren-epa-technik.md` – BG und Abitur.
 - `references/berufliches-gymnasium.md` – Klausur im BG: Lerngebiete, BE, Notenpunkte, Hilfsmittel.
@@ -210,7 +212,7 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 artefakt: Klassenarbeit – Aufsichtsblatt
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.11"
+skill_version: "1.15"
 stand: JJJJ-MM-TT
 vertraulich: true
 status: "KI-Entwurf – fachlich zu prüfen"
@@ -258,7 +260,7 @@ _____________________________________________________________________
 
 Aufgabenblätter bitte gesammelt im Fach der Fachlehrkraft ablegen: [Ort].
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.11). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-erwartungshorizont.md
 
@@ -266,7 +268,7 @@ Aufgabenblätter bitte gesammelt im Fach der Fachlehrkraft ablegen: [Ort].
 artefakt: Klassenarbeit – Erwartungshorizont
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.11"
+skill_version: "1.15"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -407,11 +409,10 @@ Freitextanteil.
 ## Übergabe
 
 - Art, Zeit, Punkte, Notenschlüssel: …
-- Aufgaben-IDs für die Rubrik: A1.1 …
 - Aufsichtsblatt (bei fremder Aufsicht): `vorlage-aufsichtsblatt.md`
-- Empfohlen: kollegiale Gegenprüfung (Lösbarkeit, Punkte)
+- Empfohlen: Gegenlesen durch eine zweite Lehrkraft (Lösbarkeit Schritt für Schritt)
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.11). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-klausur.md
 
@@ -419,7 +420,7 @@ Freitextanteil.
 artefakt: Klassenarbeit – Aufgabenteil
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.11"
+skill_version: "1.15"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -431,7 +432,7 @@ status: "KI-Entwurf – fachlich zu prüfen"
 ---
 
 <!-- Format so lassen: „Aufgabe N – Titel (insgesamt P Punkte)" und Teilaufgaben „N.n … (p P)".
-     Daran erkennen klausur_check.py und weitere Prüfskripte
+     Daran erkennen klausur_check.py und die regelbasierte Begutachtung
      Punkte und Struktur. Anlagen bekommen eine eigene Überschrift „Anlage N – …".
      Kursive Zeile *Antwortraum: …* unter einer Teilaufgabe = Vorgabe für die Druckfassung
      (Formate nach references/druckfassung-antwortformate.md, Abschn. 5). Name in die Kopfzeile
@@ -1038,6 +1039,266 @@ lösbar (B11, B14). Die erste Teilaufgabe ist kurz und eindeutig (F4, H9, N7). B
 - [ ] *Gleichwertig* nennt Plattform-, Sprach- und Notationsfreiheit (B3)?
 - [ ] Operator aus der Liste des Fachs (Abschn. 2), ein Operator je Satz?
 
+## Anhang: references/aufgabenmuster-steuerungstechnik.md
+
+# Aufgabenmuster Steuerungstechnik und Mechatronik – die Anlagenaufgabe
+
+Wiederverwendbare Muster für Prüfungs- und Übungsaufgaben, in denen **eine Anlage** (Technologieschema
+und Funktionsbeschreibung) alle Teilaufgaben trägt: Steuerungstechnik, Pneumatik, Elektrotechnik,
+Mechanik und Sensorik an einem Projekt. Gilt für Abiturvorschläge (Berufliches Gymnasium Technik) und
+sinngemäß für Klausuren der Qualifikationsphase und Klassenarbeiten der Fachschule und Berufsschule.
+**Herkunft:** Auswertung der zentralen Abituraufgaben Technik – Mechatronik (eA) in Niedersachsen,
+Vorbild ist die Aufgabe I des Haupttermins 2025 (Stand 05.11.2026) – in eigenen Worten, keine
+Aufgabentexte, Abbildungen oder Datenblätter übernommen, alle Beispiele erfunden. Verbindlich bleiben
+Format, Operatorenliste, Kennzeichnung nach DIN EN IEC 81346-2:2020 und Erwartungshorizont mit
+Bewertungsmerkmalen (`aufgabenqualitaet.md`, `notation-steuerungstechnik.md`, falls vorhanden).
+Die Muster sind Baupläne, keine Texte zum Abschreiben.
+
+## Inhalt
+1. Gebrauch
+2. Was die Vorbildaufgabe gut macht – Befund
+3. Bauprinzipien der Anlage (BA1–BA8)
+4. Das Technologieschema als Datenquelle
+5. Authentisches Material – Datenblatt, Katalog, Tabellenbuch (DM1–DM6)
+6. Aufgabentypen an der Anlage (TA1–TA10)
+7. Muster verketten – Aufgabenfluss und Querbezüge
+8. Was nicht übernommen wird
+9. Kurzprüfung
+
+---
+
+## 1. Gebrauch
+
+- **Erst die Anlage, dann die Aufgaben:** Situation, Schema, Funktionsbeschreibung und Material so
+  planen, dass jede Teilaufgabe daraus ihre Angaben bezieht (BA1, Abschn. 4). Danach je Teilaufgabe
+  ein Muster aus Abschn. 6 wählen und die Kennung in den Bauplan schreiben (`TA3`, `DM2` …).
+- **Aufbau jedes Musters:** *Schablone* (Auftrag mit Platzhaltern ‹…›) · *Festlegen* (was im
+  Material stehen muss, damit die Lösung eindeutig ist oder die gleichwertigen Lösungen klar
+  umrissen sind) · *Prüfstein* (die eingebaute Denkfalle) · *Merkmale* (beobachtbar, je BE) ·
+  *AFB und BE* als Richtwerte nach den zentralen Aufgaben (Teilaufgaben 4–15 BE).
+- **Notation:** Kennzeichen nach DIN EN IEC 81346-2:2020 in Kurzform (-S1, -B1, -MA1, -MM1, -P1);
+  die zentralen Aufgaben nutzen noch die Ausgabe 2009 (-SF, -BG, -AZ) – die Muster gelten für beide,
+  die Beispiele hier stehen in der Ausgabe 2020.
+
+## 2. Was die Vorbildaufgabe gut macht – Befund
+
+| Merkmal | Ausprägung in der Vorbildaufgabe (in eigenen Worten) | Wirkung |
+|---|---|---|
+| **Eine Anlage trägt alles** | ein Sortier- und Transportsystem mit Bandstrecken, Weiche (Hubzylinder), Bildsensor, Abräumstationen und Rollspeichern; zwei Aufgaben mit sechs bzw. drei Teilaufgaben | Prüflinge arbeiten sich einmal ein; jede Teilaufgabe hat einen Zweck im Projekt |
+| **Schema als Datenquelle** | ein Bild mit allen Antrieben, Sensoren, Bedienelementen (als Legendenfeld mit Funktion), Signalleuchte, Zylinder am Gelenk, Rampe in zweiter Stellung gestrichelt, vier Stationen als Kästen | Zuordnungsliste, GRAFCET, Hebelgeometrie, Pneumatikplan, LED-Zahl und Sensorauswahl beziehen sich auf dasselbe Bild |
+| **Knappe Funktionsbeschreibung mit echter Steuerungslogik** | Start/Stopp, Weiche nach Prüfergebnis (Alternativverzweigung), Halt an einer Station mit Quittierung durch das Personal, Sperre bei vollem Speicher, Betriebsart *Halt* mit Meldeleuchte, Fortsetzen ohne Neustart | ein GRAFCET mit AFB III aus wenigen Sätzen, ohne Kleinschritt |
+| **Umfang begrenzt** | Testbetrieb mit genau einem Werkstück | der Ablauf bleibt in 14 BE beherrschbar, Mehrfachbelegung fällt weg |
+| **Zuordnungsliste als Vorlage** | Spaltenkopf mit Operanden für SPS **und** Kleinsteuerung, Kontaktart, zwei ausgefüllte Beispielzeilen (Stopp als Öffner) | Format und Plattform offen, Kontaktart als Denkanstoß |
+| **Rechnen am eigenen Bauteil** | Hebel mit Zylinder nahe am Drehpunkt (Kraft und Hub über das Hebelverhältnis), Abscherung einer Radachse mit Sicherheitszahl, Federrate aus Hub je entnommenem Teil | Mechanik ist kein Anhang, sondern Teil der Anlage |
+| **Bestand prüfen statt frei wählen** | „im Lager nur ‹Bauform› mit ‹Durchmesser›“ → überprüfen, ob Kraft und Hub reichen, nötigenfalls anpassen und nachweisen | eindeutige Rechnung (AFB II) mit eigener Entscheidung (AFB III) |
+| **Befund aus der Erprobung** | Probelauf zeigt eine Störung (harter Anschlag in der Endlage), eine einfache Abhilfe hat nicht gereicht → Bauart wechseln, Wirkung erläutern, Schaltplan entwerfen | Anlass statt Behauptung; die zweite Aufgabe knüpft an die erste an |
+| **Echte Unterlagen** | Originalauszug eines Herstellerdatenblatts (zwei Seiten, mit Quelle), Federtabelle aus einem Katalog, Zylindertabelle aus dem Tabellenbuch | Kennwerte entnehmen und deuten wird geprüft, wie im Beruf |
+| **Normreihe** | errechneter Vorwiderstand → Wert aus der E24-Reihe festlegen | Rechnung endet in einer realen Bauteilentscheidung |
+| **Handlungsergebnisse** | Liste am Ende, je Teilaufgabe ein Ergebnis im Partizip („Druckfedern bestimmt“) | Prüflinge sehen, was abzugeben ist |
+
+Schwächen derselben Aufgabe, die eigene Aufgaben nicht übernehmen: Abschn. 8.
+
+## 3. Bauprinzipien der Anlage
+
+| Nr. | Prinzip | So umgesetzt |
+|---|---|---|
+| BA1 | **Jede Angabe hat einen Abnehmer** | Bauplan-Spalte *Quelle*: Für jede Teilaufgabe steht fest, aus welchem Bildelement, Satz der Funktionsbeschreibung oder Material sie ihre Angaben bezieht; umgekehrt braucht jedes Element im Schema mindestens eine Teilaufgabe (sonst weglassen) |
+| BA2 | **Situation mit Auftrag und Grenze** | Fachkraft in einem fiktiven Betrieb, ein Projekt mit Ziel (automatisieren, umrüsten, erproben) und einer **Begrenzung** des Umfangs („Testbetrieb mit einem Werkstück“, „Not-Halt ist hardwaremäßig gelöst“, „Wartungsbetrieb nicht betrachtet“) |
+| BA3 | **Logik in wenigen Sätzen** | die Funktionsbeschreibung enthält die steuerungstechnisch tragenden Elemente als Text, nicht als Schrittliste: Startbedingung, **Verzweigung** nach einem Prüfergebnis, **Warten auf Quittierung** durch eine Person, **Sperre** (Speicher voll, Tür offen), **Betriebsart** (Halt/Einrichten mit Meldeleuchte, Fortsetzen an der Unterbrechungsstelle), Stopp |
+| BA4 | **Mehrere Fachgebiete am selben Bauteil** | der Zylinder der Steuerung ist auch der Zylinder der Kraftrechnung und des Pneumatikplans; die Stationen im Bild bestimmen die Zahl der Meldeleuchten; die Sensorpositionen sind die Positionen der Sensorauswahl |
+| BA5 | **Vereinfachungen ausdrücklich** | „Masse des Bandes mittig angreifend“, „Zylinder stets senkrecht zum Band“, „Reibung vernachlässigt“ – als eigener Satz oder „Hinweis:“-Zeile, damit die Rechnung eindeutig wird |
+| BA6 | **Werte mit Einheit und Herkunft** | Maße, Massen, Druck, Wirkungsgrad, Sicherheitszahl im Text; Werkstoffkennwerte, Normreihen und Bauteildaten im Material (DM1–DM6), nie „aus dem Tabellenbuch“ ohne festen Wert |
+| BA7 | **Steigerung über das Projekt** | Einarbeitung (AFB I) → Zuordnungsliste, Ablauf (II/III) → Dimensionieren und Überprüfen (II/III) → Befund aus der Erprobung, Umbau, Auswahl begründen (III) |
+| BA8 | **Teilaufgaben entkoppelt** | jede Teilaufgabe ist ohne das Ergebnis der vorigen lösbar (Ersatzwert oder eigene Angabe); Querbezüge über die Anlage, nicht über Zwischenergebnisse – sonst Folgefehlerregel |
+
+## 4. Das Technologieschema als Datenquelle
+
+Das Schema ist in der Anlagenaufgabe kein Titelbild, sondern Material, aus dem gearbeitet wird.
+Zeichnen mit dem Zeichen-Skill für Technologieschemata (Spec, SVG, bearbeitbare `.drawio.svg`).
+
+1. **Vollständig für alle Teilaufgaben:** jeder Antrieb, Sensor, Aktor, jedes Bedien- und
+   Meldeelement mit Kennzeichen im Bild **und** in der Text-Legende; dazu, was gerechnet oder
+   gezählt wird: Drehpunkt und Angriffspunkt eines Hebels, Stationen (Anzahl sichtbar), Speicher
+   mit Voll-Sensor.
+2. **Geometrie für Rechnungen:** Längen und Abstände, die eine Rechnung braucht, stehen im Text
+   der Teilaufgabe (BA6); das Bild zeigt die Lage (Gelenk, Zylinder, Band) und darf Maßpfeile
+   tragen – keine Maßstabsmessung im Bild verlangen.
+3. **Bewegungsbereich zeigen, nicht den Ablauf:** die zweite Stellung eines schwenkenden Teils
+   (gehobene Rampe, ausgefahrene Weiche) als gestrichelter Umriss; Grundstellung durchgezogen und
+   in der Fußzeile genannt. Keine Schrittnummern, Pfeile der Reihenfolge oder Signalzustände.
+4. **Bedienfeld als eigener Bereich** mit Funktion je Element (Start, Stopp, Halt, Quittieren,
+   Meldeleuchte); Farbe nur zusätzlich zum Text, nie allein bedeutungstragend.
+5. **Stofffluss lesbar:** Werkstückfluss von links nach rechts, Verzweigung sichtbar (zwei Strecken
+   übereinander), Ende jeder Strecke mit Speicher und Sensor.
+6. **Umfang:** Eine Prüfungsanlage hat oft 15–25 Elemente. Über etwa 15 Bauteile wird nach
+   Bereichen gegliedert (Bedienfeld, Zuführung, Weiche, Strecken, Speicher) oder in zwei Bilder
+   geteilt (Anlage, Bedienfeld) – Lesbarkeit im Schwarzweißdruck prüfen.
+7. **Begleitbild für die Mechanik:** Für ein Zusatzbauteil (Transportwagen mit Federboden,
+   Halterung, Achse) eine eigene schematische Ansicht im Material, die die Wirkungsweise zeigt
+   (Federn unter dem Boden, Achse mit Rad) – keine Normzeichnung vortäuschen.
+
+## 5. Authentisches Material – Datenblatt, Katalog, Tabellenbuch
+
+| Nr. | Prinzip | So umgesetzt |
+|---|---|---|
+| DM1 | **Original statt Abschrift**, wenn das Entnehmen geprüft wird | Datenblatt als Auszug im Original (die Seiten mit Kenndaten und Grenzwerten), Quelle mit Fundstelle; die Prüflinge suchen die nötigen Werte selbst heraus (typisch/maximal, Messbedingung) – das ist Teil der erwarteten Leistung (AFB II). Wird das Entnehmen **nicht** geprüft: nur die nötigen Werte als Tabelle mit Quelle |
+| DM2 | **Auszug begrenzen** | höchstens zwei Seiten je Datenblatt; Seiten ohne Bezug weglassen; Lesbarkeit im Druck prüfen (Schriftgröße der Tabellen) – lieber eine Seite in voller Breite als zwei verkleinerte |
+| DM3 | **Eindeutig auffindbar** | der benötigte Kennwert kommt im Auszug mit genau einer passenden Messbedingung vor; gibt es typisch und maximal, legt die Teilaufgabe fest, womit gerechnet wird, oder beide Wege sind *Gleichwertig* mit Toleranz |
+| DM4 | **Katalogtabelle mit Auswahlregel** | Auswahl aus einer Tabelle (Federn, Zylinder, Motoren, Normreihe) mit Regel: „kleinste ausreichende …“, „nächstgrößerer Normwert“, „mit Reserve ≥ 20 %“; die Tabelle enthält mindestens eine knapp unpassende Zeile (Prüfstein) |
+| DM5 | **Bestandsliste als Einschränkung** | „Verfügbar sind nur ‹Bauform› mit ‹Kenngröße›“: die Tabelle zeigt, dass eine Anforderung (Kraft oder Hub) damit nicht erfüllt ist – die Anpassung ist erwartet und hat ein Kriterium (Abschn. 6, TA5) |
+| DM6 | **Rechte und Quelle** | Herstellerunterlagen, Katalog- und Tabellenbuchauszüge nur mit Quelle und geklärten Rechten (Begleitblatt); Tabellen aus dem eingeführten Tabellenbuch dürfen alternativ als Verweis auf Tabelle und Seite stehen, wenn alle Prüflinge dieselbe Ausgabe haben |
+
+Im Lehrermaterial: je Datenblattwert die Fundstelle (Seite, Tabelle, Zeile) und der Wert, mit dem
+die Musterlösung rechnet.
+
+## 6. Aufgabentypen an der Anlage
+
+**TA1 Anlage erschließen** · AFB I · 3–4 BE
+- Schablone: „Nennen Sie die ‹Zahl› Teilsysteme der Anlage.“ – „Beschreiben Sie die Aufgabe jedes
+  Teilsystems im Gesamtablauf.“
+- Festlegen: Zahl der Teilsysteme oder Gliederungskriterium (Zuführen, Prüfen, Weiche, Abräumen,
+  Speichern); ein Operator je Satz.
+- Merkmale: je Teilsystem Name (½) und Aufgabe (½) bzw. je Paar 1 BE.
+
+**TA2 Zuordnungsliste aus Schema und Text** · AFB II · 5–6 BE
+- Schablone: „Analysieren Sie das Technologieschema (Abbildung N) und die Funktionsbeschreibung.
+  Entwickeln Sie die Zuordnungsliste in Anlage N weiter.“
+- Festlegen: Vorlage mit Kopf (Kennzeichen | Betriebsmittel | Operand SPS | Operand Kleinsteuerung
+  | Signal 1 bedeutet | Kontaktart), zwei ausgefüllte Beispielzeilen, ausreichend Leerzeilen; Zahl
+  der Ein- und Ausgänge der Plattform; Regel für die Kontaktart (Stopp und Halt drahtbruchsicher als
+  Öffner, Sensoren als Schließer, sofern nicht anders angegeben).
+- Prüfstein: ein Betriebsmittel, das nur im Bild steht (Sensor am Speicher, Meldeleuchte), und ein
+  Ausgang, der zwei Richtungen braucht (Zylinder doppeltwirkend: zwei Spulen).
+- Merkmale: Eingänge vollständig (2), Ausgänge vollständig (2), Kontaktart richtig begründet (1–2).
+  *Gleichwertig*: andere Operandenreihenfolge, andere Plattform. Folgefehler: spätere Teilaufgaben
+  gelten als richtig, wenn sie zur eigenen Liste passen.
+
+**TA3 Ablauf als GRAFCET entwickeln** · AFB II/III · 12–15 BE
+- Schablone: „Entwickeln Sie für den ‹Testbetrieb› einen GRAFCET nach der Funktionsbeschreibung.“
+- Festlegen: Umfang (BA2: ein Werkstück, ohne Not-Halt), Kennzeichen aus Zuordnungsliste oder
+  Vorgabe, Notationsblatt als Anlage.
+- Prüfstein: drei Strukturen, die über eine Kette hinausgehen – **Alternativverzweigung** nach
+  einem Prüfsignal mit Zusammenführung, **Warteschritt auf Quittierung** durch eine Person,
+  **Betriebsart Halt** (Einfrieren über Zwangssteuerung bzw. einschließenden Schritt, Meldeleuchte
+  im Halt) und eine **Sperre** (Speicher voll) in der Startbedingung.
+- Merkmale funktional, nie an Schrittnummern: Grundstellung und Start (2), Verzweigung mit
+  exklusiven Bedingungen (2), Zusammenführung (1), Quittierung (2), Sperre (1), Halt mit
+  Fortsetzen ohne Neustart (2–3), Normform (Initialschritt, Rücksprung, Aktionsarten; 2).
+- AFB: Kette und Verzweigung II, Halt und Sperre III.
+
+**TA4 Bauteil am Hebel dimensionieren** · AFB II · 6–8 BE
+- Schablone: „Berechnen Sie die Kraft, die ‹Zylinder› am Angriffspunkt aufbringen muss.“ –
+  „Berechnen Sie den Hub, den ‹Zylinder› für ‹Höhenunterschied› ausführen muss.“
+- Festlegen: Längen (Gesamtlänge, Abstand Angriffspunkt–Drehpunkt), Massen und ihr Angriffspunkt
+  (BA5), Zusatzlast (Werkstück am Ende oder in der Mitte), Vereinfachung der Kraftrichtung.
+- Prüfstein: Der Angriffspunkt nahe am Drehpunkt vervielfacht die Kraft und verkleinert den Hub
+  (Hebelverhältnis wirkt gegenläufig).
+- Merkmale: Momentengleichgewicht aufgestellt (2), Kraft (1–2), Hub über Strahlensatz bzw.
+  Winkel (2), Einheiten und Rundung (1).
+
+**TA5 Vorhandenes Bauteil überprüfen und anpassen** · AFB II/III · 4–6 BE (oft mit TA4 in einer Teilaufgabe)
+- Schablone: „Überprüfen Sie mit Material N, ob ‹vorhandenes Bauteil› ‹Kraft› und ‹Hub›
+  erreicht.“ – „Entwickeln Sie eine Anpassung, mit der beide Anforderungen erfüllt sind, und weisen
+  Sie sie rechnerisch nach.“
+- Festlegen: Bestand (DM5), Systemdruck, Wirkungsgrad bzw. Kraft je Druck aus der Tabelle,
+  Fußnoten der Tabelle (Rückstellfeder bei einfachwirkenden Zylindern schon abgezogen?), **mögliche
+  Stellgrößen** (Druck, Anlenkpunkt, Bauart, Durchmesser) und das Kriterium der Anpassung.
+- Prüfstein: eine Anforderung ist erfüllt, die andere nicht (Kraft reicht, Hub nicht – oder
+  umgekehrt); die Anpassung der einen verschiebt die andere.
+- Merkmale: Vergleich Kraft (1–2), Vergleich Hub (1), Anpassung mit Nachweis beider Größen (2–3).
+  *Gleichwertig*: jede Anpassung, die beide Nachweise besteht und den Bestand berücksichtigt.
+
+**TA6 Festigkeits- oder Federnachweis** · AFB II · 6–8 BE
+- Schablone: „Berechnen Sie den erforderlichen Durchmesser ‹der Achse› auf ‹Abscherung› mit
+  ‹Sicherheitszahl›.“ · „Bestimmen Sie aus Material N eine Druckfeder, mit der ‹Bauteil› sich je
+  ‹entnommenes Teil› um ‹Weg› hebt.“
+- Festlegen: Lastfall (Gesamtmasse, Zahl der tragenden Elemente, Zahl der Scherflächen),
+  Werkstoffkennwert **im Material** (BA6), Sicherheitszahl, Auswahlregel der Tabelle (DM4).
+- Prüfstein: Last auf mehrere Achsen bzw. Federn verteilen; ein- oder zweischnittig; bei der Feder
+  die Kraft **eines** Teils je Federweg, geteilt durch die Zahl der Federn.
+- Merkmale: Lastannahme (2), Formel und Rechnung (2–3), Auswahl bzw. Normwert nach Regel (1–2).
+
+**TA7 Befund aus der Erprobung beheben** · AFB II/III · 6–8 BE
+- Schablone: Befund mit Ursache und gescheiterter Erstmaßnahme schildern (‹Beim Einfahren schlägt
+  die Klappe hart an; Puffer aus Gummi haben nicht geholfen.›) → „Erläutern Sie, wie ‹andere
+  Bauart› die Störung behebt.“ – „Entwerfen Sie den ‹pneumatischen› Schaltplan für ‹Zylinder›.“
+- Festlegen: Kennzeichen des Bauteils, Vorgaben zum Plan (Ventilart, Ansteuerung, Notation),
+  Schaltplanvorlage oder freies Blatt.
+- Prüfstein: die Wirkung entsteht nicht durch die neue Bauart allein, sondern durch das, was sie
+  ermöglicht (Abluftdrosselung, Endlagendämpfung, Gegendruck in beide Richtungen).
+- Merkmale: Ursache und Wirkprinzip (2), Plan funktionsfähig (2–3), Drossel richtig eingebaut und
+  gerichtet (1–2), Normform und Kennzeichen (1).
+
+**TA8 Anzeige- oder Anpassschaltung mit Datenblatt** · AFB II · 5–6 BE
+- Schablone: „Zeichnen Sie die Schaltung für ‹Zahl› Meldeleuchten an ‹Kontakten› mit ‹Spannung›.“ –
+  „Berechnen Sie mit Material N den Vorwiderstand.“ – „Bestimmen Sie einen Widerstand aus der
+  ‹E-Reihe›.“
+- Festlegen: Zahl der Leuchten aus dem Schema (BA4), Versorgungsspannung, Kontaktart der Geber,
+  Datenblatt im Original (DM1), Regel für den Normwert (nächstgrößer, damit der Strom nicht
+  überschritten wird), Normreihe als Material oder Verweis.
+- Prüfstein: richtiger Datenblattwert (Durchlassspannung bei der Messbedingung, Dauerstrom statt
+  Spitzenstrom); Abrunden auf den Normwert überschreitet den Strom; Verlustleistung des Widerstands.
+- Merkmale: Schaltung (2), Werte aus dem Datenblatt mit Fundstelle (1), Rechnung (1–2),
+  Normwert nach Regel (1). *Gleichwertig*: andere Messbedingung mit Begründung.
+
+**TA9 Sensoren auswählen und begründen** · AFB II/III · 4–6 BE
+- Schablone: „Bestimmen Sie für die Positionen ‹-B1 bis -B8› je einen Sensortyp.“ – „Begründen Sie
+  jede Wahl mit ‹Werkstoff, Abstand, Umgebung› aus der Anlagenbeschreibung.“
+- Festlegen: Zahl der Positionen und je Position, was erfasst wird (Werkstoff, Abstand,
+  Verschmutzung, Durchlicht möglich?); Kriterien als Liste. **Kein** „mindestens drei“: die Zahl
+  der verschiedenen Typen folgt aus den Positionen oder wird genau genannt.
+- Prüfstein: eine Position, an der der naheliegende Typ versagt (Kunststoff vor induktivem Sensor,
+  transparentes Teil vor Einweglichtschranke).
+- Merkmale: je Position Typ passend (½–1) und Begründung mit Bezug auf das Kriterium (½–1).
+
+**TA10 Fremde Entscheidung überprüfen** · AFB III · 3–5 BE
+- Schablone: „‹Ein Kollege› hat für ‹Aufgabe› ‹Bauteil› vorgesehen. Überprüfen Sie die Auswahl mit
+  Material N und nehmen Sie Stellung.“
+- Festlegen: Kriterien und Daten, an denen geprüft wird.
+- Prüfstein: die Auswahl erfüllt das offensichtliche Kriterium und scheitert an einem zweiten
+  (Hub, Temperatur, Schutzart, Strom).
+- Merkmale: Nachweis je Kriterium (1–2), Urteil (1), Alternative mit Nachweis (1–2).
+
+## 7. Muster verketten – Aufgabenfluss und Querbezüge
+
+| Aufgabe | Kette (Kennungen) | Querbezug über die Anlage |
+|---|---|---|
+| 1 (≈ 45–50 BE) | TA1 → TA2 → TA3 → TA4/TA5 → TA6 (ein oder zwei Bauteile) | Zylinder aus TA3 ist Gegenstand von TA4/TA5; Wagen bzw. Halterung aus dem Material |
+| 2 (≈ 20–25 BE) | TA7 → TA8 → TA9 bzw. TA10 | TA7 greift die Bauart aus TA5 auf (Befund der Erprobung), TA8 zählt die Stationen im Schema, TA9 nutzt die Sensorpositionen |
+
+Am Ende des Schülermaterials: **Handlungsergebnisse** (je Teilaufgabe ein Ergebnis, gleich
+lautend mit der Zeile im Erwartungshorizont), **Material** (M1 … Mn, je mit Titel, Bezug zur
+Teilaufgabe und Quelle), **Hilfsmittel** (Tabellenbuch des Bereichs, eingeführter Taschenrechner).
+
+## 8. Was nicht übernommen wird
+
+- **Wortlaut, Szenario, Abbildungen und Datenblätter** der Vorbildaufgabe – nur die Muster.
+- **Kennzeichen der Ausgabe 2009**, wenn der Unterricht die Ausgabe 2020 nutzt; nie mischen.
+- **Schwächen** der Vorbildaufgabe (Befunde in den Begutachtungskriterien):
+  - zwei Operatoren in einem Satz („Nennen … und erläutern …“) – zwei Sätze, zwei Merkmale;
+  - Operatoren außerhalb der Liste (*erstellen*, *benennen*) – *entwickeln*, *nennen*;
+  - offene Mengen und Wertungen ohne Kriterium („mindestens drei“, „geeignete“, „passende“) –
+    Zahlwort und Kriterienliste;
+  - „gegebenenfalls Anpassungen vornehmen“ – sagen, ob eine Anpassung erwartet ist und woran sie
+    gemessen wird (TA5);
+  - Werkstoffkennwert nur „aus dem Tabellenbuch“ – Wert ins Material (BA6);
+  - Kennzeichen nur im Bild oder nur im Lehrermaterial, Geber ohne Kontaktart – Legende und
+    Funktionsbeschreibung vollständig (`aufgabenqualitaet.md` Abschn. 4, falls vorhanden);
+  - Erwartungshorizont mit Sammelzeilen ohne Merkmale („Entwickeln eines GRAFCET“ 14 BE) –
+    Merkmale je BE wie in TA3;
+  - Datenblattseiten verkleinert bis an die Lesbarkeitsgrenze (DM2).
+
+## 9. Kurzprüfung
+
+- [ ] Eine Anlage trägt alle Teilaufgaben; Bauplan-Spalte *Quelle* je Teilaufgabe gefüllt (BA1)?
+- [ ] Funktionsbeschreibung mit Verzweigung, Quittierung, Sperre bzw. Betriebsart – und einer Grenze des Umfangs (BA2, BA3)?
+- [ ] Schema vollständig für alle Teilaufgaben, Bewegungsbereich gestrichelt, keine Ablaufhinweise (Abschn. 4)?
+- [ ] Rechengrößen mit Einheit, Vereinfachungen als eigener Satz, Kennwerte im Material (BA5, BA6)?
+- [ ] Datenblatt im Original nur dort, wo das Entnehmen geprüft wird; Kennwert eindeutig auffindbar; Quelle und Rechte (DM1–DM3, DM6)?
+- [ ] Auswahl aus Tabellen mit Regel; Bestandsprüfung mit erwarteter Anpassung und Kriterium (DM4, DM5, TA5)?
+- [ ] Je Teilaufgabe Muster-Kennung, Prüfstein und funktionale Merkmale; ein Operator je Satz?
+- [ ] Handlungsergebnisse und Erwartungshorizont gleich lautend; Teilaufgaben ohne Vorergebnis lösbar (BA8)?
+
 ## Anhang: references/berufliches-gymnasium.md
 
 # Berufliches Gymnasium (BG) – was für Planung, Prüfung und Bewertung anders ist
@@ -1562,8 +1823,8 @@ dazu (`assets/vorlage-aufsichtsblatt.md`). Die Prüflinge erhalten nur das Aufga
 # Gute Praxis für Klassenarbeiten und Lernzielkontrollen
 
 Zusammengeführt aus der Skill-Fassung `klausur-erstellen` 1.x (eduwerkzeuge), der Referenz
-*Leistungsüberprüfungen* der `lernfeld-werkstatt`, den Prüfkriterien
-der Begutachtung und einer gelungenen Papierklausur aus der Praxis (Details in
+*Leistungsüberprüfungen* der `lernfeld-werkstatt`, den Prüfkriterien der Begutachtung
+und einer gelungenen Papierklausur aus der Praxis (Details in
 `druckfassung-antwortformate.md`). Erfahrungswerte aus realen Reihen sind als solche gekennzeichnet.
 
 ## Inhalt
@@ -1798,32 +2059,36 @@ Die PAL setzt die Ausgabe 2020 in den IHK-Prüfungen um (Merkblatt Stand Juni 20
 Vorschläge gilt **die Ausgabe 2020**; die Ausgabe 2009 nur, wenn der Unterricht sie verwendet – dann
 im Schülermaterial nennen (Abschn. 1).
 
-**Aufbau eines Kennzeichens:** Vorzeichen, Kennbuchstaben, Zählnummer, ohne Leerzeichen: `-S1`,
-`-BT2`, `-Q1`.
+**Aufbau eines Kennzeichens:** Vorzeichen, Kennbuchstaben, Zählnummer, ohne Leerzeichen: `-SJ1`,
+`-BT2`, `-QA1`.
 - Vorzeichen (Teil 1): `-` Produkt (in Aufgaben üblich), `=` Funktion, `+` Ort, `%` Typ (neu seit
   2022), `#` andere Aspekte. Kombinationen wie `+S1-K1` nur, wenn im Unterricht eingeführt.
 - **Ein bis drei Kennbuchstaben** (Teil 2): Klasse (`-B1`), Unterklasse (`-BG1`), Unter-Unterklasse
   (`-BGB1`). Die Norm lässt jede Tiefe zu; die PAL zeigt Schaltpläne nur mit Klassen und mit
   Unterklassen.
-- **So kurz wie möglich** (didaktische Reduktion, Festlegung der Fachberatung 31.10.2026): Standard
-  ist die **Klasse allein** (-S1, -B1, -K1, -Q1, -M1, -P1). Eine **Unterklasse** nur, wenn eine Klasse
-  in der Aufgabe **verschiedenartige Betriebsmittel** enthält, die das Kennzeichen unterscheiden soll –
-  dann für **alle** Kennzeichen dieser Klasse (nicht -B1 neben -BT2); die übrigen Klassen bleiben kurz.
-  Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt. `bmk_pruefen.py` (T.8) meldet
-  überflüssige Unterklassen und gemischte Tiefe innerhalb einer Klasse.
-- Beispiel Bewässerung: Taster, Schütz, SPS und Leuchtmelder je nur einer Art → -S1, -S2, -Q1, -K1,
-  -P1, -P2; Sensoren für Füllstand, Bodenfeuchte und Temperatur → -BL1, -BM1, -BM2, -BT1; Pumpenmotor
-  und Magnetventile → -MA1, -MB1, -MB2.
-- Nebeneffekt: Die Klassenbuchstaben B, S, K, Q, M, P, R, G, T sind in den Ausgaben 2009 und 2020
-  gleich – die Kurzform vermeidet die meisten Unterschiede der Ausgaben (-SF/-SJ, -KF/-KE, -RZ/-RN).
+- **Klasse und Unterklasse sind Standard** (Vorgabe der Fachberatung, 04.11.2026; ersetzt die
+  Festlegung „so kurz wie möglich“ vom 31.10.2026): Jedes Betriebsmittel trägt **zwei Kennbuchstaben** –
+  **-SJ1** (Taster), **-MA1** (Elektromotor), **-MM1** (Zylinder), **-EA1** (Leuchte), **-QA1** (Schütz),
+  **-KE1** (SPS), **-PF1** (Leuchtmelder). Die Klasse allein (-S1, -M1) wird nicht verwendet, auch nicht,
+  wenn eine Klasse nur eine Art Betriebsmittel enthält. Das gilt in **allen Dokumentationsformen**:
+  Funktionsbeschreibung, Technologieschema mit Legende, Zuordnungsliste, GRAFCET, Logikplan, Programm,
+  Musterlösung. Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt – dann für alle
+  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8) und
+  `edu-technologieschema pruefen` melden fehlende Unterklassen und gemischte Tiefe.
+- Beispiel Bewässerung: Taster -SJ1, -SJ2; Schütz -QA1; SPS -KE1; Leuchtmelder -PF1, -PF2; Sensoren für
+  Füllstand, Bodenfeuchte und Temperatur -BL1, -BM1, -BM2, -BT1; Pumpenmotor -MA1; Magnetventile -MB1,
+  -MB2.
+- Die Unterklasse macht sichtbar, welche Ausgabe gilt: -SF/-SJ, -KF/-KE, -RZ/-RN unterscheiden sich
+  zwischen 2009 und 2020 (Tabelle unten). Neue Aufgaben verwenden die Unterklassen der Ausgabe 2020.
 - **A, I und O** sind keine Klassen; **D, J, L, V, Y, Z** sind reserviert. Eine Klasse „Sonstiges“
-  gibt es nicht: Passt keine Unterklasse, nimmt man die Klasse darüber.
+  gibt es nicht: Passt keine Unterklasse genau, die nächstpassende aus Tabelle 2 wählen und die Aufgabe
+  des Betriebsmittels in der Legende nennen.
 - Klassifiziert wird nach der **inhärenten Funktion** – was das Objekt erfasst oder bewirkt, nicht
   nach Bauart oder Einbauort: Der Druckschalter am Zylinder ist -BP, der Endlagenschalter daneben
   -BG. Bei mehrdeutigen Fällen die Aufgabe des Betriebsmittels in der Legende nennen.
-- Die Zählnummer zählt je Kennbuchstaben: -B1, -B2 bzw. -BG1, -BG2, -BP1.
+- Die Zählnummer zählt je Kennbuchstaben: -BG1, -BG2, -BP1.
 
-**Klassen – Standard in Aufgaben**
+**Klassen** (Übersicht; im Kennzeichen steht immer zusätzlich die Unterklasse)
 
 | BMK | Klasse | typische Betriebsmittel |
 |---|---|---|
@@ -1841,7 +2106,7 @@ im Schülermaterial nennen (Abschn. 1).
 | -X, -W | Verbinden, Leiten | Klemme, Steckdose, Patchfeld; Kabel, Leitung |
 | -C | Speichern | Kondensator, Akku, Tank |
 
-**Unterklassen – nur, wenn eine Klasse verschiedenartige Betriebsmittel enthält** (Auswahl der
+**Unterklassen – Standard in Aufgaben** (Auswahl der
 Ausgabe 2020; deutsche Benennungen sinngemäß; in Klammern Beispiele der dritten Ebene)
 
 | BMK | Bedeutung | typische Betriebsmittel | Ausgabe 2009 |
@@ -1914,9 +2179,8 @@ Ausgabe 2009 sind nur teilweise belegt (🔎). Belegte Änderungen 2009 → 2020
 Drosselrückschlagventil -RZ → **-RN**, Klasse A (z. B. -AZ) entfällt, SPS -KF → **-KE** 🔎.
 
 **Für die Aufgabe**
-- Erst die Klassen festlegen, dann je Klasse prüfen: eine Art → nur die Klasse; mehrere Arten →
-  Unterklassen aus der Tabelle für die ganze Klasse. Ein nicht aufgeführter Code wird mit Tabelle 2
-  der Norm geprüft.
+- Je Betriebsmittel Klasse **und** Unterklasse aus der Tabelle festlegen (inhärente Funktion). Ein
+  nicht aufgeführter Code wird mit Tabelle 2 der Norm geprüft.
 - Legende: BMK | Betriebsmittel | Lage bzw. Aufgabe (T.3); bei mehrdeutigen Fällen (Lichtschranke
   als Objektmelder: -BR oder -BG) die Aufgabe des Betriebsmittels nennen.
 - In Netzplänen sind Gerätenamen wie „SW1“, „R1“ üblich; Referenzkennzeichen (-KFE, -KED) nur, wenn
@@ -1954,10 +2218,10 @@ als Tabelle Schritt | Aktion | Transition zum Folgeschritt (`bmk_pruefen.py`, T.
 
 | Art | Darstellung | Wirkung |
 |---|---|---|
-| kontinuierlich wirkend | Variable im Rechteck: „-M1“ | 1, solange der Schritt aktiv ist; danach 0 |
+| kontinuierlich wirkend | Variable im Rechteck: „-MA1“ | 1, solange der Schritt aktiv ist; danach 0 |
 | mit Zuweisungsbedingung | Bedingung an einem Strich über dem Rechteck | 1, solange Schritt aktiv **und** Bedingung erfüllt |
 | zeitabhängig | Zuweisungsbedingung mit Zeit („2s/X6“), mit Überstrich zeitbegrenzt | verzögert bzw. zeitbegrenzt |
-| speichernd wirkend | **im Rechteck immer die Zuweisung** („-Q1 := 1“), **am Rechteck der Auslöser**: Pfeil nach oben an der linken Kante bei Aktivierung, nach unten bei Deaktivierung, Strich mit Fähnchen und Ereignis („↑-B1“) bei Ereignis | Wert bleibt bis zur nächsten Zuweisung („-Q1 := 1“ … „-Q1 := 0“) |
+| speichernd wirkend | **im Rechteck immer die Zuweisung** („-QA1 := 1“), **am Rechteck der Auslöser**: Pfeil nach oben an der linken Kante bei Aktivierung, nach unten bei Deaktivierung, Strich mit Fähnchen und Ereignis („↑-BG1“) bei Ereignis | Wert bleibt bis zur nächsten Zuweisung („-QA1 := 1“ … „-QA1 := 0“) |
 
 Regeln für Musterlösung und Merkmale:
 - Kontinuierlich und speichernd wirkende Aktionen **nie auf dieselbe Variable**; speichernde
@@ -1969,11 +2233,11 @@ Regeln für Musterlösung und Merkmale:
   Merkmale funktional formulieren.
 - Typische Fehler (Prüfsteine, 0 BE für das Normmerkmal): Schritt an Schritt ohne Transition,
   Rücksprung ohne Pfeil, kein Initialschritt, Alternativzweige nicht ausschließend, speichernde Aktion
-  ohne Zuweisung („-Q1“ statt „-Q1 := 1“) oder ohne Pfeil am Rechteck, speichernd gesetzt und nie
+  ohne Zuweisung („-QA1“ statt „-QA1 := 1“) oder ohne Pfeil am Rechteck, speichernd gesetzt und nie
   zurückgesetzt, Zeit auf den falschen Schritt bezogen, Öffner nicht negiert.
 - **Positionssensor beim Weiterdrehen:** Meldet ein Sensor die Ruhelage und bleibt beim Anlaufen noch
-  belegt, schaltet die Transition „-B1“ sofort, der Antrieb läuft nie. Richtig: Flanke „↑-B1“ oder
-  zwei Schritte mit „¬-B1“ (Position verlassen) und „-B1“ (nächste Position erreicht); beide gleichwertig.
+  belegt, schaltet die Transition „-BG1“ sofort, der Antrieb läuft nie. Richtig: Flanke „↑-BG1“ oder
+  zwei Schritte mit „¬-BG1“ (Position verlassen) und „-BG1“ (nächste Position erreicht); beide gleichwertig.
 
 ## 4. Steuerungsprogramme – IEC 61131-3 und Mikrocontroller
 
@@ -2010,7 +2274,7 @@ die Lösung bestimmt:
 | Taster | ob Entprellen zur Aufgabe gehört | mechanische Kontakte prellen einige Millisekunden; Software-Entprellung z. B. 20 ms 🔎 |
 | Zeiten | Zeit seit Schrittbeginn statt Warteschleife | `delay()` blockiert den Zyklus; Zeitbedingung „5s/X3“ als Vergleich mit der beim Schrittwechsel gespeicherten Zeit (`millis()`) |
 | Programmstruktur | Zyklus wie bei der SPS | Eingänge lesen → Transitionen prüfen, Schritt wechseln → Ausgänge aus dem aktiven Schritt setzen; GRAFCET als Zustandsautomat (Variable für den aktiven Schritt, `switch`/`if`) |
-| Sprache | „in der im Unterricht verwendeten Sprache“ | C/C++ (Arduino-Umgebung) oder Python (MicroPython); Bezeichner `PIN_S1`, `s1` nach Notationsblatt |
+| Sprache | „in der im Unterricht verwendeten Sprache“ | C/C++ (Arduino-Umgebung) oder Python (MicroPython); Bezeichner `PIN_SJ1`, `sj1` nach Notationsblatt |
 | Sicherheit | Not-Halt und Schutzfunktionen ausklammern | Ein Mikrocontroller ist wie eine Standard-SPS keine Sicherheitssteuerung (Abschn. 6) |
 
 **Analogwerte je Plattform** – den Wertebereich, mit dem das Programm rechnet, in der Anlage nennen;
@@ -2275,7 +2539,7 @@ Recherche 2026-10-30; Normtexte nicht eingesehen, außer der Leseprobe der IEC 8
 Einheitliche Schreibweise der Bibliothek für Kennzeichen, Signale, Zuordnungsliste, GRAFCET und
 Programme – für Prüfungsaufgaben, Erwartungshorizonte und Unterricht. Grundlage: DIN EN IEC 81346-2:2020,
 DIN EN 60848:2014, IEC 61131-3:2025; Hintergrund und Quellen in `normen-technik.md` (Abschn. 2–4).
-Stand 03.11.2026.
+Stand 04.11.2026.
 
 ## Für die Lehrkraft
 
@@ -2304,26 +2568,29 @@ Stand 03.11.2026.
 
 **1. Kennzeichen der Betriebsmittel**
 
-- Bindestrich, Kennbuchstabe(n), Zählnummer, ohne Leerzeichen: **-S1**, **-B2**, **-Q1**
-  (DIN EN IEC 81346-2:2020).
-- In der Regel nur der Klassenbuchstabe. Zwei Buchstaben stehen nur, wenn eine Klasse verschiedene
-  Arten enthält – dann für alle Betriebsmittel dieser Klasse (z. B. -BL1 Füllstand, -BT1 Temperatur).
+- Bindestrich, **Klasse und Unterklasse**, Zählnummer, ohne Leerzeichen: **-SJ1**, **-MA1**, **-MM1**,
+  **-EA1** (DIN EN IEC 81346-2:2020). Die Klasse allein (-S1, -M1) wird nicht verwendet.
+- Dieselbe Schreibweise gilt in **Funktionsbeschreibung, Technologieschema (Legende), Zuordnungsliste**,
+  GRAFCET, Logikplan und Programm.
+- Die Zählnummer zählt je Kennbuchstaben: -BG1, -BG2, -BP1.
 
-| Kennbuchstabe | Betriebsmittel (Beispiele) |
+| Kennbuchstaben | Betriebsmittel (Beispiele) |
 |---|---|
-| -S | Taster, Schalter, handbetätigtes Ventil |
-| -B | Sensor, Geber (Näherungs-, End-, Druck-, Schwimmerschalter, Temperaturfühler) |
-| -K | Steuerung (SPS, Kleinsteuerung, Mikrocontroller), Relais, Zeitrelais |
-| -Q | Schütz, Leistungsschalter, Wegeventil |
-| -M | Motor, Ventilspule, Zylinder |
-| -P | Leuchtmelder, Hupe, Anzeige |
-| -R | Drossel- und Rückschlagventil, Widerstand |
-| -G | Pumpe, Kompressor, Lüfter, Generator |
-| -T | Netzteil, Umrichter, Messumformer |
+| -SJ | Taster, Schalter, handbetätigtes Ventil |
+| -BG | Näherungs-, End-, Zylinderschalter (Lage, Abstand) |
+| -BP, -BL, -BT | Druckschalter; Füllstand, Schwimmerschalter; Temperaturfühler |
+| -KE, -KF | Steuerung (SPS, Kleinsteuerung, Mikrocontroller); Relais, Zeitrelais |
+| -QA, -QM | Schütz, Leistungsschalter; Wegeventil |
+| -MA, -MB, -MM | Elektromotor; Ventilspule, Elektromagnet; Zylinder |
+| -PF, -PJ | Leuchtmelder, Anzeige; Hupe, Summer |
+| -EA, -EB | Leuchte, Lampe; Heizung |
+| -RN, -RM | Drossel- und Drosselrückschlagventil; Rückschlagventil |
+| -GP, -GQ | Pumpe; Kompressor, Lüfter |
+| -TC, -TF | Netzteil; Messumformer |
 
 **2. Signale**
 
-- Im Text, im GRAFCET und im Logikplan steht das Kennzeichen für **sein Signal an der Steuerung**: -B1
+- Im Text, im GRAFCET und im Logikplan steht das Kennzeichen für **sein Signal an der Steuerung**: -BG1
   ist 1 oder 0. Was 1 bedeutet, steht in der Zuordnungsliste (Spalte „Signal 1 bedeutet“).
 - **Kontaktart:** NO = Schließer, NC = Öffner. Ein Öffner liefert im unbetätigten Zustand 1.
 - **Analogwerte** stehen in Bedingungen als physikalischer Wert mit Einheit: [-BT1 > −16 °C],
@@ -2335,8 +2602,8 @@ Stand 03.11.2026.
 
 | BMK | Betriebsmittel | Operand SPS | Operand Kleinsteuerung | Pin Mikrocontroller | Signal 1 bedeutet | Kontaktart |
 |---|---|---|---|---|---|---|
-| -S1 | Taster Start | %I0.0 | I1 | D2 | Start betätigt | NO |
-| -S2 | Taster Stopp | %I0.1 | I2 | D3 | Stopp nicht betätigt | NC |
+| -SJ1 | Taster Start | %I0.0 | I1 | D2 | Start betätigt | NO |
+| -SJ2 | Taster Stopp | %I0.1 | I2 | D3 | Stopp nicht betätigt | NC |
 
 - Ausgefüllt wird nur die Spalte der Plattform aus dem Unterricht; die anderen Spalten bleiben
   leer.
@@ -2359,10 +2626,10 @@ Stand 03.11.2026.
 
   | Bedeutung | Schreibweise |
   |---|---|
-  | UND | -S1 · -B1 |
-  | ODER | -B2 + -B3 |
-  | NICHT | Überstrich über dem Kennzeichen; getippt **¬-S2** |
-  | steigende bzw. fallende Flanke | ↑-B1, ↓-B1 |
+  | UND | -SJ1 · -BG1 |
+  | ODER | -BG2 + -BG3 |
+  | NICHT | Überstrich über dem Kennzeichen; getippt **¬-SJ2** |
+  | steigende bzw. fallende Flanke | ↑-BG1, ↓-BG1 |
   | Zeit seit Aktivierung von Schritt 3 | **5s/X3** |
   | Vergleich eines Zahlenwerts | **[-BT1 > −16 °C]**, [C_Teile = 10] |
   | immer erfüllt | 1 (unterstrichen) |
@@ -2371,18 +2638,18 @@ Stand 03.11.2026.
 
   | Art | im Rechteck | am Rechteck | Wirkung |
   |---|---|---|---|
-  | kontinuierlich | -M1 | – | 1, solange der Schritt aktiv ist |
-  | mit Zuweisungsbedingung | -M1 | Strich oben, daran die Bedingung | 1, solange Schritt aktiv und Bedingung erfüllt |
-  | verzögert | -M1 | Strich oben, daran 5s/X3 | 1 ab 5 s nach Aktivierung, solange der Schritt aktiv ist |
-  | zeitbegrenzt | -M1 | Strich oben, daran 5s/X3 mit Überstrich | 1 in den ersten 5 s nach Aktivierung |
-  | speichernd bei Aktivierung | -Q1 := 1 | Pfeil nach oben an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
-  | speichernd bei Deaktivierung | -Q1 := 0 | Pfeil nach unten an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
-  | speichernd bei Ereignis | -Q1 := 1 | Strich oben mit Fähnchen nach links, daran ↑-B1 | Zuweisung beim Ereignis, solange der Schritt aktiv ist |
+  | kontinuierlich | -MA1 | – | 1, solange der Schritt aktiv ist |
+  | mit Zuweisungsbedingung | -MA1 | Strich oben, daran die Bedingung | 1, solange Schritt aktiv und Bedingung erfüllt |
+  | verzögert | -MA1 | Strich oben, daran 5s/X3 | 1 ab 5 s nach Aktivierung, solange der Schritt aktiv ist |
+  | zeitbegrenzt | -MA1 | Strich oben, daran 5s/X3 mit Überstrich | 1 in den ersten 5 s nach Aktivierung |
+  | speichernd bei Aktivierung | -QA1 := 1 | Pfeil nach oben an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
+  | speichernd bei Deaktivierung | -QA1 := 0 | Pfeil nach unten an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
+  | speichernd bei Ereignis | -QA1 := 1 | Strich oben mit Fähnchen nach links, daran ↑-BG1 | Zuweisung beim Ereignis, solange der Schritt aktiv ist |
   | Zähler | C_Teile := C_Teile + 1 | Pfeil nach oben an der linken Kante | zählt bei jeder Aktivierung |
   | Zwangssteuerung | G5 {INIT} im Doppelrahmen | – | setzt Teil-GRAFCET G5: {INIT} Anfangssituation, { } leer, {3,4,8} diese Schritte, {*} eingefroren |
 
 - **Speichernd wirkende Aktionen** tragen immer beides: die **Zuweisung** mit := im Rechteck und den
-  **Auslöser** am Rechteck. „-Q1“ allein ist kontinuierlich. Dieselbe Variable wirkt nie zugleich
+  **Auslöser** am Rechteck. „-QA1“ allein ist kontinuierlich. Dieselbe Variable wirkt nie zugleich
   kontinuierlich und speichernd; was mit := 1 gesetzt wird, wird auch mit := 0 zurückgesetzt.
 - **Strukturierung**, wenn im Unterricht eingeführt: Makroschritt (Querlinien oben und unten im Quadrat, M4),
   einschließender Schritt (abgeschrägte Ecken) mit Rahmen um die eingeschlossene Kette, oben der Name
@@ -2396,15 +2663,15 @@ Wird ein GRAFCET getippt statt gezeichnet (Erwartungshorizont, PC-Aufgabe), gilt
 
 | Schritt | Aktion | Transition zum Folgeschritt |
 |---|---|---|
-| 0 (Initialschritt) | – | -S1 · -B1 → 1 |
-| 1 Füllen | -M1 | [-BL1 ≥ 80 %] + 30s/X1 → 2 |
+| 0 (Initialschritt) | – | -SJ1 · -BG1 → 1 |
+| 1 Füllen | -MA1 | [-BL1 ≥ 80 %] + 30s/X1 → 2 |
 | 2 Prüfen | ↑ C_Teile := C_Teile + 1 | [C_Teile < 10] → 1; [C_Teile = 10] → 3 |
-| 3 Fertig | -P1 | ¬-S2 → 0 |
+| 3 Fertig | -PF1 | ¬-SJ2 → 0 |
 
 - Folgeschritt nach **→**; Alternativen durch **;** getrennt (sie schließen sich gegenseitig aus).
-- Mehrere Aktionen durch **;** getrennt. Speichernd **↑ -Q1 := 1**, **↓ -Q1 := 0**, bei Ereignis
-  **-Q1 := 1 bei ↑-B1**; mit Bedingung **-M1 wenn -B1**, verzögert **-M1 verzögert 5s/X3**, zeitbegrenzt
-  **-M1 begrenzt 5s/X3**.
+- Mehrere Aktionen durch **;** getrennt. Speichernd **↑ -QA1 := 1**, **↓ -QA1 := 0**, bei Ereignis
+  **-QA1 := 1 bei ↑-BG1**; mit Bedingung **-MA1 wenn -BG1**, verzögert **-MA1 verzögert 5s/X3**, zeitbegrenzt
+  **-MA1 begrenzt 5s/X3**.
 - Parallelverzweigung „→ 3 und 6 (parallel)“; die gemeinsame Transition danach steht bei beiden
   letzten Schritten mit dem Zusatz „(gemeinsam mit X8)“.
 
@@ -2415,7 +2682,7 @@ Wird ein GRAFCET getippt statt gezeichnet (Erwartungshorizont, PC-Aufgabe), gilt
 - **Programm** in der im Unterricht verwendeten Sprache:
   - SPS und Kleinsteuerung nach IEC 61131-3: KOP, FUP, ST oder AS (keine AWL). Zeiten mit TON, TOF,
     TP; Zähler mit CTU, CTD; SR setzdominant, RS rücksetzdominant.
-  - Mikrocontroller in C/C++ oder Python: Pin-Konstante `PIN_S1`, Signalvariable `s1` (Kennzeichen
+  - Mikrocontroller in C/C++ oder Python: Pin-Konstante `PIN_SJ1`, Signalvariable `sj1` (Kennzeichen
     klein, ohne Bindestrich). Zeiten über die Zeit seit Schrittbeginn (z. B. `millis()`), nicht mit
     Warteschleifen; einen GRAFCET als Zustandsautomat mit einer Variablen für den aktiven Schritt.
 - **Mikrocontroller-Eingänge:** Signal 1 ist der High-Pegel am Pin. Bei internem Pull-up-Widerstand

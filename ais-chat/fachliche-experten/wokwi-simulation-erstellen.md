@@ -133,7 +133,7 @@ Im Ordner der Planungsakte bzw. neben dem Material:
 artefakt: Mikrocontroller-Simulation (Wokwi)
 titel: "<Titel der Steuerung>"
 skill: wokwi-simulation-erstellen
-skill_version: "1.0"
+skill_version: "1.2"
 stand: <JJJJ-MM-TT>
 bildungsgang: "<Bildungsgang>"
 curriculare_vorgabe: "<Lernfeld bzw. Lerngebiet>"
@@ -172,12 +172,12 @@ Prüfaufträge und Einsatz durchsehen. -->
 ## Bedienung in der Simulation
 | Kennzeichen | Betriebsmittel | Bauteil in Wokwi | Bedienung | Signal 1 bedeutet |
 |---|---|---|---|---|
-| -S1 | <Taster Start> | Taster (grün) an D2, gegen 5V, 10 kΩ nach GND | drücken = 1 | <Start betätigt> |
+| -SJ1 | <Taster Start> | Taster (grün) an D2, gegen 5V, 10 kΩ nach GND | drücken = 1 | <Start betätigt> |
 
 ## Zuordnungsliste (<Plattform>)
 | BMK | Betriebsmittel | Pin Mikrocontroller | Signal 1 bedeutet | Kontaktart |
 |---|---|---|---|---|
-| -S1 | <Taster Start> | D2 | <Start betätigt> | NO |
+| -SJ1 | <Taster Start> | D2 | <Start betätigt> | NO |
 
 ## Ablauf im Programm
 <GRAFCET in Textform (Schritt | Aktion | Transition zum Folgeschritt), Zwangssteuerung, Speicher, Verknüpfungen>
@@ -216,7 +216,7 @@ Prüfaufträge und Einsatz durchsehen. -->
 - Projektordner, Spec, Zuordnungsliste, GRAFCET-Textform, Testfälle
 - Empfohlene nächste Skills: `programmieraufgabe-erstellen`, `unterrichtsmaterial-erstellen`, `technologieschema-erstellen`, `material-pruefen`
 
-> KI-gestützt erstellt (Skill wokwi-simulation-erstellen v1.0). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill wokwi-simulation-erstellen v1.2). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: references/normen-technik.md
 
@@ -281,32 +281,36 @@ Die PAL setzt die Ausgabe 2020 in den IHK-Prüfungen um (Merkblatt Stand Juni 20
 Vorschläge gilt **die Ausgabe 2020**; die Ausgabe 2009 nur, wenn der Unterricht sie verwendet – dann
 im Schülermaterial nennen (Abschn. 1).
 
-**Aufbau eines Kennzeichens:** Vorzeichen, Kennbuchstaben, Zählnummer, ohne Leerzeichen: `-S1`,
-`-BT2`, `-Q1`.
+**Aufbau eines Kennzeichens:** Vorzeichen, Kennbuchstaben, Zählnummer, ohne Leerzeichen: `-SJ1`,
+`-BT2`, `-QA1`.
 - Vorzeichen (Teil 1): `-` Produkt (in Aufgaben üblich), `=` Funktion, `+` Ort, `%` Typ (neu seit
   2022), `#` andere Aspekte. Kombinationen wie `+S1-K1` nur, wenn im Unterricht eingeführt.
 - **Ein bis drei Kennbuchstaben** (Teil 2): Klasse (`-B1`), Unterklasse (`-BG1`), Unter-Unterklasse
   (`-BGB1`). Die Norm lässt jede Tiefe zu; die PAL zeigt Schaltpläne nur mit Klassen und mit
   Unterklassen.
-- **So kurz wie möglich** (didaktische Reduktion, Festlegung der Fachberatung 31.10.2026): Standard
-  ist die **Klasse allein** (-S1, -B1, -K1, -Q1, -M1, -P1). Eine **Unterklasse** nur, wenn eine Klasse
-  in der Aufgabe **verschiedenartige Betriebsmittel** enthält, die das Kennzeichen unterscheiden soll –
-  dann für **alle** Kennzeichen dieser Klasse (nicht -B1 neben -BT2); die übrigen Klassen bleiben kurz.
-  Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt. `bmk_pruefen.py` (T.8) meldet
-  überflüssige Unterklassen und gemischte Tiefe innerhalb einer Klasse.
-- Beispiel Bewässerung: Taster, Schütz, SPS und Leuchtmelder je nur einer Art → -S1, -S2, -Q1, -K1,
-  -P1, -P2; Sensoren für Füllstand, Bodenfeuchte und Temperatur → -BL1, -BM1, -BM2, -BT1; Pumpenmotor
-  und Magnetventile → -MA1, -MB1, -MB2.
-- Nebeneffekt: Die Klassenbuchstaben B, S, K, Q, M, P, R, G, T sind in den Ausgaben 2009 und 2020
-  gleich – die Kurzform vermeidet die meisten Unterschiede der Ausgaben (-SF/-SJ, -KF/-KE, -RZ/-RN).
+- **Klasse und Unterklasse sind Standard** (Vorgabe der Fachberatung, 04.11.2026; ersetzt die
+  Festlegung „so kurz wie möglich“ vom 31.10.2026): Jedes Betriebsmittel trägt **zwei Kennbuchstaben** –
+  **-SJ1** (Taster), **-MA1** (Elektromotor), **-MM1** (Zylinder), **-EA1** (Leuchte), **-QA1** (Schütz),
+  **-KE1** (SPS), **-PF1** (Leuchtmelder). Die Klasse allein (-S1, -M1) wird nicht verwendet, auch nicht,
+  wenn eine Klasse nur eine Art Betriebsmittel enthält. Das gilt in **allen Dokumentationsformen**:
+  Funktionsbeschreibung, Technologieschema mit Legende, Zuordnungsliste, GRAFCET, Logikplan, Programm,
+  Musterlösung. Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt – dann für alle
+  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8) und
+  `edu-technologieschema pruefen` melden fehlende Unterklassen und gemischte Tiefe.
+- Beispiel Bewässerung: Taster -SJ1, -SJ2; Schütz -QA1; SPS -KE1; Leuchtmelder -PF1, -PF2; Sensoren für
+  Füllstand, Bodenfeuchte und Temperatur -BL1, -BM1, -BM2, -BT1; Pumpenmotor -MA1; Magnetventile -MB1,
+  -MB2.
+- Die Unterklasse macht sichtbar, welche Ausgabe gilt: -SF/-SJ, -KF/-KE, -RZ/-RN unterscheiden sich
+  zwischen 2009 und 2020 (Tabelle unten). Neue Aufgaben verwenden die Unterklassen der Ausgabe 2020.
 - **A, I und O** sind keine Klassen; **D, J, L, V, Y, Z** sind reserviert. Eine Klasse „Sonstiges“
-  gibt es nicht: Passt keine Unterklasse, nimmt man die Klasse darüber.
+  gibt es nicht: Passt keine Unterklasse genau, die nächstpassende aus Tabelle 2 wählen und die Aufgabe
+  des Betriebsmittels in der Legende nennen.
 - Klassifiziert wird nach der **inhärenten Funktion** – was das Objekt erfasst oder bewirkt, nicht
   nach Bauart oder Einbauort: Der Druckschalter am Zylinder ist -BP, der Endlagenschalter daneben
   -BG. Bei mehrdeutigen Fällen die Aufgabe des Betriebsmittels in der Legende nennen.
-- Die Zählnummer zählt je Kennbuchstaben: -B1, -B2 bzw. -BG1, -BG2, -BP1.
+- Die Zählnummer zählt je Kennbuchstaben: -BG1, -BG2, -BP1.
 
-**Klassen – Standard in Aufgaben**
+**Klassen** (Übersicht; im Kennzeichen steht immer zusätzlich die Unterklasse)
 
 | BMK | Klasse | typische Betriebsmittel |
 |---|---|---|
@@ -324,7 +328,7 @@ im Schülermaterial nennen (Abschn. 1).
 | -X, -W | Verbinden, Leiten | Klemme, Steckdose, Patchfeld; Kabel, Leitung |
 | -C | Speichern | Kondensator, Akku, Tank |
 
-**Unterklassen – nur, wenn eine Klasse verschiedenartige Betriebsmittel enthält** (Auswahl der
+**Unterklassen – Standard in Aufgaben** (Auswahl der
 Ausgabe 2020; deutsche Benennungen sinngemäß; in Klammern Beispiele der dritten Ebene)
 
 | BMK | Bedeutung | typische Betriebsmittel | Ausgabe 2009 |
@@ -397,9 +401,8 @@ Ausgabe 2009 sind nur teilweise belegt (🔎). Belegte Änderungen 2009 → 2020
 Drosselrückschlagventil -RZ → **-RN**, Klasse A (z. B. -AZ) entfällt, SPS -KF → **-KE** 🔎.
 
 **Für die Aufgabe**
-- Erst die Klassen festlegen, dann je Klasse prüfen: eine Art → nur die Klasse; mehrere Arten →
-  Unterklassen aus der Tabelle für die ganze Klasse. Ein nicht aufgeführter Code wird mit Tabelle 2
-  der Norm geprüft.
+- Je Betriebsmittel Klasse **und** Unterklasse aus der Tabelle festlegen (inhärente Funktion). Ein
+  nicht aufgeführter Code wird mit Tabelle 2 der Norm geprüft.
 - Legende: BMK | Betriebsmittel | Lage bzw. Aufgabe (T.3); bei mehrdeutigen Fällen (Lichtschranke
   als Objektmelder: -BR oder -BG) die Aufgabe des Betriebsmittels nennen.
 - In Netzplänen sind Gerätenamen wie „SW1“, „R1“ üblich; Referenzkennzeichen (-KFE, -KED) nur, wenn
@@ -437,10 +440,10 @@ als Tabelle Schritt | Aktion | Transition zum Folgeschritt (`bmk_pruefen.py`, T.
 
 | Art | Darstellung | Wirkung |
 |---|---|---|
-| kontinuierlich wirkend | Variable im Rechteck: „-M1“ | 1, solange der Schritt aktiv ist; danach 0 |
+| kontinuierlich wirkend | Variable im Rechteck: „-MA1“ | 1, solange der Schritt aktiv ist; danach 0 |
 | mit Zuweisungsbedingung | Bedingung an einem Strich über dem Rechteck | 1, solange Schritt aktiv **und** Bedingung erfüllt |
 | zeitabhängig | Zuweisungsbedingung mit Zeit („2s/X6“), mit Überstrich zeitbegrenzt | verzögert bzw. zeitbegrenzt |
-| speichernd wirkend | **im Rechteck immer die Zuweisung** („-Q1 := 1“), **am Rechteck der Auslöser**: Pfeil nach oben an der linken Kante bei Aktivierung, nach unten bei Deaktivierung, Strich mit Fähnchen und Ereignis („↑-B1“) bei Ereignis | Wert bleibt bis zur nächsten Zuweisung („-Q1 := 1“ … „-Q1 := 0“) |
+| speichernd wirkend | **im Rechteck immer die Zuweisung** („-QA1 := 1“), **am Rechteck der Auslöser**: Pfeil nach oben an der linken Kante bei Aktivierung, nach unten bei Deaktivierung, Strich mit Fähnchen und Ereignis („↑-BG1“) bei Ereignis | Wert bleibt bis zur nächsten Zuweisung („-QA1 := 1“ … „-QA1 := 0“) |
 
 Regeln für Musterlösung und Merkmale:
 - Kontinuierlich und speichernd wirkende Aktionen **nie auf dieselbe Variable**; speichernde
@@ -452,11 +455,11 @@ Regeln für Musterlösung und Merkmale:
   Merkmale funktional formulieren.
 - Typische Fehler (Prüfsteine, 0 BE für das Normmerkmal): Schritt an Schritt ohne Transition,
   Rücksprung ohne Pfeil, kein Initialschritt, Alternativzweige nicht ausschließend, speichernde Aktion
-  ohne Zuweisung („-Q1“ statt „-Q1 := 1“) oder ohne Pfeil am Rechteck, speichernd gesetzt und nie
+  ohne Zuweisung („-QA1“ statt „-QA1 := 1“) oder ohne Pfeil am Rechteck, speichernd gesetzt und nie
   zurückgesetzt, Zeit auf den falschen Schritt bezogen, Öffner nicht negiert.
 - **Positionssensor beim Weiterdrehen:** Meldet ein Sensor die Ruhelage und bleibt beim Anlaufen noch
-  belegt, schaltet die Transition „-B1“ sofort, der Antrieb läuft nie. Richtig: Flanke „↑-B1“ oder
-  zwei Schritte mit „¬-B1“ (Position verlassen) und „-B1“ (nächste Position erreicht); beide gleichwertig.
+  belegt, schaltet die Transition „-BG1“ sofort, der Antrieb läuft nie. Richtig: Flanke „↑-BG1“ oder
+  zwei Schritte mit „¬-BG1“ (Position verlassen) und „-BG1“ (nächste Position erreicht); beide gleichwertig.
 
 ## 4. Steuerungsprogramme – IEC 61131-3 und Mikrocontroller
 
@@ -493,7 +496,7 @@ die Lösung bestimmt:
 | Taster | ob Entprellen zur Aufgabe gehört | mechanische Kontakte prellen einige Millisekunden; Software-Entprellung z. B. 20 ms 🔎 |
 | Zeiten | Zeit seit Schrittbeginn statt Warteschleife | `delay()` blockiert den Zyklus; Zeitbedingung „5s/X3“ als Vergleich mit der beim Schrittwechsel gespeicherten Zeit (`millis()`) |
 | Programmstruktur | Zyklus wie bei der SPS | Eingänge lesen → Transitionen prüfen, Schritt wechseln → Ausgänge aus dem aktiven Schritt setzen; GRAFCET als Zustandsautomat (Variable für den aktiven Schritt, `switch`/`if`) |
-| Sprache | „in der im Unterricht verwendeten Sprache“ | C/C++ (Arduino-Umgebung) oder Python (MicroPython); Bezeichner `PIN_S1`, `s1` nach Notationsblatt |
+| Sprache | „in der im Unterricht verwendeten Sprache“ | C/C++ (Arduino-Umgebung) oder Python (MicroPython); Bezeichner `PIN_SJ1`, `sj1` nach Notationsblatt |
 | Sicherheit | Not-Halt und Schutzfunktionen ausklammern | Ein Mikrocontroller ist wie eine Standard-SPS keine Sicherheitssteuerung (Abschn. 6) |
 
 **Analogwerte je Plattform** – den Wertebereich, mit dem das Programm rechnet, in der Anlage nennen;
@@ -758,7 +761,7 @@ Recherche 2026-10-30; Normtexte nicht eingesehen, außer der Leseprobe der IEC 8
 Einheitliche Schreibweise der Bibliothek für Kennzeichen, Signale, Zuordnungsliste, GRAFCET und
 Programme – für Prüfungsaufgaben, Erwartungshorizonte und Unterricht. Grundlage: DIN EN IEC 81346-2:2020,
 DIN EN 60848:2014, IEC 61131-3:2025; Hintergrund und Quellen in `normen-technik.md` (Abschn. 2–4).
-Stand 03.11.2026.
+Stand 04.11.2026.
 
 ## Für die Lehrkraft
 
@@ -787,26 +790,29 @@ Stand 03.11.2026.
 
 **1. Kennzeichen der Betriebsmittel**
 
-- Bindestrich, Kennbuchstabe(n), Zählnummer, ohne Leerzeichen: **-S1**, **-B2**, **-Q1**
-  (DIN EN IEC 81346-2:2020).
-- In der Regel nur der Klassenbuchstabe. Zwei Buchstaben stehen nur, wenn eine Klasse verschiedene
-  Arten enthält – dann für alle Betriebsmittel dieser Klasse (z. B. -BL1 Füllstand, -BT1 Temperatur).
+- Bindestrich, **Klasse und Unterklasse**, Zählnummer, ohne Leerzeichen: **-SJ1**, **-MA1**, **-MM1**,
+  **-EA1** (DIN EN IEC 81346-2:2020). Die Klasse allein (-S1, -M1) wird nicht verwendet.
+- Dieselbe Schreibweise gilt in **Funktionsbeschreibung, Technologieschema (Legende), Zuordnungsliste**,
+  GRAFCET, Logikplan und Programm.
+- Die Zählnummer zählt je Kennbuchstaben: -BG1, -BG2, -BP1.
 
-| Kennbuchstabe | Betriebsmittel (Beispiele) |
+| Kennbuchstaben | Betriebsmittel (Beispiele) |
 |---|---|
-| -S | Taster, Schalter, handbetätigtes Ventil |
-| -B | Sensor, Geber (Näherungs-, End-, Druck-, Schwimmerschalter, Temperaturfühler) |
-| -K | Steuerung (SPS, Kleinsteuerung, Mikrocontroller), Relais, Zeitrelais |
-| -Q | Schütz, Leistungsschalter, Wegeventil |
-| -M | Motor, Ventilspule, Zylinder |
-| -P | Leuchtmelder, Hupe, Anzeige |
-| -R | Drossel- und Rückschlagventil, Widerstand |
-| -G | Pumpe, Kompressor, Lüfter, Generator |
-| -T | Netzteil, Umrichter, Messumformer |
+| -SJ | Taster, Schalter, handbetätigtes Ventil |
+| -BG | Näherungs-, End-, Zylinderschalter (Lage, Abstand) |
+| -BP, -BL, -BT | Druckschalter; Füllstand, Schwimmerschalter; Temperaturfühler |
+| -KE, -KF | Steuerung (SPS, Kleinsteuerung, Mikrocontroller); Relais, Zeitrelais |
+| -QA, -QM | Schütz, Leistungsschalter; Wegeventil |
+| -MA, -MB, -MM | Elektromotor; Ventilspule, Elektromagnet; Zylinder |
+| -PF, -PJ | Leuchtmelder, Anzeige; Hupe, Summer |
+| -EA, -EB | Leuchte, Lampe; Heizung |
+| -RN, -RM | Drossel- und Drosselrückschlagventil; Rückschlagventil |
+| -GP, -GQ | Pumpe; Kompressor, Lüfter |
+| -TC, -TF | Netzteil; Messumformer |
 
 **2. Signale**
 
-- Im Text, im GRAFCET und im Logikplan steht das Kennzeichen für **sein Signal an der Steuerung**: -B1
+- Im Text, im GRAFCET und im Logikplan steht das Kennzeichen für **sein Signal an der Steuerung**: -BG1
   ist 1 oder 0. Was 1 bedeutet, steht in der Zuordnungsliste (Spalte „Signal 1 bedeutet“).
 - **Kontaktart:** NO = Schließer, NC = Öffner. Ein Öffner liefert im unbetätigten Zustand 1.
 - **Analogwerte** stehen in Bedingungen als physikalischer Wert mit Einheit: [-BT1 > −16 °C],
@@ -818,8 +824,8 @@ Stand 03.11.2026.
 
 | BMK | Betriebsmittel | Operand SPS | Operand Kleinsteuerung | Pin Mikrocontroller | Signal 1 bedeutet | Kontaktart |
 |---|---|---|---|---|---|---|
-| -S1 | Taster Start | %I0.0 | I1 | D2 | Start betätigt | NO |
-| -S2 | Taster Stopp | %I0.1 | I2 | D3 | Stopp nicht betätigt | NC |
+| -SJ1 | Taster Start | %I0.0 | I1 | D2 | Start betätigt | NO |
+| -SJ2 | Taster Stopp | %I0.1 | I2 | D3 | Stopp nicht betätigt | NC |
 
 - Ausgefüllt wird nur die Spalte der Plattform aus dem Unterricht; die anderen Spalten bleiben
   leer.
@@ -842,10 +848,10 @@ Stand 03.11.2026.
 
   | Bedeutung | Schreibweise |
   |---|---|
-  | UND | -S1 · -B1 |
-  | ODER | -B2 + -B3 |
-  | NICHT | Überstrich über dem Kennzeichen; getippt **¬-S2** |
-  | steigende bzw. fallende Flanke | ↑-B1, ↓-B1 |
+  | UND | -SJ1 · -BG1 |
+  | ODER | -BG2 + -BG3 |
+  | NICHT | Überstrich über dem Kennzeichen; getippt **¬-SJ2** |
+  | steigende bzw. fallende Flanke | ↑-BG1, ↓-BG1 |
   | Zeit seit Aktivierung von Schritt 3 | **5s/X3** |
   | Vergleich eines Zahlenwerts | **[-BT1 > −16 °C]**, [C_Teile = 10] |
   | immer erfüllt | 1 (unterstrichen) |
@@ -854,18 +860,18 @@ Stand 03.11.2026.
 
   | Art | im Rechteck | am Rechteck | Wirkung |
   |---|---|---|---|
-  | kontinuierlich | -M1 | – | 1, solange der Schritt aktiv ist |
-  | mit Zuweisungsbedingung | -M1 | Strich oben, daran die Bedingung | 1, solange Schritt aktiv und Bedingung erfüllt |
-  | verzögert | -M1 | Strich oben, daran 5s/X3 | 1 ab 5 s nach Aktivierung, solange der Schritt aktiv ist |
-  | zeitbegrenzt | -M1 | Strich oben, daran 5s/X3 mit Überstrich | 1 in den ersten 5 s nach Aktivierung |
-  | speichernd bei Aktivierung | -Q1 := 1 | Pfeil nach oben an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
-  | speichernd bei Deaktivierung | -Q1 := 0 | Pfeil nach unten an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
-  | speichernd bei Ereignis | -Q1 := 1 | Strich oben mit Fähnchen nach links, daran ↑-B1 | Zuweisung beim Ereignis, solange der Schritt aktiv ist |
+  | kontinuierlich | -MA1 | – | 1, solange der Schritt aktiv ist |
+  | mit Zuweisungsbedingung | -MA1 | Strich oben, daran die Bedingung | 1, solange Schritt aktiv und Bedingung erfüllt |
+  | verzögert | -MA1 | Strich oben, daran 5s/X3 | 1 ab 5 s nach Aktivierung, solange der Schritt aktiv ist |
+  | zeitbegrenzt | -MA1 | Strich oben, daran 5s/X3 mit Überstrich | 1 in den ersten 5 s nach Aktivierung |
+  | speichernd bei Aktivierung | -QA1 := 1 | Pfeil nach oben an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
+  | speichernd bei Deaktivierung | -QA1 := 0 | Pfeil nach unten an der linken Kante | Wert bleibt bis zur nächsten Zuweisung |
+  | speichernd bei Ereignis | -QA1 := 1 | Strich oben mit Fähnchen nach links, daran ↑-BG1 | Zuweisung beim Ereignis, solange der Schritt aktiv ist |
   | Zähler | C_Teile := C_Teile + 1 | Pfeil nach oben an der linken Kante | zählt bei jeder Aktivierung |
   | Zwangssteuerung | G5 {INIT} im Doppelrahmen | – | setzt Teil-GRAFCET G5: {INIT} Anfangssituation, { } leer, {3,4,8} diese Schritte, {*} eingefroren |
 
 - **Speichernd wirkende Aktionen** tragen immer beides: die **Zuweisung** mit := im Rechteck und den
-  **Auslöser** am Rechteck. „-Q1“ allein ist kontinuierlich. Dieselbe Variable wirkt nie zugleich
+  **Auslöser** am Rechteck. „-QA1“ allein ist kontinuierlich. Dieselbe Variable wirkt nie zugleich
   kontinuierlich und speichernd; was mit := 1 gesetzt wird, wird auch mit := 0 zurückgesetzt.
 - **Strukturierung**, wenn im Unterricht eingeführt: Makroschritt (Querlinien oben und unten im Quadrat, M4),
   einschließender Schritt (abgeschrägte Ecken) mit Rahmen um die eingeschlossene Kette, oben der Name
@@ -879,15 +885,15 @@ Wird ein GRAFCET getippt statt gezeichnet (Erwartungshorizont, PC-Aufgabe), gilt
 
 | Schritt | Aktion | Transition zum Folgeschritt |
 |---|---|---|
-| 0 (Initialschritt) | – | -S1 · -B1 → 1 |
-| 1 Füllen | -M1 | [-BL1 ≥ 80 %] + 30s/X1 → 2 |
+| 0 (Initialschritt) | – | -SJ1 · -BG1 → 1 |
+| 1 Füllen | -MA1 | [-BL1 ≥ 80 %] + 30s/X1 → 2 |
 | 2 Prüfen | ↑ C_Teile := C_Teile + 1 | [C_Teile < 10] → 1; [C_Teile = 10] → 3 |
-| 3 Fertig | -P1 | ¬-S2 → 0 |
+| 3 Fertig | -PF1 | ¬-SJ2 → 0 |
 
 - Folgeschritt nach **→**; Alternativen durch **;** getrennt (sie schließen sich gegenseitig aus).
-- Mehrere Aktionen durch **;** getrennt. Speichernd **↑ -Q1 := 1**, **↓ -Q1 := 0**, bei Ereignis
-  **-Q1 := 1 bei ↑-B1**; mit Bedingung **-M1 wenn -B1**, verzögert **-M1 verzögert 5s/X3**, zeitbegrenzt
-  **-M1 begrenzt 5s/X3**.
+- Mehrere Aktionen durch **;** getrennt. Speichernd **↑ -QA1 := 1**, **↓ -QA1 := 0**, bei Ereignis
+  **-QA1 := 1 bei ↑-BG1**; mit Bedingung **-MA1 wenn -BG1**, verzögert **-MA1 verzögert 5s/X3**, zeitbegrenzt
+  **-MA1 begrenzt 5s/X3**.
 - Parallelverzweigung „→ 3 und 6 (parallel)“; die gemeinsame Transition danach steht bei beiden
   letzten Schritten mit dem Zusatz „(gemeinsam mit X8)“.
 
@@ -898,7 +904,7 @@ Wird ein GRAFCET getippt statt gezeichnet (Erwartungshorizont, PC-Aufgabe), gilt
 - **Programm** in der im Unterricht verwendeten Sprache:
   - SPS und Kleinsteuerung nach IEC 61131-3: KOP, FUP, ST oder AS (keine AWL). Zeiten mit TON, TOF,
     TP; Zähler mit CTU, CTD; SR setzdominant, RS rücksetzdominant.
-  - Mikrocontroller in C/C++ oder Python: Pin-Konstante `PIN_S1`, Signalvariable `s1` (Kennzeichen
+  - Mikrocontroller in C/C++ oder Python: Pin-Konstante `PIN_SJ1`, Signalvariable `sj1` (Kennzeichen
     klein, ohne Bindestrich). Zeiten über die Zeit seit Schrittbeginn (z. B. `millis()`), nicht mit
     Warteschleifen; einen GRAFCET als Zustandsautomat mit einer Variablen für den aktiven Schritt.
 - **Mikrocontroller-Eingänge:** Signal 1 ist der High-Pegel am Pin. Bei internem Pull-up-Widerstand
@@ -1375,14 +1381,14 @@ Alternativverzweigung: `assets/spec-muster.yaml`; Testlauf an einer Abituraufgab
 
 ```yaml
 eingaenge:          # digitale Geber
-  - {bmk: -S1, name: "Taster Start", pin: D2, kontakt: "NO", bauteil: taster, signal_1: "Start betätigt"}
-  - {bmk: -S2, name: "Taster Stopp", pin: D3, kontakt: "NC", bauteil: taster, signal_1: "Stopp nicht betätigt"}
+  - {bmk: -SJ1, name: "Taster Start", pin: D2, kontakt: "NO", bauteil: taster, signal_1: "Start betätigt"}
+  - {bmk: -SJ2, name: "Taster Stopp", pin: D3, kontakt: "NC", bauteil: taster, signal_1: "Stopp nicht betätigt"}
   - {bmk: -BL1, name: "Schwimmerschalter", pin: D4, kontakt: "NC", bauteil: schalter,
      signal_1: "Füllstand über Mindesthöhe", start: 1, kurz: "Füllstand"}
 analogeingaenge:    # 4 … 20 mA, Wert im Programm als physikalische Größe
   - {bmk: -BT1, name: "Temperaturfühler", pin: A0, bereich: [0, 100], einheit: "°C", start: 38, stellen: 1}
 ausgaenge:
-  - {bmk: -QA1, name: "Schütz Förderpumpe -M1", pin: D8, signal_1: "Pumpe ein", kurz: "Pumpe"}
+  - {bmk: -QA1, name: "Schütz Förderpumpe -MA1", pin: D8, signal_1: "Pumpe ein", kurz: "Pumpe"}
 ```
 
 - **Pins** wie auf dem Board: `D2` … `D13`, `A0` … `A5` (Uno); `GPIO16` … (ESP32). E/A-Platine (Anlage der
@@ -1416,14 +1422,14 @@ Ein Merker hat genau eine Quelle: GRAFCET-Aktion, Speicher (`setzen`/`ruecksetze
 
 ```yaml
 grafcet:
-  - {schritt: 0, name: "Grundstellung", aktionen: [], transition: "-S1 · -BL1 → 1"}
-  - {schritt: 3, name: "Beschicken", aktionen: [-P2, -QA2, -QM1, M_Pumpe], transition: "[-BL2 ≥ 4,5 m] + 10min/X3 → 4"}
+  - {schritt: 0, name: "Grundstellung", aktionen: [], transition: "-SJ1 · -BL1 → 1"}
+  - {schritt: 3, name: "Beschicken", aktionen: [-PF2, -QA2, -QM1, M_Pumpe], transition: "[-BL2 ≥ 4,5 m] + 10min/X3 → 4"}
   - {schritt: 2, name: "Prüfen", aktionen: ["↑ C_Teile := C_Teile + 1"], transition: "[C_Teile < 10] → 1; [C_Teile = 10] → 3"}
 ```
 
 - Initialschritt ist Schritt 0 (sonst `initial: true` am Schritt). Ein Schritt ist aktiv; je Zyklus höchstens ein
   Schrittwechsel.
-- **Aktionen:** `-QA2` (kontinuierlich), `-M1 wenn <Bedingung>` (mit Zuweisungsbedingung),
+- **Aktionen:** `-QA2` (kontinuierlich), `-MA1 wenn <Bedingung>` (mit Zuweisungsbedingung),
   `"↑ X := Wert"` bzw. `"↑ C := C + 1"` (speichernd bei Aktivierung), `"↓ X := 0"` (bei Deaktivierung). Speichernde
   Aktionen in Anführungszeichen.
 - **Transition:** `Bedingung → Folgeschritt`; Alternativen mit `;` getrennt, die erste erfüllte gilt (Bedingungen
@@ -1434,9 +1440,9 @@ grafcet:
 
 ```yaml
 erzwingen:      # vor den Transitionen, in dieser Reihenfolge; solange die Bedingung gilt, steht die Kette in `nach`
-  - {bedingung: "¬-S2", nach: 0, grund: "Stopp: alle Ausgänge sofort 0"}
+  - {bedingung: "¬-SJ2", nach: 0, grund: "Stopp: alle Ausgänge sofort 0"}
 zuweisungen:    # nach den Aktionen; ein Ziel je Eintrag
-  - {ziel: -QA1, bedingung: "M_Pumpe · -BL1 · -S2 · [-BT1 ≥ 30 °C]", grund: "Freigabe der Pumpe"}
+  - {ziel: -QA1, bedingung: "M_Pumpe · -BL1 · -SJ2 · [-BT1 ≥ 30 °C]", grund: "Freigabe der Pumpe"}
 ```
 
 Ein Ausgang kommt **entweder** aus GRAFCET-Aktionen **oder** aus einer Verknüpfung. Soll die Schrittkette einen
@@ -1456,11 +1462,11 @@ testfaelle:
     start: {-BL2: 3.0}                       # optional: Startwerte abweichend von der Zuordnungsliste
     ablauf:
       - {erwarte: {X: 0, -QA1: 0}}
-      - {tippe: -S1, erwarte: {X: 1, -QA2: 1}}
+      - {tippe: -SJ1, erwarte: {X: 1, -QA2: 1}}
       - {schrittzeit: 5min, vorher: {X: 1}, erwarte: {X: 2, -QM1: 1}}
       - {setze: {-BL2: 4.6}, erwarte: {X: 4, -QA1: 0}}
-      - {druecke: -S2, erwarte: {X: 0}}
-      - {loese: -S2, warte: 1s, erwarte: {X: 0}}
+      - {druecke: -SJ2, erwarte: {X: 0}}
+      - {loese: -SJ2, warte: 1s, erwarte: {X: 0}}
 ```
 
 | Schlüssel | Wirkung |
@@ -1487,8 +1493,8 @@ Analogwerte nicht genau auf eine Schwelle setzen (4,6 m statt 4,5 m) – der Roh
 
 | Bedeutung | Schreibweise | im Sketch |
 |---|---|---|
-| UND, ODER, NICHT | `-S1 · -B1`, `-B2 + -B3`, `¬-S2` (NICHT vor UND vor ODER, Klammern erlaubt) | `&&`, `||`, `!` |
-| Flanke | `↑-S1`, `↓-B1` | `(s1 && !s1_vorher)` |
+| UND, ODER, NICHT | `-SJ1 · -BG1`, `-BG2 + -BG3`, `¬-SJ2` (NICHT vor UND vor ODER, Klammern erlaubt) | `&&`, `||`, `!` |
+| Flanke | `↑-SJ1`, `↓-BG1` | `(sj1 && !sj1_vorher)` |
 | Zeit | `5s/X3` (ms, s, min, h; Komma erlaubt: `5,5h/X6`) | `schrittzeit() >= T_X3` |
 | Schrittvariable | `X3`, `¬X0` | `schritt == 3`, `schritt != 0` |
 | Vergleich | `[-BT1 ≥ 30 °C]`, `[C_Teile = 10]` (≥ ≤ > < = ≠; auch >= <= !=) | `bt1 >= 30.0` |

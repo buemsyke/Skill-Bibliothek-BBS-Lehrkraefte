@@ -2,7 +2,7 @@
 artefakt: Klassenarbeit – Aufgabenteil
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.11"
+skill_version: "1.15"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -14,7 +14,7 @@ status: "KI-Entwurf – fachlich zu prüfen"
 ---
 
 <!-- Format so lassen: „Aufgabe N – Titel (insgesamt P Punkte)" und Teilaufgaben „N.n … (p P)".
-     Daran erkennen klausur_check.py und weitere Prüfskripte
+     Daran erkennen klausur_check.py und die regelbasierte Begutachtung
      Punkte und Struktur. Anlagen bekommen eine eigene Überschrift „Anlage N – …".
      Kursive Zeile *Antwortraum: …* unter einer Teilaufgabe = Vorgabe für die Druckfassung
      (Formate nach references/druckfassung-antwortformate.md, Abschn. 5). Name in die Kopfzeile

@@ -8,7 +8,7 @@ bei ``groesse: 1``. Der Ursprung (0, 0) ist die Mitte des Zeichens; y zeigt nach
 Jedes Zeichen kennt
 
 * seine **Anschlusspunkte** (``an1``, ``an2`` …), an denen Linien über Anker enden
-  (``"-S1@an1"``), auch nach Drehen und Spiegeln,
+  (``"-SJ1@an1"``), auch nach Drehen und Spiegeln,
 * die **Klassen** des Referenzkennzeichens, die zu ihm passen (Schließer als Taster → S, als
   Schützkontakt → Q, als Relaiskontakt → K),
 * seine **Herkunft**: ``liste`` = Form mit dem Zeichen der Wikipedia-Liste der Schaltzeichen

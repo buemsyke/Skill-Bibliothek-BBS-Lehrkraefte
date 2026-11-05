@@ -159,12 +159,16 @@ abweichende Lösung gemessen wird. Zweitkorrekturen können so zu verschiedenen 
 | 2021 A | 3 (-KF1, -MB1, -MB2) | – | ja | 2 Geber | 11 (- und –) |
 | 2020 A | – | keine Funktionsbeschreibung | ja | 2 Geber | 3 (- und –) |
 
-Keine der acht Aufgaben besteht alle Punkte. Häufig beschreibt die Funktionsbeschreibung die
+Keine der acht Aufgaben besteht alle Punkte. Das spricht nicht gegen ihre **Bauweise**: 2025 I ist
+inhaltlich das Vorbild für die Anlagenaufgabe (eine Anlage trägt alle Teilaufgaben, Schema als
+Datenquelle, Originalauszug eines Datenblatts, Bestandsprüfung, Befund aus der Erprobung) – die
+Muster stehen in `references/aufgabenmuster-steuerungstechnik.md`, die Mängel dieses Abschnitts
+werden dabei nicht übernommen. Häufig beschreibt die Funktionsbeschreibung die
 Geräte nur mit Namen; die Kennzeichen stehen allein in der Zuordnungsliste oder im Bild. In einem
 Fall heißt ein Taster in der Funktionsbeschreibung anders als in der Zuordnungsliste. Der
 Mustervorschlag IT nutzt noch die alte Kennzeichnung (S1, B1, P2).
 
-**Mustervorschlag IT, Formalprüfung nach dem Katalog:** ❌ X.10 (Teilaufgaben 32 ≠ 33 BE angegeben),
+**Mustervorschlag IT, regelbasierte Prüfung:** ❌ X.10 (Teilaufgaben 32 ≠ 33 BE angegeben),
 X.13 (Schülermaterial 101 ≠ Lehrermaterial 100), X.3 (14× „Punkte“), S.1 (Platzhalter wie
 „XXX“, „Version X.Y“, „20 _ _“, „BBS …“). Selbst ein amtliches Muster braucht also die
 rechnende Selbstprüfung.
@@ -330,7 +334,11 @@ Qualifikationsphase. Strenger als die Vorbilder, wo Abschn. 7 Mängel zeigt.
 5. Informationstechnik nach Abschn. 10 bauen: Notationsrahmen und Antwortvorlagen als Anlage,
    Neues im Material erschließen, Fehlersuche mit Zahl und Markierung, Ausgaben festlegen,
    Bezeichnungen in Auftrag, Erwartungshorizont und Musterlösung gleich.
-6. Szenarien und Aufgabenflüsse dürfen aus den Vergleichsheften eines anderen Landes kommen
+6. **Steuerungstechnik und Mechatronik** als Anlagenaufgabe bauen
+   (`references/aufgabenmuster-steuerungstechnik.md`): Anlage zuerst, jede Teilaufgabe mit Quelle im
+   Schema oder Material, Datenblätter im Original, wo das Entnehmen geprüft wird, Auswahl mit Regel,
+   Aufgabentypen TA1–TA10 mit Prüfstein und funktionalen Merkmalen.
+7. Szenarien und Aufgabenflüsse dürfen aus den Vergleichsheften eines anderen Landes kommen
    (`references/abitur-aufgabenformat-vergleich.md`) – ohne deren veraltete Bausteine
    (Registerebene, Assembler, Betriebssysteme, SQL/Datenbanken) und stets mit niedersächsischem
    Format, EPA-Operatoren und eigenem Erwartungshorizont. Geeignet sind v. a. die neueren Themen

@@ -2,8 +2,9 @@
 """bewertungsmappe – Excel-Mappe für Korrektur, Bewertungsbogen und Gutachten eines dezentralen
 Abiturvorschlags (lokal, deterministisch, ohne Makros).
 
-Eine Quelle für alle Texte: Aus jedem Bewertungsmerkmal des Erwartungshorizonts entsteht ein
-Kurztext (Blatt „Korrekturschlüssel“). Ihn notiert die Korrektur am Rand der Klausur, und wörtlich
+Eine Quelle für alle Texte: Jedes Bewertungsmerkmal des Bewertungsrasters hat einen Kurztext
+(Spalte „Kurztext“, höchstens vier Wörter, ohne Werte; fehlt er, schlägt das Skript einen vor –
+Blatt „Korrekturschlüssel“). Ihn notiert die Korrektur am Rand der Klausur, und wörtlich
 derselbe Text steht in den Bemerkungen je Teilaufgabe und im Gutachten – Erwartungshorizont,
 Korrektur in der Klausur und Gutachten bleiben deckungsgleich.
 
@@ -16,9 +17,11 @@ Aufruf:
     python3 bewertungsmappe.py 75_…_A_bewertungsbogen.md [-o DATEI.xlsx] [--prueflinge 20]
     python3 bewertungsmappe.py 75_…_A_schuelermaterial.md 75_…_A_lehrermaterial.md [-o DATEI.xlsx]
 
-Liegen neben dem Bewertungsbogen Schüler- und Lehrermaterial mit gleichem Dateianfang, übernimmt
-das Skript Titel der Teilaufgaben, Art der Merkmale, Regeln (Toleranz, Folgefehler, Gleichwertig,
-0 BE) und Zeilen des Erwartungshorizonts und gleicht Bewertungsbogen und Lehrermaterial ab.
+Liegen neben dem Bewertungsbogen Schüler- und Lehrermaterial (und das Bewertungsraster) mit gleichem
+Dateianfang, übernimmt das Skript Titel der Teilaufgaben, Art der Merkmale, Kurztexte, Regeln
+(Toleranz, Folgefehler, Gleichwertig, 0 BE) und Zeilen des Erwartungshorizonts und gleicht
+Bewertungsbogen und Bewertungsraster ab. Das Gutachten nennt standardmäßig nur teilweise und nicht
+erfüllte Merkmale (kurz, weil es von Hand in die Klausur übertragen wird).
 Die Mappe rechnet in Excel (ab 2010) und LibreOffice Calc. Überschreibt nie. Nur
 Python-Standardbibliothek; liest und schreibt keine Daten von Prüflingen.
 """
@@ -39,7 +42,7 @@ HIER = Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 import abitur_check as AC  # noqa: E402 – gleicher Ordner (Parser, Bewertungsmaßstab)
 
-VERSION = "1.0"
+VERSION = "1.1"
 AFB = AC.AFB
 
 # Farben (ohne Alpha)
@@ -427,10 +430,9 @@ BEISPIEL = re.compile(r"\s*\((?:z\.\s?B\.|zum Beispiel|etwa|bspw\.|Musterlösung
 
 
 def kurztext(text: str) -> str:
-    """Kurztext für Randvermerk und Gutachten: Merkmal ohne Beispiele und Lösungsdetails in Klammern."""
-    t = BEISPIEL.sub("", text)
-    t = re.sub(r",?\s+(?:z\.\s?B\.|zum Beispiel)\s.*$", "", t)
-    return " ".join(t.split()).rstrip(" .;,") or text.strip()
+    """Kurztext-Vorschlag für Randvermerk und Gutachten (wenn das Raster keinen nennt): ohne Beispiele,
+    Werte und Nachsätze, höchstens vier Wörter."""
+    return AC.kurztext_vorschlag(BEISPIEL.sub("", text))
 
 
 @dataclass
@@ -441,10 +443,11 @@ class Merkmal:
     afb: str
     be: float
     art: str = ""
+    kurztext: str = ""
 
     @property
     def kurz(self) -> str:
-        return kurztext(self.text)
+        return self.kurztext or kurztext(self.text)
 
 
 @dataclass
@@ -507,6 +510,7 @@ def lies_bewertungsbogen(text: str) -> Vorschlag:
     text = AC.bereinigt(text)
     k = re.search(r"^#\s+Bewertungsbogen\s*[–-]\s*(.+?)\s*$", text, re.M)
     aufgaben: list[Aufgabe] = []
+    sp_ = {"nr": 1, "text": 2, "kurz": None, "afb": 3, "be": 4}      # ältere Bögen ohne Spalte „Kurztext“
     for zeile in text.splitlines():
         if m := AUFGABE_BB.match(zeile):
             aufgaben.append(Aufgabe(int(m.group(1)), m.group(2).strip(" –-"), AC.zahl(m.group(3))))
@@ -514,12 +518,22 @@ def lies_bewertungsbogen(text: str) -> Vorschlag:
         if not aufgaben or not zeile.strip().startswith("|"):
             continue
         z = AC.zellen(zeile)
-        if len(z) < 5 or not re.fullmatch(r"\d+\.\d+", z[0]) or AC.zahl(z[4]) is None:
+        kopf = [k.lower() for k in z]
+        if any("bewertungsmerkmal" in k for k in kopf) and "afb" in kopf:
+            sp_ = {"nr": next((i for i, k in enumerate(kopf) if k.startswith("nr")), 1),
+                   "text": next(i for i, k in enumerate(kopf) if "bewertungsmerkmal" in k),
+                   "kurz": next((i for i, k in enumerate(kopf) if "kurz" in k), None), "afb": kopf.index("afb"),
+                   "be": next((i for i, k in enumerate(kopf) if "erreichbar" in k or k == "be"), kopf.index("afb") + 1)}
+            continue
+        z += [""] * (max(i for i in sp_.values() if i is not None) + 1 - len(z))
+        if not re.fullmatch(r"\d+\.\d+", z[0]) or AC.zahl(z[sp_["be"]]) is None:
             continue
         a = aufgaben[-1]
         if not a.teile or a.teile[-1].nummer != z[0]:
             a.teile.append(Teilaufgabe(z[0]))
-        a.teile[-1].merkmale.append(Merkmal(z[0], z[1], z[2], z[3].strip().upper(), AC.zahl(z[4])))
+        a.teile[-1].merkmale.append(Merkmal(z[0], z[sp_["nr"]], z[sp_["text"]], z[sp_["afb"]].strip().upper(),
+                                            AC.zahl(z[sp_["be"]]),
+                                            kurztext=z[sp_["kurz"]].strip() if sp_["kurz"] is not None else ""))
     return Vorschlag(k.group(1).strip() if k else "", [a for a in aufgaben if a.teile])
 
 
@@ -554,10 +568,12 @@ def pruefe_eingabe(v: Vorschlag) -> None:
             v.hinweise.append(f"{a.nummer}. Aufgabe: Merkmale ergeben {AC.fmt(a.summe)} BE, angegeben {AC.fmt(a.be)} BE")
 
 
-def anreichern(v: Vorschlag, sm_text: str, lm_text: str) -> None:
-    """Titel, Art, Regeln und Erwartungshorizont aus Schüler- und Lehrermaterial; Abgleich mit dem Bogen."""
+def anreichern(v: Vorschlag, sm_text: str, lm_text: str, raster_text: str | None = None) -> None:
+    """Titel, Art, Kurztexte, Regeln und Erwartungshorizont aus Schüler-, Lehrermaterial und Bewertungsraster;
+    Abgleich mit dem Bogen."""
     opdaten = AC.lade_operatoren(AC.operatorenpfad(None))
-    befunde, _info, modell, _ = AC.pruefe(sm_text, lm_text, opdaten)
+    befunde, _info, modell, _ = AC.pruefe(sm_text, lm_text, opdaten, raster_text=raster_text)
+    quelle = "Bewertungsraster" if raster_text is not None else "Lehrermaterial"
     sm, lm = modell["sm"], modell["lm"]
     titel = {t.nummer: t.titel for a in sm["aufgaben"] for t in a.teile}
     ewh: dict[str, list[str]] = {}
@@ -568,19 +584,20 @@ def anreichern(v: Vorschlag, sm_text: str, lm_text: str) -> None:
     for t in v.teile:
         t.titel = titel.get(t.nummer, "")
         t.ewh = ewh.get(t.nummer, [])
-        loesung = lm["loesungen"].get(t.nummer, {})
+        loesung = modell["bewertung"].get(t.nummer, {})
         t.regeln = regeln(loesung.get("text", ""))
         lm_m = {m.nr: m for m in loesung.get("merkmale", [])}
         for m in t.merkmale:
             g = lm_m.get(m.nr)
             if g:
                 m.art = g.art
+                m.kurztext = m.kurztext or g.kurz
             if not g or (g.text, g.afb, g.be) != (m.text, m.afb, m.be):
                 abweichend.append(f"{t.nummer}/{m.nr}")
         abweichend += [f"{t.nummer}/{nr}" for nr in lm_m if nr not in {m.nr for m in t.merkmale}]
-    abweichend += [nr for nr in lm["loesungen"] if nr not in {t.nummer for t in v.teile}]
+    abweichend += [nr for nr, b in modell["bewertung"].items() if b["merkmale"] and nr not in {t.nummer for t in v.teile}]
     if abweichend:
-        v.hinweise.append("Bewertungsbogen weicht vom Lehrermaterial ab (" + ", ".join(abweichend[:8]) +
+        v.hinweise.append(f"Bewertungsbogen weicht vom {quelle} ab (" + ", ".join(abweichend[:8]) +
                           (" …" if len(abweichend) > 8 else "") + ") – mit abitur_check.py --bewertungsbogen neu "
                           "erzeugen und die Mappe danach erstellen")
     kd = kopfdaten(lm_text)
@@ -812,8 +829,8 @@ def blatt_start(mp: Mappe, v: Vorschlag, n: int, datei: str) -> None:
     eingabe("Fachprüfungsleitung, Name", "Ang_FPL")
 
     titel("Einstellungen")
-    zo = eingabe("Erfüllte Merkmale in den Bemerkungen nennen", "Opt_Erfuellt", "ja",
-                 "„nein“: nur teilweise und nicht erfüllte Merkmale (kürzeres Gutachten)")
+    zo = eingabe("Erfüllte Merkmale in den Bemerkungen nennen", "Opt_Erfuellt", "nein",
+                 "„nein“ (Standard): nur teilweise und nicht erfüllte Merkmale – kurzes Gutachten zum Abschreiben")
     b.pruefung(f"B{zo}", "list", '"ja,nein"', meldung="ja oder nein")
     zo = eingabe("Grenzfall markieren, wenn bis zum nächsten Notenpunkt höchstens … BE fehlen", "Opt_Grenzfall", 1,
                  "Übersicht, Spalte „Grenzfall“: Bewertung der Merkmale noch einmal ansehen")
@@ -852,10 +869,12 @@ def blatt_start(mp: Mappe, v: Vorschlag, n: int, datei: str) -> None:
     titel("So arbeiten Sie mit der Mappe")
     schritte = [
         "1. Angaben oben eintragen. Die Kurztexte im Blatt „Korrekturschlüssel“ vor Korrekturbeginn mit der "
-        "Fachgruppe abstimmen – sie stehen später wörtlich in Bemerkung und Gutachten.",
+        "Fachgruppe abstimmen – sie stehen später wörtlich in Bemerkung und Gutachten und werden von Hand in die "
+        "Klausur geschrieben: höchstens vier Wörter, keine Adressen, Zahlenwerte oder Formeln (Merkmal benennen, "
+        "nicht die Lösung).",
         "2. Blatt „Prüflinge“: Prüflingsnummern eintragen; Namen nur, wenn die Schule sie im Gutachten verlangt.",
         "3. Korrigieren: In der Klausur am Rand je Merkmal Nummer und Zeichen notieren (z. B. „4 ✗ "
-        "Broadcastadresse …“), bei (✓) und ✗ mit dem Kurztext. Dann im Blatt „Erfassung“ die BE je Merkmal "
+        "Broadcastadresse“), bei (✓) und ✗ mit dem Kurztext. Dann im Blatt „Erfassung“ die BE je Merkmal "
         "eintragen – eine Spalte je Prüfling, Schritte von 0,5 BE; leer = noch nicht bewertet, 0 = nicht erfüllt.",
         "4. Blatt P01 … prüfen: Bewertungsbogen, Bemerkungen je Teilaufgabe und Gutachten entstehen aus den "
         "Eingaben. Ergänzungen (z. B. Folgefehler) in Spalte H auswählen oder schreiben; den Abzug für Sprache und "
@@ -907,11 +926,12 @@ def blatt_korrekturschluessel(mp: Mappe, v: Vorschlag, A: Ablage) -> None:
     b.breite = {1: 8, 2: 4, 3: 50, 4: 8, 5: 5, 6: 5, 7: 40}
     b.verbinde(1, 1, 1, 7, f"Korrekturschlüssel – {v.kopf}", S(fett=True, groesse=12, v=None))
     b.verbinde(2, 1, 2, 7, "Randvermerk in der Klausur: Merkmalnummer + Zeichen (✓, (✓) mit BE, ✗), bei (✓) und ✗ "
-               "zusätzlich der Kurztext. Der Kurztext steht wörtlich in Bemerkung und Gutachten. Kurztexte (gelb) "
-               "vor Korrekturbeginn abstimmen; die Merkmale selbst kommen aus dem Erwartungshorizont.",
+               "zusätzlich der Kurztext. Der Kurztext steht wörtlich in Bemerkung und Gutachten. Kurztexte (gelb, "
+               "höchstens vier Wörter, ohne Werte) vor Korrekturbeginn abstimmen; die Merkmale kommen aus dem "
+               "Bewertungsraster.",
                S(kursiv=True, umbruch=True))
     b.hoehe[2] = 40
-    kopf = ["Teilaufgabe", "Nr.", "Bewertungsmerkmal (Erwartungshorizont)", "Art", "AFB", "BE",
+    kopf = ["Teilaufgabe", "Nr.", "Bewertungsmerkmal (Bewertungsraster)", "Art", "AFB", "BE",
             "Kurztext für Randvermerk und Gutachten"]
     for s, t in enumerate(kopf, 1):
         b.setze(4, s, t, S(fett=True, grund=KOPF, rahmen=True, umbruch=True, h="center" if s in (2, 5, 6) else None))
@@ -1559,20 +1579,24 @@ def lade(dateien: list[Path]) -> tuple[Vorschlag, Path]:
         v.quellen.append(bogen.name)
         stamm = re.sub(r"_bewertungsbogen$", "", bogen.stem)
         sm, lm = bogen.with_name(f"{stamm}_schuelermaterial.md"), bogen.with_name(f"{stamm}_lehrermaterial.md")
+        rs = bogen.with_name(f"{stamm}_bewertungsraster.md")
         if sm.is_file() and lm.is_file():
-            anreichern(v, sm.read_text(encoding="utf-8"), lm.read_text(encoding="utf-8"))
-            v.quellen += [sm.name, lm.name]
+            anreichern(v, sm.read_text(encoding="utf-8"), lm.read_text(encoding="utf-8"),
+                       rs.read_text(encoding="utf-8") if rs.is_file() else None)
+            v.quellen += [sm.name, lm.name] + ([rs.name] if rs.is_file() else [])
         else:
             v.hinweise.append("Schüler- und Lehrermaterial nicht neben dem Bewertungsbogen gefunden – ohne Titel der "
                               "Teilaufgaben, Regeln und Abgleich erzeugt")
         ziel = bogen.with_name(f"{stamm}_bewertungsmappe.xlsx")
     elif len(dateien) == 2:
         sm_text, lm_text = (d.read_text(encoding="utf-8") for d in dateien)
+        rs = AC.raster_pfad(dateien[1])
+        rs_text = rs.read_text(encoding="utf-8") if rs.is_file() else None
         opdaten = AC.lade_operatoren(AC.operatorenpfad(None))
-        _b, info, modell, _ = AC.pruefe(sm_text, lm_text, opdaten)
+        _b, info, modell, _ = AC.pruefe(sm_text, lm_text, opdaten, raster_text=rs_text)
         v = lies_bewertungsbogen(AC.bewertungsbogen(info, modell))
-        anreichern(v, sm_text, lm_text)
-        v.quellen += [d.name for d in dateien]
+        anreichern(v, sm_text, lm_text, rs_text)
+        v.quellen += [d.name for d in dateien] + ([rs.name] if rs_text is not None else [])
         stamm = re.sub(r"_lehrermaterial$", "", dateien[1].stem)
         ziel = dateien[1].with_name(f"{stamm}_bewertungsmappe.xlsx")
     else:

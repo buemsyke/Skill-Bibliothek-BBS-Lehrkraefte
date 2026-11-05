@@ -9,7 +9,7 @@ Sonderzeichen, fehlende Titel und AFB, doppelte Nummern, Text nach der letzten �
 der an sie angehängt würde, Fragen ohne GIFT-Entsprechung, **Zeilen der Quelle, die im Export
 fehlen** (z. B. Angaben vor **Frage:** oder außerhalb des Blockzitats eines Lückentexts – die
 Frage wäre dann unlösbar), Formeln mit einfachem $ … $ (rendert Moodle-MathJax nicht) und
-unpaarige Begrenzer \( \) bzw. $$. Dazu eine Übersicht je Übung, die AFB-Verteilung und die
+unpaarige Begrenzer \\( \\) bzw. $$. Dazu eine Übersicht je Übung, die AFB-Verteilung und die
 Zahl der Formeln (ℹ).
 
     python3 scripts/quiz_pruefen.py 65_quiz_gurtfoerderer.md

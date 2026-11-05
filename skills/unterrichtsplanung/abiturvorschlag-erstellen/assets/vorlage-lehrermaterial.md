@@ -2,7 +2,7 @@
 artefakt: Abiturvorschlag – Lehrermaterial
 titel: "[Thema]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.17"
+skill_version: "1.22"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"
@@ -22,10 +22,11 @@ status: "KI-Entwurf – fachlich zu prüfen"
      - Erwartungshorizont: eine Zeile je Operator der Teilaufgabe, substantiviert und gleich lautend
        wie im Auftrag („Berechnen der …“); BE nach AFB, höchstens zwei benachbarte AFB je Zeile;
        Σ nur in der ersten Zeile der Teilaufgabe; Summenzeilen mit allen vier Zahlen (auch 0).
-     - Je Teilaufgabe ein „Lösungsvorschlag zur Teilaufgabe N.n“ mit Merkmaltabelle
-       (Art: fest | Kriterium | Urteil; höchstens 3 BE je Merkmal; Summe = BE der Teilaufgabe;
-       BE je AFB = Erwartungshorizont) und – wo zutreffend – den Zeilen Gleichwertig, Folgefehler,
-       Toleranz, 0 BE (references/aufgabenqualitaet.md, Abschn. 5 und 6).
+     - So knapp wie möglich: Je Teilaufgabe ein „Lösungsvorschlag zur Teilaufgabe N.n“ mit dem
+       Lösungsgang (Zwischenergebnisse, Einheiten, Lösungsbilder) – keine Merkmaltabellen, keine
+       Wiederholung der Aufgabenstellung. Die genaue Bepunktung (Merkmale mit Kurztext, Gleichwertig,
+       Folgefehler, Toleranz, 0 BE) steht im Bewertungsraster `…_A_bewertungsraster.md`
+       (assets/vorlage-bewertungsraster.md; references/aufgabenqualitaet.md, Abschn. 5, 6 und 10).
      - Bewertungsmaßstab und Gesamtsummen aus abitur_check.py übernehmen, nicht abschreiben. -->
 
 | Abitur [JJJJ] | Technik – [Schwerpunkt] – | Lehrermaterial |
@@ -115,9 +116,10 @@ Die Umrechnung der erreichten BE in Notenpunkte ergibt sich aus folgendem Maßst
 
 - Folgefehler werden einmal gewertet: Wer mit einem falschen Zwischenergebnis richtig weiterrechnet,
   erhält die BE der Folgeschritte.
-- Zahlenwerte: Toleranz und Rundung stehen bei der Teilaufgabe; fehlende oder falsche Einheit
-  [ … ].
-- Gleichwertige Lösungen erhalten volle BE; die Merkmale sind funktional formuliert.
+- Die BE werden nach dem Bewertungsraster der Fachgruppe vergeben (eigenes Dokument: Merkmale je
+  Teilaufgabe, Toleranzen, Folgefehler, gleichwertige Lösungen).
+- Zahlenwerte: fehlende oder falsche Einheit [ … ].
+- Gleichwertige Lösungen erhalten volle BE.
 - [Steuerungstechnik: Eine abweichende Lösung ist richtig, wenn sie zur eigenen Zuordnungsliste passt.
   Lösungen für SPS, Kleinsteuerung und Mikrocontroller sind gleichwertig; bewertet wird das Verhalten
   (Schritte, Bedingungen, Ausgänge, Zeiten), nicht die Plattform.]
@@ -126,29 +128,8 @@ Die Umrechnung der erreichten BE in Notenpunkte ergibt sich aus folgendem Maßst
 
 ## Lösungsvorschlag zur Teilaufgabe 1.1
 
-[Vollständiger Lösungsgang.]
-
-| Nr. | Bewertungsmerkmal | Art | AFB | BE |
-|---|---|---|---|---:|
-| 1 | [beobachtbares Merkmal] | fest | I | 1 |
-| 2 | [ … ] | fest | I | 1 |
-| 3 | [ … ] | Kriterium | I | 2 |
-
-*Gleichwertig:* [ … ]
-
-*0 BE:* [ … ]
+[Lösungsgang knapp: Ergebnis und die Schritte, die eine Zweitkorrektur zum Nachvollziehen braucht.]
 
 ## Lösungsvorschlag zur Teilaufgabe 1.2
 
 [Lösungsgang mit Zwischenergebnissen und Einheiten, mit Code nachgerechnet.]
-
-| Nr. | Bewertungsmerkmal | Art | AFB | BE |
-|---|---|---|---|---:|
-| 1 | [Ansatz …] | fest | I | 2 |
-| 2 | [ … ] | fest | II | 3 |
-| 3 | [ … ] | fest | II | 3 |
-| 4 | [Urteil mit Kriterium …] | Urteil | III | 2 |
-
-*Toleranz:* [±2 % bzw. Rundung auf …]
-
-*Folgefehler:* [ … ]

@@ -1,10 +1,10 @@
 # Muster: Förderstation – Band mit Motor, Lichtschranke, Abschiebezylinder, Behälter und Bedienfeld.
 # Ausgangspunkt für Aufgaben mit Fördertechnik und Werkstückerkennung. Gestrichelte Linie = Lichtstrahl.
 # Der Empfänger der Lichtschranke trägt kein eigenes Kennzeichen (legende: false).
-# Kennzeichen: Klasse M und B enthalten je zwei Arten (Motor/Zylinder, Lichtschranke/Zylinderschalter),
-# darum überall Unterklasse (-MA1, -MM1, -BR1, -BG1); S und P bleiben bei der Klasse (-S1, -P1).
+# Kennzeichen: Klasse M und B enthalten je zwei Arten (Motor/Zylinder, Lichtschranke/Zylinderschalter) –
+# wie alle Kennzeichen mit Unterklasse (-MA1, -MM1, -BR1, -BG1, -SJ1, -PF1).
 titel: "Abbildung 3 – Technologieschema der Förderstation"
-alt: "Waagerechtes Förderband mit Motor -MA1. Über dem Band eine Lichtschranke -BR1 mit Sender oben und Empfänger unten, rechts davon ein senkrechter Abschiebezylinder -MM1 mit Endlagensensoren -BG1 und -BG2, der Werkstücke in den Behälter am Bandende drückt. Links das Bedienfeld mit Taster -S1, Not-Halt -S2 und Leuchtmelder -P1."
+alt: "Waagerechtes Förderband mit Motor -MA1. Über dem Band eine Lichtschranke -BR1 mit Sender oben und Empfänger unten, rechts davon ein senkrechter Abschiebezylinder -MM1 mit Endlagensensoren -BG1 und -BG2, der Werkstücke in den Behälter am Bandende drückt. Links das Bedienfeld mit Taster -SJ1, Not-Halt -SJ2 und Leuchtmelder -PF1."
 out: abbildungen/46_foerderstation
 breite: 780
 hoehe: 500
@@ -19,9 +19,9 @@ elemente:
     h: 110
     titel: Bedienfeld
     eintraege:
-      - {typ: taster, id: "-S1", name: Start, funktion: "startet das Band"}
-      - {typ: taster, id: "-S2", name: Not-Halt, symbol: not_halt, funktion: "stoppt die Anlage"}
-      - {typ: leuchte, id: "-P1", name: Betrieb, funktion: "leuchtet bei laufendem Band"}
+      - {typ: taster, id: "-SJ1", name: Start, funktion: "startet das Band"}
+      - {typ: taster, id: "-SJ2", name: Not-Halt, symbol: not_halt, funktion: "stoppt die Anlage"}
+      - {typ: leuchte, id: "-PF1", name: Betrieb, funktion: "leuchtet bei laufendem Band"}
   - {typ: band, ref: band, x: 60, y: 300, b: 520, h: 40, name: Förderband, lage: unten, abstand: 36}
   - {typ: motor, id: "-MA1", name: Bandantrieb, x: 210, y: 430, r: 22, funktion: "treibt das Förderband an"}
   - {typ: linie, punkte: ["band@unten:-110,0", "-MA1@oben"]}

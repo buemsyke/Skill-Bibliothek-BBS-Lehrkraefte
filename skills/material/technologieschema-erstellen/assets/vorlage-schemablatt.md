@@ -2,7 +2,7 @@
 artefakt: Technologieschema – Schemablatt
 titel: "[Anlage / Aufgabe]"
 skill: technologieschema-erstellen
-skill_version: "1.6"
+skill_version: "1.8"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld bzw. Lerngebiet mit Titel]"
@@ -27,13 +27,13 @@ Beim GRAFCET statt der Legende die Tabelle aus `edu-technologieschema textform s
 
 | Referenzkennzeichen | Betriebsmittel | Lage / Aufgabe |
 |---|---|---|
-| -S1 | Taster | [Start …] |
+| -SJ1 | Taster | [Start …] |
 
 | Feld | Eintrag |
 |---|---|
 | Spec (hier ändern) | `schema/46_[kurztitel].yaml` |
 | Dateien | `.drawio.svg` (bearbeitbar in diagrams.net, zugleich Bild) · `.svg` (Bild) · `.png` (Word, aus `vorschau_png.py`) |
-| Kennzeichnung | DIN EN IEC 81346-2:2020 (immer); [Entsprechungen einer Vorlage, z. B. S1 → -S1, Y1 → -Q1] |
+| Kennzeichnung | DIN EN IEC 81346-2:2020 (immer); [Entsprechungen einer Vorlage, z. B. S1 → -SJ1, Y1 → -MB1] |
 | Schaltzeichen | [keine · DIN EN 60617, alle mit Herkunft *Liste* · mit 🔎 abgleichen: Name, mit Norm oder Tabellenbuch geprüft am …] |
 | Grundstellung | [Zylinder, Ventile, Füllstand, Werkstück – wie im Bild] |
 | Verwendung | [Aufgabenmaterial · Lösungsbild (getrennt ablegen) · Arbeitsblatt] |
@@ -71,4 +71,4 @@ Beim GRAFCET statt der Legende die Tabelle aus `edu-technologieschema textform s
 - Empfohlene nächste Skills: `unterrichtsmaterial-erstellen` (Schema im Arbeitsblatt),
   `material-pruefen`, `schuelerseiten-veroeffentlichen`
 
-> KI-gestützt erstellt (Skill technologieschema-erstellen v1.6). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill technologieschema-erstellen v1.8). Fachliche Prüfung und Verantwortung: Lehrkraft.

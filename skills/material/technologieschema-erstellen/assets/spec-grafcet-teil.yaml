@@ -11,27 +11,27 @@ elemente:
     rahmen: {unten: "G1 Betriebsart"}
     kette:
       - {schritt: 0, art: initial}
-      - {transition: "-S1", kommentar: "Automatik"}
+      - {transition: "-SJ1", kommentar: "Automatik"}
       - {schritt: 1, art: einschliessend}
-      - {transition: "¬-S2", kommentar: "Stopp"}
+      - {transition: "¬-SJ2", kommentar: "Stopp"}
       - sprung: 0
   - typ: grafcet
     rahmen: {oben: "1", unten: "Automatikablauf"}
     kette:
       - schritt: 10
         aktivierung: true
-        aktionen: [{text: "-M1", kommentar: "Band läuft"}]
-      - {transition: "-B1", kommentar: "Teil am Anschlag"}
+        aktionen: [{text: "-MA1", kommentar: "Band läuft"}]
+      - {transition: "-BG1", kommentar: "Teil am Anschlag"}
       - schritt: 11
-        aktionen: [{text: "-Q1", kommentar: "Teil ausschieben"}]
+        aktionen: [{text: "-QM1", kommentar: "Teil ausschieben"}]
       - {transition: "3s/X11"}
       - sprung: 10
   - typ: grafcet
     rahmen: {unten: "G3 Überwachung"}
     kette:
       - {schritt: 20, art: initial}
-      - {transition: "¬-S3", kommentar: "Not-Halt"}
+      - {transition: "¬-SJ3", kommentar: "Not-Halt"}
       - schritt: 21
         aktionen: [{text: "G1 {INIT}", kommentar: "G1 in die Anfangssituation"}]
-      - {transition: "-S3 · -S4", kommentar: "entriegelt und quittiert"}
+      - {transition: "-SJ3 · -SJ4", kommentar: "entriegelt und quittiert"}
       - sprung: 20

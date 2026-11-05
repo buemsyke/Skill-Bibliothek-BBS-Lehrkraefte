@@ -2,7 +2,7 @@
 artefakt: Abiturvorschlag – Begleitblatt
 titel: "[Thema A] / [Thema B]"
 skill: abiturvorschlag-erstellen
-skill_version: "1.17"
+skill_version: "1.22"
 stand: JJJJ-MM-TT
 bildungsgang: "Berufliches Gymnasium Technik"
 fach: "Technik"
@@ -25,6 +25,7 @@ offene Punkte für die Lehrkraft und die Fachgruppe.
 |---|---|
 | `75_abitur_[kurztitel]_A_schuelermaterial.md` | Vorschlag A, Schülermaterial |
 | `75_abitur_[kurztitel]_A_lehrermaterial.md` | Vorschlag A, Lehrermaterial |
+| `75_abitur_[kurztitel]_A_bewertungsraster.md` | Vorschlag A, Bewertungsraster: Merkmale je Teilaufgabe mit Kurztext und Regeln (für die Korrektur, nicht Teil des Lehrermaterials) |
 | `75_abitur_[kurztitel]_A_bewertungsbogen.md` | Vorschlag A, Bewertungsbogen (erzeugt) |
 | `75_abitur_[kurztitel]_A_bewertungsmappe.xlsx` | Vorschlag A, Bewertungsmappe für Korrektur und Gutachten (erzeugt, leer) |
 | `75_abitur_[kurztitel]_B_…` | Vorschlag B, entsprechend |
@@ -67,7 +68,7 @@ offene Punkte für die Lehrkraft und die Fachgruppe.
 ## Korrekturprobe
 
 Je Teilaufgabe mit Merkmalen der Art *Kriterium* oder *Urteil*: drei erfundene Antworten, bewertet
-mit der Merkmaltabelle.
+mit der Merkmaltabelle des Bewertungsrasters.
 
 | Teilaufgabe | erfundene Antwort | BE nach Merkmalen | eindeutig? | Folge |
 |---|---|---|---|---|
@@ -95,10 +96,11 @@ mit der Merkmaltabelle.
 - [ ] Probebearbeitung durch eine Fachkollegin oder einen Fachkollegen mit Zeitmessung
 - [ ] optional: unabhängige Bewertung der erfundenen Antworten der Korrekturprobe
 - [ ] Kursfolge durch Beschluss der Fachgruppe belegt; Unterrichtsbezug mit den Kursen abgeglichen
-- [ ] Dokumentvorlage, Kopf- und Fußzeilen, Seitenzahlen (`abitur_docx.py --vorlage …`), Word-Fassung gesichtet; Abbildungen an der richtigen Stelle und in Schwarzweiß lesbar
+- [ ] Dokumentvorlage, Kopf- und Fußzeilen, Seitenzahlen (`abitur_docx.py --vorlage … --seiten`), Word-Fassung gesichtet; Abbildungen an der richtigen Stelle und in Schwarzweiß lesbar
+- [ ] Schülermaterial ohne Anlagen höchstens 12 Seiten (Word-Fassung) – A: [ ] Seiten, B: [ ] Seiten
 - [ ] Endfassung (DOCX/PDF) erneut geprüft (`bmk_pruefen.py`)
 - [ ] Rechte an Abbildungen und Datenblattauszügen geklärt, Quellen angegeben
-- [ ] Dateien für PC-Aufgaben bei den Prüfungsunterlagen, Ausfallregel bekannt
+- [ ] Dateien für PC-Aufgaben in den Prüfungsunterlagen, Ausfallregel bekannt
 - [ ] Vertraulichkeit: Ablage, Weitergabe und KI-Umgebung nach Vorgabe der Schule bzw. Behörde
 - [ ] Angabe zur KI-Nutzung bei der Erstellung nach Vorgabe der Dienststelle 🔎
 
@@ -108,7 +110,9 @@ mit der Merkmaltabelle.
 |---|---|---|
 | Nur Unterrichtetes, Bezug je Aufgabe konkret | | |
 | Aufträge eindeutig (K.7), BMK und GRAFCET einheitlich (T.1–T.9) | | |
-| Jede BE an einem Merkmal, Summen stimmen (K.1, K.2) | | |
+| Jede BE an einem Merkmal im Bewertungsraster, Summen stimmen (K.1, K.2) | | |
+| Kurztexte knapp, ohne Werte (K.10) | | |
+| Umfang: Schülermaterial ≤ 12 Seiten ohne Anlagen, Lehrermaterial ohne Merkmaltabellen (U.1, U.2) | | |
 | Korrekturprobe ohne Mehrdeutigkeit | | |
 | AFB gesamt und je Aufgabe, Takt | | |
 | Musterlösung mit Code nachgerechnet | | |
@@ -129,4 +133,4 @@ mit der Merkmaltabelle.
 - Nach der Genehmigung: Bewertungsmappe aus dem endgültigen Bewertungsbogen neu erzeugen
   (`bewertungsmappe.py`), Kurztexte mit der Fachgruppe abstimmen, dann korrigieren.
 
-> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.17). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill abiturvorschlag-erstellen v1.22). Fachliche Prüfung und Verantwortung: Lehrkraft.

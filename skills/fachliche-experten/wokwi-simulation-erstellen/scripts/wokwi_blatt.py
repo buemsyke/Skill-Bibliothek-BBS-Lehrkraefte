@@ -119,7 +119,7 @@ def begleitblatt(spec: ws.Spec, befunde: list[ws.Befund], diagramm_befunde: list
     a("| Datei | Inhalt |")
     a("|---|---|")
     a(f"| `{spec_name}` | Spec – Quelle aller Dateien; Änderungen hier, dann `wokwi.py alles` |")
-    a(f"| `{ordner_name}/sketch.ino` | Programm: Zustandsautomat nach Notationsblatt (PIN_S1, s1, millis()) |")
+    a(f"| `{ordner_name}/sketch.ino` | Programm: Zustandsautomat nach Notationsblatt (PIN_SJ1, sj1, millis()) |")
     a(f"| `{ordner_name}/diagram.json` | Schaltung: {pf['name']}, Taster, Schalter, Potentiometer, LEDs |")
     a(f"| `{ordner_name}/wokwi.toml` | für Wokwi in VS Code und wokwi-cli (Firmware vorher bauen) |")
     if szenarien:

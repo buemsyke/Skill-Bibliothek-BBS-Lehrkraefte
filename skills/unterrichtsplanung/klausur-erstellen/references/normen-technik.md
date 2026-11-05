@@ -59,32 +59,36 @@ Die PAL setzt die Ausgabe 2020 in den IHK-Prüfungen um (Merkblatt Stand Juni 20
 Vorschläge gilt **die Ausgabe 2020**; die Ausgabe 2009 nur, wenn der Unterricht sie verwendet – dann
 im Schülermaterial nennen (Abschn. 1).
 
-**Aufbau eines Kennzeichens:** Vorzeichen, Kennbuchstaben, Zählnummer, ohne Leerzeichen: `-S1`,
-`-BT2`, `-Q1`.
+**Aufbau eines Kennzeichens:** Vorzeichen, Kennbuchstaben, Zählnummer, ohne Leerzeichen: `-SJ1`,
+`-BT2`, `-QA1`.
 - Vorzeichen (Teil 1): `-` Produkt (in Aufgaben üblich), `=` Funktion, `+` Ort, `%` Typ (neu seit
   2022), `#` andere Aspekte. Kombinationen wie `+S1-K1` nur, wenn im Unterricht eingeführt.
 - **Ein bis drei Kennbuchstaben** (Teil 2): Klasse (`-B1`), Unterklasse (`-BG1`), Unter-Unterklasse
   (`-BGB1`). Die Norm lässt jede Tiefe zu; die PAL zeigt Schaltpläne nur mit Klassen und mit
   Unterklassen.
-- **So kurz wie möglich** (didaktische Reduktion, Festlegung der Fachberatung 31.10.2026): Standard
-  ist die **Klasse allein** (-S1, -B1, -K1, -Q1, -M1, -P1). Eine **Unterklasse** nur, wenn eine Klasse
-  in der Aufgabe **verschiedenartige Betriebsmittel** enthält, die das Kennzeichen unterscheiden soll –
-  dann für **alle** Kennzeichen dieser Klasse (nicht -B1 neben -BT2); die übrigen Klassen bleiben kurz.
-  Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt. `bmk_pruefen.py` (T.8) meldet
-  überflüssige Unterklassen und gemischte Tiefe innerhalb einer Klasse.
-- Beispiel Bewässerung: Taster, Schütz, SPS und Leuchtmelder je nur einer Art → -S1, -S2, -Q1, -K1,
-  -P1, -P2; Sensoren für Füllstand, Bodenfeuchte und Temperatur → -BL1, -BM1, -BM2, -BT1; Pumpenmotor
-  und Magnetventile → -MA1, -MB1, -MB2.
-- Nebeneffekt: Die Klassenbuchstaben B, S, K, Q, M, P, R, G, T sind in den Ausgaben 2009 und 2020
-  gleich – die Kurzform vermeidet die meisten Unterschiede der Ausgaben (-SF/-SJ, -KF/-KE, -RZ/-RN).
+- **Klasse und Unterklasse sind Standard** (Vorgabe der Fachberatung, 04.11.2026; ersetzt die
+  Festlegung „so kurz wie möglich“ vom 31.10.2026): Jedes Betriebsmittel trägt **zwei Kennbuchstaben** –
+  **-SJ1** (Taster), **-MA1** (Elektromotor), **-MM1** (Zylinder), **-EA1** (Leuchte), **-QA1** (Schütz),
+  **-KE1** (SPS), **-PF1** (Leuchtmelder). Die Klasse allein (-S1, -M1) wird nicht verwendet, auch nicht,
+  wenn eine Klasse nur eine Art Betriebsmittel enthält. Das gilt in **allen Dokumentationsformen**:
+  Funktionsbeschreibung, Technologieschema mit Legende, Zuordnungsliste, GRAFCET, Logikplan, Programm,
+  Musterlösung. Die dritte Ebene (-BGB1) nur, wenn der Unterricht sie verlangt – dann für alle
+  Kennzeichen dieser Klasse (nicht -BG1 neben -BGB2). `bmk_pruefen.py` (T.8) und
+  `edu-technologieschema pruefen` melden fehlende Unterklassen und gemischte Tiefe.
+- Beispiel Bewässerung: Taster -SJ1, -SJ2; Schütz -QA1; SPS -KE1; Leuchtmelder -PF1, -PF2; Sensoren für
+  Füllstand, Bodenfeuchte und Temperatur -BL1, -BM1, -BM2, -BT1; Pumpenmotor -MA1; Magnetventile -MB1,
+  -MB2.
+- Die Unterklasse macht sichtbar, welche Ausgabe gilt: -SF/-SJ, -KF/-KE, -RZ/-RN unterscheiden sich
+  zwischen 2009 und 2020 (Tabelle unten). Neue Aufgaben verwenden die Unterklassen der Ausgabe 2020.
 - **A, I und O** sind keine Klassen; **D, J, L, V, Y, Z** sind reserviert. Eine Klasse „Sonstiges“
-  gibt es nicht: Passt keine Unterklasse, nimmt man die Klasse darüber.
+  gibt es nicht: Passt keine Unterklasse genau, die nächstpassende aus Tabelle 2 wählen und die Aufgabe
+  des Betriebsmittels in der Legende nennen.
 - Klassifiziert wird nach der **inhärenten Funktion** – was das Objekt erfasst oder bewirkt, nicht
   nach Bauart oder Einbauort: Der Druckschalter am Zylinder ist -BP, der Endlagenschalter daneben
   -BG. Bei mehrdeutigen Fällen die Aufgabe des Betriebsmittels in der Legende nennen.
-- Die Zählnummer zählt je Kennbuchstaben: -B1, -B2 bzw. -BG1, -BG2, -BP1.
+- Die Zählnummer zählt je Kennbuchstaben: -BG1, -BG2, -BP1.
 
-**Klassen – Standard in Aufgaben**
+**Klassen** (Übersicht; im Kennzeichen steht immer zusätzlich die Unterklasse)
 
 | BMK | Klasse | typische Betriebsmittel |
 |---|---|---|
@@ -102,7 +106,7 @@ im Schülermaterial nennen (Abschn. 1).
 | -X, -W | Verbinden, Leiten | Klemme, Steckdose, Patchfeld; Kabel, Leitung |
 | -C | Speichern | Kondensator, Akku, Tank |
 
-**Unterklassen – nur, wenn eine Klasse verschiedenartige Betriebsmittel enthält** (Auswahl der
+**Unterklassen – Standard in Aufgaben** (Auswahl der
 Ausgabe 2020; deutsche Benennungen sinngemäß; in Klammern Beispiele der dritten Ebene)
 
 | BMK | Bedeutung | typische Betriebsmittel | Ausgabe 2009 |
@@ -175,9 +179,8 @@ Ausgabe 2009 sind nur teilweise belegt (🔎). Belegte Änderungen 2009 → 2020
 Drosselrückschlagventil -RZ → **-RN**, Klasse A (z. B. -AZ) entfällt, SPS -KF → **-KE** 🔎.
 
 **Für die Aufgabe**
-- Erst die Klassen festlegen, dann je Klasse prüfen: eine Art → nur die Klasse; mehrere Arten →
-  Unterklassen aus der Tabelle für die ganze Klasse. Ein nicht aufgeführter Code wird mit Tabelle 2
-  der Norm geprüft.
+- Je Betriebsmittel Klasse **und** Unterklasse aus der Tabelle festlegen (inhärente Funktion). Ein
+  nicht aufgeführter Code wird mit Tabelle 2 der Norm geprüft.
 - Legende: BMK | Betriebsmittel | Lage bzw. Aufgabe (T.3); bei mehrdeutigen Fällen (Lichtschranke
   als Objektmelder: -BR oder -BG) die Aufgabe des Betriebsmittels nennen.
 - In Netzplänen sind Gerätenamen wie „SW1“, „R1“ üblich; Referenzkennzeichen (-KFE, -KED) nur, wenn
@@ -215,10 +218,10 @@ als Tabelle Schritt | Aktion | Transition zum Folgeschritt (`bmk_pruefen.py`, T.
 
 | Art | Darstellung | Wirkung |
 |---|---|---|
-| kontinuierlich wirkend | Variable im Rechteck: „-M1“ | 1, solange der Schritt aktiv ist; danach 0 |
+| kontinuierlich wirkend | Variable im Rechteck: „-MA1“ | 1, solange der Schritt aktiv ist; danach 0 |
 | mit Zuweisungsbedingung | Bedingung an einem Strich über dem Rechteck | 1, solange Schritt aktiv **und** Bedingung erfüllt |
 | zeitabhängig | Zuweisungsbedingung mit Zeit („2s/X6“), mit Überstrich zeitbegrenzt | verzögert bzw. zeitbegrenzt |
-| speichernd wirkend | **im Rechteck immer die Zuweisung** („-Q1 := 1“), **am Rechteck der Auslöser**: Pfeil nach oben an der linken Kante bei Aktivierung, nach unten bei Deaktivierung, Strich mit Fähnchen und Ereignis („↑-B1“) bei Ereignis | Wert bleibt bis zur nächsten Zuweisung („-Q1 := 1“ … „-Q1 := 0“) |
+| speichernd wirkend | **im Rechteck immer die Zuweisung** („-QA1 := 1“), **am Rechteck der Auslöser**: Pfeil nach oben an der linken Kante bei Aktivierung, nach unten bei Deaktivierung, Strich mit Fähnchen und Ereignis („↑-BG1“) bei Ereignis | Wert bleibt bis zur nächsten Zuweisung („-QA1 := 1“ … „-QA1 := 0“) |
 
 Regeln für Musterlösung und Merkmale:
 - Kontinuierlich und speichernd wirkende Aktionen **nie auf dieselbe Variable**; speichernde
@@ -230,11 +233,11 @@ Regeln für Musterlösung und Merkmale:
   Merkmale funktional formulieren.
 - Typische Fehler (Prüfsteine, 0 BE für das Normmerkmal): Schritt an Schritt ohne Transition,
   Rücksprung ohne Pfeil, kein Initialschritt, Alternativzweige nicht ausschließend, speichernde Aktion
-  ohne Zuweisung („-Q1“ statt „-Q1 := 1“) oder ohne Pfeil am Rechteck, speichernd gesetzt und nie
+  ohne Zuweisung („-QA1“ statt „-QA1 := 1“) oder ohne Pfeil am Rechteck, speichernd gesetzt und nie
   zurückgesetzt, Zeit auf den falschen Schritt bezogen, Öffner nicht negiert.
 - **Positionssensor beim Weiterdrehen:** Meldet ein Sensor die Ruhelage und bleibt beim Anlaufen noch
-  belegt, schaltet die Transition „-B1“ sofort, der Antrieb läuft nie. Richtig: Flanke „↑-B1“ oder
-  zwei Schritte mit „¬-B1“ (Position verlassen) und „-B1“ (nächste Position erreicht); beide gleichwertig.
+  belegt, schaltet die Transition „-BG1“ sofort, der Antrieb läuft nie. Richtig: Flanke „↑-BG1“ oder
+  zwei Schritte mit „¬-BG1“ (Position verlassen) und „-BG1“ (nächste Position erreicht); beide gleichwertig.
 
 ## 4. Steuerungsprogramme – IEC 61131-3 und Mikrocontroller
 
@@ -271,7 +274,7 @@ die Lösung bestimmt:
 | Taster | ob Entprellen zur Aufgabe gehört | mechanische Kontakte prellen einige Millisekunden; Software-Entprellung z. B. 20 ms 🔎 |
 | Zeiten | Zeit seit Schrittbeginn statt Warteschleife | `delay()` blockiert den Zyklus; Zeitbedingung „5s/X3“ als Vergleich mit der beim Schrittwechsel gespeicherten Zeit (`millis()`) |
 | Programmstruktur | Zyklus wie bei der SPS | Eingänge lesen → Transitionen prüfen, Schritt wechseln → Ausgänge aus dem aktiven Schritt setzen; GRAFCET als Zustandsautomat (Variable für den aktiven Schritt, `switch`/`if`) |
-| Sprache | „in der im Unterricht verwendeten Sprache“ | C/C++ (Arduino-Umgebung) oder Python (MicroPython); Bezeichner `PIN_S1`, `s1` nach Notationsblatt |
+| Sprache | „in der im Unterricht verwendeten Sprache“ | C/C++ (Arduino-Umgebung) oder Python (MicroPython); Bezeichner `PIN_SJ1`, `sj1` nach Notationsblatt |
 | Sicherheit | Not-Halt und Schutzfunktionen ausklammern | Ein Mikrocontroller ist wie eine Standard-SPS keine Sicherheitssteuerung (Abschn. 6) |
 
 **Analogwerte je Plattform** – den Wertebereich, mit dem das Programm rechnet, in der Anlage nennen;

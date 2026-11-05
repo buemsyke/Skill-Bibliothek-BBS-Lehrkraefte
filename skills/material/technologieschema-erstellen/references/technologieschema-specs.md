@@ -85,8 +85,8 @@ rechts | keine`), `abstand`, `ref` (Name nur für Anker, ohne Legende), `betrieb
   werkzeug: platte
   werkzeug_b: 56
   sensoren:
-    - {id: "-B1", pos: 0.08, seite: rechts, funktion: "meldet: eingefahren"}
-    - {id: "-B2", pos: 0.41, seite: rechts, funktion: "meldet: ausgefahren"}
+    - {id: "-BG1", pos: 0.08, seite: rechts, funktion: "meldet: eingefahren"}
+    - {id: "-BG2", pos: 0.41, seite: rechts, funktion: "meldet: ausgefahren"}
 ```
 
 `pos` liegt zwischen 0 (Boden) und 1 (Stangenseite). `seite` ist die Seite im Bild
@@ -107,9 +107,9 @@ Die Einträge ordnet das Werkzeug selbst in einem Raster an (`spalten`, Standard
   h: 112
   titel: Bedienpult
   eintraege:
-    - {typ: taster, id: "-S1", name: Start, r: 17}
-    - {typ: taster, id: "-S2", name: Not-Halt, symbol: not_halt, r: 17}
-    - {typ: leuchte, id: "-P1", name: Betrieb, r: 17}
+    - {typ: taster, id: "-SJ1", name: Start, r: 17}
+    - {typ: taster, id: "-SJ2", name: Not-Halt, symbol: not_halt, r: 17}
+    - {typ: leuchte, id: "-PF1", name: Betrieb, r: 17}
 ```
 
 Not-Halt: `symbol: not_halt` zeichnet den Pilz; die Farbregeln (rot/gelb) stehen in der Legende
@@ -117,26 +117,27 @@ oder im Text, nicht im Bild (Graustufen).
 
 ### 3a. Referenzkennzeichen – DIN EN IEC 81346-2:2020
 
-Form `-` + 1 bis 3 Großbuchstaben + Zählnummer, ohne Leerzeichen, in Anführungszeichen:
-`id: "-S1"`. Das Werkzeug prüft jedes Kennzeichen:
+Form `-` + Klasse + Unterklasse + Zählnummer, ohne Leerzeichen, in Anführungszeichen:
+`id: "-SJ1"` (Standard der Fachberatung, 04.11.2026; dritte Ebene wie `-BGB1` nur, wenn der Unterricht
+sie verlangt). Das Werkzeug prüft jedes Kennzeichen:
 
 | Prüfung | Beispiel für ❌ |
 |---|---|
-| Form | `S1`, `- S1`, `-s1` (Hinweis: gemeint ist wohl `-S1`) |
+| Form | `SJ1`, `- SJ1`, `-sj1` (Hinweis: gemeint ist wohl `-SJ1`) |
+| **Unterklasse fehlt** | `-S1`, `-M1`, `-P1` (Vorschlag je Bauteil: Taster -SJ, Zylinder -MM, Motor -MA, Leuchte -PF/-EA) |
 | Klasse und Unterklasse in Tabelle 2 der Norm | `-AZ1` (Klasse A entfällt), `-MX1`, `-Y1` (reserviert) |
 | Ausgabe 2009 | `-SF1` (heißt -SJ), `-RZ1` (heißt -RN) |
-| Klasse passt zum Bauteil | Taster nur **S**, Sensor **B**, Zylinder und Motor **M**, Pumpe **G**, Ventil **Q/R/S**, Leuchtmelder und Ampel **P**, Behälter **C** |
-| Unterklasse passt zum Bauteil | Zylinder -MM, Motor -MA/-MB, Pumpe -GP/-GQ, Leuchtmelder -PF |
-| **eine Tiefe je Klasse** | `-M1` neben `-MM1` ❌; `-MA1` neben `-MM1` ✔ |
+| Klasse passt zum Bauteil | Taster nur **S**, Sensor **B**, Zylinder und Motor **M**, Pumpe **G**, Ventil **Q/R/S**, Leuchte **P/E**, Ampel **P**, Behälter **C** |
+| Unterklasse passt zum Bauteil | Taster -SJ/-SG/-SH/-SK, Zylinder -MM, Motor -MA/-MB, Pumpe -GP/-GQ, Ventil -QM/-QN/-RN/-RM/-SJ/-SG, Leuchte -PF/-EA, Ampel -PF, Behälter -CM |
+| **eine Tiefe je Klasse** | `-MM1` neben `-MMB1` ❌; `-MA1` neben `-MM1` ✔ |
 
-Hinweis ⚠ bei zu langer Schreibweise: `-MM1`, `-MM2` ohne zweite Art in der Klasse → `-M1`, `-M2`.
-Die Entscheidung: **Klasse allein**, solange sie nur eine Art Betriebsmittel enthält (Fachberatung
-31.10.2026); verschiedenartige Betriebsmittel einer Klasse (Motor und Zylinder, Lichtschranke und
-Zylinderschalter) bekommen überall die Unterklasse. Typische Unterklassen: -MA Motor, -MM
+Die Entscheidung: **immer Klasse und Unterklasse** (Fachberatung 04.11.2026, ersetzt „Klasse allein“
+vom 31.10.2026) – in Technologieschema, Legende, Funktionsbeschreibung und Zuordnungsliste gleich.
+Typische Unterklassen: -MA Motor, -MM
 Zylinder, -MB Ventilspule, -BR Lichtschranke, -BG Zylinderschalter und Näherungsschalter, -BL
 Füllstand, -QM Wegeventil, -QA Schütz, -PF Leuchtmelder, -SJ Drucktaster (Tabelle in
-`references/normen-technik.md`, Abschn. 2). Entsprechungen einer fremden Vorlage (S1, Y1 → -S1,
--Q1) im Schemablatt nennen.
+`references/normen-technik.md`, Abschn. 2). Entsprechungen einer fremden Vorlage (S1, Y1 → -SJ1,
+-MB1) im Schemablatt nennen.
 
 ### 3b. Linien und Rohre – rechtwinklig
 
@@ -155,11 +156,11 @@ nur, wenn y gleich ist). Eine Schräge gibt es nur mit `schraeg: true` bei `lini
 Zeichen: `references/schaltzeichen.md` (aktuell mit `edu-technologieschema symbole`).
 
 ```yaml
-- {typ: symbol, symbol: schliesser_rueckgang, id: "-S1", name: Start, funktion: "startet", x: 120, y: 200, lage: links}
-- {typ: symbol, symbol: schliesser, ref: kontakt, gehoert_zu: "-Q1", x: 220, y: 200}   # Hilfskontakt des Schützes -Q1
-- {typ: symbol, symbol: motor_drehstrom, id: "-M1", x: 300, y: 300, drehung: 180}
-- {typ: linie, punkte: ["-S1@an1", "kontakt@an1"]}       # Anschlüsse an1, an2 … folgen Drehung und Spiegelung
-- {typ: knoten, punkt: "-S1@an1"}                        # Verbindungspunkt
+- {typ: symbol, symbol: schliesser_rueckgang, id: "-SJ1", name: Start, funktion: "startet", x: 120, y: 200, lage: links}
+- {typ: symbol, symbol: schliesser, ref: kontakt, gehoert_zu: "-QA1", x: 220, y: 200}   # Hilfskontakt des Schützes -QA1
+- {typ: symbol, symbol: motor_drehstrom, id: "-MA1", x: 300, y: 300, drehung: 180}
+- {typ: linie, punkte: ["-SJ1@an1", "kontakt@an1"]}       # Anschlüsse an1, an2 … folgen Drehung und Spiegelung
+- {typ: knoten, punkt: "-SJ1@an1"}                        # Verbindungspunkt
 ```
 
 - **Lage:** Die Zeichen stehen in ihrer natürlichen Lage (Kontakte, Spulen, Meldeleuchte senkrecht;
@@ -168,7 +169,7 @@ Zeichen: `references/schaltzeichen.md` (aktuell mit `edu-technologieschema symbo
 - **Kennzeichen:** Jedes Zeichen kennt die Klassen, die zu ihm passen (Schließer als Taster -S, als
   Sensor -B, als Relaiskontakt -K, als Schützkontakt -Q). Ein unpassendes Kennzeichen ist ❌.
 - **Mehrere Zeichen, ein Betriebsmittel:** Spule und Kontakte eines Schützes tragen dasselbe
-  Kennzeichen. Das erste Teil bekommt `id` (Legendenzeile), jedes weitere `gehoert_zu: "-Q1"`;
+  Kennzeichen. Das erste Teil bekommt `id` (Legendenzeile), jedes weitere `gehoert_zu: "-QA1"`;
   für Anker bekommt es ein `ref`.
 - **Herkunft:** *Liste* = Form mit einer Vorlage abgeglichen (Wikipedia-Liste der Schaltzeichen
   (Elektrik/Elektronik); Näherungsschalter und Betätigungsarten: Zeichengalerien mit Nummern der
@@ -201,8 +202,8 @@ Zeichen: `references/schaltzeichen.md` (aktuell mit `edu-technologieschema symbo
 Statt Koordinaten auszurechnen, steht in `punkte` (oder `ziel`) ein Verweis auf ein Bauteil:
 
 ```yaml
-punkte: ["-G1@links", "-Q1@rechts"]         # von der Pumpe zum Ventil
-punkte: ["-Q1@links", [350, 70], [350, 200]] # Anker, dann feste Punkte
+punkte: ["-GP1@links", "-QM1@rechts"]         # von der Pumpe zum Ventil
+punkte: ["-QM1@links", [350, 70], [350, 200]] # Anker, dann feste Punkte
 punkte: ["-MM1@spitze:64,-32", "-MM1@spitze:64,0"]  # Versatz dx,dy nach dem Doppelpunkt
 ```
 
@@ -224,6 +225,10 @@ Rollen. Verweise dürfen auf Teile zeigen, die **später** in der Liste stehen.
 - **Füllstand zeigen:** `behaelter` `fuellstand: 0.45`; Sensoren darüber/darunter passend setzen.
 - **Rohr durch Ventil und Pumpe:** mehrere `rohr`-Stücke zwischen den Ankern; die Pumpe zeigt
   mit `richtung` die Förderrichtung.
+- **Zweite Stellung eines schwenkenden Teils** (gehobene Rampe, ausgeschwenkte Weiche): Umriss als
+  `linie` mit `stil: gestrichelt` und `schraeg: true` (ohne `id`), Grundstellung als
+  Bauteil durchgezogen; in der Fußzeile „gestrichelt: zweite Endlage“. Zeigt den Bewegungsbereich,
+  nicht den Ablauf (Leitlinie 7).
 - **Hinweis auf ein Teil ohne Kennzeichen:** `etikett` mit `ziel`.
 - **Hintergrund:** `rechteck` mit `fuellung: schraffur` (Boden), `behaelter` mit `ziegel` o. Ä.
 
@@ -240,15 +245,15 @@ dürfen fehlen (werden berechnet). Muster: `assets/spec-grafcet.yaml` (Kette, sp
 elemente:
   - typ: grafcet
     zuordnung:                       # optional, sehr empfohlen: Zuordnungsliste der Aufgabe
-      eingaenge: ["-S1", "-B1"]
-      ausgaenge: ["-M1", "-P1"]
+      eingaenge: ["-SJ1", "-BG1"]
+      ausgaenge: ["-MA1", "-PF1"]
     kette:
-      - {schritt: 0, art: initial, aktionen: ["↑ -P1 := 0"]}
-      - {transition: "-S1 · ¬-B1", kommentar: "Start, Platz frei"}
+      - {schritt: 0, art: initial, aktionen: ["↑ -PF1 := 0"]}
+      - {transition: "-SJ1 · ¬-BG1", kommentar: "Start, Platz frei"}
       - schritt: 1
         aktionen:
-          - ["↑ -P1 := 1", {text: "-M1", kommentar: "Band läuft"}]   # eine Zeile, nebeneinander
-          - {text: "C_Teile := 1", art: ereignis, bedingung: "↑-B2"}  # zweite Zeile
+          - ["↑ -PF1 := 1", {text: "-MA1", kommentar: "Band läuft"}]   # eine Zeile, nebeneinander
+          - {text: "C_Teile := 1", art: ereignis, bedingung: "↑-BG2"}  # zweite Zeile
       - {transition: "5s/X1"}
       - sprung: 0
 ```
@@ -258,7 +263,7 @@ elemente:
 | Eintrag | Schlüssel |
 |---|---|
 | `schritt: 3` (Name auch `1.1`, `M4`, `9a`) | `art` normal/initial/makro/einschliessend, `aktivierung: true` (das `*`), `aktionen`, `kommentar`, `bezeichnung` (nur Textform: „1 Fördern“) |
-| `transition: "-B1"` (`1` = immer erfüllt, unterstrichen) | `art` normal/quelle/schluss, `name` (links in Klammern), `kommentar` |
+| `transition: "-BG1"` (`1` = immer erfüllt, unterstrichen) | `art` normal/quelle/schluss, `name` (links in Klammern), `kommentar` |
 | `alternativ: [[…], […]]` | Liste der Äste; jeder Ast beginnt mit seiner Transition und endet mit einer Transition oder einem `sprung` |
 | `parallel: [[…], […]]` | Liste der Äste unter der gemeinsamen Transition; jeder Ast beginnt und endet mit einem Schritt, danach folgt die gemeinsame Transition |
 | `sprung: 0` | Rücksprung: Linie mit Pfeil nach oben, neben dem eigenen Ast |
@@ -270,21 +275,21 @@ Am Bauteil selbst: `x`, `y` (linke obere Ecke; fehlt `x`, steht der nächste GRA
 
 | Schreibweise | Art | Zeichnung |
 |---|---|---|
-| `"-M1"` | kontinuierlich | Rechteck |
-| `{text: "-M1", bedingung: "-B1 · -B2"}` | mit Zuweisungsbedingung | Strich oben, Bedingung daneben |
-| `{text: "-M1", art: verzoegert, bedingung: "5s/X3"}` | verzögert | wie oben |
-| `{text: "-M1", art: zeitbegrenzt, bedingung: "5s/X3"}` | zeitbegrenzt | wie oben, Zeit mit Überstrich |
-| `"↑ -Q1 := 1"` | speichernd bei Aktivierung | im Rechteck `-Q1 := 1`, **Pfeil nach oben** an der linken Kante |
-| `"↓ -Q1 := 0"` | speichernd bei Deaktivierung | im Rechteck `-Q1 := 0`, **Pfeil nach unten** an der linken Kante |
-| `{text: "-Q1 := 1", art: ereignis, bedingung: "↑-B1"}` | speichernd bei Ereignis | Strich mit **Fähnchen** nach links, Ereignis daneben |
+| `"-MA1"` | kontinuierlich | Rechteck |
+| `{text: "-MA1", bedingung: "-BG1 · -BG2"}` | mit Zuweisungsbedingung | Strich oben, Bedingung daneben |
+| `{text: "-MA1", art: verzoegert, bedingung: "5s/X3"}` | verzögert | wie oben |
+| `{text: "-MA1", art: zeitbegrenzt, bedingung: "5s/X3"}` | zeitbegrenzt | wie oben, Zeit mit Überstrich |
+| `"↑ -QA1 := 1"` | speichernd bei Aktivierung | im Rechteck `-QA1 := 1`, **Pfeil nach oben** an der linken Kante |
+| `"↓ -QA1 := 0"` | speichernd bei Deaktivierung | im Rechteck `-QA1 := 0`, **Pfeil nach unten** an der linken Kante |
+| `{text: "-QA1 := 1", art: ereignis, bedingung: "↑-BG1"}` | speichernd bei Ereignis | Strich mit **Fähnchen** nach links, Ereignis daneben |
 | `"G5 {INIT}"`, `"G5 { }"`, `"G5 {3,4,8}"`, `"G5 {*}"` | Zwangssteuerung | Doppelrahmen |
 
 Jede Aktion kann `kommentar` tragen (höchstens einer je Zeile). **Kommentare** erscheinen in Anführungszeichen
 nach DIN EN 60848, einzeilig oder umbrochen (eigener Umbruch mit `\n`); Rechtecke einer senkrechten Linie
 werden gleich breit, ihre Kommentare stehen in einer Spalte.
 
-**Bedingungen:** `·` oder `*` UND, `+` ODER, `¬-B1` oder `!-B1` NICHT (**als Überstrich gezeichnet**, auch
-`¬(-B1 + -B2)`), `↑-B1`/`↓-B1` Flanke, `5s/X3` Zeit, `[C_Teile > 9]` Vergleich. Schreibweise wird vereinheitlicht
+**Bedingungen:** `·` oder `*` UND, `+` ODER, `¬-BG1` oder `!-BG1` NICHT (**als Überstrich gezeichnet**, auch
+`¬(-BG1 + -BG2)`), `↑-BG1`/`↓-BG1` Flanke, `5s/X3` Zeit, `[C_Teile > 9]` Vergleich. Schreibweise wird vereinheitlicht
 (`0.5s / X2` → `0,5s/X2`). Überstrich und Unterstrich sind im Bild echte Linien, damit eine Negation in jedem Programm
 sichtbar bleibt (Word stellt `text-decoration` in SVG nicht verlässlich dar); in draw.io sind sie Textformat.
 
@@ -292,7 +297,7 @@ sichtbar bleibt (Word stellt `text-decoration` in SVG nicht verlässlich dar); i
 
 | Stufe | Befund |
 |---|---|
-| ❌ | speichernde Aktion **ohne Zuweisung** (`↑ -M1`), `:=` **ohne Auslöser** (`-Q1 := 1`); Schritt an Schritt, Transition an Transition, Transition ohne Folgeschritt; Astanfang und -ende passen nicht; `sprung` ins Leere; doppelter Schrittname; dieselbe Variable kontinuierlich und speichernd; Kennzeichen nicht nach Norm (Ausnahme unten); mit `zuordnung`: Kennzeichen nicht in der Liste, Eingang als Aktion |
+| ❌ | speichernde Aktion **ohne Zuweisung** (`↑ -MA1`), `:=` **ohne Auslöser** (`-QA1 := 1`); Schritt an Schritt, Transition an Transition, Transition ohne Folgeschritt; Astanfang und -ende passen nicht; `sprung` ins Leere; doppelter Schrittname; dieselbe Variable kontinuierlich und speichernd; Kennzeichen nicht nach Norm (Ausnahme unten); mit `zuordnung`: Kennzeichen nicht in der Liste, Eingang als Aktion |
 | ⚠ | Alternativbedingungen schließen sich nicht aus (reine Logik: mit Beispielbelegung); zugewiesen, aber nie auf 0 gesetzt; `5s/X7` ohne Schritt 7; Schritt nie aktiv; kein Initialschritt; Eintrag der `zuordnung` nicht verwendet; `S1` ohne Bindestrich; Linien kreuzen sich; GRAFCET aus Grundformen |
 
 **Kennzeichen einer fremden Aufgabe:** Gibt eine vorhandene Aufgabe Kennzeichen vor, die nicht der Ausgabe 2020
@@ -356,7 +361,7 @@ Anschlüssen); eigene Formen der Lehrkraft lassen sich danach frei ergänzen.
 
 ## 7. Häufige Fehler
 
-- Kennzeichen ohne Anführungszeichen (`id: -S1` ist in YAML eine Liste): immer `id: "-S1"`.
+- Kennzeichen ohne Anführungszeichen (`id: -SJ1` ist in YAML eine Liste): immer `id: "-SJ1"`.
 - `x, y` bei runden Teilen als Ecke gelesen: sie sind der **Mittelpunkt**.
 - Sensor `seite` passt nicht zur Achse: bei `ausfahrt: rechts` nur `oben` oder `unten`.
 - Bild zeigt eine andere Grundstellung als die Fußzeile (Füllstand, Zylinderstellung).

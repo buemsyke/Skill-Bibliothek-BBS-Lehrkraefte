@@ -2,7 +2,7 @@
 name: technologieschema-erstellen
 description: Erstellt Technologieschemata (Anlagenbilder für Steuerungsaufgaben) aus einer kurzen YAML-Beschreibung. Zylinder mit Endlagensensoren, Ventile, Sensoren, Taster, Motoren, Pumpen, Behälter und Schaltzeichen nach DIN EN 60617 setzt das mitgelieferte Werkzeug edu-technologieschema zu SVG und bearbeitbarer drawio.svg zusammen, mit Referenzkennzeichen nach DIN EN IEC 81346-2:2020, Legende und Schemablatt. GRAFCET nach DIN EN 60848 als eigenes Bauteil mit Prüfung und Textform; nach Muster auch Funktionsplan (FUP) und Netzwerkplan als Aufgaben- oder Lösungsbild. Verwenden bei „Technologieschema zeichnen“, „Anlagenbild für die Steuerungsaufgabe“, „GRAFCET zeichnen“, „Ablaufsteuerung als GRAFCET“, „Funktionsplan zeichnen“, „Netzwerkplan“, „ASCII-Skizze einer Anlage ersetzen“. Nicht für Blockschaltbild, Struktogramm, ER- oder UML-Diagramm (fachdiagramm-erstellen) und nicht für vollständige Stromlaufpläne, Pneumatik-/Hydraulikpläne oder technische Zeichnungen.
 metadata:
-  version: "1.6"
+  version: "1.8"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -60,12 +60,12 @@ Lösungsbilder im Erwartungshorizont – GRAFCET, FUP, Netzplan – entstehen hi
    unsichtbar; die Legende (Referenzkennzeichen | Betriebsmittel | Lage/Aufgabe) kommt aus
    `edu-technologieschema legende` und steht neben dem Bild. Kontaktart (NO/NC) und
    Bedeutung der Signale stehen in Funktionsbeschreibung und Zuordnungsliste, nicht im Bild.
-3. **Referenzkennzeichen immer nach aktueller Norm** (DIN EN IEC 81346-2:2020; Form -S1, -MA1,
-   -BR1; Notationsblatt `references/notation-steuerungstechnik.md`). Das Werkzeug lässt keine
+3. **Referenzkennzeichen immer nach aktueller Norm** (DIN EN IEC 81346-2:2020; immer Klasse und Unterklasse: -SJ1, -MA1,
+   -MM1, -EA1, -BR1; Notationsblatt `references/notation-steuerungstechnik.md`). Das Werkzeug lässt keine
    andere Schreibweise zu: Form, Klasse und Unterklasse nach Tabelle 2, **Klasse passend zum
    Bauteil** (Taster S, Sensor B, Zylinder M, Leuchtmelder P), Kennzeichen der Ausgabe 2009 sind
-   ❌, **eine Tiefe je Klasse** (nur Klasse, solange sie eine Art Betriebsmittel enthält; sonst
-   überall Unterklasse: -MA1 Motor neben -MM1 Zylinder, nie -M1 neben -MM1). Dieselben
+   ❌, die Klasse allein (-S1, -M1) ist ❌ „Unterklasse fehlt“, **eine Tiefe je Klasse** (nie
+   -MM1 neben -MMB1). Dieselben
    Kennzeichen wie in Legende, Aufgaben und Musterlösung.
 4. **Wirkungslinien rechtwinklig.** Linien und Rohre verlaufen waagerecht oder senkrecht; das
    Werkzeug fügt bei schrägen Punktpaaren einen Knick ein und warnt bei kleinem Versatz
@@ -77,7 +77,7 @@ Lösungsbilder im Erwartungshorizont – GRAFCET, FUP, Netzplan – entstehen hi
    vergleichen und im Schemablatt vermerken. Zeichen nicht erfinden und nicht von Hand in Pfaden
    nachbauen.
 6. **Grundstellung zeigen** und in der Fußzeile nennen (Zylinder eingefahren, Werkstück am
-   Anschlag, Füllstand zwischen -B1 und -B2). Bild und Text stimmen überein.
+   Anschlag, Füllstand zwischen -BG1 und -BG2). Bild und Text stimmen überein.
 7. **Das Bild verrät die Lösung nicht:** keine Soll-Abläufe, Schrittnummern, Signalzustände oder
    beschriftete Wirkungen. Lösungsbilder (Zustand nach einem Schritt, Markierungen) sind eigene
    Specs mit Namen `…_loesung` und gehören nur ins Lehrermaterial.
@@ -101,7 +101,7 @@ Lösungsbilder im Erwartungshorizont – GRAFCET, FUP, Netzplan – entstehen hi
 14. **GRAFCET nur als `typ: grafcet`** (nie aus Rechtecken und Linien): Die Spec nennt die Struktur, das
    Werkzeug zeichnet die Normsymbole (`references/technologieschema-specs.md` Abschn. 5a, Schreibweise
    `references/notation-steuerungstechnik.md`). **Speichernde Aktionen haben immer beides:** die
-   **Zuweisung** im Rechteck (`-Q1 := 1`, nicht `-Q1`) und den **Auslöser** am Rechteck (Pfeil bei
+   **Zuweisung** im Rechteck (`-QA1 := 1`, nicht `-QA1`) und den **Auslöser** am Rechteck (Pfeil bei
    Aktivierung oder Deaktivierung, Fähnchen bei Ereignis); `pruefen` meldet sonst ❌. Negation erscheint als
    Überstrich, Kommentare in Anführungszeichen. Immer `zuordnung` angeben, wenn eine Zuordnungsliste
    vorliegt; gibt eine fremde Aufgabe ältere Kennzeichen vor (`-SF1`), bleiben sie darüber erhalten (⚠).
@@ -109,6 +109,13 @@ Lösungsbilder im Erwartungshorizont – GRAFCET, FUP, Netzplan – entstehen hi
    `edu-technologieschema textform`, nicht von Hand.
 15. **FUP und Netzplan aus Grundformen** (Bausteine wie DIN EN 61131-3; Spec-Referenz Abschn. 5b): Elemente
    ohne Betriebsmittel tragen `ref` und `legende: false`.
+16. **Schema für Prüfungsaufgaben ist Datenquelle:** Trägt eine Anlage mehrere Teilaufgaben (Zuordnungsliste,
+   GRAFCET, Kraft- und Hubrechnung, Pneumatikplan, Meldeleuchten, Sensorauswahl), zeigt das Bild alles, was
+   diese Teilaufgaben brauchen – Drehpunkt und Angriffspunkt eines Hebels, Stationen in sichtbarer Anzahl,
+   Speicher mit Voll-Sensor, Bedienfeld mit Funktion je Element –, die zweite Stellung eines schwenkenden Teils
+   als gestrichelten Umriss (Bewegungsbereich, kein Ablauf) und bei mehr als etwa 15 Bauteilen eine Gliederung
+   nach Bereichen. Vorher die Teilaufgaben und ihren Bedarf klären
+   (`references/aufgabenmuster-steuerungstechnik.md` Abschn. 4).
 
 ## Vorgehen
 1. **Anlage klären:** Bauteile, Bewegungen, Sensoren und Bedienelemente mit Kennzeichen sammeln
@@ -166,6 +173,8 @@ und prüft die Vorschau. Kein SVG von Hand schreiben.
 - [ ] GRAFCET als `typ: grafcet`: speichernde Aktionen mit `:=` und Pfeil oder Fähnchen, Negation als Überstrich,
       Rücksprung mit Pfeil, `zuordnung` angegeben, Text-Tabelle aus `textform`?
 - [ ] Bearbeitbare `.drawio.svg` mitgeliefert und in der Übergabe erklärt?
+- [ ] Bei Prüfungsaufgaben: jedes Element, das eine Teilaufgabe braucht, im Bild; jedes Element hat eine
+      Teilaufgabe (Leitlinie 16)?
 - [ ] Schemablatt für Lernende ohne Lösung und ohne Erklärtext, den das Bild schon zeigt
       (`references/schuelermaterial.md` Abschn. 2); keine Zeichnung aus Zeichen
       (`python3 scripts/zeichnungen_pruefen.py 46_*.md` ohne ❌)?
@@ -194,6 +203,8 @@ und prüft die Vorschau. Kein SVG von Hand schreiben.
 - `references/schaltzeichen.md` – alle Schaltzeichen mit Klassen, Anschlüssen und Herkunft (bei `typ: symbol`).
 - `assets/vorlage-schemablatt.md` – **immer** (Ausgabeformat).
 - `references/notation-steuerungstechnik.md` – Kennzeichen und Schreibweise (Anlage zum Material).
+- `references/aufgabenmuster-steuerungstechnik.md` – **bei Schemata für Prüfungs- und Klausuraufgaben**:
+  Schema als Datenquelle (Abschn. 4), Bauprinzipien der Anlage, Begleitbild für Mechanik, Datenblätter.
 - `references/normen-technik.md` – Hintergrund zu Kennzeichen und Normen (Abschn. 2 und 5), bei Fragen zur Notation.
 - `references/skill-vertrag.md` – Kopf, Pflichtabschnitte, Planungsakte.
 - `scripts/edu.py` – startet `edu-technologieschema` aus der mitgelieferten Kopie

@@ -12,36 +12,36 @@ elemente:
     kette:
       - schritt: 0
         art: initial
-        aktionen: ["↑ C_Teile := 0", "↑ M_Fehler := 0", {text: "-P1", kommentar: "Bereit"}]
-      - {transition: "-S1 · -B1", kommentar: "Start, Werkstück vorhanden"}
+        aktionen: ["↑ C_Teile := 0", "↑ M_Fehler := 0", {text: "-PF1", kommentar: "Bereit"}]
+      - {transition: "-SJ1 · -BG1", kommentar: "Start, Werkstück vorhanden"}
       - schritt: 1
-        aktionen: [{text: "-M1", kommentar: "Werkstück einfahren"}]
-      - {transition: "-B2", kommentar: "Werkstück in der Kammer"}
+        aktionen: [{text: "-MA1", kommentar: "Werkstück einfahren"}]
+      - {transition: "-BG2", kommentar: "Werkstück in der Kammer"}
       - parallel:
           - - schritt: 2
                 # Zuweisungsbedingung: nur solange die Düse frei ist
-              aktionen: [{text: "-Q1", bedingung: "-B3", kommentar: "Sprühen, solange die Düse frei ist"}]
+              aktionen: [{text: "-QM1", bedingung: "-BP3", kommentar: "Sprühen, solange die Düse frei ist"}]
             - {transition: "20s/X2"}
             - schritt: 3
                 # zeitbegrenzt: höchstens 5 s nach Aktivierung; Ereignis: Fehler bei steigender Flanke merken
               aktionen:
-                - [{text: "-Q2", art: zeitbegrenzt, bedingung: "5s/X3", kommentar: "höchstens 5 s nachspülen"}]
-                - [{text: "M_Fehler := 1", art: ereignis, bedingung: "↑-B4", kommentar: "Druckfehler merken"}]
+                - [{text: "-QM2", art: zeitbegrenzt, bedingung: "5s/X3", kommentar: "höchstens 5 s nachspülen"}]
+                - [{text: "M_Fehler := 1", art: ereignis, bedingung: "↑-BP4", kommentar: "Druckfehler merken"}]
             - {transition: "8s/X3"}
             - {schritt: 4}
           - - schritt: 5
                 # verzögert: Bürste läuft 2 s nach Aktivierung an
-              aktionen: [{text: "-M2", art: verzoegert, bedingung: "2s/X5", kommentar: "Bürste läuft verzögert an"}]
+              aktionen: [{text: "-MA2", art: verzoegert, bedingung: "2s/X5", kommentar: "Bürste läuft verzögert an"}]
             - {transition: "25s/X5"}
             - {schritt: 6}
       - {transition: 1}
       - schritt: 7
-        aktionen: ["↑ C_Teile := C_Teile + 1", {text: "-M3", kommentar: "Werkstück ausfahren"}]
+        aktionen: ["↑ C_Teile := C_Teile + 1", {text: "-MA3", kommentar: "Werkstück ausfahren"}]
       - alternativ:
-          - - {transition: "-B5 · [C_Teile < 3]", kommentar: "ausgefahren, weitere Teile"}
+          - - {transition: "-BG5 · [C_Teile < 3]", kommentar: "ausgefahren, weitere Teile"}
             - sprung: 1
-          - - {transition: "-B5 · [C_Teile = 3]", kommentar: "ausgefahren, drittes Teil"}
+          - - {transition: "-BG5 · [C_Teile = 3]", kommentar: "ausgefahren, drittes Teil"}
             - schritt: 8
-              aktionen: [{text: "-P2", kommentar: "Filter wechseln"}]
-            - {transition: "-S2", kommentar: "quittiert"}
+              aktionen: [{text: "-PF2", kommentar: "Filter wechseln"}]
+            - {transition: "-SJ2", kommentar: "quittiert"}
             - sprung: 0

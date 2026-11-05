@@ -3,7 +3,7 @@ artefakt: Abschlussbericht
 titel: "[Projekt]"
 projekt: "[Kurzname]"
 skill: unterricht-entwickeln
-skill_version: "1.23"
+skill_version: "1.25"
 stand: JJJJ-MM-TT
 status: "KI-Entwurf – Freigabe durch Lehrkraft/Bildungsgangteam ausstehend"
 ---
@@ -48,4 +48,4 @@ status: "KI-Entwurf – Freigabe durch Lehrkraft/Bildungsgangteam ausstehend"
 - Nächste Schritte: …
 - Empfohlene nächste Skills: [z. B. `unterricht-reflektieren` nach der ersten Stunde]
 
-> KI-gestützt erstellt (Skill unterricht-entwickeln v1.23 und beteiligte Skills). Fachliche Prüfung, Freigabe und Verantwortung: Lehrkraft bzw. Bildungsgangteam.
+> KI-gestützt erstellt (Skill unterricht-entwickeln v1.25 und beteiligte Skills). Fachliche Prüfung, Freigabe und Verantwortung: Lehrkraft bzw. Bildungsgangteam.

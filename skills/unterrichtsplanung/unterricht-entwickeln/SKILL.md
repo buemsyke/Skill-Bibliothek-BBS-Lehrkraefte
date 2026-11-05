@@ -2,7 +2,7 @@
 name: unterricht-entwickeln
 description: Orchestriert agentische Unterrichtsentwicklung für berufsbildende Schulen und das Berufliche Gymnasium – analysiert das Anliegen, wählt Skills der Bibliothek (Planung – DQR, Lernsituation nach SchuCu-BBS 2024, Entwurf, Material, Experiment, Programmieraufgabe, Technikfolgenabschätzung, Bloom, Differenzierung, Sprache, Quiz, Diagramme; Ausspielen – Lernlandkarte, Schülerseiten, KI-Kennzeichnung, AIS.chat, KI-Chatbots; Prüfen – LS-Analyse, Faktencheck, Entwurfs-Selbstcheck, Reflexion) und verkettet sie über eine Planungsakte mit Qualitäts-, Experiment- und Freigabe-Gates zu einem Gesamtpaket mit Abschlussbericht. Verwenden für mehrschrittige Vorhaben wie „Lernsituation mit Material", „UB vorbereiten", „Projekt-LS im BG", „Technikfolgenabschätzung mit Rollenspiel", „Material verbessern", „Material digital ausspielen" – oder wenn unklar ist, welcher Skill passt.
 metadata:
-  version: "1.24"
+  version: "1.25"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"

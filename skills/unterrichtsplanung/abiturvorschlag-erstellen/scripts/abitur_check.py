@@ -14,16 +14,23 @@ abiturvorschlag-erstellen und prüft alles, was sich rechnen oder regelbasiert p
   K – Korrigierbarkeit: K.1 Merkmaltabelle je Teilaufgabe · K.2 Summen der Merkmale · K.3 Größe
                      und Wertwörter · K.4 Toleranz/Rundung · K.5 Alternativen bei offenen Aufgaben ·
                      K.6 Folgefehler bei Ersatzwerten · K.7 Auftragssätze · K.8 Anteil „Urteil“ ·
-                     K.9 Bezeichner
+                     K.9 Bezeichner · K.10 Kurztexte (Randvermerk und Gutachten, handschriftlich)
+  U – Umfang:        U.1 Schülermaterial ohne Anlagen ≤ 12 Seiten (Schätzung) · U.2 Lehrermaterial
+                     knapp (Merkmaltabellen im Bewertungsraster, nicht im Lehrermaterial)
   T – Betriebsmittelkennzeichen über bmk_pruefen.py im selben Ordner (nur wenn BMK vorkommen)
   Z – Zeichnungen als SVG über zeichnungen_pruefen.py: Z.1 Schülermaterial, Z.2 Lehrermaterial
       (❌ Zeichnung aus Zeichen; eingebundene SVG: ❌ fehlt, Text über Text oder Linie, Text aus
       dem Kasten, außerhalb des Bildes; ⚠ Mermaid, SVG ohne Spec – von Hand? –, schräge Leitungen)
 
 Aufruf:
-    python3 abitur_check.py SM.md LM.md [--fach technik|informatik] [--zeit 300] [--be 120]
-        [--vergleich SM_B.md LM_B.md] [--bewertungsbogen DATEI.md] [--operatoren PFAD] [--json]
+    python3 abitur_check.py SM.md LM.md [--raster RASTER.md] [--fach technik|informatik] [--zeit 300]
+        [--be 120] [--vergleich SM_B.md LM_B.md] [--bewertungsbogen DATEI.md] [--auslagern RASTER.md]
+        [--operatoren PFAD] [--json]
 
+Die Merkmaltabellen (genaue Bepunktung) stehen im Bewertungsraster `…_bewertungsraster.md`, nicht im
+Lehrermaterial. Ohne --raster wird die Datei mit gleichem Dateianfang neben dem Lehrermaterial gesucht
+(…_A_lehrermaterial.md → …_A_bewertungsraster.md). Ältere Lehrermaterialien mit Merkmaltabellen werden
+weiter gelesen (U.2 ⚠); --auslagern schreibt aus ihnen ein Bewertungsraster (überschreibt nie).
 Operatoren und AFB-Bereiche stehen in references/operatoren-epa-technik.md (Kopie aus _gemeinsam).
 --bewertungsbogen schreibt einen leeren Bewertungsbogen aus den Merkmaltabellen (überschreibt nie).
 Exit-Code 1 bei ❌. Nur Python-Standardbibliothek; läuft vollständig lokal.
@@ -57,6 +64,9 @@ AFB_ZIEL = {"I": 30.0, "II": 40.0, "III": 30.0}
 TAKT_GUT, TAKT_VERTRETBAR = (2.5, 3.0), (2.0, 3.5)
 URTEIL_GRENZE = 30.0          # Prozent der BE (Richtwert, wie Freitextanteil in klausur-erstellen)
 MERKMAL_MAX = 3.0
+SEITEN_SM_MAX = 12            # Schülermaterial ohne Anlagen (Vorgabe der Fachgruppe)
+KURZTEXT_MAX = 30             # Zeichen; Kurztexte werden in jede Klausur von Hand geschrieben
+KURZTEXT_WOERTER = 4
 
 PARTIKEL = ("zusammen", "gegenüber", "heraus", "wieder", "durch", "dar", "aus", "ein", "auf", "an", "ab",
             "zu", "vor", "fest", "her", "nach", "weg")
@@ -170,6 +180,7 @@ class Merkmal:
     art: str
     afb: str
     be: float
+    kurz: str = ""
 
 
 # ───────────────────────────── Markdown lesen ─────────────────────────────
@@ -471,26 +482,125 @@ def lies_lm(text: str, ops: dict) -> dict:
             lm["massstab"] = {"prozent": [zahl(x) for x in prozent[1:] if x.strip()],
                               "be": [zahl(x) for x in be[1:] if x.strip()] if be else None}
             break
-    # Musterlösung: Lösungsvorschläge mit Merkmaltabelle
-    for a in abschn:
-        m = re.search(r"Lösungsvorschlag\s+zur\s+Teilaufgabe\s+(\d+\.\d+)", a["titel"], re.I)
-        if not m:
-            continue
-        merkmale = []
-        for tab in tabellen(a["gesamt"]):
-            kopf = [z.lower() for z in tab[0]]
-            if any("merkmal" in k for k in kopf) and "be" in kopf:
-                ib, im = kopf.index("be"), next(i for i, k in enumerate(kopf) if "merkmal" in k)
-                ia = next((i for i, k in enumerate(kopf) if k == "art"), None)
-                iafb = next((i for i, k in enumerate(kopf) if k == "afb"), None)
-                for r in tab[1:]:
-                    r = r + [""] * (len(kopf) - len(r))
-                    if re.match(r"^(?:Σ|∑|Summe)", r[0] or r[im], re.I) or zahl(r[ib]) is None:
-                        continue
-                    merkmale.append(Merkmal(r[0], r[im], (r[ia] if ia is not None else "").strip().lower(),
-                                            (r[iafb] if iafb is not None else "").strip().upper(), zahl(r[ib])))
-        lm["loesungen"][m.group(1)] = {"text": a["gesamt"], "merkmale": merkmale}
+    # Musterlösung: Lösungsvorschläge (ältere Fassungen mit Merkmaltabelle)
+    lm["loesungen"] = merkmal_abschnitte(abschn, r"Lösungsvorschlag\s+zur\s+Teilaufgabe\s+(\d+\.\d+)")
     return lm
+
+
+def merkmale_in(text: str) -> list[Merkmal]:
+    """Merkmaltabellen „Nr. | Bewertungsmerkmal | [Kurztext |] Art | AFB | BE“ eines Abschnitts."""
+    merkmale = []
+    for tab in tabellen(text):
+        kopf = [z.lower() for z in tab[0]]
+        if any("merkmal" in k for k in kopf) and "be" in kopf:
+            ib, im = kopf.index("be"), next(i for i, k in enumerate(kopf) if "merkmal" in k)
+            ia = next((i for i, k in enumerate(kopf) if k == "art"), None)
+            iafb = next((i for i, k in enumerate(kopf) if k == "afb"), None)
+            ik = next((i for i, k in enumerate(kopf) if "kurz" in k), None)
+            for r in tab[1:]:
+                r = r + [""] * (len(kopf) - len(r))
+                if re.match(r"^(?:Σ|∑|Summe)", r[0] or r[im], re.I) or zahl(r[ib]) is None:
+                    continue
+                merkmale.append(Merkmal(r[0], r[im], (r[ia] if ia is not None else "").strip().lower(),
+                                        (r[iafb] if iafb is not None else "").strip().upper(), zahl(r[ib]),
+                                        r[ik].strip() if ik is not None else ""))
+    return merkmale
+
+
+def merkmal_abschnitte(abschn: list[dict], muster: str) -> dict:
+    erg: dict = {}
+    for a in abschn:
+        if m := re.search(muster, a["titel"], re.I):
+            erg[m.group(1)] = {"text": a["gesamt"], "merkmale": merkmale_in(a["gesamt"])}
+    return erg
+
+
+def lies_raster(text: str) -> dict:
+    """Bewertungsraster: je Teilaufgabe „## Teilaufgabe N.n – Titel“ mit Merkmaltabelle und Regeln."""
+    return merkmal_abschnitte(abschnitte(bereinigt(text)), r"(?:^|\s)Teilaufgabe\s+(\d+\.\d+)")
+
+
+# ───────────────────────────── Kurztexte und Umfang ─────────────────────────────
+
+KURZ_WERT = re.compile(
+    r"\b\d{1,3}(?:\.\d{1,3}){3}\b"                         # IPv4
+    r"|\b[0-9a-f]{1,4}(?::[0-9a-f]{0,4}){2,7}\b"               # IPv6
+    r"|\b[0-9a-f]{2}(?:[:-][0-9a-f]{2}){5}\b"                  # MAC
+    r"|/\d{1,3}\b"                                            # Präfixlänge
+    r"|\d[\d\s.,]*\s?(?:%|°C|K|V|mA|A|W|kW|Ω|s|ms|min|h|m³/h|m|mm|cm|bit|Byte|B|kB|KiB|MB|MiB|GB|GiB|Hz)(?![\wÄÖÜäöü])"
+    r"|\d{3,}|[=·×÷≤≥<>↦→]", re.I)
+
+
+def kurztext_befunde(kurz: str) -> list[str]:
+    """Gründe, warum ein Kurztext zu lang ist (leer = in Ordnung)."""
+    erg = []
+    if len(kurz) > KURZTEXT_MAX:
+        erg.append(f"{len(kurz)} Zeichen")
+    if len(kurz.split()) > KURZTEXT_WOERTER:
+        erg.append(f"{len(kurz.split())} Wörter")
+    if m := KURZ_WERT.search(kurz):
+        erg.append(f"Wert „{m.group(0).strip()}“")
+    if re.search(r"[(),;:]|\bz\.\s?B\.", kurz):
+        erg.append("Klammer/Aufzählung")
+    return erg
+
+
+ZEILEN_JE_SEITE = 50           # Satzspiegel A4 (Ränder 2,5 / 1,5 cm), Arial 11 pt, mit Absatzabständen
+ZEICHEN_JE_ZEILE = 100
+CM_JE_ZEILE = 0.5
+SATZBREITE_CM = 16.0
+
+
+def _bildhoehe_cm(pfad: Path | None) -> float:
+    if pfad and pfad.is_file():
+        kopf = pfad.read_text(encoding="utf-8", errors="replace")[:4000]
+        vb = re.search(r"viewBox\s*=\s*\"\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)", kopf)
+        if vb and float(vb.group(1)) > 0:
+            return min(SATZBREITE_CM * float(vb.group(2)) / float(vb.group(1)), 22.0) + 1.2
+    return 9.0
+
+
+def seiten_schaetzen(text: str, basis: Path | None = None) -> tuple[float, float]:
+    """(Seiten bis „B. Material“ bzw. zur ersten Anlage, Seiten der Anlagen) – grobe Schätzung für
+    die Word-Fassung (A4, 11 pt); Abbildungen nach dem Seitenverhältnis der SVG."""
+    zeilen_a, zeilen_b, in_b = 0.0, 0.0, False
+    tabelle: list[str] = []
+
+    def tab_zeilen(rows: list[str]) -> float:
+        z = 0.0
+        for r in rows:
+            if re.fullmatch(r"\|?[\s:|\-]+\|?", r.strip()):
+                continue
+            zellen_ = zellen(r)
+            breite = max(8, ZEICHEN_JE_ZEILE // max(1, len(zellen_)) - 2)
+            z += max(math.ceil(len(c) / breite) for c in zellen_) if zellen_ else 1
+            z += 0.25
+        return z + 0.8
+
+    for zeile in bereinigt(text).splitlines() + [""]:
+        s = zeile.strip()
+        if s.startswith("|"):
+            tabelle.append(s)
+            continue
+        z = tab_zeilen(tabelle) if tabelle else 0.0
+        tabelle = []
+        if re.match(r"^#{1,2}\s+(?:B\.\s*Material|Material|Anlagen?\b)", s):
+            in_b = True
+        if not s:
+            pass
+        elif m := re.match(r"!\[[^\]]*\]\(([^)\s]+)", s):
+            z += _bildhoehe_cm(basis / m.group(1) if basis else None) / CM_JE_ZEILE
+        elif s.startswith("#"):
+            z += 2.2
+        elif s.startswith("```"):
+            z += 0.5
+        else:
+            z += math.ceil(len(s) / ZEICHEN_JE_ZEILE) + (0.4 if not re.match(r"^[-*+]\s|^\d+\.\s", s) else 0.1)
+        if in_b:
+            zeilen_b += z
+        else:
+            zeilen_a += z
+    return round(zeilen_a / ZEILEN_JE_SEITE, 1), round(zeilen_b / ZEILEN_JE_SEITE, 1)
 
 
 # ───────────────────────────── Hilfsrechnungen ─────────────────────────────
@@ -526,13 +636,24 @@ def platzhalter(text: str) -> list[str]:
 
 def pruefe(sm_text: str, lm_text: str, opdaten: dict, fach: str | None = None, zeit: float | None = None,
            be_soll: float | None = None, basis_sm: Path | None = None,
-           basis_lm: Path | None = None) -> tuple[list[Befund], dict, dict, dict]:
-    """basis_sm/basis_lm: Ordner der Dateien – dann werden eingebundene SVG mitgeprüft (Z)."""
+           basis_lm: Path | None = None, raster_text: str | None = None) -> tuple[list[Befund], dict, dict, dict]:
+    """basis_sm/basis_lm: Ordner der Dateien – dann werden eingebundene SVG mitgeprüft (Z).
+    raster_text: Bewertungsraster mit den Merkmaltabellen; ohne Raster gelten die Tabellen im
+    Lehrermaterial (ältere Fassungen)."""
     if fach is None:
         fach = "informatik" if re.search(r"Berufliche\s+Informatik|\|\s*Informatik\b", bereinigt(sm_text)[:800]) else "technik"
     ops = opdaten[fach]["ops"]
     nicht = opdaten[fach]["nicht"]
     sm, lm = lies_sm(sm_text, ops), lies_lm(lm_text, ops)
+    raster = lies_raster(raster_text) if raster_text is not None else None
+    lm_tabellen = [n for n, l in lm["loesungen"].items() if l["merkmale"]]
+    # Bewertung je Teilaufgabe: Merkmale aus dem Raster (sonst Lehrermaterial), Regeln aus beiden
+    bewertung: dict = {}
+    for nr in set(lm["loesungen"]) | set(raster or {}):
+        quelle = (raster or {}).get(nr) if raster is not None else lm["loesungen"].get(nr)
+        bewertung[nr] = {"merkmale": (quelle or {}).get("merkmale", []),
+                         "text": (lm["loesungen"].get(nr) or {}).get("text", "") + "\n" +
+                                 ((raster or {}).get(nr) or {}).get("text", "")}
     befunde: list[Befund] = []
     B = lambda k, n, s, t: befunde.append(Befund(k, n, s, t))
     teile = [tl for a in sm["aufgaben"] for tl in a.teile]
@@ -842,8 +963,8 @@ def pruefe(sm_text: str, lm_text: str, opdaten: dict, fach: str | None = None, z
     k1, k2, k3, k4, k5, k6, arten_fehlen = [], [], [], [], [], [], []
     anteile = {"fest": 0.0, "kriterium": 0.0, "urteil": 0.0}
     for tl in teile:
-        loes = lm["loesungen"].get(tl.nummer)
-        if not loes:
+        loes = bewertung.get(tl.nummer)
+        if not loes or (raster is None and tl.nummer not in lm["loesungen"]):
             continue
         mm = loes["merkmale"]
         if not mm:
@@ -877,8 +998,13 @@ def pruefe(sm_text: str, lm_text: str, opdaten: dict, fach: str | None = None, z
             k5.append(tl.nummer)
         if ERSATZWERT.search(tl.text) and not re.search(r"Folgefehler", text_l, re.I):
             k6.append(tl.nummer)
-    B("K.1", "Merkmaltabelle je Teilaufgabe", "❌" if k1 else ("➖" if not lm["loesungen"] else "✅"),
-      ("ohne Merkmaltabelle: " + ", ".join(k1)) if k1 else "jede BE an einem Merkmal")
+    ohne_raster = [tl.nummer for tl in teile if raster is not None and tl.nummer not in raster]
+    k1 += ohne_raster
+    B("K.1", "Merkmaltabelle je Teilaufgabe" + (" (Bewertungsraster)" if raster is not None else ""),
+      "❌" if k1 else ("➖" if not bewertung else "✅"),
+      (("ohne Merkmaltabelle: " + ", ".join(k1)) +
+       (" – Bewertungsraster fehlt (…_bewertungsraster.md neben dem Lehrermaterial oder --raster)"
+        if raster is None and not lm_tabellen else "")) if k1 else "jede BE an einem Merkmal")
     B("K.2", "Merkmale = BE der Teilaufgabe und AFB des Erwartungshorizonts", "❌" if k2 else "✅", "; ".join(k2) or "stimmig")
     B("K.3", "Merkmale ≤ 3 BE, beobachtbar formuliert", "⚠" if k3 else "✅", "; ".join(k3[:8]) or "erfüllt")
     B("K.4", "Rechnung und Auswahl mit Toleranz bzw. Rundung", "⚠" if k4 else "✅",
@@ -897,9 +1023,38 @@ def pruefe(sm_text: str, lm_text: str, opdaten: dict, fach: str | None = None, z
           " · ".join(f"{k} {100 * v / summe_art:.0f} %" for k, v in anteile.items()) +
           (f"; Art fehlt bzw. unbekannt: {', '.join(arten_fehlen[:6])}" if arten_fehlen else ""))
     sm_bez = set(re.findall(r"`([^`\n]{1,40})`", sm["text"]))
-    lm_bez = set(re.findall(r"`([^`\n]{1,40})`", lm["text"]))
+    lm_bez = set(re.findall(r"`([^`\n]{1,40})`", lm["text"] + "\n" + bereinigt(raster_text or "")))
     abw = sorted({f"{b} ≠ {s}" for b in lm_bez for s in sm_bez if b != s and b.lower() == s.lower()})
     B("K.9", "Bezeichner in SM und LM gleich geschrieben", "⚠" if abw else "✅", "; ".join(abw[:6]) or "gleich")
+    k10, ohne_kurz = [], []
+    for tl in teile:
+        for m in (bewertung.get(tl.nummer) or {}).get("merkmale", []):
+            if not m.kurz:
+                ohne_kurz.append(f"{tl.nummer}/{m.nr}")
+            elif gruende := kurztext_befunde(m.kurz):
+                k10.append(f"{tl.nummer}/{m.nr} „{m.kurz}“: {', '.join(gruende)}")
+    if any((bewertung.get(tl.nummer) or {}).get("merkmale") for tl in teile):
+        B("K.10", f"Kurztexte knapp (≤ {KURZTEXT_MAX} Zeichen, ≤ {KURZTEXT_WOERTER} Wörter, ohne Werte)",
+          "⚠" if k10 or ohne_kurz else "✅",
+          "; ".join(k10[:6]) + (f" (+{len(k10) - 6})" if len(k10) > 6 else "") +
+          ("; " if k10 and ohne_kurz else "") +
+          (f"ohne Spalte „Kurztext“: {len(ohne_kurz)} Merkmale (Bewertungsraster ergänzen)" if ohne_kurz else "")
+          or "alle Kurztexte kurz und ohne Werte")
+
+    # U – Umfang
+    seiten_a, seiten_b = seiten_schaetzen(sm_text, basis_sm)
+    info["seiten_sm"], info["seiten_anlagen"] = seiten_a, seiten_b
+    B("U.1", f"Schülermaterial ohne Anlagen ≤ {SEITEN_SM_MAX} Seiten (Schätzung)",
+      "⚠" if seiten_a > SEITEN_SM_MAX else "✅",
+      f"≈ {fmt(seiten_a)} Seiten Aufgabenteil, ≈ {fmt(seiten_b)} Seiten Anlagen und Hilfsmittel" +
+      (" – kürzen: Situationsabsätze, Hinweise, Tabellen; Material in Anlagen" if seiten_a > SEITEN_SM_MAX else "") +
+      " (Seitenzahl in der Word-Fassung prüfen: abitur_docx.py --seiten)")
+    lm_seiten = round(sum(seiten_schaetzen(lm_text, basis_lm)), 1)
+    info["seiten_lm"] = lm_seiten
+    B("U.2", "Lehrermaterial knapp (Merkmaltabellen im Bewertungsraster)", "⚠" if lm_tabellen else "✅",
+      (f"Merkmaltabellen im Lehrermaterial ({', '.join(lm_tabellen[:6])}{' …' if len(lm_tabellen) > 6 else ''}) – "
+       "ins Bewertungsraster auslagern (abitur_check.py … --auslagern …_bewertungsraster.md)" if lm_tabellen else
+       "Lehrermaterial ohne Merkmaltabellen") + f"; ≈ {fmt(lm_seiten)} Seiten")
 
     # 2.6 Bewertungsmaßstab
     if not lm["massstab"]:
@@ -934,7 +1089,8 @@ def pruefe(sm_text: str, lm_text: str, opdaten: dict, fach: str | None = None, z
         B("Z", "Zeichnungen als SVG", "➖", "zeichnungen_pruefen.py fehlt im Ordner scripts/ (bibliothek.py sync)")
 
     info["afb_summen"] = tot
-    modell = {"sm": sm, "lm": lm, "je_teil": je_teil, "tot": tot, "bmk": bmk_info}
+    modell = {"sm": sm, "lm": lm, "je_teil": je_teil, "tot": tot, "bmk": bmk_info, "bewertung": bewertung,
+              "raster": raster is not None}
     return befunde, info, modell, {"lg": set().union(*lg_je_aufgabe.values()) if lg_je_aufgabe else set()}
 
 
@@ -986,7 +1142,7 @@ def bericht(befunde: list[Befund], info: dict, modell: dict) -> str:
     for a in sm["aufgaben"]:
         for tl in a.teile:
             d = je_teil.get(tl.nummer, {"I": 0, "II": 0, "III": 0, "S": None, "ops": []})
-            mm = modell["lm"]["loesungen"].get(tl.nummer, {}).get("merkmale", [])
+            mm = modell["bewertung"].get(tl.nummer, {}).get("merkmale", [])
             z.append(f"| {tl.nummer} | {fmt(tl.be)} | {fmt(d['S'])} | {fmt(d['I'])} | {fmt(d['II'])} | {fmt(d['III'])} | "
                      f"{', '.join(dict.fromkeys(tl.operatoren)) or '–'} | {', '.join(dict.fromkeys(d['ops'])) or '–'} | {len(mm)} |")
     tot = modell["tot"]
@@ -1012,17 +1168,21 @@ def bewertungsbogen(info: dict, modell: dict) -> str:
          f"Vorschlag {info.get('vorschlag') or ''}".replace("  ", " "), "",
          "| Prüflingsnummer | Erstkorrektur (Kürzel, Datum) | Zweitkorrektur (Kürzel, Datum) |", "|---|---|---|",
          "| | | |", "",
-         "Erzeugt aus den Merkmaltabellen des Lehrermaterials (`abitur_check.py`). Keine Namen eintragen.", ""]
+         "Erzeugt aus den Merkmaltabellen des " + ("Bewertungsrasters" if modell.get("raster") else "Lehrermaterials") +
+         " (`abitur_check.py`). Der Kurztext ist Randvermerk und Gutachtentext. Keine Namen eintragen.", ""]
     gesamt = 0.0
+    bewertung = modell.get("bewertung") or lm["loesungen"]
     for a in sm["aufgaben"]:
         z += [f"## {a.nummer}. Aufgabe – {a.titel} ({fmt(a.be)} BE)", "",
-              "| Teilaufgabe | Nr. | Bewertungsmerkmal | AFB | erreichbar | erreicht |", "|---|---|---|---|---:|---:|"]
+              "| Teilaufgabe | Nr. | Bewertungsmerkmal | Kurztext | AFB | erreichbar | erreicht |",
+              "|---|---|---|---|---|---:|---:|"]
         summe = 0.0
         for tl in a.teile:
-            for m in lm["loesungen"].get(tl.nummer, {}).get("merkmale", []):
-                z.append(f"| {tl.nummer} | {m.nr} | {m.text} | {m.afb} | {fmt(m.be)} | |")
+            for m in bewertung.get(tl.nummer, {}).get("merkmale", []):
+                z.append(f"| {tl.nummer} | {m.nr} | {m.text} | {m.kurz or kurztext_vorschlag(m.text)} | {m.afb} | "
+                         f"{fmt(m.be)} | |")
                 summe += m.be
-        z += [f"| **Summe {a.nummer}. Aufgabe** | | | | **{fmt(summe)}** | |", ""]
+        z += [f"| **Summe {a.nummer}. Aufgabe** | | | | | **{fmt(summe)}** | |", ""]
         gesamt += summe
     g = grenzen(gesamt) if gesamt else []
     z += ["## Ergebnis", "", "| | erreichbar | erreicht |", "|---|---:|---:|", f"| **Gesamt** | **{fmt(gesamt)}** | |",
@@ -1032,27 +1192,99 @@ def bewertungsbogen(info: dict, modell: dict) -> str:
     return "\n".join(z)
 
 
+FUELLWOERTER = {"und", "oder", "mit", "von", "der", "die", "das", "des", "den", "dem", "im", "in", "auf", "als", "für",
+                "zu", "zum", "zur", "je", "bis", "wie", "ohne", "ein", "eine", "einer", "selben", "gleichen", "nicht"}
+
+
+def kurztext_vorschlag(text: str) -> str:
+    """Vorschlag für einen Kurztext aus dem Merkmal: ohne Klammern, Beispiele, Werte und Nachsätze,
+    höchstens vier Wörter. Nur ein Vorschlag – im Bewertungsraster von Hand schärfen."""
+    t = re.sub(r"`", "", text)
+    t = re.sub(r"\([^()]*\)", "", t)
+    t = re.split(r",?\s+(?:z\.\s?B\.|zum Beispiel|bzw\.|also|weil|da|sonst)\s|[:;–]\s|,\s", t)[0]
+    t = KURZ_WERT.sub(" ", t)
+    woerter = [w for w in t.split() if re.search(r"[A-Za-zÄÖÜäöüß]", w)][:KURZTEXT_WOERTER]
+    while len(" ".join(woerter)) > KURZTEXT_MAX and len(woerter) > 1:
+        woerter.pop()
+    while len(woerter) > 1 and woerter[-1].lower() in FUELLWOERTER:
+        woerter.pop()
+    kurz = " ".join(woerter).strip(" .,;:")
+    return kurz or "Ergebnis"
+
+
+def raster_aus_lehrermaterial(info: dict, modell: dict) -> str:
+    """Bewertungsraster aus einem Lehrermaterial älterer Fassung (Merkmaltabellen in der Musterlösung)."""
+    sm, lm = modell["sm"], modell["lm"]
+    z = ["---", "artefakt: Abiturvorschlag – Bewertungsraster", f"titel: \"{sm.get('thema') or ''}\"",
+         "skill: abiturvorschlag-erstellen", f"vorschlag: \"{info.get('vorschlag') or ''}\"", "vertraulich: true",
+         "status: \"KI-Entwurf – Kurztexte mit der Fachgruppe abstimmen\"", "---", "",
+         f"# Bewertungsraster – Vorschlag {info.get('vorschlag') or ''}".rstrip(), "",
+         "Genaue Bepunktung je Teilaufgabe für Korrektur, Bewertungsbogen und Bewertungsmappe; nicht Teil des "
+         "Lehrermaterials. Der Kurztext ist Randvermerk in der Klausur und Text im Gutachten (von Hand geschrieben: "
+         f"höchstens {KURZTEXT_WOERTER} Wörter, keine Werte). Aus dem Lehrermaterial übernommen – Kurztexte prüfen.", ""]
+    for a in sm["aufgaben"]:
+        for tl in a.teile:
+            loes = lm["loesungen"].get(tl.nummer, {})
+            z += [f"## Teilaufgabe {tl.nummer} – {tl.titel} ({fmt(tl.be)} BE)", "",
+                  "| Nr. | Bewertungsmerkmal | Kurztext | Art | AFB | BE |", "|---|---|---|---|---|---:|"]
+            for m in loes.get("merkmale", []):
+                z.append(f"| {m.nr} | {m.text} | {m.kurz or kurztext_vorschlag(m.text)} | {m.art} | {m.afb} | {fmt(m.be)} |")
+            z.append("")
+            for absatz in re.split(r"\n\s*\n", loes.get("text", "")):
+                if re.match(r"^\*(?:Gleichwertig|Folgefehler|Toleranz|0 BE|Rundung)[^*]*:\*", absatz.strip()):
+                    z += [" ".join(absatz.split()), ""]
+    return "\n".join(z)
+
+
+def raster_pfad(lehrermaterial: Path) -> Path:
+    return lehrermaterial.with_name(re.sub(r"_?lehrermaterial$", "", lehrermaterial.stem) + "_bewertungsraster.md")
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Selbstprüfung eines dezentralen Abiturvorschlags (lokal).")
     p.add_argument("schuelermaterial", type=Path)
     p.add_argument("lehrermaterial", type=Path)
+    p.add_argument("--raster", type=Path, default=None,
+                   help="Bewertungsraster mit den Merkmaltabellen (Standard: …_bewertungsraster.md neben dem LM)")
     p.add_argument("--fach", choices=("technik", "informatik"), default=None,
                    help="Operatorenliste (Standard: aus dem Kopf erkannt, sonst technik)")
     p.add_argument("--zeit", type=float, default=None, help="Bearbeitungszeit in Minuten (sonst aus dem Kopf)")
     p.add_argument("--be", type=float, default=None, help="vorgegebene Gesamt-BE (Standard 120)")
     p.add_argument("--vergleich", type=Path, nargs=2, metavar=("SM_B", "LM_B"), help="zweiten Vorschlag vergleichen")
     p.add_argument("--bewertungsbogen", type=Path, default=None, help="leeren Bewertungsbogen schreiben (überschreibt nie)")
+    p.add_argument("--auslagern", type=Path, default=None,
+                   help="Merkmaltabellen eines älteren Lehrermaterials als Bewertungsraster schreiben (überschreibt nie)")
     p.add_argument("--operatoren", default=None, help="Pfad zu operatoren-epa-technik.md")
     p.add_argument("--json", action="store_true")
     a = p.parse_args(argv)
     opdaten = lade_operatoren(operatorenpfad(a.operatoren))
     sm, lm = a.schuelermaterial.read_text(encoding="utf-8"), a.lehrermaterial.read_text(encoding="utf-8")
+    if a.raster and not a.raster.is_file():
+        print(f"Bewertungsraster {a.raster} nicht gefunden.", file=sys.stderr)
+        return 2
+    rp = a.raster or raster_pfad(a.lehrermaterial)
+    raster = rp.read_text(encoding="utf-8") if rp.is_file() and not a.auslagern else None
     befunde, info, modell, zus = pruefe(sm, lm, opdaten, a.fach, a.zeit, a.be,
-                                        a.schuelermaterial.parent, a.lehrermaterial.parent)
+                                        a.schuelermaterial.parent, a.lehrermaterial.parent, raster)
+    if a.auslagern:
+        if a.auslagern.exists():
+            print(f"{a.auslagern} existiert bereits – nicht überschrieben (anderen Namen wählen).", file=sys.stderr)
+            return 2
+        if not any(l["merkmale"] for l in modell["lm"]["loesungen"].values()):
+            print("Keine Merkmaltabellen im Lehrermaterial – nichts auszulagern.", file=sys.stderr)
+            return 2
+        a.auslagern.write_text(raster_aus_lehrermaterial(info, modell), encoding="utf-8")
+        print(f"Bewertungsraster geschrieben: {a.auslagern} – Kurztexte prüfen, dann die Merkmaltabellen und Regeln "
+              "aus dem Lehrermaterial löschen und erneut prüfen.")
+        return 0
+    if raster is not None and not a.json:
+        print(f"Bewertungsraster: {rp}")
     if a.vergleich:
+        rp_b = raster_pfad(a.vergleich[1])
         bef_b, info_b, mod_b, zus_b = pruefe(a.vergleich[0].read_text(encoding="utf-8"),
                                              a.vergleich[1].read_text(encoding="utf-8"), opdaten, a.fach, a.zeit, a.be,
-                                             a.vergleich[0].parent, a.vergleich[1].parent)
+                                             a.vergleich[0].parent, a.vergleich[1].parent,
+                                             rp_b.read_text(encoding="utf-8") if rp_b.is_file() else None)
         befunde += vergleiche(info, modell, zus, info_b, mod_b, zus_b)
         befunde += [Befund(f"B:{b.kriterium}", b.name, b.status, b.befund) for b in bef_b if b.status in ("❌", "⚠")]
     if a.bewertungsbogen:

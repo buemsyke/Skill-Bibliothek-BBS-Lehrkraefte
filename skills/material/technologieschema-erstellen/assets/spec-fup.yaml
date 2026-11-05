@@ -1,9 +1,9 @@
-# Muster Funktionsplan (FUP) aus Grundformen (Abschn. 5a der Spec-Referenz) – Freigabe der Pumpe -G1
-# der Tankanlage: Anforderung M_Fuellen UND Tank nicht voll (¬-B3, Negation als Kreis) UND weniger
+# Muster Funktionsplan (FUP) aus Grundformen (Abschn. 5a der Spec-Referenz) – Freigabe der Pumpe -GP1
+# der Tankanlage: Anforderung M_Fuellen UND Tank nicht voll (¬-BL3, Negation als Kreis) UND weniger
 # als 100 Füllungen seit der Wartung (Vergleicher mit dem Zähler C_Fuellungen). Kopieren nach schema/…_loesung_<nr>_fup.yaml.
 # Erwartete Warnungen: Funktionszeichen „&“ bzw. „<“ liegt auf dem Baustein.
 titel: "Lösung – Freigabe der Pumpe im Funktionsplan"
-alt: "Funktionsplan: UND-Baustein mit den Eingängen M_Fuellen, -B3 negiert und dem Ausgang eines Vergleichers C_Fuellungen kleiner 100; der Ausgang steuert -G1."
+alt: "Funktionsplan: UND-Baustein mit den Eingängen M_Fuellen, -BL3 negiert und dem Ausgang eines Vergleichers C_Fuellungen kleiner 100; der Ausgang steuert -GP1."
 out: abbildungen/46_tankanlage_loesung_fup
 breite: 600
 hoehe: 260
@@ -17,7 +17,7 @@ elemente:
   - {typ: text, x: 120, y: 94, text: "M_Fuellen", groesse: 13, ausrichtung: rechts}
   - {typ: linie, punkte: [[130, 130], [312, 130]]}
   - {typ: kreis, ref: neg_b3, x: 316, y: 130, r: 4, legende: false}
-  - {typ: text, x: 120, y: 134, text: "-B3", groesse: 13, ausrichtung: rechts}
+  - {typ: text, x: 120, y: 134, text: "-BL3", groesse: 13, ausrichtung: rechts}
   - {typ: rechteck, ref: cmp, x: 180, y: 150, b: 80, h: 70, legende: false}
   - {typ: text, x: 220, y: 172, text: "<", groesse: 16, ausrichtung: mitte, fett: true}
   - {typ: linie, punkte: [[130, 180], [180, 180]]}
@@ -26,4 +26,4 @@ elemente:
   - {typ: text, x: 120, y: 209, text: "100", groesse: 13, ausrichtung: rechts}
   - {typ: linie, punkte: [[260, 180], [320, 180]]}
   - {typ: linie, punkte: [[400, 125], [480, 125]]}
-  - {typ: text, x: 490, y: 130, text: "-G1", groesse: 13, ausrichtung: links, fett: true}
+  - {typ: text, x: 490, y: 130, text: "-GP1", groesse: 13, ausrichtung: links, fett: true}

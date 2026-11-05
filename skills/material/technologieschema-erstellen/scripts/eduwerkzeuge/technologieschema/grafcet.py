@@ -6,9 +6,9 @@ Verzweigungen und Sprüngen); dieses Modul berechnet daraus die Lage und zeichne
 
 * Schritte: normal, Initialschritt (doppelt), Makroschritt, einschließender Schritt, Aktivierung ``*``
 * Transitionen: Bedingung rechts, Name links in Klammern, Quell- und Schlusstransition, immer erfüllt
-  (``1`` unterstrichen), Negation als **Überstrich** (getippt ``¬-S2``)
+  (``1`` unterstrichen), Negation als **Überstrich** (getippt ``¬-SJ2``)
 * kontinuierliche Aktionen: einfach, mit Zuweisungsbedingung, verzögert, zeitbegrenzt
-* speichernde Aktionen: immer mit **Zuweisung** (``-Q1 := 1``) und **Pfeil am Rechteck** (bei Aktivierung,
+* speichernde Aktionen: immer mit **Zuweisung** (``-QA1 := 1``) und **Pfeil am Rechteck** (bei Aktivierung,
   bei Deaktivierung, Fähnchen bei Ereignis) – beides erzwingt die Prüfung
 * Zwangssteuerung (Doppelrahmen, ``G5 {INIT}``), Alternativ- und Parallelverzweigung, Rücksprung,
   Rahmen eines einschließenden Schritts bzw. Teil-GRAFCET
@@ -327,7 +327,7 @@ def lies_aktion(roh, wo: str, m: list[Meldung]) -> Aktion | None:
     if art in ("verzoegert", "zeitbegrenzt") and bedingung and not ZEIT_IN_BEDINGUNG.search(bedingung):
         m.append(("❌", f"{wo}: 'art: {art}' braucht eine Zeitbedingung der Form '5s/X3', nicht '{bedingung}'"))
     if art == "ereignis" and bedingung and not re.search(r"[↑↓]", bedingung):
-        m.append(("⚠", f"{wo}: Ereignis '{bedingung}' ohne Flanke – ein Ereignis schreibt sich '↑-B1' oder '↓-B1'"))
+        m.append(("⚠", f"{wo}: Ereignis '{bedingung}' ohne Flanke – ein Ereignis schreibt sich '↑-BG1' oder '↓-BG1'"))
     return Aktion(art, text, bedingung, roh.get("kommentar"), roh.get("b"))
 
 

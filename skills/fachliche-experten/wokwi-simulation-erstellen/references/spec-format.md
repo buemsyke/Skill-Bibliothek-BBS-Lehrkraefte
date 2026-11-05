@@ -23,14 +23,14 @@ Alternativverzweigung: `assets/spec-muster.yaml`; Testlauf an einer Abituraufgab
 
 ```yaml
 eingaenge:          # digitale Geber
-  - {bmk: -S1, name: "Taster Start", pin: D2, kontakt: "NO", bauteil: taster, signal_1: "Start betätigt"}
-  - {bmk: -S2, name: "Taster Stopp", pin: D3, kontakt: "NC", bauteil: taster, signal_1: "Stopp nicht betätigt"}
+  - {bmk: -SJ1, name: "Taster Start", pin: D2, kontakt: "NO", bauteil: taster, signal_1: "Start betätigt"}
+  - {bmk: -SJ2, name: "Taster Stopp", pin: D3, kontakt: "NC", bauteil: taster, signal_1: "Stopp nicht betätigt"}
   - {bmk: -BL1, name: "Schwimmerschalter", pin: D4, kontakt: "NC", bauteil: schalter,
      signal_1: "Füllstand über Mindesthöhe", start: 1, kurz: "Füllstand"}
 analogeingaenge:    # 4 … 20 mA, Wert im Programm als physikalische Größe
   - {bmk: -BT1, name: "Temperaturfühler", pin: A0, bereich: [0, 100], einheit: "°C", start: 38, stellen: 1}
 ausgaenge:
-  - {bmk: -QA1, name: "Schütz Förderpumpe -M1", pin: D8, signal_1: "Pumpe ein", kurz: "Pumpe"}
+  - {bmk: -QA1, name: "Schütz Förderpumpe -MA1", pin: D8, signal_1: "Pumpe ein", kurz: "Pumpe"}
 ```
 
 - **Pins** wie auf dem Board: `D2` … `D13`, `A0` … `A5` (Uno); `GPIO16` … (ESP32). E/A-Platine (Anlage der
@@ -64,14 +64,14 @@ Ein Merker hat genau eine Quelle: GRAFCET-Aktion, Speicher (`setzen`/`ruecksetze
 
 ```yaml
 grafcet:
-  - {schritt: 0, name: "Grundstellung", aktionen: [], transition: "-S1 · -BL1 → 1"}
-  - {schritt: 3, name: "Beschicken", aktionen: [-P2, -QA2, -QM1, M_Pumpe], transition: "[-BL2 ≥ 4,5 m] + 10min/X3 → 4"}
+  - {schritt: 0, name: "Grundstellung", aktionen: [], transition: "-SJ1 · -BL1 → 1"}
+  - {schritt: 3, name: "Beschicken", aktionen: [-PF2, -QA2, -QM1, M_Pumpe], transition: "[-BL2 ≥ 4,5 m] + 10min/X3 → 4"}
   - {schritt: 2, name: "Prüfen", aktionen: ["↑ C_Teile := C_Teile + 1"], transition: "[C_Teile < 10] → 1; [C_Teile = 10] → 3"}
 ```
 
 - Initialschritt ist Schritt 0 (sonst `initial: true` am Schritt). Ein Schritt ist aktiv; je Zyklus höchstens ein
   Schrittwechsel.
-- **Aktionen:** `-QA2` (kontinuierlich), `-M1 wenn <Bedingung>` (mit Zuweisungsbedingung),
+- **Aktionen:** `-QA2` (kontinuierlich), `-MA1 wenn <Bedingung>` (mit Zuweisungsbedingung),
   `"↑ X := Wert"` bzw. `"↑ C := C + 1"` (speichernd bei Aktivierung), `"↓ X := 0"` (bei Deaktivierung). Speichernde
   Aktionen in Anführungszeichen.
 - **Transition:** `Bedingung → Folgeschritt`; Alternativen mit `;` getrennt, die erste erfüllte gilt (Bedingungen
@@ -82,9 +82,9 @@ grafcet:
 
 ```yaml
 erzwingen:      # vor den Transitionen, in dieser Reihenfolge; solange die Bedingung gilt, steht die Kette in `nach`
-  - {bedingung: "¬-S2", nach: 0, grund: "Stopp: alle Ausgänge sofort 0"}
+  - {bedingung: "¬-SJ2", nach: 0, grund: "Stopp: alle Ausgänge sofort 0"}
 zuweisungen:    # nach den Aktionen; ein Ziel je Eintrag
-  - {ziel: -QA1, bedingung: "M_Pumpe · -BL1 · -S2 · [-BT1 ≥ 30 °C]", grund: "Freigabe der Pumpe"}
+  - {ziel: -QA1, bedingung: "M_Pumpe · -BL1 · -SJ2 · [-BT1 ≥ 30 °C]", grund: "Freigabe der Pumpe"}
 ```
 
 Ein Ausgang kommt **entweder** aus GRAFCET-Aktionen **oder** aus einer Verknüpfung. Soll die Schrittkette einen
@@ -104,11 +104,11 @@ testfaelle:
     start: {-BL2: 3.0}                       # optional: Startwerte abweichend von der Zuordnungsliste
     ablauf:
       - {erwarte: {X: 0, -QA1: 0}}
-      - {tippe: -S1, erwarte: {X: 1, -QA2: 1}}
+      - {tippe: -SJ1, erwarte: {X: 1, -QA2: 1}}
       - {schrittzeit: 5min, vorher: {X: 1}, erwarte: {X: 2, -QM1: 1}}
       - {setze: {-BL2: 4.6}, erwarte: {X: 4, -QA1: 0}}
-      - {druecke: -S2, erwarte: {X: 0}}
-      - {loese: -S2, warte: 1s, erwarte: {X: 0}}
+      - {druecke: -SJ2, erwarte: {X: 0}}
+      - {loese: -SJ2, warte: 1s, erwarte: {X: 0}}
 ```
 
 | Schlüssel | Wirkung |
@@ -135,8 +135,8 @@ Analogwerte nicht genau auf eine Schwelle setzen (4,6 m statt 4,5 m) – der Roh
 
 | Bedeutung | Schreibweise | im Sketch |
 |---|---|---|
-| UND, ODER, NICHT | `-S1 · -B1`, `-B2 + -B3`, `¬-S2` (NICHT vor UND vor ODER, Klammern erlaubt) | `&&`, `||`, `!` |
-| Flanke | `↑-S1`, `↓-B1` | `(s1 && !s1_vorher)` |
+| UND, ODER, NICHT | `-SJ1 · -BG1`, `-BG2 + -BG3`, `¬-SJ2` (NICHT vor UND vor ODER, Klammern erlaubt) | `&&`, `||`, `!` |
+| Flanke | `↑-SJ1`, `↓-BG1` | `(sj1 && !sj1_vorher)` |
 | Zeit | `5s/X3` (ms, s, min, h; Komma erlaubt: `5,5h/X6`) | `schrittzeit() >= T_X3` |
 | Schrittvariable | `X3`, `¬X0` | `schritt == 3`, `schritt != 0` |
 | Vergleich | `[-BT1 ≥ 30 °C]`, `[C_Teile = 10]` (≥ ≤ > < = ≠; auch >= <= !=) | `bt1 >= 30.0` |

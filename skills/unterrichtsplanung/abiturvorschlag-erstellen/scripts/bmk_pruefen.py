@@ -12,14 +12,13 @@ Legende des Technologieschemas, Zuordnungsliste, Aufgaben, Anlagen und Musterlö
       und widerspruchsfrei in Text, vorgegebener Zuordnungsliste und Musterlösung
   T.5 Operanden je Zuordnungsliste eindeutig, Schreibweise je Spalte einheitlich, vorgegebene
       Zeilen = Musterlösung; Musterlösung vollständig (Geber, Melder, Schaltgeräte, Magnetspulen)
-  T.6 BMK-Schreibweise einheitlich („-S1“, nicht daneben „S1“, „- S1“ oder „Taster S1“)
+  T.6 BMK-Schreibweise einheitlich („-SJ1“, nicht daneben „SJ1“, „- SJ1“ oder „Taster S1“)
   T.7 Grundstellung, Start und Stopp/Not-Halt beschrieben oder ausdrücklich ausgeklammert
-  T.8 Kennbuchstaben nach DIN EN IEC 81346-2:2020: Klasse und Unterklasse vorhanden, keine
-      Kennbuchstaben der Ausgabe 2009 (-SF Taster, -RZ, Klasse A, SPS als -KF). So kurz wie
-      möglich (didaktische Reduktion): Unterklasse nur, wenn die Klasse verschiedenartige
-      Betriebsmittel enthält (-BL1 neben -BT1), sonst nur die Klasse (-S1, -S2 statt -SJ1, -SJ2);
-      je Klasse eine Tiefe. Nennt der Text die Ausgabe 2009 („81346-2:2009“), gilt sie ohne
-      Tabellenabgleich.
+  T.8 Kennbuchstaben nach DIN EN IEC 81346-2:2020: Klasse und Unterklasse stehen in Tabelle 2,
+      keine Kennbuchstaben der Ausgabe 2009 (-SF Taster, -RZ, Klasse A, SPS als -KF). Standard
+      (Vorgabe der Fachberatung, 04.11.2026): **immer Klasse und Unterklasse** (-SJ1, -MA1, -MM1,
+      -EA1) – die Klasse allein (-S1, -M1) wird gemeldet; je Klasse eine Tiefe (nicht -BG1 neben
+      -BGB2). Nennt der Text die Ausgabe 2009 („81346-2:2009“), gilt sie ohne Tabellenabgleich.
   T.9 GRAFCET in Textform nach dem Notationsblatt der Bibliothek (Tabellen „Schritt | Aktion |
       Transition“): UND „·“, ODER „+“, NICHT „¬“, Zeit „5s/X3“, Vergleiche in [ ], Folgeschritt nach
       „→“, speichernde Aktionen „↑ -Q1 := 1“; keine Schreibweisen aus Programmiersprachen.
@@ -30,7 +29,7 @@ jede Spalte für sich. Eine Anlage, deren
 Überschrift „Notation“ enthält (Notationsblatt), wird übersprungen – ihre Beispiel-Kennzeichen
 gehören nicht zur Aufgabe.
 
-Kennzeichen wie „-S1“, „-BG12“, „-Q1“ (Kennbuchstaben nach DIN EN IEC 81346-2, Bindestrich
+Kennzeichen wie „-SJ1“, „-BG12“, „-QA1“ (Kennbuchstaben nach DIN EN IEC 81346-2, Bindestrich
 vorn; Tabelle in normen-technik.md). Eine andere Hauskonvention gibt --bmk-muster als regulären
 Ausdruck an, z. B. "[SBKQYHMP][0-9]{1,2}" für „S1, B2, K1“ (dann entfällt T.8).
 
@@ -93,6 +92,14 @@ UNTERKLASSEN_2020 = {
 # Kennbuchstaben der Ausgabe 2009, die in Prüfungsaufgaben 2020 anders heißen
 AUS_2009 = {"SF": "Taster und Schalter heißen -SJ, SF ist Gesichtserkennung",
             "RZ": "Drosselrückschlagventil heißt -RN"}
+# übliche Unterklassen je Klasse – Vorschlag, wenn nur die Klasse steht (Tabelle in normen-technik.md)
+STANDARD_UNTERKLASSE = {
+    "B": "-BG Lage, -BP Druck, -BL Füllstand, -BT Temperatur", "S": "-SJ Taster, Schalter",
+    "K": "-KE SPS, -KF Relais", "Q": "-QA Schütz, -QM Wegeventil", "M": "-MA Motor, -MB Ventilspule, -MM Zylinder",
+    "P": "-PF Leuchtmelder, -PJ Hupe", "R": "-RN Drossel, -RM Rückschlagventil", "G": "-GP Pumpe, -GQ Kompressor",
+    "T": "-TC Netzteil, -TF Messumformer", "F": "-FC Sicherung", "E": "-EA Leuchte, -EB Heizung",
+    "C": "-CM Tank", "X": "-XD Klemme", "W": "-WD Kabel, -WG Signalleitung",
+}
 AUSGABE_81346 = re.compile(r"81346-2\s*(?::|\(|,?\s*Ausgabe)\s*(20\d\d)")
 SPS_ALS_KF = re.compile(r"(?:\bSPS\b|Steuerung|Kleinsteuerung|Mikrocontroller|Controller)\s*(?:\([^)\n]{0,20}\)\s*)?"
                         r"[-–](KF\d+)|\|\s*[-–](KF\d+)\s*\|\s*(?:SPS|Steuerung|Kleinsteuerung|Mikrocontroller|Controller)")
@@ -326,23 +333,20 @@ def pruefe_kennbuchstaben(kennungen: list[str], sm: str, lm: str) -> tuple[Befun
     klassen: dict[str, list[str]] = {}
     for k, b in buchstaben.items():
         klassen.setdefault(b[0], []).append(k)
-    gemischt, kuerzer = [], []
+    gemischt, ohne_unterklasse = [], []
     for ks in klassen.values():
         tiefe = {len(buchstaben[k]) for k in ks}
-        if len(tiefe) > 1:                                   # -B1 neben -BG2
-            ks = sorted(ks, key=lambda k: len(buchstaben[k]))
+        ohne_unterklasse += [k for k in ks if len(buchstaben[k]) == 1]
+        if len(tiefe - {1}) > 1:                             # -BG1 neben -BGB2
+            ks = sorted((k for k in ks if len(buchstaben[k]) > 1), key=lambda k: len(buchstaben[k]))
             gemischt.append(f"{ks[0]} neben {ks[-1]}")
-            continue
-        # kleinste Tiefe, die alle Arten der Klasse noch unterscheidet (-SJ1, -SJ2 → -S1, -S2)
-        arten = {buchstaben[k] for k in ks}
-        d = next(d for d in range(1, max(tiefe) + 1) if len({a[:d] for a in arten}) == len(arten))
-        if d < max(tiefe):
-            kuerzer.append(", ".join(ks) + " → " + ", ".join(f"-{buchstaben[k][:d]}{k[len(buchstaben[k]) + 1:]}"
-                                                               for k in ks))
+    if ohne_unterklasse:
+        text.append("Unterklasse fehlt – Standard ist Klasse und Unterklasse (z. B. -SJ1, -MA1, -MM1, -EA1): "
+                    + ", ".join(sorted(ohne_unterklasse)) + " → "
+                    + "; ".join(f"-{b} z. B. {STANDARD_UNTERKLASSE[b]}"
+                                for b in sorted({buchstaben[k] for k in ohne_unterklasse}) if b in STANDARD_UNTERKLASSE))
     if gemischt:
         text.append("Tiefe innerhalb einer Klasse gemischt: " + "; ".join(gemischt))
-    if kuerzer:
-        text.append("kürzer möglich – Unterklasse ohne Unterscheidung in der Klasse: " + "; ".join(kuerzer))
     if genannt == "2009":
         return Befund("T.8", name, "⚠" if text else "✅",
                       "; ".join(text + ["Ausgabe 2009 im Text genannt (aktuell: DIN EN IEC 81346-2:2020) – "

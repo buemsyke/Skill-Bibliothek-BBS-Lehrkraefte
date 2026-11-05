@@ -31,6 +31,10 @@ Aufruf:
     python3 abitur_docx.py 75_…_A_schuelermaterial.md 75_…_A_lehrermaterial.md \\
         --vorlage ORDNER_ODER_DOCX [--schule "BBS Musterstadt"] [--ueberschreiben]
 
+--seiten zählt danach die Seiten der Word-Fassung (LibreOffice `soffice` und `pdftotext`, optional):
+Schülermaterial bis „B. Material“ bzw. zur ersten Anlage – Richtwert höchstens 12 Seiten, Anlagen
+zusätzlich; fehlt LibreOffice, meldet das Skript die Zählung als nicht ausgeführt.
+
 --vorlage: DOCX- bzw. DOTX-Vorlage oder Ordner mit beiden Vorlagen (Dateiname mit „schueler“ bzw.
 „lehrer“). Standard: Umgebungsvariable ABITUR_VORLAGE, sonst eine schlichte eingebaute Vorlage mit
 derselben Kopfzeile. Die Vorlagen der Behörde liegen nicht im Skill. Ziel: gleicher Name mit .docx
@@ -48,13 +52,14 @@ import shutil
 import struct
 import subprocess
 import sys
+import tempfile
 import zipfile
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 from xml.etree import ElementTree as ET
 from xml.sax.saxutils import escape, quoteattr
 
-VERSION = "1.0"
+VERSION = "1.1"
 
 SCHRIFT, MONO = "Arial", "Courier New"
 TEXT, TABELLE, CODE, UNTERSCHRIFT = 22, 20, 18, 20          # halbe Punkt
@@ -1474,6 +1479,44 @@ def umwandeln(md: Path, ziel: Path, vorlage: Path | None, schule: str, abbildung
     return sum(1 for x in meldungen if x.startswith("✘")), meldungen
 
 
+SEITEN_SM_MAX = 12
+
+
+def seiten_zaehlen(docx: Path) -> tuple[int, int | None] | None:
+    """(Seiten gesamt, Seite mit „B. Material“ bzw. der ersten Anlage) über LibreOffice; None ohne soffice."""
+    soffice = shutil.which("soffice") or shutil.which("libreoffice")
+    if not soffice or not shutil.which("pdftotext"):
+        return None
+    with tempfile.TemporaryDirectory() as tmp:
+        try:
+            subprocess.run([soffice, "--headless", "--convert-to", "pdf", "--outdir", tmp, str(docx)],
+                           check=True, capture_output=True, timeout=300)
+            pdf = Path(tmp) / (docx.stem + ".pdf")
+            text = subprocess.run(["pdftotext", "-layout", str(pdf), "-"], check=True, capture_output=True,
+                                  timeout=120).stdout.decode("utf-8", "replace")
+        except (OSError, subprocess.SubprocessError):
+            return None
+    seiten = text.split("\f")
+    if seiten and not seiten[-1].strip():
+        seiten = seiten[:-1]
+    material = next((i + 1 for i, s in enumerate(seiten)
+                     if re.search(r"^\s*(?:B\.\s*Material|Anlage\s+1\b\s*[–-])", s, re.M)), None)
+    return len(seiten), material
+
+
+def seiten_melden(docx: Path, art: str) -> str:
+    erg = seiten_zaehlen(docx)
+    if erg is None:
+        return "Seitenzählung nicht ausgeführt (LibreOffice soffice bzw. pdftotext fehlt) – Seitenzahl in Word ablesen"
+    gesamt, material = erg
+    if art != "Schülermaterial":
+        return f"{gesamt} Seiten"
+    aufgaben = material or gesamt          # Seite, auf der das Material beginnt, zählt mit
+    zeichen = "⚠" if aufgaben > SEITEN_SM_MAX else "✓"
+    return (f"{zeichen} {gesamt} Seiten, Aufgabenteil bis Seite {aufgaben}, Anlagen und Hilfsmittel {gesamt - aufgaben} "
+            f"weitere – Richtwert ≤ {SEITEN_SM_MAX} Seiten ohne Anlagen" + (" – kürzen" if aufgaben > SEITEN_SM_MAX else ""))
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("dateien", nargs="+", type=Path, help="Schüler- und/oder Lehrermaterial (Markdown)")
@@ -1483,6 +1526,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--abbildungen", type=Path, help="Ordner der Abbildungen (Standard: abbildungen/ neben der Datei)")
     p.add_argument("-o", "--ausgabe", type=Path, help="Zieldatei (bei einer Eingabe) oder Zielordner")
     p.add_argument("--ueberschreiben", action="store_true", help="vorhandene DOCX-Datei ersetzen")
+    p.add_argument("--seiten", action="store_true",
+                   help="Seiten der Word-Fassung zählen (LibreOffice); Schülermaterial ohne Anlagen ≤ 12 Seiten")
     p.add_argument("--version", action="version", version=f"abitur_docx {VERSION}")
     a = p.parse_args(argv)
     if a.vorlage is not None and not a.vorlage.exists():
@@ -1522,6 +1567,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{md.name} → {ziel}" + (f"  (Vorlage: {vorlage.name})" if vorlage else ""))
         for meldung in meldungen:
             print("  " + meldung)
+        if a.seiten:
+            print("  " + seiten_melden(ziel, art))
         fehler += anzahl
     if fehler:
         print(f"{fehler} Fehler – Word-Datei prüfen")

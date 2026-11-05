@@ -282,7 +282,7 @@ def ortho(pts, namen=None, route: str = "auto"):
 def beschrifte(ctx: Kontext, e: dict, box, standard: str, extra_zeilen: list | None = None) -> None:
     """Kennzeichen (fett) und Kurzname (kursiv) neben das Teil setzen."""
     zeilen = []
-    kennung = e.get("id") or e.get("gehoert_zu")      # Teil eines Betriebsmittels (z. B. Kontakt des Schützes -Q1)
+    kennung = e.get("id") or e.get("gehoert_zu")      # Teil eines Betriebsmittels (z. B. Kontakt des Schützes -QA1)
     if kennung:
         zeilen.append((str(kennung), SCHRIFT_ID, True, False))
     if e.get("name"):

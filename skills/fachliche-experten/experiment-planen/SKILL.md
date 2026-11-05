@@ -2,7 +2,7 @@
 name: experiment-planen
 description: Plant Experimente und Schülerversuche für berufsbildende Schulen und das Berufliche Gymnasium – Fragestellung und Hypothese, Variablen, Material und Aufbau, Durchführung, Messwerttabelle mit Einheiten, Auswertung und Fehlerbetrachtung mit Messunsicherheit – als Versuchsanleitung für Lernende, Lehrerfassung mit erwarteten Messwerten und Entwurf der Gefährdungsbeurteilung (Ersatzstoffprüfung, Maßnahmen nach STOP, Entsorgung, Notfall). Prüft per Skript Vollständigkeit, Gefahrenhinweise, Freigabezeile und Messwerte gegen physikalische Grenzen (Faraday, Wirkungsgrad, Einheiten). Ersetzt weder Gefährdungsbeurteilung noch Vorversuch der Lehrkraft und gibt keinen Versuch frei. Verwenden bei „Versuch planen", „Experiment zur Lernsituation", „Versuchsanleitung", „Messprotokoll", „Schülerversuch Elektrolyse", „Wirkungsgrad messen", „Gefährdungsbeurteilung für den Versuch". Nicht für reine Simulationen am Rechner.
 metadata:
-  version: "1.4"
+  version: "1.5"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"

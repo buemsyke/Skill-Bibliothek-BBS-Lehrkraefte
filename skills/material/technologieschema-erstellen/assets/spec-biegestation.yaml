@@ -1,16 +1,16 @@
 # Muster: Biegestation – drei Zylinder mit Endlagenschaltern, Bedienpult, Matrize.
-# Kennzeichen: nur Klasse (-M1, -B1, -S1), weil jede Klasse nur eine Art Betriebsmittel enthält.
+# Kennzeichen: Klasse und Unterklasse (-MM1 Zylinder, -BG1 Zylinderschalter, -SJ1 Taster, -PF1 Leuchtmelder).
 # Ausgangspunkt für Anlagen mit Zylindern. Zylinder: x, y = obere linke Ecke des Gehäuses;
 # Sensoren sitzen an der Gehäusewand (pos 0 = Boden, 1 = Stangenseite); Pfeile laufen über Anker
-# ("-M1@spitze:64,-32" = 64 rechts und 32 über der Stangenspitze von -M1).
+# ("-MM1@spitze:64,-32" = 64 rechts und 32 über der Stangenspitze von -MM1).
 titel: "Abbildung 1 – Technologieschema der Biegestation"
-alt: "Biegestation mit Spannzylinder -M1 und Biegezylinder -M2 senkrecht über der Matrize, Rollzylinder -M3 waagerecht links davon, Zylinderschalter -B1 bis -B6 an den Endlagen, Bedienpult mit -S1, -S2 und -P1."
+alt: "Biegestation mit Spannzylinder -MM1 und Biegezylinder -MM2 senkrecht über der Matrize, Rollzylinder -MM3 waagerecht links davon, Zylinderschalter -BG1 bis -BG6 an den Endlagen, Bedienpult mit -SJ1, -SJ2 und -PF1."
 out: abbildungen/46_biegestation
 breite: 720
 hoehe: 530
 fusszeile:
   - "Grundstellung: alle Zylinder eingefahren, Zuschnitt am Anschlag eingelegt; Pfeile: Bewegung beim Ausfahren."
-  - "Zylinderschalter -B1 … -B6 (■) an den Endlagen; Kennzeichnung nach DIN EN IEC 81346-2:2020."
+  - "Zylinderschalter -BG1 … -BG6 (■) an den Endlagen; Kennzeichnung nach DIN EN IEC 81346-2:2020."
 elemente:
   - typ: bedienfeld
     x: 40
@@ -19,9 +19,9 @@ elemente:
     h: 112
     titel: Bedienpult
     eintraege:
-      - {typ: taster, id: "-S1", name: Start, funktion: "Startet den Zyklus", r: 17}
-      - {typ: taster, id: "-S2", name: Stopp, farbe: dunkelgrau, funktion: "Beendet den Zyklus", r: 17}
-      - {typ: leuchte, id: "-P1", name: "Zyklus läuft", funktion: "leuchtet, solange der Zyklus läuft", r: 17}
+      - {typ: taster, id: "-SJ1", name: Start, funktion: "Startet den Zyklus", r: 17}
+      - {typ: taster, id: "-SJ2", name: Stopp, farbe: dunkelgrau, funktion: "Beendet den Zyklus", r: 17}
+      - {typ: leuchte, id: "-PF1", name: "Zyklus läuft", funktion: "leuchtet, solange der Zyklus läuft", r: 17}
   - typ: polygon
     ref: matrize
     punkte: [[400, 392], [660, 392], [660, 512], [426, 512], [426, 418], [400, 418]]
@@ -32,7 +32,7 @@ elemente:
   - {typ: rechteck, x: 336, y: 386, b: 314, h: 6, fuellung: dunkelgrau}
   - {typ: etikett, x: 470, y: 357, text: Zuschnitt, ausrichtung: mitte, kursiv: true, ziel: [470, 386]}
   - typ: zylinder
-    id: "-M1"
+    id: "-MM1"
     name: Spannen
     funktion: "Spannzylinder, spannt den Zuschnitt auf der Matrize"
     x: 556
@@ -43,10 +43,10 @@ elemente:
     werkzeug: platte
     werkzeug_b: 56
     sensoren:
-      - {id: "-B1", pos: 0.08, seite: rechts, funktion: "meldet eingefahren"}
-      - {id: "-B2", pos: 0.41, seite: rechts, funktion: "meldet ausgefahren"}
+      - {id: "-BG1", pos: 0.08, seite: rechts, funktion: "meldet eingefahren"}
+      - {id: "-BG2", pos: 0.41, seite: rechts, funktion: "meldet ausgefahren"}
   - typ: zylinder
-    id: "-M2"
+    id: "-MM2"
     name: Biegen
     funktion: "Biegezylinder"
     x: 352
@@ -55,10 +55,10 @@ elemente:
     werkzeug: platte
     werkzeug_b: 58
     sensoren:
-      - {id: "-B3", pos: 0.08, seite: links, funktion: "meldet eingefahren"}
-      - {id: "-B4", pos: 0.64, seite: links, funktion: "meldet ausgefahren"}
+      - {id: "-BG3", pos: 0.08, seite: links, funktion: "meldet eingefahren"}
+      - {id: "-BG4", pos: 0.64, seite: links, funktion: "meldet ausgefahren"}
   - typ: zylinder
-    id: "-M3"
+    id: "-MM3"
     name: Einrollen
     x: 96
     y: 387
@@ -69,8 +69,8 @@ elemente:
     werkzeug: platte
     werkzeug_b: 50
     sensoren:
-      - {id: "-B5", pos: 0.08, seite: oben, funktion: "meldet eingefahren"}
-      - {id: "-B6", pos: 0.8, seite: oben, funktion: "meldet ausgefahren"}
-  - {typ: linie, punkte: ["-M1@spitze:64,-32", "-M1@spitze:64,0"], pfeil: ende}
-  - {typ: linie, punkte: ["-M2@spitze:-34,-32", "-M2@spitze:-34,0"], pfeil: ende}
-  - {typ: linie, punkte: ["-M3@spitze:-48,20", "-M3@spitze:-14,20"], pfeil: ende}
+      - {id: "-BG5", pos: 0.08, seite: oben, funktion: "meldet eingefahren"}
+      - {id: "-BG6", pos: 0.8, seite: oben, funktion: "meldet ausgefahren"}
+  - {typ: linie, punkte: ["-MM1@spitze:64,-32", "-MM1@spitze:64,0"], pfeil: ende}
+  - {typ: linie, punkte: ["-MM2@spitze:-34,-32", "-MM2@spitze:-34,0"], pfeil: ende}
+  - {typ: linie, punkte: ["-MM3@spitze:-48,20", "-MM3@spitze:-14,20"], pfeil: ende}

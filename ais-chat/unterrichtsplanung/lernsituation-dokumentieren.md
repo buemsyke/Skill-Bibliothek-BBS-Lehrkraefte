@@ -14,6 +14,8 @@ Pflichtabschnitte (Qualitätscheck, Annahmen und Prüfaufträge, Übergabe, Tran
 Details: `references/skill-vertrag.md`.
 **Zeichnungen** nur als SVG aus den Zeichen-Skills, nie als ASCII-Art oder Mermaid (Skill-Vertrag
 Abschn. 3, Prüfung `scripts/zeichnungen_pruefen.py`).
+**Betriebsmittelkennzeichen** (Steuerungstechnik) immer mit Klasse und Unterklasse – -SJ1, -MA1, -MM1,
+-EA1 – gleich in Funktionsbeschreibung, Technologieschema und Zuordnungsliste (DIN EN IEC 81346-2:2020).
 
 ## Zwei Modi
 
@@ -200,7 +202,7 @@ Leitidee dort als `leitidee_ls` eintragen (liest `unterrichtsentwurf-erstellen`)
 artefakt: Lernsituation
 titel: "[kurz, prägnant, eine Handlung beschreibend]"
 skill: lernsituation-dokumentieren
-skill_version: "1.14"
+skill_version: "1.15"
 stand: JJJJ-MM-TT
 bildungsgang: "[Ausbildungsberuf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL/KC, Lernfeld/Lerngebiet mit Nr. und Titel]"
@@ -387,7 +389,7 @@ Skala: ✅ erkennbar · ⚠️ angelegt, aber dünn · ❌ fehlt.
 - Phasen mit Stunden: …
 - Empfohlene nächste Skills: `unterrichtsentwurf-erstellen` (Stunde aus Phase …), `unterrichtsmaterial-erstellen` (…)
 
-> KI-gestützt erstellt (Skill lernsituation-dokumentieren v1.14). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill lernsituation-dokumentieren v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: references/beispiel-lernsituation-it.md
 

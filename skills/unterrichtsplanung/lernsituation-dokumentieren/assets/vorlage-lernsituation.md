@@ -2,7 +2,7 @@
 artefakt: Lernsituation
 titel: "[kurz, prägnant, eine Handlung beschreibend]"
 skill: lernsituation-dokumentieren
-skill_version: "1.14"
+skill_version: "1.15"
 stand: JJJJ-MM-TT
 bildungsgang: "[Ausbildungsberuf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL/KC, Lernfeld/Lerngebiet mit Nr. und Titel]"
@@ -189,4 +189,4 @@ Skala: ✅ erkennbar · ⚠️ angelegt, aber dünn · ❌ fehlt.
 - Phasen mit Stunden: …
 - Empfohlene nächste Skills: `unterrichtsentwurf-erstellen` (Stunde aus Phase …), `unterrichtsmaterial-erstellen` (…)
 
-> KI-gestützt erstellt (Skill lernsituation-dokumentieren v1.14). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill lernsituation-dokumentieren v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.

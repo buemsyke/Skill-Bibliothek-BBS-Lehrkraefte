@@ -2,7 +2,7 @@
 artefakt: Mikrocontroller-Simulation (Wokwi)
 titel: "<Titel der Steuerung>"
 skill: wokwi-simulation-erstellen
-skill_version: "1.0"
+skill_version: "1.2"
 stand: <JJJJ-MM-TT>
 bildungsgang: "<Bildungsgang>"
 curriculare_vorgabe: "<Lernfeld bzw. Lerngebiet>"
@@ -41,12 +41,12 @@ Prüfaufträge und Einsatz durchsehen. -->
 ## Bedienung in der Simulation
 | Kennzeichen | Betriebsmittel | Bauteil in Wokwi | Bedienung | Signal 1 bedeutet |
 |---|---|---|---|---|
-| -S1 | <Taster Start> | Taster (grün) an D2, gegen 5V, 10 kΩ nach GND | drücken = 1 | <Start betätigt> |
+| -SJ1 | <Taster Start> | Taster (grün) an D2, gegen 5V, 10 kΩ nach GND | drücken = 1 | <Start betätigt> |
 
 ## Zuordnungsliste (<Plattform>)
 | BMK | Betriebsmittel | Pin Mikrocontroller | Signal 1 bedeutet | Kontaktart |
 |---|---|---|---|---|
-| -S1 | <Taster Start> | D2 | <Start betätigt> | NO |
+| -SJ1 | <Taster Start> | D2 | <Start betätigt> | NO |
 
 ## Ablauf im Programm
 <GRAFCET in Textform (Schritt | Aktion | Transition zum Folgeschritt), Zwangssteuerung, Speicher, Verknüpfungen>
@@ -85,4 +85,4 @@ Prüfaufträge und Einsatz durchsehen. -->
 - Projektordner, Spec, Zuordnungsliste, GRAFCET-Textform, Testfälle
 - Empfohlene nächste Skills: `programmieraufgabe-erstellen`, `unterrichtsmaterial-erstellen`, `technologieschema-erstellen`, `material-pruefen`
 
-> KI-gestützt erstellt (Skill wokwi-simulation-erstellen v1.0). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill wokwi-simulation-erstellen v1.2). Fachliche Prüfung und Verantwortung: Lehrkraft.

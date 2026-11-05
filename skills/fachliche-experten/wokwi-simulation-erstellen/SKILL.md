@@ -2,7 +2,7 @@
 name: wokwi-simulation-erstellen
 description: Setzt eine Steuerungsaufgabe (Funktionsbeschreibung, Zuordnungsliste, GRAFCET, Logikplan) vollständig als Wokwi-Simulation für Arduino Uno oder ESP32 um – Sketch als Zustandsautomat nach dem Notationsblatt, Schaltung mit Tastern, Schaltern, Potentiometern und LEDs (diagram.json), Testszenarien für wokwi-cli. Prüft die Umsetzung automatisch mit Testfällen aus der Funktionsbeschreibung, im Logikmodell und im übersetzten Sketch (g++), zeichnet den Zeitablauf und schreibt ein Begleitblatt mit Bedienung und Testergebnis. Verwenden bei „Wokwi Simulation", „Steuerung in Wokwi simulieren", „GRAFCET auf Arduino testen", „Ablaufsteuerung Mikrocontroller simulieren", „Musterlösung Steuerungsaufgabe prüfen", „Schrittkette ESP32". Nicht für Analogschaltungen mit Messgeräten (circuitjs-schaltung-erstellen) und nicht für GRAFCET- oder Schaltplanzeichnungen (technologieschema-erstellen).
 metadata:
-  version: "1.0"
+  version: "1.2"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"

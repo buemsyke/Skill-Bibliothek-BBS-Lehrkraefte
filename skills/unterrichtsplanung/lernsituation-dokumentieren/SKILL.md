@@ -2,7 +2,7 @@
 name: lernsituation-dokumentieren
 description: Entwickelt und dokumentiert Lernsituationen nach der niedersächsischen Leitlinie SchuCu-BBS 2024 – für Lernfelder der Berufsausbildung und Lerngebiete vollzeitschulischer Bildungsgänge wie des Beruflichen Gymnasiums – mit curricularen Vorgaben, Handlungskompetenz (Fachkompetenz, Personale Kompetenz), genau einer Handlungssituation, Handlungsergebnis, Inhalten, Vereinbarungen inklusive Querschnittsaufgaben, Phasenplanung der vollständigen Handlung, Lernhürden und Mustern für Diagnose-, Projekt-, Experiment- und Urteilsbildungs-Lernsituationen. Überführt ältere Lernsituationen (Handlungsprodukt, 7 Phasen, KMK-Raster) ins 2024er-Format und prüft den eigenen Entwurf mit Analysebogen und Phasencheck. Verwenden, wenn eine Lernsituation für Bildungsgangteam, Jahresplanung oder schulisches Curriculum erstellt, überarbeitet oder aktualisiert werden soll – auch aus einer Themenidee oder einem Ordnungsmittel-Auszug. Vorhandene Lernsituationen nur prüfen mit lernsituation-analysieren.
 metadata:
-  version: "1.14"
+  version: "1.15"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -24,6 +24,8 @@ Pflichtabschnitte (Qualitätscheck, Annahmen und Prüfaufträge, Übergabe, Tran
 Details: `references/skill-vertrag.md`.
 **Zeichnungen** nur als SVG aus den Zeichen-Skills, nie als ASCII-Art oder Mermaid (Skill-Vertrag
 Abschn. 3, Prüfung `scripts/zeichnungen_pruefen.py`).
+**Betriebsmittelkennzeichen** (Steuerungstechnik) immer mit Klasse und Unterklasse – -SJ1, -MA1, -MM1,
+-EA1 – gleich in Funktionsbeschreibung, Technologieschema und Zuordnungsliste (DIN EN IEC 81346-2:2020).
 
 ## Zwei Modi
 

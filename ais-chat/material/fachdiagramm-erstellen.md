@@ -143,7 +143,7 @@ Lehrkraft erzeugt lokal mit `edu-diagramm`. Kein SVG von Hand.
 artefakt: Fachdiagramm – Diagrammblatt
 titel: "[Thema der Diagramme]"
 skill: fachdiagramm-erstellen
-skill_version: "1.7"
+skill_version: "1.8"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -195,7 +195,7 @@ status: "KI-Entwurf – fachlich zu prüfen"
 - Empfohlene nächste Skills: `unterrichtsmaterial-erstellen` (Diagramm im Arbeitsblatt),
   `material-pruefen`, `schuelerseiten-veroeffentlichen`
 
-> KI-gestützt erstellt (Skill fachdiagramm-erstellen v1.7). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill fachdiagramm-erstellen v1.8). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: references/diagramm-specs.md
 

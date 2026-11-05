@@ -4,14 +4,16 @@ kennzeichen — Referenzkennzeichen nach DIN EN IEC 81346-2:2020 (IEC 81346-2:20
 Technologieschemata tragen **immer** Kennzeichen der aktuellen Ausgabe; die Ausgabe 2009 und freie
 Hauskennzeichen (S1, Y1, B2) gibt es hier nicht. Geprüft wird:
 
-* Form ``-`` + 1 bis 3 Großbuchstaben + Zählnummer, ohne Leerzeichen (``-S1``, ``-MM2``),
+* Form ``-`` + Kennbuchstaben + Zählnummer, ohne Leerzeichen (``-SJ1``, ``-MM2``),
+* **Klasse und Unterklasse** stehen immer (Standard der Fachberatung, 04.11.2026): ``-SJ1``, ``-MA1``,
+  ``-MM1``, ``-EA1`` – die Klasse allein (``-S1``) ist unvollständig; eine dritte Ebene (``-BGB1``) nur,
+  wenn der Unterricht sie verlangt,
 * Klasse und Unterklasse stehen in Tabelle 2 der Norm (A, I, O sind keine Klassen; D, J, L, V, Y, Z
   reserviert),
 * Kennbuchstaben der Ausgabe 2009 (-SF, -RZ, Klasse A) sind veraltet,
 * das Kennzeichen passt zur **Art des Bauteils** (ein Taster ist Klasse S, ein Sensor Klasse B),
-* innerhalb einer Klasse gilt **eine** Tiefe: nicht -B1 neben -BG2 (Festlegung der Fachberatung,
-  Notationsblatt der Skill-Bibliothek); eine Unterklasse nur, wenn die Klasse verschiedenartige
-  Betriebsmittel enthält.
+* innerhalb einer Klasse gilt **eine** Tiefe: nicht -BG1 neben -BGB2 (Notationsblatt der
+  Skill-Bibliothek).
 
 Die Tabelle der Unterklassen ist dieselbe wie in ``bmk_pruefen.py`` der Skill-Bibliothek (ein Test
 dort vergleicht beide).
@@ -48,15 +50,30 @@ KLASSENNAMEN = {
 #: erlaubte Klassen je Bauteilart (``typ`` der Spec bzw. Symbol-Klassen)
 KLASSEN_JE_TYP = {
     "zylinder": "M", "motor": "M", "pumpe": "G", "ventil": "QRS", "sensor": "B", "taster": "S",
-    "leuchte": "P", "ampel": "P", "behaelter": "C",
+    "leuchte": "PE", "ampel": "P", "behaelter": "C",
 }
-#: wenn eine Unterklasse genannt ist, muss sie zur Bauteilart passen (Zylinder: fluidisch, Motor: drehend …)
+#: Unterklassen (Klasse + Unterklasse), die zur Bauteilart passen (Zylinder: fluidisch, Motor: drehend …)
 UNTERKLASSEN_JE_TYP = {
-    "zylinder": "M", "motor": "AB", "pumpe": "PQ", "leuchte": "F", "ampel": "F",
+    "zylinder": ("MM",), "motor": ("MA", "MB"), "pumpe": ("GP", "GQ"), "taster": ("SJ", "SG", "SH", "SK"),
+    "leuchte": ("PF", "EA"), "ampel": ("PF",), "ventil": ("QM", "QN", "RN", "RM", "SJ", "SG"),
+    "behaelter": ("CM",),
 }
 _UNTER_ERKLAERUNG = {"zylinder": "-MM (fluidisch)", "motor": "-MA (drehend) oder -MB (linear)",
-                     "pumpe": "-GP (Flüssigkeit) oder -GQ (Gas)", "leuchte": "-PF (Zustand sichtbar)",
-                     "ampel": "-PF (Zustand sichtbar)"}
+                     "pumpe": "-GP (Flüssigkeit) oder -GQ (Gas)", "taster": "-SJ (Fingerbetätigung) oder -SG (Handbetätigung)",
+                     "leuchte": "-PF (Zustand sichtbar) oder -EA (Licht)", "ampel": "-PF (Zustand sichtbar)",
+                     "ventil": "-QM (Wegeventil), -RN (Drossel), -RM (Rückschlagventil) oder -SJ (handbetätigt)",
+                     "behaelter": "-CM (Tank, Behälter)"}
+
+#: übliche Unterklasse je Klasse – nur für den Vorschlag, wenn die Unterklasse fehlt
+STANDARD_UNTERKLASSE = {
+    "B": "-BG (Lage), -BP (Druck), -BL (Füllstand), -BT (Temperatur) …", "S": "-SJ (Taster, Schalter)",
+    "K": "-KE (SPS, Mikrocontroller) oder -KF (Relais, Zeitrelais)", "Q": "-QA (Schütz) oder -QM (Wegeventil)",
+    "M": "-MA (Motor), -MB (Ventilspule) oder -MM (Zylinder)", "P": "-PF (Leuchtmelder) oder -PJ (Hupe)",
+    "R": "-RN (Drossel), -RM (Rückschlagventil) oder -RA (Widerstand, Diode)",
+    "G": "-GP (Pumpe) oder -GQ (Kompressor, Lüfter)", "T": "-TC (Netzteil), -TA (Umrichter) oder -TF (Messumformer)",
+    "F": "-FC (Sicherung, Überlastrelais)", "E": "-EA (Leuchte) oder -EB (Heizung)", "C": "-CA (Kondensator) oder -CM (Tank)",
+    "X": "-XD (Klemme)", "W": "-WD (Kabel) oder -WG (Signalleitung)",
+}
 
 FORM = re.compile(r"^-([A-Z]{1,3})(\d+)$")
 ALT_FORM = re.compile(r"^-?\s*([A-Za-z]{1,3})\s*(\d+)$")
@@ -79,7 +96,7 @@ def pruefe(kennung: str, typ: str | None = None, klassen: str | None = None) -> 
         v = vorschlag(k)
         hinweis = f" – gemeint ist wohl '{v}'" if v else ""
         return [f"Kennzeichen '{k}' hat nicht die Form der {NORM} (Bindestrich, Kennbuchstaben, "
-                f"Zählnummer ohne Leerzeichen, z. B. -S1 oder -MM2){hinweis}"]
+                f"Zählnummer ohne Leerzeichen, z. B. -SJ1 oder -MM2){hinweis}"]
     b = m.group(1)
     fehler: list[str] = []
     if b[0] in "IO":
@@ -98,15 +115,20 @@ def pruefe(kennung: str, typ: str | None = None, klassen: str | None = None) -> 
     if erlaubte and b[0] not in erlaubte:
         erlaubt = " oder ".join(f"-{c} ({KLASSENNAMEN.get(c, c)})" for c in erlaubte)
         return [f"'{k}': Klasse {b[0]} passt nicht zu '{typ}' – nach {NORM} gehört es in Klasse {erlaubt}"]
-    if typ in UNTERKLASSEN_JE_TYP and len(b) > 1 and b[1] not in UNTERKLASSEN_JE_TYP[typ]:
+    if len(b) == 1:
+        erwartet = _UNTER_ERKLAERUNG.get(typ or "") or STANDARD_UNTERKLASSE.get(b, "")
+        return [f"'{k}': Unterklasse fehlt – Standard ist Klasse und Unterklasse (-SJ1, -MA1, -MM1, -EA1)"
+                + (f"; hier {erwartet}" if erwartet else "")]
+    if typ in UNTERKLASSEN_JE_TYP and b[:2] not in UNTERKLASSEN_JE_TYP[typ]:
         return [f"'{k}': Unterklasse {b[:2]} passt nicht zu '{typ}' – erwartet {_UNTER_ERKLAERUNG[typ]}"]
     return []
 
 
 def tiefe_pruefen(kennungen: list[str]) -> tuple[list[str], list[str]]:
-    """Tiefe je Klasse: (Fehler bei gemischter Tiefe, Hinweise auf kürzere Schreibweise).
+    """Tiefe je Klasse: (Fehler bei gemischter Tiefe, Hinweise).
 
-    Nur für formal gültige Kennzeichen; ungültige meldet ``pruefe``.
+    Standard ist Klasse und Unterklasse; eine dritte Ebene gilt dann für alle Kennzeichen derselben
+    Klasse. Die Klasse allein meldet ``pruefe``. Nur für formal gültige Kennzeichen.
     """
     buchstaben = {}
     for k in kennungen:
@@ -116,20 +138,12 @@ def tiefe_pruefen(kennungen: list[str]) -> tuple[list[str], list[str]]:
     klassen: dict[str, list[str]] = {}
     for k, b in buchstaben.items():
         klassen.setdefault(b[0], []).append(k)
-    fehler, hinweise = [], []
+    fehler: list[str] = []
     for ks in klassen.values():
         tiefen = {len(buchstaben[k]) for k in ks}
         if len(tiefen) > 1:
             ks = sorted(ks, key=lambda k: len(buchstaben[k]))
             fehler.append(f"Klasse {buchstaben[ks[0]][0]}: gemischte Tiefe – {ks[0]} neben {ks[-1]}; innerhalb einer "
-                          f"Klasse alle Kennzeichen gleich tief schreiben (verschiedenartige Betriebsmittel: überall "
-                          f"Unterklasse, z. B. -MA1 und -MM1)")
-            continue
-        arten = {buchstaben[k] for k in ks}
-        d = next(d for d in range(1, max(tiefen) + 1) if len({a[:d] for a in arten}) == len(arten))
-        if d < max(tiefen):
-            kurz = ", ".join(f"-{buchstaben[k][:d]}{buchstaben[k][len(buchstaben[k]):]}{k[len(buchstaben[k]) + 1:]}"
-                             for k in ks)
-            hinweise.append(f"Klasse {buchstaben[ks[0]][0]}: kürzer möglich, weil keine Unterscheidung nötig – "
-                            f"{', '.join(ks)} → {kurz}")
-    return fehler, hinweise
+                          f"Klasse alle Kennzeichen gleich tief schreiben (Standard: Klasse und Unterklasse, "
+                          f"z. B. -MA1 und -MM1)")
+    return fehler, []

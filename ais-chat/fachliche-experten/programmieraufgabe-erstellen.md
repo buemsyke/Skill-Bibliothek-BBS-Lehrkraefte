@@ -120,7 +120,7 @@ Einheitenfehler in der Messkette); jeden Fehler mit Zeile, Wirkung und Korrektur
 artefakt: Programmieraufgabe
 titel: "[Was das Programm im Auftrag leistet]"
 skill: programmieraufgabe-erstellen
-skill_version: "1.5"
+skill_version: "1.6"
 stand: JJJJ-MM-TT
 bildungsgang: "[Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld/Lerngebiet]"
@@ -205,7 +205,7 @@ Regel für KI-Codeassistenten]
 - Codeordner `43_code/`, Testfälle, Prüfergebnis
 - Empfohlen: `material-pruefen` (C)
 
-> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.5). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill programmieraufgabe-erstellen v1.6). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: references/aufgabenmuster-informationstechnik.md
 

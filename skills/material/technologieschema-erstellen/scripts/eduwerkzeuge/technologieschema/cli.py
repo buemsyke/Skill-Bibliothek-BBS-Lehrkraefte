@@ -45,7 +45,7 @@ def _typen() -> int:
     for k, werte in AUFZAEHLUNGEN.items():
         print(f"  {k:12} {', '.join(map(str, werte))}")
     print("\nGRAFCET: typ grafcet mit kette aus schritt (art, aktivierung, aktionen, kommentar), transition (art, name, "
-          "kommentar), alternativ, parallel, sprung; aktionen: \"-M1\", \"↑ -Q1 := 1\", \"↓ -Q1 := 0\", "
+          "kommentar), alternativ, parallel, sprung; aktionen: \"-MA1\", \"↑ -QA1 := 1\", \"↓ -QA1 := 0\", "
           "{text, art, bedingung, kommentar}; Aktionsarten " + ", ".join(gc.AKTIONSARTEN) + ".")
     print("\nAnker: \"ID@punkt\" mit punkt = mitte, oben, unten, links, rechts, oben_links, oben_rechts, "
           "unten_links, unten_rechts (Zylinder zusätzlich hinten, spitze); Versatz \"ID@unten:0,12\".")

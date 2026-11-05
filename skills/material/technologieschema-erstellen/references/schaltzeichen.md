@@ -6,7 +6,7 @@ Aus `python3 scripts/edu.py technologieschema symbole --md` erzeugt; nicht von H
 
 - **Klasse** – zulässige Kennbuchstaben des Referenzkennzeichens (DIN EN IEC 81346-2:2020); ein anderes
   Kennzeichen ist ❌. Schließer: Taster -S, Sensor -B, Relaiskontakt -K, Schützkontakt -Q.
-- **Anschlüsse** – `an1`, `an2` … für Anker (`"-S1@an1"`); sie folgen Drehung und Spiegelung.
+- **Anschlüsse** – `an1`, `an2` … für Anker (`"-SJ1@an1"`); sie folgen Drehung und Spiegelung.
 - **Wirkv.** – „ja“: das Zeichen hat eine Wirkverbindung (Klingenmitte); nur dort wirkt `betaetigung:`
   (Betätigungsarten, Tabelle am Ende).
 - **Herkunft** – *Liste*: Form mit einer Vorlage abgeglichen (Wikipedia-Liste der Schaltzeichen

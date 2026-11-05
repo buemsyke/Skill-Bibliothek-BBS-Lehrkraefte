@@ -107,7 +107,9 @@ Lehrerhandreichung. In der Materialübersicht ausweisen, was vorliegt und was fe
    erstellen lässt: Tabelle, Matrix, Kennlinie aus gerechneten Werten (Code, als SVG);
    Blockschaltbilder, Abläufe, Strukturbilder, Struktogramme und Datenmodelle mit `fachdiagramm-erstellen`, Anlagenbilder zu Steuerungsaufgaben (Technologieschemata), GRAFCET und Funktionspläne mit `technologieschema-erstellen`.
    Jede Zeichnung als SVG aus einer Spec – nie als Zeichnung aus Zeichen oder Mermaid, auch nicht
-   in Lösungen und Tafelbild.
+   in Lösungen und Tafelbild. Steuerungsaufgaben: Betriebsmittelkennzeichen immer mit Klasse und
+   Unterklasse (-SJ1, -MA1, -MM1, -EA1), gleich in Funktionsbeschreibung, Technologieschema und
+   Zuordnungsliste (DIN EN IEC 81346-2:2020).
    Fotos, Herstellerzeichnungen und Normauszüge nie erfinden: Platzhalter
    `[ABBILDUNG: Inhalt, Zweck, Quelle/Lizenz – z. B. eigenes Foto Fachraum]` direkt am Auftrag
    (bleibt als Prüfauftrag stehen). Keine Schmuckbilder.
@@ -190,7 +192,7 @@ artefakt: Unterrichtsmaterial
 materialart: Arbeitsblatt
 titel: "[Kurztitel]"
 skill: unterrichtsmaterial-erstellen
-skill_version: "1.14"
+skill_version: "1.16"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[Lernfeld]"
@@ -296,7 +298,7 @@ _Erstellt mit KI-Unterstützung; fachlich geprüft von: [Lehrkraft]_
 - Hilfebedarf: … → `differenzierung-erstellen`
 - Prüfbedarf: … → `material-pruefen`
 
-> KI-gestützt erstellt (Skill unterrichtsmaterial-erstellen v1.14). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill unterrichtsmaterial-erstellen v1.16). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-bewertungsraster.md
 

@@ -1,8 +1,8 @@
 # Gute Praxis für Klassenarbeiten und Lernzielkontrollen
 
 Zusammengeführt aus der Skill-Fassung `klausur-erstellen` 1.x (eduwerkzeuge), der Referenz
-*Leistungsüberprüfungen* der `lernfeld-werkstatt`, den Prüfkriterien
-der Begutachtung und einer gelungenen Papierklausur aus der Praxis (Details in
+*Leistungsüberprüfungen* der `lernfeld-werkstatt`, den Prüfkriterien der Begutachtung
+und einer gelungenen Papierklausur aus der Praxis (Details in
 `druckfassung-antwortformate.md`). Erfahrungswerte aus realen Reihen sind als solche gekennzeichnet.
 
 ## Inhalt

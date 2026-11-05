@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """wokwi_projekt – Wokwi-Projekt aus der Spec erzeugen: sketch.ino, diagram.json, wokwi.toml, Szenarien.
 
-Der Sketch folgt dem Notationsblatt (Abschn. 6): Pin-Konstante PIN_S1, Signal s1, GRAFCET als
+Der Sketch folgt dem Notationsblatt (Abschn. 6): Pin-Konstante PIN_SJ1, Signal sj1, GRAFCET als
 Zustandsautomat mit einer Variablen für den aktiven Schritt, Zeiten über millis() seit Schrittbeginn,
 Zyklus wie bei der SPS (Eingänge lesen → Speicher → Erzwingen → Transitionen → Aktionen →
 Verknüpfungen → Ausgänge schreiben). Die Schaltung bildet die E/A-Platine nach: Signal 1 = High-Pegel.
@@ -16,7 +16,7 @@ from pathlib import Path
 import wokwi_spec as ws
 
 SKILL = "wokwi-simulation-erstellen"
-VERSION = "1.0"
+VERSION = "1.2"
 MANIFEST = ".wokwi-erzeugt.json"
 MELDEN_MS = 5000
 

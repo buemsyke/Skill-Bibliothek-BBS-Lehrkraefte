@@ -5,7 +5,7 @@ Die Spec (YAML) beschreibt die Aufgabe so, wie sie im Material steht: Zuordnungs
 Textform, Zwangssteuerung (Stopp, Schutzfunktionen), Verknüpfungen (Logikplan) und Testfälle aus der
 Funktionsbeschreibung. Bedingungen stehen in der Schreibweise des Notationsblatts:
 
-    UND ·   ODER +   NICHT ¬   Flanke ↑-S1 ↓-S1   Zeit 5s/X3   Vergleich [-BT1 ≥ 30 °C]   immer 1
+    UND ·   ODER +   NICHT ¬   Flanke ↑-SJ1 ↓-SJ1   Zeit 5s/X3   Vergleich [-BT1 ≥ 30 °C]   immer 1
 
 Format: references/spec-format.md. Nur Python-Standardbibliothek und PyYAML.
 """
@@ -500,7 +500,7 @@ def _aktion(text: str) -> Aktion:
     ziel = ziel.strip()
     if not re.fullmatch(rf"{_BMK}|{_NAME}", ziel):
         raise SpecFehler(f"Aktion „{s}“: Ziel muss ein Kennzeichen oder Merker sein "
-                         "(„-QA2“, „M_Pumpe“, „-M1 wenn -B2“, „↑ C_Teile := C_Teile + 1“)")
+                         "(„-QA2“, „M_Pumpe“, „-MA1 wenn -BG2“, „↑ C_Teile := C_Teile + 1“)")
     if bed.strip():
         return Aktion("kontinuierlich", ziel, bedingung(bed), bed.strip(), text=s)
     return Aktion("kontinuierlich", ziel, text=s)
@@ -660,7 +660,7 @@ class Befund:
 
 
 def variable(bmk_oder_name: str) -> str:
-    """Bezeichner im Programm (Notationsblatt Abschn. 6): -S1 → s1, -BL1 → bl1; Merker bleiben."""
+    """Bezeichner im Programm (Notationsblatt Abschn. 6): -SJ1 → sj1, -BL1 → bl1; Merker bleiben."""
     return bmk_oder_name[1:].lower() if bmk_oder_name.startswith("-") else bmk_oder_name
 
 
@@ -675,7 +675,10 @@ def pruefe(spec: Spec) -> list[Befund]:
     alle = [e.bmk for e in spec.eingaenge] + [a.bmk for a in spec.analog] + [a.bmk for a in spec.ausgaenge]
     for k in alle:
         if not re.fullmatch(_BMK, k):
-            fehler(f"Kennzeichen „{k}“ nicht nach Notationsblatt (Bindestrich, Kennbuchstabe(n), Zählnummer: -S1)")
+            fehler(f"Kennzeichen „{k}“ nicht nach Notationsblatt (Bindestrich, Klasse und Unterklasse, Zählnummer: -SJ1)")
+        elif re.fullmatch(r"-[A-Z]\d+", k):
+            warn(f"Kennzeichen „{k}“: Unterklasse fehlt – Standard ist Klasse und Unterklasse (-SJ1, -MA1, -MM1, -EA1; "
+                 f"Notationsblatt Abschn. 1)")
     for k in sorted({k for k in alle if alle.count(k) > 1}):
         fehler(f"Kennzeichen {k} mehrfach belegt")
     namen = [m.name for m in spec.merker]

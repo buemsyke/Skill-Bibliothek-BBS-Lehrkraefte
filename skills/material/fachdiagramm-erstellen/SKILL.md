@@ -2,7 +2,7 @@
 name: fachdiagramm-erstellen
 description: Erstellt Fachdiagramme für Unterrichtsmaterial und Klausuren aus einer kurzen YAML-Beschreibung – Blockschaltbild, Anlagen- und Systemübersicht, Energie- und Datenfluss, Regelkreis, Arbeits- und Prozessablauf, Struktogramm nach Nassi-Shneiderman, ER-Modell nach Chen, UML-Klassendiagramm und Relationenschema, auch als Klausurabbildung (Lückenbild, Fremdlösung mit Fehler, Lösungsbild). Das mitgelieferte Werkzeug edu-diagramm erzeugt daraus SVG und in diagrams.net bearbeitbare drawio-Dateien; ein Prüfskript findet vorher stille Fehler, dazu PNG-Vorschau und ein Diagrammblatt mit Alternativtext. Verwenden bei „Diagramm erstellen", „Blockschaltbild", „Ablaufdiagramm", „Struktogramm", „ER-Diagramm", „UML", „Regelkreis zeichnen", „Tafelbild als Grafik", „ASCII-Skizze ersetzen". Nicht für Technologieschema (Anlagenbild), GRAFCET, Funktionsplan, Netzwerkplan, genormte Stromlauf-, Pneumatik- oder Hydraulikpläne und technische Zeichnungen.
 metadata:
-  version: "1.7"
+  version: "1.8"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"

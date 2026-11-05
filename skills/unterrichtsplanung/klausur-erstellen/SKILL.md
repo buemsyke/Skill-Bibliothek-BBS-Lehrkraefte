@@ -2,7 +2,7 @@
 name: klausur-erstellen
 description: Erstellt schriftliche Leistungsüberprüfungen für berufsbildende Schulen – Klassenarbeit, Klausur (auch Qualifikationsphase des Beruflichen Gymnasiums mit EPA-Operatoren, BE und Notenpunkten), Kurzklausur, Lernzielkontrolle (auch Single Choice), Nachschreib- und A/B-Variante – aus Lernsituation, Material oder Lernfeld-Auszug. Kurze Operator-Aufträge, wenig Schreiblast, Abbildungen als Material, Antwortraum je Operator; Erwartungshorizont mit Korrekturschablone, Punkten je Aspekt, Alternativen, Folgefehlern, AFB-Nachweis und Notenschlüssel; Selbstprüfung per Skript, geprüft wird nur Unterrichtetes. Verwenden bei „Klassenarbeit erstellen", „Klausur mit Erwartungshorizont", „Lernzielkontrolle", „Nachschreibarbeit", „B-Gruppe". Nicht für Moodle-Quizze (quizfragen-erstellen) und Abiturvorschläge (abiturvorschlag-erstellen).
 metadata:
-  version: "1.11"
+  version: "1.15"
   bibliothek: unterrichtsentwicklung-bbs
   bereich: planung
   stand: "2026-11"
@@ -102,11 +102,11 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
     (lesen/ausführen → bewerten → verändern) und enthält eine benannte Denkfalle; der
     Erwartungshorizont nennt sie und die Antworten, die 0 P. ergeben.
 14. **Steuerungstechnik: dieselben Betriebsmittelkennzeichen überall.** Die Funktionsbeschreibung
-    nennt jedes Betriebsmittel mit Kennzeichen (-S1, -B2), Geber mit Kontaktart (NO/NC), dazu
+    nennt jedes Betriebsmittel mit Kennzeichen (-SJ1, -BG2), Geber mit Kontaktart (NO/NC), dazu
     Grundstellung und Stopp; Legende des Technologieschemas, Zuordnungsliste, Aufgaben und
     Erwartungshorizont verwenden dieselben Kennzeichen – keine Kennung erst in der Lösung.
-    Kennbuchstaben nach DIN EN IEC 81346-2:2020, so kurz wie möglich: nur die Klasse (-S1, -K1,
-    -Q1), Unterklasse nur bei verschiedenen Arten einer Klasse (-BL1 neben -BT1); Ausgabe 2009 nur,
+    Kennbuchstaben nach DIN EN IEC 81346-2:2020 immer mit Klasse und Unterklasse (-SJ1, -KE1,
+    -QA1, -MA1, -MM1, -EA1; nie die Klasse allein); Ausgabe 2009 nur,
     wenn so unterrichtet und genannt; GRAFCET nach DIN EN 60848 (`references/normen-technik.md`).
     Einheitliche Notation nach `references/notation-steuerungstechnik.md` (als Anlage beifügen);
     Steuerungsaufgaben mit SPS, Kleinsteuerung oder Mikrocontroller lösbar (Zuordnungsliste mit
@@ -124,7 +124,9 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
    zuerst den Bauplan, dann die Texte. AFB-Soll, Takt und Freitextanteil hier schon einhalten;
    je Aufgabe das Material und den Prüfstein festlegen. In Informationstechnik und Informatik je
    Teilaufgabe ein Muster aus `references/aufgabenmuster-informationstechnik.md` (Kennung in den
-   Bauplan; Festlegungen B1–B14 ins Aufgabenblatt).
+   Bauplan; Festlegungen B1–B14 ins Aufgabenblatt). In Steuerungstechnik und Mechatronik zuerst die
+   Anlage als Datenquelle aller Teilaufgaben planen, dann je Teilaufgabe ein Muster aus
+   `references/aufgabenmuster-steuerungstechnik.md` (TA1–TA10; Datenblätter nach DM1–DM6).
 3. **Aufgabenteil schreiben** nach `assets/vorlage-klausur.md`: Kopf mit Bearbeitungszeit,
    Hilfsmitteln und Gesamtpunkten, Hinweise auf dem Blatt, Fallschilderung, Aufgaben im Format
    `Aufgabe N – Titel (insgesamt P Punkte)` und Teilaufgaben `N.n **Operator** … (p P)` mit
@@ -149,14 +151,11 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 6. **Aufsichtsblatt** bei fremder Aufsicht nach `assets/vorlage-aufsichtsblatt.md`.
 7. **Varianten** (falls gewünscht): gleiche Bauplantabelle, anderer Kontext bzw. andere Zahlen;
    eigener Erwartungshorizont; Selbstprüfung für jede Variante.
-8. Qualitätscheck, dann ausgeben.
-   Kollegiale Gegenprüfung empfehlen (Lösbarkeit Schritt für Schritt).
+8. Qualitätscheck, dann ausgeben. Gegenlesen durch eine zweite Lehrkraft
+   empfehlen (Lösbarkeit Schritt für Schritt).
 
 ## Ausgabe
-- **Mit Arbeitsordner** (vorhanden oder gewünscht):
-  `01_vorgabe/<kurztitel>_aufgaben.md` und `02_musterloesung/<kurztitel>_erwartungshorizont.md`
-  (Ordnerkonvention in `references/skill-vertrag.md`).
-- **Sonst:** `70_klausur_<kurztitel>.md` und `70_klausur_<kurztitel>_erwartungshorizont.md`;
+- **Dateien:** `70_klausur_<kurztitel>.md` und `70_klausur_<kurztitel>_erwartungshorizont.md`;
   Varianten mit Suffix `_B`, `_nachschreiben`.
 - Bei fremder Aufsicht zusätzlich `70_klausur_<kurztitel>_aufsicht.md` (bzw.
   `01_vorgabe/<kurztitel>_aufsicht.md`); die Prüflinge erhalten nur das Aufgabenblatt.
@@ -200,6 +199,9 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 - `references/aufgabenmuster-informationstechnik.md` – **bei Informationstechnik und Informatik**:
   Aufgabentypen und Fragestellungen als Schablonen mit Festlegungen, Prüfstein und Merkmalen
   (Mikrocontroller, Modellierung, Algorithmen, Netzwerke/IoT, KI, SQL).
+- `references/aufgabenmuster-steuerungstechnik.md` – **bei Steuerungstechnik und Mechatronik**: Anlagenaufgabe
+  (eine Anlage trägt alle Teilaufgaben), Schema als Datenquelle, Datenblatt im Original, Auswahl aus Katalogen mit
+  Regel, Bestandsprüfung, Befund aus der Erprobung, Aufgabentypen TA1–TA10.
 - `assets/vorlage-aufsichtsblatt.md` – bei fremder Aufsicht.
 - `references/operatoren-afb.md` – Operatoren und AFB; `references/operatoren-epa-technik.md` – BG und Abitur.
 - `references/berufliches-gymnasium.md` – Klausur im BG: Lerngebiete, BE, Notenpunkte, Hilfsmittel.

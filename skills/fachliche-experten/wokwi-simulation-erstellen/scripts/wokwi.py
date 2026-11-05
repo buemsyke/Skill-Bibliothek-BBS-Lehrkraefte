@@ -169,7 +169,9 @@ def entwurf(text: str, plattform: str, quelle: str = "") -> str:
             nr, rest = m.group(1), m.group(2).strip()
             name = "Grundstellung" if "initial" in rest.lower() else re.sub(r"[()]", "", rest).strip() or f"Schritt {nr}"
             akt_roh = zeile[1] if len(zeile) > 1 else ""
-            akt = [] if akt_roh.strip() in ("", "–", "-") else [x.strip() for x in akt_roh.split(",")]
+            # Notationsblatt Abschn. 5: mehrere Aktionen durch „;“ getrennt; ältere Textformen mit Komma
+            trenner = ";" if ";" in akt_roh else ","
+            akt = [] if akt_roh.strip() in ("", "–", "-") else [x.strip() for x in akt_roh.split(trenner) if x.strip()]
             merker |= {x for x in akt if re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", x)}
             trans = zeile[2] if len(zeile) > 2 else ""
             trans = re.sub(r"→\s*X(\d+)", r"→ \1", trans)
