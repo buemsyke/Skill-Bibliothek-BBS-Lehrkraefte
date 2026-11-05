@@ -22,6 +22,8 @@ dem BG Technik; die Skills selbst sind berufsfeldübergreifend.
 | **AIS.chat** oder andere Assistenten ohne Skill-Funktion | Datei `ais-chat/<kategorie>/<skill>.md` öffnen: den Teil **ANWEISUNG** als Anweisung eines eigenen Assistenten einfügen, die **ANHÄNGE** als Wissen bzw. Datei hochladen. Hat der Assistent ein Zeichenlimit, nur die ANWEISUNG einfügen und die Datei vollständig hochladen. |
 | **Claude Code** | Skill-Ordner aus `skills/<kategorie>/` nach `~/.claude/skills/` (persönlich) oder `<projekt>/.claude/skills/` kopieren. |
 
+**Statt Claude und AIS.chat können auch andere Anbieter wie ChatGPT/Gemini oder Fobizz/SchulKI genutzt werden.**
+
 Für den Einstieg reichen `unterricht-entwickeln` (wählt und verkettet die übrigen Skills) und die
 Skills für Ihr Vorhaben. Beispiel:
 
