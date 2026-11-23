@@ -1,6 +1,6 @@
 # Skill-Bibliothek BBS – KI-Skills für die Unterrichtsentwicklung
 
-22 KI-Skills für Lehrkräfte an **berufsbildenden Schulen in Niedersachsen** einschließlich des
+27 KI-Skills für Lehrkräfte an **berufsbildenden Schulen in Niedersachsen** einschließlich des
 Beruflichen Gymnasiums: Lernsituationen nach der Leitlinie SchuCu-BBS 2024 entwickeln und prüfen, Unterrichtsentwürfe,
 Arbeitsmaterial, Differenzierung, Quiz für Moodle, Lernlandkarten für edumaps, KI-Chatbots für den
 Kurs und mehr. Die Skills sind nach den **Kategorien von AIS.chat** geordnet.

@@ -6,6 +6,10 @@ Spalten „Aufgabe", „AFB" und „Punkte", optional „Min.", „Bezug" und �
 
   Summe        Punkte der Zeilen = Σ-Zeile = Gesamtpunkte (Angabe „Gesamtpunkte: N" oder --gesamt)
   Zeit         Minutensumme ≤ Bearbeitungszeit; Takt = Bearbeitungszeit / Gesamtpunkte
+               (Zeit aus „Bearbeitungszeit: N min“, sonst aus „N min · Gesamtpunkte P“ im Kopf)
+  Probelauf    „Probelauf … N min“ der Lehrkraft × Faktor ≤ Bearbeitungszeit (2,5; PC-Klausur 3)
+  PC-Klausur   (--pc oder „PC-gestützt“/„PC-Klausur“ im Text) Takt ≥ 2,0 min/P, höchstens rund
+               10 Teilaufgaben je 60 min, Probelauf mit Minutenangabe Pflicht
   Umfang       Anzahl Hauptaufgaben (Kontextwechsel)
   AFB          Anteile in Prozent der Punkte gegen den Sollwert (gerechnet, nicht abgeschrieben)
   Einstieg     erste Zeile nicht AFB III
@@ -21,11 +25,15 @@ regelbasierte Begutachtung.
 Aufruf:
     python3 klausur_check.py ERWARTUNGSHORIZONT.md [--typ klassenarbeit|klausur-bg|lzk] [--gesamt N] [--zeit MIN]
         [--afb 30/40/30] [--toleranz 10] [--max-aufgaben 10] [--system 15|ihk] [--grenzen "92:1,…,0:6"]
-        [--sc CADBE…] [--ganze-punkte]
+        [--sc CADBE…] [--ganze-punkte] [--pc]
 
 AFB-Soll: Klassenarbeit und Klausur im Beruflichen Gymnasium 30/40/30 ±10 (Entscheidung der
 Fachberatung 10/2026, wie EPA); Lernzielkontrolle 40/50/10. Typ klausur-bg: Bewertungseinheiten
 („BE“), Takt ab 2,0 min/BE, Notenpunkte.
+
+PC-Klausur (Abgabe als Datei): Erfahrungswert einer ersten PC-Klausur – 19 Teilaufgaben in
+60 min mit 1,5 min/P gingen rechnerisch auf, im Mittel wurden 29 % erreicht, viele Felder blieben
+leer. Deshalb zählt am PC die Zahl der Teilaufgaben (Zeilen der Punkteübersicht) je 60 min.
 
 Exit 0 = keine ❌ (⚠ möglich), 1 = mindestens ein ❌, 2 = Eingabefehler.
 Nur Python-Standardbibliothek. Arbeitet nur mit Aufgaben und Punkten (Datenschutzstufe 0).
@@ -54,6 +62,11 @@ TYPEN = {
     "lzk": {"afb": (40, 50, 10), "takt_gut": 0.8, "takt_min": 0.6, "max_aufgaben": None},
 }
 FREITEXT_GRENZE = 30.0      # Prozent der Punkte; Richtwert aus der Praxis (Beispielklausur: 16 %)
+# PC-Klausur: Takt ab 2,0 min/P (⚠ ab 1,5), Teilaufgaben je 60 min ✅ bis 10, ⚠ bis 12, darüber ❌
+PC = {"takt_gut": 2.0, "takt_min": 1.5, "teilaufgaben_gut": 10, "teilaufgaben_max": 12}
+PC_TEXT = re.compile(r"PC-gest(?:ü|ue)tzt|PC-Klausur|PC-Klassenarbeit", re.I)
+PROBELAUF = re.compile(r"Probel(?:ö|oe)sung|Probelauf", re.I)
+PROBELAUF_FAKTOR = {False: 2.5, True: 3.0}  # Zeitbedarf der Lernenden ≈ Probelauf × Faktor
 FORMATE = (("Kurz", ("kurz", "buchst", "zahl", "wert", "luecke", "lücke", "tabelle", "ankreuz", "wahl", "ausdruck")),
            ("Rechnung", ("rechn",)),
            ("Skizze", ("skizz", "zeichn", "diagramm")),
@@ -179,6 +192,28 @@ def eigene_grenzen(text: str) -> list[tuple[float, str]]:
     return stufen
 
 
+def bearbeitungszeit(text: str, gesamt: float | None) -> float | None:
+    """„Bearbeitungszeit: 60 min“; sonst eine Kopfangabe „60 min · 40 P“, deren Punktzahl die Gesamtpunktzahl ist."""
+    m = re.search(r"Bearbeitungszeit\W{0,3}\s*(\d+)\s*Min", text, re.I)
+    if m:
+        return float(m.group(1))
+    for m in re.finditer(r"(?<![\d,.])(\d+)\s*(?:min|Minuten)\b\s*[·,;/|]?\s*(\d+)\s*(?:P\b|Punkte|BE\b)", text, re.I):
+        if gesamt is not None and abs(float(m.group(2)) - gesamt) < 1e-6:
+            return float(m.group(1))
+    return None
+
+
+def probelauf_minuten(text: str) -> float | None:
+    """Minutenangabe in derselben Zeile nach „Probelauf“/„Probelösung“ (z. B. „Probelauf: 25 min“)."""
+    for zeile in text.splitlines():
+        m = PROBELAUF.search(zeile)
+        if m:
+            z = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:min|Minuten)\b", zeile[m.end():], re.I)
+            if z:
+                return float(z.group(1).replace(",", "."))
+    return None
+
+
 def hauptnummer(aufgabe: str) -> str:
     m = re.match(r"[A-Za-z]*\s*(\d+)", aufgabe)
     return m.group(1) if m else aufgabe
@@ -218,19 +253,24 @@ def pruefe(text: str, a: argparse.Namespace) -> tuple[list[tuple[str, str, str]]
         befunde.append(("Zeilenstruktur", "❌", "Hauptaufgabe und Teilaufgaben gemeinsam gelistet (doppelt gezählt): "
                         + ", ".join(doppelt)))
 
+    # PC-Klausur?
+    pc = bool(a.pc or PC_TEXT.search(text))
+    info["pc"] = pc
+    takt_gut = max(typ["takt_gut"], PC["takt_gut"]) if pc else typ["takt_gut"]
+    takt_min = max(typ["takt_min"], PC["takt_min"]) if pc else typ["takt_min"]
+
     # Zeit und Takt
-    m = re.search(r"Bearbeitungszeit\W{0,3}\s*(\d+)\s*Min", text, re.I)
-    zeit = a.zeit or (float(m.group(1)) if m else None)
+    zeit = a.zeit or bearbeitungszeit(text, gesamt)
     info["zeit"] = zeit
     minuten = [z["min"] for z in zeilen if z["min"] is not None]
     if zeit and gesamt:
         takt = zeit / gesamt
         info["takt"] = round(takt, 2)
-        status = "✅" if takt >= typ["takt_gut"] - 1e-9 else ("⚠" if takt >= typ["takt_min"] - 1e-9 else "❌")
+        status = "✅" if takt >= takt_gut - 1e-9 else ("⚠" if takt >= takt_min - 1e-9 else "❌")
         e = typ.get("einheit", "P")
         befunde.append(("Takt (Minuten je " + ("BE" if e == "BE" else "Punkt") + ")", status,
-                        f"{_fmt(zeit)} min / {_fmt(gesamt)} {e} = {_fmt(round(takt, 2))} min/{e} (Richtwert ≥ {_fmt(typ['takt_gut'])}, "
-                        f"Untergrenze {_fmt(typ['takt_min'])})"))
+                        f"{_fmt(zeit)} min / {_fmt(gesamt)} {e} = {_fmt(round(takt, 2))} min/{e} (Richtwert ≥ {_fmt(takt_gut)}, "
+                        f"Untergrenze {_fmt(takt_min)}{', PC-Klausur' if pc else ''})"))
         if minuten:
             msum = sum(minuten)
             ok = msum <= zeit + 1e-9
@@ -239,6 +279,30 @@ def pruefe(text: str, a: argparse.Namespace) -> tuple[list[tuple[str, str, str]]
                             + ("" if ok else " – Arbeit ist zu lang") + (f", Reserve {_fmt(zeit - msum)} min" if ok else "")))
     else:
         befunde.append(("Takt (Minuten je Punkt)", "⚠", "Bearbeitungszeit nicht erkannt (Angabe „Bearbeitungszeit: N min“ oder --zeit)"))
+
+    # Probelauf der Lehrkraft (Faustregel: Zeitbedarf der Lernenden ≈ Probelauf × 2,5–3)
+    probe = probelauf_minuten(text)
+    info["probelauf"] = probe
+    faktor = PROBELAUF_FAKTOR[pc]
+    if probe and zeit:
+        bedarf = probe * faktor
+        ok = bedarf <= zeit + 1e-9
+        befunde.append(("Probelauf × Faktor", "✅" if ok else "❌",
+                        f"{_fmt(probe)} min × {_fmt(faktor)} ≈ {_fmt(round(bedarf, 1))} min Bedarf der Lernenden bei "
+                        f"{_fmt(zeit)} min Bearbeitungszeit" + ("" if ok else " – Arbeit kürzen oder Zeit verlängern")))
+    elif pc:
+        befunde.append(("Probelauf × Faktor", "⚠", "PC-Klausur ohne gemessenen Probelauf der Lehrkraft („Probelauf: N min“, "
+                        "in der Abgabesoftware mit Stoppuhr); Bedarf der Lernenden ≈ × 3, erste PC-Klausur der Klasse × 3–4"))
+
+    # PC-Klausur: Teilaufgaben je 60 min (jede ist ein Wechsel zwischen Dialogen, Tabellenzellen und Tippen)
+    if pc and zeit:
+        dichte = len(zeilen) / zeit * 60
+        info["teilaufgaben_je_60"] = round(dichte, 1)
+        status = "✅" if dichte <= PC["teilaufgaben_gut"] + 1e-9 else ("⚠" if dichte <= PC["teilaufgaben_max"] + 1e-9 else "❌")
+        befunde.append(("Teilaufgaben je 60 min (PC)", status,
+                        f"{len(zeilen)} Teilaufgaben in {_fmt(zeit)} min = {_fmt(round(dichte, 1))} je 60 min "
+                        f"(Richtwert ≤ {PC['teilaufgaben_gut']}, höchstens {PC['teilaufgaben_max']})"
+                        + ("" if status == "✅" else " – zusammenlegen, streichen oder Rechenwege auf Papier")))
 
     # Umfang
     haupt = sorted({hauptnummer(z["aufgabe"]) for z in zeilen}, key=lambda s: (len(s), s))
@@ -326,6 +390,8 @@ def pruefe(text: str, a: argparse.Namespace) -> tuple[list[tuple[str, str, str]]
 
 def ausgabe(befunde, info, a) -> str:
     art = {"klausur-bg": "Klausur", "lzk": "Lernzielkontrolle"}.get(a.typ, "Klassenarbeit")
+    if info.get("pc"):
+        art += " am PC"
     be = TYPEN[a.typ].get("einheit") == "BE"
     z = [f"# Selbstprüfung {art} (klausur_check)", "",
          "| Prüfpunkt | Ergebnis | Hinweis |", "|---|---|---|"]
@@ -360,6 +426,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--ganze-punkte", action="store_true", help="Grenzen auf ganze Punkte runden (Single Choice)")
     p.add_argument("--sc", default=None, help="Lösungsbuchstaben der Single-Choice-Fragen in Reihenfolge")
     p.add_argument("--optionen", type=int, default=5, help="Antwortoptionen je SC-Frage (Standard 5)")
+    p.add_argument("--pc", action="store_true",
+                   help="PC-Klausur (Abgabe als Datei): Takt ≥ 2,0 min/P, Teilaufgaben je 60 min, Probelauf × 3; "
+                        "wird auch an „PC-gestützt“/„PC-Klausur“ im Text erkannt")
     a = p.parse_args(argv)
     try:
         if a.afb and not re.fullmatch(r"\d+/\d+/\d+", a.afb):

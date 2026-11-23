@@ -23,7 +23,8 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
 | Art | Einsatz | Standard (sonst Annahme) |
 |---|---|---|
 | **Klassenarbeit / Klausur** | Ende einer Lernsituation oder des Lernfelds | 90 min Bearbeitungszeit, 60 Punkte, höchstens 10 Hauptaufgaben, AFB 30/40/30 |
-| **Klausur im Beruflichen Gymnasium** (Qualifikationsphase) | Ende eines Lerngebiets oder Halbjahrs | 90–135 min 🔎 Fachkonferenz, Bewertungseinheiten (BE), Takt ≥ 2,0 min/BE, höchstens 6 Aufgaben, EPA-Operatoren, AFB 30/40/30, Notenpunkte; Angabe zum Unterrichtszusammenhang; ggf. PC-Software als Hilfsmittel (`references/berufliches-gymnasium.md`); dezentrale Abiturvorschläge: `abiturvorschlag-erstellen` |
+| **Klausur im Beruflichen Gymnasium** (Qualifikationsphase; Takt auch in der Einführungsphase) | Ende eines Lerngebiets oder Halbjahrs | 90–135 min 🔎 Fachkonferenz, Bewertungseinheiten (BE), Takt ≥ 2,0 min/BE, höchstens 6 Aufgaben, EPA-Operatoren, AFB 30/40/30, Notenpunkte; Angabe zum Unterrichtszusammenhang; ggf. PC-Software als Hilfsmittel (`references/berufliches-gymnasium.md`); dezentrale Abiturvorschläge: `abiturvorschlag-erstellen`. Einführungsphase (Jg. 11): kürzere Klausuren, aber derselbe Takt ≥ 2,0 min/P (`--typ klausur-bg`), nicht 1,5 wie die Klassenarbeit |
+| **PC-Klausur** (Durchführungsform jeder Art: Abgabe als Datei, z. B. Word, Excel, Programm) | wie die Art | Takt ≥ 2,0 min/P, **höchstens rund 10 Teilaufgaben je 60 min**, Probelauf der Lehrkraft in der Abgabesoftware × 3 ≤ Bearbeitungszeit (erste PC-Klausur der Klasse × 3–4); Rechenwege auf Papier oder nur wenige tippen lassen; Probeabgabe vor Beginn (`references/klausur-gutepraxis.md` Abschn. 2a) |
 | **Kurzklausur** | Ende einer Lernsituation | 45 min, 30 Punkte, 4–6 Aufgaben |
 | **Lernzielkontrolle (LZK)** | unterwegs, Grundlagen sichern | 20–25 min, 20–25 Single-Choice- oder Kurzantwortfragen à 1 P, AFB 40/50/10 (sichert Grundlagen, daher wenig AFB III; anders als das Übungsquiz mit 40/40/20) |
 | **Nachschreib- / B-Variante** | Nachschreiben, Sitznachbarn | gleiche Operatoren, AFB, Punkte und Struktur; anderer Kontext oder andere Zahlen |
@@ -37,6 +38,12 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
 - **Papierklausur, sonst Annahme:** Antworten von Hand im Aufgabenblatt oder digital; eigene
   oder fremde Aufsicht (dann Aufsichtsblatt); Operatoren im Unterricht besprochen oder auf
   Seite 1 zu erklären; Fach Informatik im BG → Operatoren der EPA Berufliche Informatik.
+- **PC-Klausur, sonst Rückfrage:** Abgabesoftware und -version (in der Prüfung Word, beim
+  Erstellen evtl. LibreOffice), Tippgeschwindigkeit und PC-Erfahrung der Klasse (erste
+  PC-Klausur?), Rechenwege getippt oder auf Papier, Sperren (Rechner, Internet), Probelauf der
+  Lehrkraft in Minuten.
+- **Verfahren aus dem Unterricht:** wie die Lernenden rechnen und schreiben (Arbeitsblätter,
+  Lösungen) – Verfahren und Schreibweise der Klausur folgen dem Material, nicht dem Lehrbuch.
 - **Optional:** Planungsakte, Erwartungshorizonte der Arbeitsblätter (typische Fehler als
   Ablenker), Abdeckungsmatrix des Lernfelds, frühere Arbeit zum Überarbeiten.
 
@@ -57,6 +64,10 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
 4. **Zeit in Minuten je Punkt auslegen, nicht in Punkten je Minute.** Richtwert ≥ 1,5 min/P
    (Klassenarbeit), Untergrenze 1,0; Klausur BG ≥ 2,0 min/BE (Abitur 2,5). Höchstens rund 10 Hauptaufgaben – jede weitere ist ein
    Kontextwechsel und prüft Schreibtempo mit. Minutensumme der Aufgaben < Bearbeitungszeit.
+   **Probelauf messen, nicht schätzen:** Lehrkraft löst die Arbeit mit Stoppuhr; Probelauf × 2,5
+   (Papier) bzw. × 3 (PC) ≤ Bearbeitungszeit, Wert als „Probelauf: N min“ in den
+   Erwartungshorizont. **PC-Klausur:** ≥ 2,0 min/P und höchstens rund 10 Teilaufgaben je 60 min –
+   am PC zählt die Zahl der Bedienwechsel, nicht die Punktzahl (`klausur_check.py --pc`).
 5. **Formate mischen:** Richtig/Falsch mit Berichtigung · Zuordnung · Kurzantwort · Rechnung
    mit Lösungsweg · Skizze/Schema · Text für einen Adressaten · Beurteilung mit Begründung.
 6. **Punkte folgen der Leistung:** nennen ≈ 1 P je Aspekt, erläutern ≈ 2 P je Aspekt,
@@ -77,7 +88,12 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
     aus `references/schuelermaterial.md` – dessen vier Regeln gelten sinngemäß). Die Schwierigkeit liegt im Verfahren
     (Randfall, verneinte Bedingung, Fehlersuche), nicht in Lesemenge, Rechnen oder Schreiben;
     Zahlen kopfrechenbar, wenn kein Taschenrechner erlaubt ist. **Freitext höchstens rund 30 %
-    der Punkte** (Spalte *Antwort*, vom Skript gerechnet).
+    der Punkte** (Spalte *Antwort*, vom Skript gerechnet). **Verfahren und Hilfsmittel passen
+    zusammen:** Das im Material gelernte Verfahren muss mit den erlaubten Hilfsmitteln ausführbar
+    sein (Division mit Kommazahl „412 : 16 = 25,75“ braucht einen Taschenrechner – ohne ihn
+    vorher die ganzzahlige Division mit Rest üben oder den Rechner erlauben). Zahlen in der
+    Schreibweise des Unterrichts (keine Leerzeichen-Gruppen wie „1100 1000₂“, wenn Vierergruppen
+    zugleich ein Verfahren sind).
 11. **Antwortraum im Blatt, Format je Operator** (Feld, Tabelle, Rechenweg-Kasten,
     Zeichenkasten mit Maß, Linien nach Punkten); Punkte hinter dem Auftrag; Name auf jeder Seite;
     eine Aufgabe je Seite.
@@ -90,7 +106,11 @@ Keine Schülerdaten nötig (Datenschutzstufe 0); Schülerantworten gehören nie 
     `technologieschema-erstellen`; einen GRAFCET zusätzlich als Text-Tabelle.
 13. **Ein Material, drei Zugriffe, ein Prüfstein.** Jede Aufgabe arbeitet an einem Material
     (lesen/ausführen → bewerten → verändern) und enthält eine benannte Denkfalle; der
-    Erwartungshorizont nennt sie und die Antworten, die 0 P. ergeben.
+    Erwartungshorizont nennt sie und die Antworten, die 0 P. ergeben. Die Denkfalle liegt im
+    **Verfahren** (AFB II/III), nicht in Darstellung, Schreibweise oder Vorlage: AFB-I-Aufgaben und
+    die erste Arbeit einer Klasse ohne versteckte Fallen; Vorlagedateien so bauen, dass eine
+    Grundaufgabe nicht an vorbereiteten Strukturen scheitert (Abschnittsumbrüche → „auf das
+    gesamte Dokument“ ausdrücklich nennen).
 14. **Steuerungstechnik: dieselben Betriebsmittelkennzeichen überall.** Die Funktionsbeschreibung
     nennt jedes Betriebsmittel mit Kennzeichen (-SJ1, -BG2), Geber mit Kontaktart (NO/NC), dazu
     Grundstellung und Stopp; Legende des Technologieschemas, Zuordnungsliste, Aufgaben und
@@ -129,8 +149,10 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
    Punkteübersicht mit Antwortformat; AFB-Nachweis; Notenschlüssel; Hinweise zur Korrektur;
    bei Single Choice der Lösungsspiegel mit Begründung je Frage.
 5. **Selbstprüfung (lokal):**
-   `python3 scripts/klausur_check.py ERWARTUNGSHORIZONT.md [--typ klassenarbeit|klausur-bg|lzk] [--system 15|ihk] [--sc …]`
-   – alle ❌ beheben, ⚠ beheben oder im Qualitätscheck begründen; dazu
+   `python3 scripts/klausur_check.py ERWARTUNGSHORIZONT.md [--typ klassenarbeit|klausur-bg|lzk] [--system 15|ihk] [--sc …] [--pc]`
+   – alle ❌ beheben, ⚠ beheben oder im Qualitätscheck begründen; ein ✅ im Qualitätscheck nur
+   für Werte, die das Skript wirklich gerechnet hat (meldet es „Bearbeitungszeit nicht erkannt“,
+   ist der Takt ungeprüft); dazu
    `python3 scripts/zeichnungen_pruefen.py AUFGABEN.md ERWARTUNGSHORIZONT.md` (keine Zeichnung aus
    Zeichen). Die ausgegebene
    Notenschlüsseltabelle und die Zeile „Gesamtsummen …" in den Erwartungshorizont übernehmen.
@@ -162,7 +184,10 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 - [ ] AFB-Verteilung gerechnet und im Soll (oder begründet); AFB steigt innerhalb jeder Aufgabe?
 - [ ] Aufträge kurz (Operator zuerst, Zahlwort für den Umfang); Freitextanteil gerechnet (≤ rund 30 %)?
 - [ ] Antwortraum je Operator; Abbildungen auf derselben Seite wie ihre Teilaufgaben; Prüfstein je Aufgabe benannt?
-- [ ] Takt ≥ 1,5 min/P bzw. ≥ 2,0 min/BE im BG (oder begründet); ≤ 10 Hauptaufgaben; Minutensumme mit Reserve?
+- [ ] Takt ≥ 1,5 min/P bzw. ≥ 2,0 min/BE im BG (auch Einführungsphase) und am PC (oder begründet); ≤ 10 Hauptaufgaben; Minutensumme mit Reserve?
+- [ ] Probelauf der Lehrkraft gemessen und × 2,5 (PC × 3) ≤ Bearbeitungszeit?
+- [ ] PC-Klausur: ≤ rund 10 Teilaufgaben je 60 min; jede Aufgabe in der Prüfsoftware gelöst; Vorlage ohne Fallen für AFB I; Probeabgabe eingeplant?
+- [ ] Verfahren mit den erlaubten Hilfsmitteln ausführbar; Zahlen und Notation wie im Material; Denkfallen nur im Verfahren?
 - [ ] Punktsumme = Gesamtpunkte (Aufgabenteil = Erwartungshorizont)?
 - [ ] Erwartungshorizont mit Aspekten, Punkten, Alternativen, Toleranz, Folgefehlerregel, Korrekturschablone?
 - [ ] Musterlösung nachgerechnet; Ersatzwerte für abhängige Teilaufgaben, abweichend vom richtigen Ergebnis?
@@ -212,7 +237,7 @@ Abbildung, Seitenaufbau, Aufsicht: `references/druckfassung-antwortformate.md`.
 artefakt: Klassenarbeit – Aufsichtsblatt
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.15"
+skill_version: "1.16"
 stand: JJJJ-MM-TT
 vertraulich: true
 status: "KI-Entwurf – fachlich zu prüfen"
@@ -260,7 +285,7 @@ _____________________________________________________________________
 
 Aufgabenblätter bitte gesammelt im Fach der Fachlehrkraft ablegen: [Ort].
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.16). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-erwartungshorizont.md
 
@@ -268,7 +293,7 @@ Aufgabenblätter bitte gesammelt im Fach der Fachlehrkraft ablegen: [Ort].
 artefakt: Klassenarbeit – Erwartungshorizont
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.15"
+skill_version: "1.16"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -282,6 +307,8 @@ status: "KI-Entwurf – fachlich zu prüfen"
 # Erwartungshorizont: [Thema]
 
 Bearbeitungszeit: [90] min · Gesamtpunkte: [60] · Bezug: [Lernsituation(en) Nr./Titel]
+
+Probelauf der Lehrkraft: [30] min (gemessen; × 2,5 bzw. am PC × 3 ≤ Bearbeitungszeit)
 
 So konkret, dass eine Vertretung oder Zweitkorrektur zum selben Ergebnis kommt. Jeder Aspekt
 ist einzeln bepunktbar.
@@ -397,6 +424,8 @@ Freitextanteil.
 | AFB-Verteilung (gerechnet) | | |
 | Aufträge kurz, Antwortraum je Operator, Freitextanteil (gerechnet) | | |
 | Takt und Minutensumme | | |
+| Probelauf × Faktor (PC: Teilaufgaben je 60 min) | | |
+| Verfahren mit den erlaubten Hilfsmitteln ausführbar, Notation wie im Material | | |
 | Punktsumme Aufgabenteil = Erwartungshorizont | | |
 | Musterlösung nachgerechnet | | |
 | `klausur_check.py` ohne ❌ | | |
@@ -412,7 +441,7 @@ Freitextanteil.
 - Aufsichtsblatt (bei fremder Aufsicht): `vorlage-aufsichtsblatt.md`
 - Empfohlen: Gegenlesen durch eine zweite Lehrkraft (Lösbarkeit Schritt für Schritt)
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.16). Fachliche Prüfung und Verantwortung: Lehrkraft.
 
 ## Anhang: assets/vorlage-klausur.md
 
@@ -420,7 +449,7 @@ Freitextanteil.
 artefakt: Klassenarbeit – Aufgabenteil
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.15"
+skill_version: "1.16"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -1830,6 +1859,7 @@ und einer gelungenen Papierklausur aus der Praxis (Details in
 ## Inhalt
 1. Wo Leistungsüberprüfungen liegen
 2. Zeitauslegung – die wichtigste Zahl
+2a. PC-Klausuren (Abgabe als Datei)
 3. Aufbau einer Klassenarbeit
 4. Anforderungsbereiche – gerechnet, nicht behauptet
 5. Erwartungshorizont
@@ -1861,6 +1891,8 @@ und einer gelungenen Papierklausur aus der Praxis (Details in
 |---|---|---|
 | Klassenarbeit | ≥ 1,5 min/P | 90 min / 60 P · 60 min / 40 P |
 | Kurzklausur | ≥ 1,5 min/P | 45 min / 30 P |
+| Klausur im BG (auch Einführungsphase) | ≥ 2,0 min/P bzw. BE | 90 min / 45 BE |
+| **PC-Klausur** (jede Art, Abgabe als Datei) | ≥ 2,0 min/P **und** ≤ rund 10 Teilaufgaben je 60 min | 60 min / 30 P in 10 Teilaufgaben |
 | Lernzielkontrolle (Single Choice) | ≈ 1 min je Frage | 25 Fragen in 20–25 min |
 
 > **Erfahrungswert (lernfeld-werkstatt):** Eine erste Fassung mit 16 Aufgaben, 60 Punkten und
@@ -1868,11 +1900,45 @@ und einer gelungenen Papierklausur aus der Praxis (Details in
 > Kontextwechsel. Halbiert auf 8 Aufgaben und 40 Punkte bei gleicher AFB-Gewichtung und
 > Abdeckung; kein Pflichtinhalt ging verloren (mehrere wanderten in Richtig/Falsch-Aussagen).
 
+> **Erfahrungswert (PC-Klausur Textverarbeitung und Zahlensysteme, BG Einführungsphase,
+> 11/2026):** 40 P in 60 min, 6 Aufgaben mit 19 Teilaufgaben, Rechenwege in Tabellenzellen der
+> Word-Vorlage tippen, erste PC-Klausur der Klasse. Takt (1,5 min/P), Minutensumme (53 von 60 min),
+> AFB 30/48/22 – alles im Soll. Ergebnis bei 26 Arbeiten: im Mittel 29 % der Punkte, 23 unter
+> „ausreichend“, ab der dritten Umrechnung blieb rund die Hälfte der Felder leer, die letzte Aufgabe
+> erreichte 9 %. Der geschätzte Probelauf der Lehrkraft (25 min) hätte mit der Faustregel unten
+> schon 62–75 min ergeben. Zeit war aber nicht die einzige Ursache: Auch ohne die letzte Aufgabe
+> lagen 21 von 26 unter „ausreichend“; die Hex-Umrechnung dezimal → hex löste niemand, weil das
+> Material sie über Kommadivision lehrt und kein Taschenrechner erlaubt war (Abschn. 2a).
+
 - Minutenangaben je Aufgabe im Erwartungshorizont führen; ihre Summe bleibt **unter** der
   Bearbeitungszeit (Reserve für Austeilen, Lesen, Kontrolle).
-- Faustregel der Begutachtung: Probelösung durch die Lehrkraft × 2,5 bis 3 ≈ Zeitbedarf der SuS.
+- **Faustregel: Probelösung durch die Lehrkraft × 2,5 bis 3 ≈ Zeitbedarf der Lernenden** – gemessen
+  mit Stoppuhr, nicht geschätzt, und als „Probelauf: N min“ in den Erwartungshorizont;
+  `klausur_check.py` rechnet × 2,5 (Papier) bzw. × 3 (PC) gegen die Bearbeitungszeit. Diese Zahl
+  schlägt den Takt: Geht der Takt auf, der Probelauf aber nicht, ist die Arbeit zu lang.
 - Höchstens rund 10 Hauptaufgaben. Was zusammengehört, zusammenlegen (z. B. Rechnung in die
   Auswahlaufgabe), Doppelungen streichen (zweite Beurteilungsaufgabe).
+
+## 2a. PC-Klausuren (Abgabe als Datei)
+
+Am PC kostet jede Teilaufgabe einen **Bedienwechsel** (Dialog suchen, Stelle finden, Zelle
+anklicken, Sonderzeichen tippen) – unabhängig von ihren Punkten. Der Punkttakt allein unterschätzt
+das, besonders bei Klassen, die langsam tippen oder zum ersten Mal am PC geprüft werden.
+
+| Regel | Umsetzung |
+|---|---|
+| **Teilaufgaben zählen** | ≤ rund 10 je 60 min (höchstens 12); `klausur_check.py --pc` – erkennt „PC-gestützt“ auch im Kopf |
+| **Takt** | ≥ 2,0 min/P (wie Klausur im BG) |
+| **Probelauf in der Prüfsoftware** | Lehrkraft löst die Vorlage in genau der Software der Prüfung mit Stoppuhr; × 3, erste PC-Klausur der Klasse × 3–4 |
+| **Rechenwege nicht tippen lassen** | Rechenwege auf Papier (Schmierblatt mit Namen abgeben) und nur Ergebnisse in die Datei – oder höchstens 3–4 getippte Rechenwege; Tippen von Hochzahlen, Indizes und Malpunkten prüft sonst das Schreibtempo |
+| **Vorlage ohne Fallen** | vorbereitete Strukturen (Abschnittsumbrüche, Formatvorlagen, Felder) nicht zur unbeabsichtigten Hürde machen: „auf das gesamte Dokument“ ausdrücklich nennen; was nicht geprüft wird, in der Vorlage fertig |
+| **Ein Werkzeug je Teilaufgabe** | nicht Rechnen und Bedienen in einem Feld mischen; Teilaufgaben, die ungeübte Funktionen erst entdecken lassen (AFB III „erweitern“), höchstens zwei |
+| **Probeabgabe** | vor Beginn speichern, umbenennen, abgeben – zählt nicht zur Bearbeitungszeit |
+| **Lösbarkeit** | jede Aufgabe in der Prüfsoftware nachweislich lösbar (eine Funktion, die in der Erstellungssoftware anders wirkt, nicht stellen) |
+| **Verfahren und Hilfsmittel** | sind Rechner, Internet oder Tabellenkalkulation gesperrt, muss das Verfahren aus dem Material ohne sie gehen (z. B. Division mit ganzzahligem Rest statt Kommadivision) |
+
+Vor der ersten PC-Klausur: einmal eine Übungsarbeit unter Zeit in derselben Vorlage-Art; die
+Lehrkraft misst dabei, wie lange die Klasse für eine Teilaufgabe braucht, und plant mit diesem Wert.
 
 ## 3. Aufbau einer Klassenarbeit
 
@@ -1983,6 +2049,12 @@ Operator; Mehrfachoperatoren nur, wenn beide Leistungen bewertet werden.
 |---|---|
 | Arbeit vor dem Material bauen | erst Material und Unterricht, dann die Prüfung daraus |
 | Punktsumme als Zeitmaß („60 P in 60 min") | Minuten je Punkt ≥ 1,5, Aufgabenzahl begrenzen |
+| Takt geht auf, Probelauf geschätzt („ca. 25 min“) | Probelauf mit Stoppuhr messen, × 2,5 bzw. × 3 (PC) gegen die Bearbeitungszeit |
+| PC-Klausur nach Punkten getaktet, 19 Teilaufgaben in 60 min | ≤ rund 10 Teilaufgaben je 60 min, Rechenwege auf Papier |
+| Material lehrt Kommadivision, Klausur verbietet den Taschenrechner | Verfahren mit den erlaubten Hilfsmitteln üben oder Hilfsmittel erlauben |
+| Falle in der Darstellung („1100 1000₂“ mit Leerzeichen, Vorlage mit Abschnitten bei „Seitenränder einstellen“) | Denkfalle im Verfahren, Darstellung wie im Unterricht, Vorlage für AFB I ohne Hürde |
+| Jede Teilaufgabe „mit Falle“ in der ersten Arbeit einer Klasse | Fallen dosiert in AFB II/III, AFB I sichert Punkte |
+| Qualitätscheck meldet ✅, obwohl das Skript den Wert nicht gerechnet hat | ✅ nur aus der Skriptausgabe; „Bearbeitungszeit nicht erkannt“ = ungeprüft |
 | Prozentangaben abschreiben | aus den Punkten rechnen |
 | neue Firma für die Prüfung erfinden | Handlungssituation des Unterrichts weiterführen |
 | Erwartungshorizont als Stichwortliste ohne Punkte | Aspekte mit Punkten, Alternativen, Toleranz |

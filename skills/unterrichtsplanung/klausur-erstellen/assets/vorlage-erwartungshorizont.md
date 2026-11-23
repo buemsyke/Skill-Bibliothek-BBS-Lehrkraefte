@@ -2,7 +2,7 @@
 artefakt: Klassenarbeit – Erwartungshorizont
 titel: "[Thema der Arbeit]"
 skill: klausur-erstellen
-skill_version: "1.15"
+skill_version: "1.16"
 stand: JJJJ-MM-TT
 bildungsgang: "[Beruf / Bildungsgang]"
 curriculare_vorgabe: "[RLP/RRL, Lernfeld mit Titel]"
@@ -16,6 +16,8 @@ status: "KI-Entwurf – fachlich zu prüfen"
 # Erwartungshorizont: [Thema]
 
 Bearbeitungszeit: [90] min · Gesamtpunkte: [60] · Bezug: [Lernsituation(en) Nr./Titel]
+
+Probelauf der Lehrkraft: [30] min (gemessen; × 2,5 bzw. am PC × 3 ≤ Bearbeitungszeit)
 
 So konkret, dass eine Vertretung oder Zweitkorrektur zum selben Ergebnis kommt. Jeder Aspekt
 ist einzeln bepunktbar.
@@ -131,6 +133,8 @@ Freitextanteil.
 | AFB-Verteilung (gerechnet) | | |
 | Aufträge kurz, Antwortraum je Operator, Freitextanteil (gerechnet) | | |
 | Takt und Minutensumme | | |
+| Probelauf × Faktor (PC: Teilaufgaben je 60 min) | | |
+| Verfahren mit den erlaubten Hilfsmitteln ausführbar, Notation wie im Material | | |
 | Punktsumme Aufgabenteil = Erwartungshorizont | | |
 | Musterlösung nachgerechnet | | |
 | `klausur_check.py` ohne ❌ | | |
@@ -146,4 +150,4 @@ Freitextanteil.
 - Aufsichtsblatt (bei fremder Aufsicht): `vorlage-aufsichtsblatt.md`
 - Empfohlen: Gegenlesen durch eine zweite Lehrkraft (Lösbarkeit Schritt für Schritt)
 
-> KI-gestützt erstellt (Skill klausur-erstellen v1.15). Fachliche Prüfung und Verantwortung: Lehrkraft.
+> KI-gestützt erstellt (Skill klausur-erstellen v1.16). Fachliche Prüfung und Verantwortung: Lehrkraft.

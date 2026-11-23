@@ -8,6 +8,7 @@ und einer gelungenen Papierklausur aus der Praxis (Details in
 ## Inhalt
 1. Wo Leistungsüberprüfungen liegen
 2. Zeitauslegung – die wichtigste Zahl
+2a. PC-Klausuren (Abgabe als Datei)
 3. Aufbau einer Klassenarbeit
 4. Anforderungsbereiche – gerechnet, nicht behauptet
 5. Erwartungshorizont
@@ -39,6 +40,8 @@ und einer gelungenen Papierklausur aus der Praxis (Details in
 |---|---|---|
 | Klassenarbeit | ≥ 1,5 min/P | 90 min / 60 P · 60 min / 40 P |
 | Kurzklausur | ≥ 1,5 min/P | 45 min / 30 P |
+| Klausur im BG (auch Einführungsphase) | ≥ 2,0 min/P bzw. BE | 90 min / 45 BE |
+| **PC-Klausur** (jede Art, Abgabe als Datei) | ≥ 2,0 min/P **und** ≤ rund 10 Teilaufgaben je 60 min | 60 min / 30 P in 10 Teilaufgaben |
 | Lernzielkontrolle (Single Choice) | ≈ 1 min je Frage | 25 Fragen in 20–25 min |
 
 > **Erfahrungswert (lernfeld-werkstatt):** Eine erste Fassung mit 16 Aufgaben, 60 Punkten und
@@ -46,11 +49,45 @@ und einer gelungenen Papierklausur aus der Praxis (Details in
 > Kontextwechsel. Halbiert auf 8 Aufgaben und 40 Punkte bei gleicher AFB-Gewichtung und
 > Abdeckung; kein Pflichtinhalt ging verloren (mehrere wanderten in Richtig/Falsch-Aussagen).
 
+> **Erfahrungswert (PC-Klausur Textverarbeitung und Zahlensysteme, BG Einführungsphase,
+> 11/2026):** 40 P in 60 min, 6 Aufgaben mit 19 Teilaufgaben, Rechenwege in Tabellenzellen der
+> Word-Vorlage tippen, erste PC-Klausur der Klasse. Takt (1,5 min/P), Minutensumme (53 von 60 min),
+> AFB 30/48/22 – alles im Soll. Ergebnis bei 26 Arbeiten: im Mittel 29 % der Punkte, 23 unter
+> „ausreichend“, ab der dritten Umrechnung blieb rund die Hälfte der Felder leer, die letzte Aufgabe
+> erreichte 9 %. Der geschätzte Probelauf der Lehrkraft (25 min) hätte mit der Faustregel unten
+> schon 62–75 min ergeben. Zeit war aber nicht die einzige Ursache: Auch ohne die letzte Aufgabe
+> lagen 21 von 26 unter „ausreichend“; die Hex-Umrechnung dezimal → hex löste niemand, weil das
+> Material sie über Kommadivision lehrt und kein Taschenrechner erlaubt war (Abschn. 2a).
+
 - Minutenangaben je Aufgabe im Erwartungshorizont führen; ihre Summe bleibt **unter** der
   Bearbeitungszeit (Reserve für Austeilen, Lesen, Kontrolle).
-- Faustregel der Begutachtung: Probelösung durch die Lehrkraft × 2,5 bis 3 ≈ Zeitbedarf der SuS.
+- **Faustregel: Probelösung durch die Lehrkraft × 2,5 bis 3 ≈ Zeitbedarf der Lernenden** – gemessen
+  mit Stoppuhr, nicht geschätzt, und als „Probelauf: N min“ in den Erwartungshorizont;
+  `klausur_check.py` rechnet × 2,5 (Papier) bzw. × 3 (PC) gegen die Bearbeitungszeit. Diese Zahl
+  schlägt den Takt: Geht der Takt auf, der Probelauf aber nicht, ist die Arbeit zu lang.
 - Höchstens rund 10 Hauptaufgaben. Was zusammengehört, zusammenlegen (z. B. Rechnung in die
   Auswahlaufgabe), Doppelungen streichen (zweite Beurteilungsaufgabe).
+
+## 2a. PC-Klausuren (Abgabe als Datei)
+
+Am PC kostet jede Teilaufgabe einen **Bedienwechsel** (Dialog suchen, Stelle finden, Zelle
+anklicken, Sonderzeichen tippen) – unabhängig von ihren Punkten. Der Punkttakt allein unterschätzt
+das, besonders bei Klassen, die langsam tippen oder zum ersten Mal am PC geprüft werden.
+
+| Regel | Umsetzung |
+|---|---|
+| **Teilaufgaben zählen** | ≤ rund 10 je 60 min (höchstens 12); `klausur_check.py --pc` – erkennt „PC-gestützt“ auch im Kopf |
+| **Takt** | ≥ 2,0 min/P (wie Klausur im BG) |
+| **Probelauf in der Prüfsoftware** | Lehrkraft löst die Vorlage in genau der Software der Prüfung mit Stoppuhr; × 3, erste PC-Klausur der Klasse × 3–4 |
+| **Rechenwege nicht tippen lassen** | Rechenwege auf Papier (Schmierblatt mit Namen abgeben) und nur Ergebnisse in die Datei – oder höchstens 3–4 getippte Rechenwege; Tippen von Hochzahlen, Indizes und Malpunkten prüft sonst das Schreibtempo |
+| **Vorlage ohne Fallen** | vorbereitete Strukturen (Abschnittsumbrüche, Formatvorlagen, Felder) nicht zur unbeabsichtigten Hürde machen: „auf das gesamte Dokument“ ausdrücklich nennen; was nicht geprüft wird, in der Vorlage fertig |
+| **Ein Werkzeug je Teilaufgabe** | nicht Rechnen und Bedienen in einem Feld mischen; Teilaufgaben, die ungeübte Funktionen erst entdecken lassen (AFB III „erweitern“), höchstens zwei |
+| **Probeabgabe** | vor Beginn speichern, umbenennen, abgeben – zählt nicht zur Bearbeitungszeit |
+| **Lösbarkeit** | jede Aufgabe in der Prüfsoftware nachweislich lösbar (eine Funktion, die in der Erstellungssoftware anders wirkt, nicht stellen) |
+| **Verfahren und Hilfsmittel** | sind Rechner, Internet oder Tabellenkalkulation gesperrt, muss das Verfahren aus dem Material ohne sie gehen (z. B. Division mit ganzzahligem Rest statt Kommadivision) |
+
+Vor der ersten PC-Klausur: einmal eine Übungsarbeit unter Zeit in derselben Vorlage-Art; die
+Lehrkraft misst dabei, wie lange die Klasse für eine Teilaufgabe braucht, und plant mit diesem Wert.
 
 ## 3. Aufbau einer Klassenarbeit
 
@@ -161,6 +198,12 @@ Operator; Mehrfachoperatoren nur, wenn beide Leistungen bewertet werden.
 |---|---|
 | Arbeit vor dem Material bauen | erst Material und Unterricht, dann die Prüfung daraus |
 | Punktsumme als Zeitmaß („60 P in 60 min") | Minuten je Punkt ≥ 1,5, Aufgabenzahl begrenzen |
+| Takt geht auf, Probelauf geschätzt („ca. 25 min“) | Probelauf mit Stoppuhr messen, × 2,5 bzw. × 3 (PC) gegen die Bearbeitungszeit |
+| PC-Klausur nach Punkten getaktet, 19 Teilaufgaben in 60 min | ≤ rund 10 Teilaufgaben je 60 min, Rechenwege auf Papier |
+| Material lehrt Kommadivision, Klausur verbietet den Taschenrechner | Verfahren mit den erlaubten Hilfsmitteln üben oder Hilfsmittel erlauben |
+| Falle in der Darstellung („1100 1000₂“ mit Leerzeichen, Vorlage mit Abschnitten bei „Seitenränder einstellen“) | Denkfalle im Verfahren, Darstellung wie im Unterricht, Vorlage für AFB I ohne Hürde |
+| Jede Teilaufgabe „mit Falle“ in der ersten Arbeit einer Klasse | Fallen dosiert in AFB II/III, AFB I sichert Punkte |
+| Qualitätscheck meldet ✅, obwohl das Skript den Wert nicht gerechnet hat | ✅ nur aus der Skriptausgabe; „Bearbeitungszeit nicht erkannt“ = ungeprüft |
 | Prozentangaben abschreiben | aus den Punkten rechnen |
 | neue Firma für die Prüfung erfinden | Handlungssituation des Unterrichts weiterführen |
 | Erwartungshorizont als Stichwortliste ohne Punkte | Aspekte mit Punkten, Alternativen, Toleranz |
